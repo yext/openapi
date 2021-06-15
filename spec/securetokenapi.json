@@ -1,0 +1,163 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2.0",
+    "title": "Yext API",
+    "description": "# Policies and Conventions\n\nThis section gives you the basic information you need to use the Secure Token API.\n\n## Serialization\nThe Secure Token API only accepts data in JSON format.\n\n## Content-Type Headers\nFor all requests that include a request body, the `Content-Type` header must be included and set to `application/json`.\n\n## Errors and Warnings\nThere are three kinds of issues that can be reported for a given request:\n\n* **`FATAL_ERROR`**\n    * An issue caused the entire request to be rejected.\n    * This corresponds to\n\n## Dates and Times\n* The Secure Token API uses milliseconds since epoch (a.k.a. Unix time) for timestamps (e.g., review creation times, webhook update times).\n* We always use ISO 8601 without timezone for server local date times (e.g., Event start time, Event end time). Event times are always interpreted in the local timezone of their associated locations.\n* Dates are transmitted as strings: `YYYY-MM-DD`.\n\n## Status Codes\n* `201 OK`\n   * Either there are no errors or warnings.\n* `400 Bad Request`\n    * The request body does not contain valid JSON, meaning the body is improperly formatted and/or contains one or more invalid parameters.\n* `401 Unauthorized`\n    * The API key provided in the request body is invalid, missing, or does not have permission to create Secure API Tokens.\n* `405 Method Not Allowed`\n    * The request is using a method other than `POST`, the only accepted method for the Token Creation Endpoint\n* `415 Invalid/Missing Content-Type Header`\n    * The `Content-Type` header is missing or is not equal to `application/json`\n* `429 Too Many Requests`\n    * You have exceeded your rate limit / quota.\n* `500 Internal Server Error`\n    * Yext’s servers are not operating as expected. The request is likely valid but should be resent later.\n* `504 Timeout`\n    * Yext’s servers took too long to handle this request, and it timed out.\n\n## Quotas and Rate Limits\nDefault quotas and rate limits are as follows.\n\n* **Knowledge API** *(includes Analytics, Listings, Knowledge Manager, Reviews, Social, and User endpoints)*: 5,000 requests per hour\n* **Analytics API**: 1,000 requests per 60-minute sliding window (in addition to the Knowledge API quota)\n* **Administrative API**: 1,000 requests per hour\n* **Live API**: 100,000 requests per hour\n* **Secure Token API**: 100,000 requests per hour\n\nWith the exception of the Analytics API quota, hourly quotas are calculated from the beginning of the hour (minute zero, `:00`), not on a rolling basis past 60 minutes.\n\n**NOTE:** Webhook requests do not count towards an account’s quota.\n\nFor the most current and accurate rate-limit usage information for a particular request type, check the **`Rate-Limit-Remaining`** and **`Rate-Limit-Limit`** HTTP headers of your API responses.\n\nIf you are currently over your limit, our API will return a `429` error, and the response object returned by our API will be empty. We will also include a **`Rate-Limit-Reset`** header in the response, which indicates when you will have additional quota.\n\n## Errors and Debugging\nOpposed to other Yext APIs, the Secure Token API does not return non-fatal errors or warnings. Because of this, error\nresponses will never contain a valid token.\n\n### `400` Errors\n\n#### Invalid JSON Parameters Error\nExample Error Response:\n<pre><code>\n {\n     \"body\": {},\n     \"statusCode\": 400,\n     \"error\": [\n         {\n             \"code\": 46,\n             \"type\": 1,\n             \"message\": \"Invalid/improperly formatted parameters specified in the request body\"\n         }\n     ]\n }\n</code></pre>\nThis error occurs when there is an issue with the JSON in the request body. A list of potential causes include: \n\n* The body of the request contains invalid JSON.\n* The body of the request is missing one or more required parameters.\n* The body of the request contains one or more unknown parameters.\n* The body of the request contains one or more valid parameters whose value is not the correct type.\n\n\n If this error occurs, inspect the body of the request, ensuring the JSON is valid both in\nstructure and contents. The request body should only contain the required parameters and the value\nfor each parameter is of the correct type.\n\n\n#### Invalid expires_in Value Error\nExample Error Response:\n<pre><code>\n {\n     \"body\": {},\n     \"statusCode\": 400,\n     \"error\": [\n         {\n             \"code\": 46,\n             \"type\": 1,\n             \"message\": \"the expires_in parameter must be an integer between 60 and 1440. The expires_in parameter determines the number of minutes a token will be valid for\"\n         }\n     ]\n }\n</code></pre>\nThis error occurs when the value of the expires_in parameter is an integer that is not within\nthe range of [60, 1440]. If this error occurs, check the expires_in parameter located\nwithin the request body and modify the parameter to be a valid value.\n\n\n#### “None” Algorithm Specified Error\nExample Error Response:\n<pre><code>\n {\n     \"body\": {},\n     \"statusCode\": 400,\n     \"error\": [\n         {\n             \"code\": 46,\n             \"type\": 1,\n             \"message\": \"the signing method specified cannot be 'none'\"\n         }\n     ]\n }\n</code></pre>\nThis error occurs when the value of the signing_algorithm parameter has been set to “none”.\nTo ensure that the Api Tokens returned by the Secure Token Creation endpoint are secure, a valid\nsigning algorithm must be specified. Valid values include:\n\n* HS256\n* RS256\n* ES256\n\n\n If this error occurs, check the signing_algorithm parameter located within the request body and\nensure it is valid.\n\n\n#### Unknown Algorithm Specified Error\nExample Error Response:\n<pre><code>\n {\n     \"body\": {},\n     \"statusCode\": 400,\n     \"error\": [\n         {\n             \"code\": 46,\n             \"type\": 1,\n             \"message\": \"the signing method specified is missing or not valid\"\n         }\n     ]\n }\n</code></pre>\nThis error occurs when the value of the signing_algorithm parameter has been set to a value\nother than RS256, HS256, or ES256. To ensure that the Api Tokens returned by the Secure Token\nCreation endpoint are secure, a valid signing algorithm must be specified. Valid values include:\n\n* HS256\n* RS256\n* ES256\n\n\n If this error occurs, check the signing_algorithm parameter located within the request body and\nensure it is valid.\n\n\n### `401` Errors\n\n#### Invalid Api Key Error\nExample Error Response:\n<pre><code>\n {\n     \"body\": {},\n     \"statusCode\": 401,\n     \"error\": [\n         {\n             \"code\": 1,\n             \"type\": 1,\n             \"message\": \"invalid api key\"\n         }\n     ]\n }\n</code></pre>\nThis error occurs when the provided API key is not a valid Yext API Key. If this error occurs,\ncheck the value of the api_key parameter in the request body.\n\n\n#### Missing Api Key Error\nExample Error Response:\n<pre><code>\n {\n     \"body\": {},\n     \"statusCode\": 401,\n     \"error\": [\n         {\n             \"code\": 1,\n             \"type\": 1,\n             \"message\": \"missing api key\"\n         }\n     ]\n }\n</code></pre>\nThis error occurs when an API key is not provided in the request body. The API key cannot be provided\nin the query string or request header.\n\n\n#### Insufficient Permissions Error\nExample Error Response:\n<pre><code>\n {\n     \"body\": {},\n     \"statusCode\": 401,\n     \"error\": [\n         {\n             \"code\": 1,\n             \"type\": 1,\n             \"message\": \"the provided api key does not have permissions to create a token\"\n         }\n     ]\n }\n</code></pre>\nThis error occurs when the provided API key is a valid Yext API key but does not have the\npermission that enables the API key to be used to create Secure API Tokens. If this error occurs,\nlog into your Yext account and check the app details in your Developer Console. If your app has\nthe appropriate permissions but you are still encountering this error, please contact Yext support.\n\n\n\n### `405` Errors\n\n#### Method Not Allowed Error\nExample Error Response:\n<pre><code>\n {\n     \"body\": {},\n     \"statusCode\": 405,\n     \"error\": [\n         {\n             \"code\": 46,\n             \"type\": 1,\n             \"message\": \"HTTP method _____ not allowed for this resource.\"\n         }\n     ]\n }\n</code></pre>\nThis error occurs when the HTTP method of a request is not POST. If this error occurs,\ncheck to make sure you are sending a POST request.\n\n\n\n### `415` Errors\n\n#### Missing Content-Type Error\nExample Error Response:\n<pre><code>\n {\n     \"body\": {},\n     \"statusCode\": 415,\n     \"error\": [\n         {\n             \"code\": 6,\n             \"type\": 1,\n             \"message\": \"Missing Content-Type. You must provide a content type of application/json\"\n         }\n     ]\n }\n</code></pre>\nThis error occurs when the Content-Type header of the request was not set. If this error\noccurs, set the Content-Type header to application/json and retry the request. Note\nthat setting the request body to valid JSON does not necessarily mean the Content-Type\nheader will be set to application/json.\n\n\n#### Invalid Content-Type Error\nExample Error Response:\n<pre><code>\n {\n     \"body\": {},\n     \"statusCode\": 415,\n     \"error\": [\n         {\n             \"code\": 6,\n             \"type\": 1,\n             \"message\": \"Invalid Content-Type ____. You must provide a content type of application/json\"\n         }\n     ]\n }\n</code></pre>\nThis error occurs when the Content-Type header of the request was set to a value other\nthan application/json. If this error occurs, set the Content-Type header to application/json\nand retry the request.\n\n\n### `429` Errors\n\n#### Too Many Requests Error\nExample Error Response:\n<pre><code>\n {\n     \"body\": {},\n     \"statusCode\": 429,\n     \"error\": [\n         {\n             \"code\": 42,\n             \"type\": 1,\n             \"message\": \"You have exceeded your hourly token creation limit\"\n         }\n     ]\n }\n</code></pre>\nThis error occurs when the number of requests to the CreateToken endpoint exceeds 100,000\nrequests within an hour. Limits are reset at the start of each hour. If you believe you are being\nincorrectly rate-limited, please contact Yext support.\n\n\n### `500` Errors\n\n#### Internal Server Error\nExample Error Response:\n<pre><code>\n {\n     \"body\": {},\n     \"statusCode\": 500,\n     \"error\": [\n         {\n             \"code\": 9,\n             \"type\": 1,\n             \"message\": \"We had a problem with our software. Please contact support!\"\n         }\n     ]\n }\n</code></pre>\nThis error occurs when an issue with Yext software is interfering with the normal serving\nof requests or if Yext is currently experiencing a temporary service outage and service will\nresume shortly. If this error occurs, please contact Yext support.\n\n\n## Quotas and Rate Limits\nDefault quotas and rate limits are as follows.\n\n* **Knowledge API** *(includes Analytics, Listings, Knowledge Manager, Reviews, Social, and User endpoints)*: 5,000 requests per hour\n* **Analytics API**: 1,000 requests per 60-minute sliding window (in addition to the Knowledge API quota)\n* **Administrative API**: 1,000 requests per hour\n* **Live API**: 100,000 requests per hour\n\nWith the exception of the Analytics API quota, hourly quotas are calculated from the beginning of the hour (minute zero, `:00`), not on a rolling basis past 60 minutes.\n\n**NOTE:** Webhook requests do not count towards an account’s quota.\n\nFor the most current and accurate rate-limit usage information for a particular request type, check the **`Rate-Limit-Remaining`** and **`Rate-Limit-Limit`** HTTP headers of your API responses.\n\nIf you are currently over your limit, our API will return a `429` error, and the response object returned by our API will be empty. We will also include a **`Rate-Limit-Reset`** header in the response, which indicates when you will have additional quota.\n\n## Logging\nRequests to the Secure Token API endpoint are not logged. API logs can be found in your Developer Console and are stored for 30 days.\n"
+  },
+  "host": "liveapi.yext.com",
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/v2",
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "tags": [
+    {
+      "name": "Secure Token API"
+    }
+  ],
+  "paths": {
+    "/tokens": {
+      "post": {
+        "operationId": "createToken",
+        "tags": [
+          "Secure Token API"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateTokenRequest"
+            }
+          }
+        ],
+        "summary": "Create Token",
+        "description": "Create an API Token from a valid Yext API Key and provided parameters.",
+        "responses": {
+          "201": {
+            "$ref": "#/responses/CreateTokenResponse"
+          },
+          "401": {
+            "$ref": "#/responses/ExampleErrorResponse"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CreateTokenRequest": {
+      "type": "object",
+      "required": [
+        "api_key",
+        "expires_in",
+        "auth_identifier",
+        "fixed_query_params",
+        "signing_algorithm"
+      ],
+      "properties": {
+        "api_key": {
+          "type": "string",
+          "example": "oin3rqnka321ojas",
+          "description": "A valid Yext API key for an app with the Secure Token Live Api permission enabled."
+        },
+        "expires_in": {
+          "type": "integer",
+          "example": 60,
+          "description": "The number of minutes the Api Token will be valid for. Per Yext requirements, an Api Token must be valid for at least an hour but for no longer than a day. As such, expires_in can take values within the range of [60, 1440]."
+        },
+        "auth_identifier": {
+          "type": "string",
+          "example": "John Doe",
+          "description": "A freeform string identifying the user for whom the token is being created."
+        },
+        "fixed_query_params": {
+          "type": "object",
+          "description": "Optional JSON object specifying a set of query parameters and subsequent values that should be applied to the URL of any request that uses the token as an Api Key. If these parameters are present in the original request, they will be replaced with the values contained in this field."
+        },
+        "signing_algorithm": {
+          "type": "string",
+          "example": "HS256",
+          "description": "The encryption algorithm used to sign the token.\nOptions include:\n* `RS256`\n* `HS256`\n* `ES256`\n"
+        }
+      }
+    }
+  },
+  "responses": {
+    "CreateTokenResponse": {
+      "description": "Create Token Response",
+      "schema": {
+        "title": "CreateTokenResponse",
+        "type": "object",
+        "properties": {
+          "body": {
+            "title": "body",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "628fdc25-af40-4daa-80a0-712962034e9c",
+                "description": "The unique ID that corresponds to the generated token."
+              },
+              "token": {
+                "type": "string",
+                "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiIyNTQ3OTQxIiwiZXhwIj\n oxNjA4NzY0MDM2LCJqdGkiOiI3ZGRhYmE3Ny01MDE2LTQ1ZmQtYTZlYS0yZmExMDFkY\n zQyN2QiLCJpYXQiOjE2MDg3NjA0MzYsImlzcyI6IllleHQiLCJzdWIiOiI5MDM5NCIs\n ImZxcCI6e30sInJlcXVlc3RlciI6eyJidXNpbmVzc0lkIjoyNTQ3OTQxLCJhcHBJZCI\n 6OTAzOTQsInJlYWRFbmRwb2ludEdyb3VwSWQiOlsxLDMsOCwxMywxNSwxNywyMywyNi\n wyN10sIndyaXRlRW5kcG9pbnRHcm91cElkIjpbMSwzLDgsMTMsMTUsMTcsMjMsMjYsM\n jddLCJjdXN0b21GaWVsZEJlaGF2aW9yIjp7InR5cGUiOjB9LCJza2lwc1F1b3RhQ2hl\n Y2siOmZhbHNlLCJ1c2VDYXNlIjoiRVhURVJOQUwifX0.3eOnrDxrd5x1Xz9f2G86HG4\n Jph9VoI6URUpOEdvhZIQ",
+                "description": "The API token."
+              }
+            }
+          },
+          "statusCode": {
+            "title": "Status Code",
+            "type": "integer",
+            "example": 201,
+            "description": "The status code of the request."
+          }
+        }
+      }
+    },
+    "ExampleErrorResponse": {
+      "description": "Example Error Response",
+      "schema": {
+        "title": "Example Error Response",
+        "type": "object",
+        "properties": {
+          "body": {
+            "type": "object",
+            "example": null
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 401,
+            "description": "The status code of the request."
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer",
+                "example": 1,
+                "description": "Code that uniquely identifies the error or warning.\n"
+              },
+              "type": {
+                "type": "integer",
+                "example": 1,
+                "description": "Code that uniquely identifies the name of the error. Errors of type “1” are considered fatal errors."
+              },
+              "message": {
+                "type": "string",
+                "example": "invalid api key",
+                "description": "Message explaining the problem."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
