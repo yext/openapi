@@ -819,7 +819,7 @@
         },
         "uid": {
           "type": "string",
-          "readOnly": true,
+          "readOnly": false,
           "description": "A static globally unique id for the location. Note that this field cannot be used in place of the location id in API calls to get or update location information."
         },
         "accountId": {
@@ -830,11 +830,11 @@
         "timestamp": {
           "type": "integer",
           "format": "int64",
-          "readOnly": true,
+          "readOnly": false,
           "description": "The timestamp of the most recent change to this location record.  Will be ignored when the client is saving location data to Yext.\n\n**NOTE:** The timestamp may change even if observable fields stay the same.\n"
         },
         "timezone": {
-          "readOnly": true,
+          "readOnly": false,
           "description": "The timezone of the location\n",
           "minLength": 0,
           "type": "string"
@@ -1316,17 +1316,17 @@
         },
         "uberEmbedCode": {
           "type": "string",
-          "readOnly": true,
+          "readOnly": false,
           "description": "The Yext-powered code that can be copied and pasted into the markup of emails or web pages where the embedded Uber link should appear"
         },
         "uberLink": {
           "type": "string",
-          "readOnly": true,
+          "readOnly": false,
           "description": "The Yext-powered link that can be copied and pasted into the markup of Yext Pages where the embedded Uber link should appear"
         },
         "uberLinkRaw": {
           "type": "string",
-          "readOnly": true,
+          "readOnly": false,
           "description": "The Uber universal link for the location.\n\nFor more information on universal links, see Uber's developer documentation.\n\n**NOTE**: This field is only available in the LiveAPI and only for US locations. \n"
         },
         "yearEstablished": {
@@ -1387,61 +1387,61 @@
         "yextDisplayLat": {
           "type": "number",
           "format": "double",
-          "readOnly": true,
+          "readOnly": false,
           "description": "Latitude where the map pin should be displayed, as calculated by Yext\n\nBetween -90.0 and 90.0, inclusive\n"
         },
         "yextDisplayLng": {
           "type": "number",
           "format": "double",
-          "readOnly": true,
+          "readOnly": false,
           "description": "Longitude where the map pin should be displayed, as calculated by Yext\n\nBetween -180.0 and 180.0, inclusive\n"
         },
         "yextRoutableLat": {
           "type": "number",
           "format": "double",
-          "readOnly": true,
+          "readOnly": false,
           "description": "Latitude to use for driving directions to the location, as calculated by Yext\n\nBetween -90.0 and 90.0, inclusive\n"
         },
         "yextRoutableLng": {
           "type": "number",
           "format": "double",
-          "readOnly": true,
+          "readOnly": false,
           "description": "Longitude to use for driving directions to the location, as calculated by Yext\n\nBetween -180.0 and 180.0, inclusive\n"
         },
         "yextWalkableLat": {
           "type": "number",
           "format": "double",
-          "readOnly": true,
+          "readOnly": false,
           "description": "Latitude to use for walking directions to the location, as calculated by Yext\n\nBetween -90.0 and 90.0, inclusive\n"
         },
         "yextWalkableLng": {
           "type": "number",
           "format": "double",
-          "readOnly": true,
+          "readOnly": false,
           "description": "Longitude to use for walking directions to the location, as calculated by Yext\n\nBetween -180.0 and 180.0, inclusive\n"
         },
         "yextPickupLat": {
           "type": "number",
           "format": "double",
-          "readOnly": true,
+          "readOnly": false,
           "description": "Latitude to use for pickup spot for the location, as calculated by Yext\n\nBetween -90.0 and 90.0, inclusive\n"
         },
         "yextPickupLng": {
           "type": "number",
           "format": "double",
-          "readOnly": true,
+          "readOnly": false,
           "description": "Longitude to use for pickup spot for the location, as calculated by Yext\n\nBetween -180.0 and 180.0, inclusive\n"
         },
         "yextDropoffLat": {
           "type": "number",
           "format": "double",
-          "readOnly": true,
+          "readOnly": false,
           "description": "Latitude to use for drop off spot for the location, as calculated by Yext\n\nBetween -90.0 and 90.0, inclusive\n"
         },
         "yextDropoffLng": {
           "type": "number",
           "format": "double",
-          "readOnly": true,
+          "readOnly": false,
           "description": "Longitude to use for drop off spot for the location, as calculated by Yext\n\nBetween -180.0 and 180.0, inclusive\n"
         },
         "emails": {
@@ -1669,19 +1669,19 @@
         },
         "isoRegionCode": {
           "type": "string",
-          "readOnly": true,
+          "readOnly": false,
           "description": "The ISO 3166-2 region code for the location.\n\nYext will determine the location’s code and update isoRegionCode with that value. If Yext is unable to determine the code for the location, the location’s ISO 3166-1 alpha-2 country code will be used.\n"
         },
         "reviewBalancingURL": {
           "type": "string",
           "maxLength": 255,
-          "readOnly": true,
+          "readOnly": false,
           "description": "Link to the balancing URL that will auto-direct consumers to certain sites to leave reviews, based on review-generation settings\n"
         },
         "firstPartyReviewPage": {
           "type": "string",
           "maxLength": 255,
-          "readOnly": true,
+          "readOnly": false,
           "description": "Link to the review-collection page, where consumers can leave first-party reviews\n"
         },
         "isClusterPrimary": {
@@ -1690,7 +1690,7 @@
         },
         "schemaTypes": {
           "type": "array",
-          "readOnly": true,
+          "readOnly": false,
           "items": {
             "type": "string"
           },
@@ -1751,7 +1751,7 @@
         },
         "sourceUrl": {
           "type": "string",
-          "readOnly": true,
+          "readOnly": false,
           "description": "The URL the image was uploaded from, if applicable. Note that this URL may not currently be valid.\n"
         },
         "description": {
@@ -1768,33 +1768,33 @@
         },
         "width": {
           "type": "integer",
-          "readOnly": true,
+          "readOnly": false,
           "description": "Original photo width."
         },
         "height": {
           "type": "integer",
-          "readOnly": true,
+          "readOnly": false,
           "description": "Original photo height."
         },
         "derivatives": {
           "type": "array",
-          "readOnly": true,
+          "readOnly": false,
           "items": {
             "type": "object",
             "properties": {
               "url": {
                 "type": "string",
-                "readOnly": true,
+                "readOnly": false,
                 "description": "The URL to derivative image.\nDerivative images are alternate versions of the original image (e.g., smaller versions used to improve page-load times on your site). They are primarily used with our Pages product."
               },
               "width": {
                 "type": "integer",
-                "readOnly": true,
+                "readOnly": false,
                 "description": "Derivative photo width."
               },
               "height": {
                 "type": "integer",
-                "readOnly": true,
+                "readOnly": false,
                 "description": "Derivative photo height."
               }
             },
@@ -1830,7 +1830,7 @@
         },
         "accountId": {
           "type": "string",
-          "readOnly": true,
+          "readOnly": false,
           "description": "ID of account that owns this List."
         },
         "name": {
@@ -1843,7 +1843,7 @@
         },
         "size": {
           "type": "integer",
-          "readOnly": true,
+          "readOnly": false,
           "description": "Number of items in the List."
         },
         "publish": {
@@ -2714,7 +2714,7 @@
         "id": {
           "type": "integer",
           "description": "ID of this comment (assigned by Yext).",
-          "readOnly": true
+          "readOnly": false
         },
         "parentId": {
           "type": "integer",
@@ -2724,17 +2724,17 @@
           "type": "integer",
           "format": "int64",
           "description": "The timestamp of the comment as reported by the publisher.  If edits impact the comment timestamp on the publisher, then this timestamp may change.  This timestamp always comes from the publisher and we respect whatever they have.",
-          "readOnly": true
+          "readOnly": false
         },
         "authorName": {
           "type": "string",
           "description": "The name of the person who wrote the comment (if we have it).",
-          "readOnly": true
+          "readOnly": false
         },
         "authorEmail": {
           "type": "string",
           "description": "The email address of the person who wrote the comment (if we have it).",
-          "readOnly": true
+          "readOnly": false
         },
         "authorRole": {
           "type": "string",
@@ -2742,7 +2742,7 @@
             "BUSINESS_OWNER",
             "CONSUMER"
           ],
-          "readOnly": true
+          "readOnly": false
         },
         "content": {
           "type": "string",
@@ -2780,12 +2780,12 @@
         "id": {
           "type": "integer",
           "description": "The ID of this review label.",
-          "readOnly": true
+          "readOnly": false
         },
         "name": {
           "type": "string",
           "description": "The name of this review label.",
-          "readOnly": true
+          "readOnly": false
         }
       }
     },
@@ -2867,7 +2867,7 @@
         "id": {
           "type": "integer",
           "description": "ID of this review",
-          "readOnly": true
+          "readOnly": false
         },
         "locationId": {
           "type": "string",
@@ -2876,7 +2876,7 @@
         "publisherId": {
           "type": "string",
           "description": "For third-party reviews, the ID of publisher associated with this listing.\nFor first-party reviews, this will be FIRSTPARTY.\n",
-          "readOnly": true
+          "readOnly": false
         },
         "rating": {
           "type": "number",
@@ -2886,7 +2886,7 @@
         "title": {
           "type": "string",
           "description": "Title of the review.\nThis value is omitted if reviews on the publisher's site do not have titles.\n",
-          "readOnly": true
+          "readOnly": false
         },
         "content": {
           "type": "string",
@@ -2903,19 +2903,19 @@
         "url": {
           "type": "string",
           "description": "The URL of the review, or the URL of the listing where the review can be found if there is no specific URL for the review.",
-          "readOnly": true
+          "readOnly": false
         },
         "publisherDate": {
           "type": "integer",
           "format": "int64",
           "description": "The timestamp of the review as reported by the publisher. If edits impact the review date on the publisher, then this date may change. This date always comes from the publisher and we respect whatever they have.",
-          "readOnly": true
+          "readOnly": false
         },
         "lastYextUpdateTime": {
           "type": "integer",
           "format": "int64",
           "description": "If the **`v`** parameter is before `20170512`: the timestamp of the review (including listing updates).\n\nIf the **`v`** parameter is `20170512` or later: the timestamp of the review (excluding listing updates), or the timestamp of the latest comment on the review.\n",
-          "readOnly": true
+          "readOnly": false
         },
         "status": {
           "type": "string",
@@ -2937,7 +2937,7 @@
         "comments": {
           "type": "array",
           "description": "An ordered array of Comments on the review.\n\n**NOTE:** The order is a flattened tree with depth ties broken by publisher date.\n",
-          "readOnly": true,
+          "readOnly": false,
           "items": {
             "$ref": "#/definitions/ReviewComment"
           }
@@ -2949,7 +2949,7 @@
             "Recommendation"
           ],
           "description": "If the **`v`** parameter is before `20181002`: Not present.\n\nIf the **`v`** parameter is `20181002` or later: Indicates whether the review is a rating or a recommendation.\n\n**NOTE:** Only applicable to Facebook reviews.\n",
-          "readOnly": true
+          "readOnly": false
         },
         "recommendation": {
           "type": "string",
@@ -2958,7 +2958,7 @@
             "Not Recommended"
           ],
           "description": "If the **`v`** parameter is before `20181002`: Not present.\n\nIf the **`v`** parameter is `20181002` or later: Indicates whether the consumer recommends the entity being reviewed.\n\n**NOTE:** Only applicable to Facebook reviews.\n",
-          "readOnly": true
+          "readOnly": false
         },
         "transactionId": {
           "type": "string",
@@ -2977,7 +2977,7 @@
         "id": {
           "type": "integer",
           "example": 39483,
-          "readOnly": true,
+          "readOnly": false,
           "description": "The Yext ID of the created add request."
         },
         "locationMode": {
@@ -3041,7 +3041,7 @@
         },
         "status": {
           "type": "string",
-          "readOnly": true,
+          "readOnly": false,
           "description": "The current status of the add request.",
           "enum": [
             "SUBMITTED",
@@ -3055,18 +3055,18 @@
         "dateSubmitted": {
           "type": "string",
           "format": "date-time",
-          "readOnly": true,
+          "readOnly": false,
           "description": "The date the add request was submitted."
         },
         "dateCompleted": {
           "type": "string",
           "format": "date-time",
-          "readOnly": true,
+          "readOnly": false,
           "description": "The date the add request was completed. An empty string if the request has not been completed."
         },
         "statusDetail": {
           "type": "string",
-          "readOnly": true,
+          "readOnly": false,
           "description": "Results from processing."
         }
       }
