@@ -266,7 +266,15 @@
           }
         ],
         "summary": "Answers: Filter Search",
-        "description": "Retrieve a list of potential filters that match the user's input up to that point.  This differs from query suggest by only returning the names of filters that can be searched rather than the broader corpus of suggested queries."
+        "description": "Retrieve a list of potential filters that match the user's input up to that point.  This differs from query suggest by only returning the names of filters that can be searched rather than the broader corpus of suggested queries.",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/FilterSearchResponse"
+          },
+          "400": {
+            "$ref": "#/responses/ErrorResponse"
+          }
+        }
       }
     }
   },
@@ -1111,6 +1119,86 @@
                     "$ref": "#/definitions/SearchIntents"
                   }
                 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "FilterSearchResponse": {
+      "description": "Filter Search Response",
+      "schema": {
+        "title": "FilterSearchResponse",
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/definitions/ResponseMeta"
+          },
+          "response": {
+            "type": "object",
+            "properties": {
+              "businessId": {
+                "$ref": "#/definitions/businessId"
+              },
+              "sections": {
+                "type": "array",
+                "description": "The set of field names being queried, and their respective results for the current query\n",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string",
+                      "description": "The display name of the field being queried, can be used in a UI to distinguish one section from another\n"
+                    },
+                    "results": {
+                      "type": "array",
+                      "description": "The set of matches for the current query\n",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "description": "The API name of a field with a match for the current query\n"
+                          },
+                          "value": {
+                            "type": "string",
+                            "description": "The display name of the field value with a match for the current query\n"
+                          },
+                          "filter": {
+                            "$ref": "#/definitions/filter"
+                          },
+                          "matchedSubstrings": {
+                            "type": "array",
+                            "description": "A set of offsets that represent the portion of the \"value\" that is a match for the current query\n",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "offset": {
+                                  "type": "integer",
+                                  "description": "In the \"value\", the number of characters between the beginning of the string and the start of the match for the current query\n"
+                                },
+                                "length": {
+                                  "type": "integer",
+                                  "description": "In the \"value\", the number of characters from the offset that represents the end of the match for the current query\n"
+                                }
+                              }
+                            }
+                          },
+                          "relatedItem": {
+                            "type": "object",
+                            "description": "If a unique entity returns for the current query, the full entity object\n"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "failedVerticals": {
+                "$ref": "#/definitions/FailedVerticals"
+              },
+              "queryId": {
+                "$ref": "#/definitions/queryId"
               }
             }
           }
