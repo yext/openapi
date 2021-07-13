@@ -1,0 +1,155 @@
+openapi: 3.0.0
+info:
+  title: Secure Token API
+  version: '2.0'
+servers:
+  - url: 'https://liveapi.yext.com/v2'
+paths:
+  /tokens:
+    post:
+      operationId: createToken
+      tags:
+        - Secure Token API
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateToken'
+      summary: Create Token
+      description: Create an API Token from a valid Yext API Key and provided parameters.
+      responses:
+        '201':
+          $ref: '#/components/responses/CreateTokenResponse'
+        '401':
+          $ref: '#/components/responses/ExampleErrorResponse'
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: query
+    api-key:
+      type: apiKey
+      name: api-key
+      in: header
+  schemas:
+    CreateToken:
+      type: object
+      required:
+        - api_key
+        - expires_in
+        - auth_identifier
+        - fixed_query_params
+        - signing_algorithm
+      properties:
+        api_key:
+          type: string
+          example: oin3rqnka321ojas
+          description: >-
+            A valid Yext API key for an app with the Secure Token Live Api
+            permission enabled.
+        expires_in:
+          type: integer
+          example: 60
+          description: >-
+            The number of minutes the Api Token will be valid for. Per Yext
+            requirements, an Api Token must be valid for at least an hour but
+            for no longer than a day. As such, expires_in can take values within
+            the range of [60, 1440].
+        auth_identifier:
+          type: string
+          example: John Doe
+          description: >-
+            A freeform string identifying the user for whom the token is being
+            created.
+        fixed_query_params:
+          type: object
+          description: >-
+            Optional JSON object specifying a set of query parameters and
+            subsequent values that should be applied to the URL of any request
+            that uses the token as an Api Key. If these parameters are present
+            in the original request, they will be replaced with the values
+            contained in this field.
+        signing_algorithm:
+          type: string
+          example: HS256
+          description: |
+            The encryption algorithm used to sign the token.
+            Options include:
+            * `RS256`
+            * `HS256`
+            * `ES256`
+  responses:
+    CreateTokenResponse:
+      description: Create Token Response
+      content:
+        application/json:
+          schema:
+            title: CreateTokenResponse
+            type: object
+            properties:
+              body:
+                title: body
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 628fdc25-af40-4daa-80a0-712962034e9c
+                    description: The unique ID that corresponds to the generated token.
+                  token:
+                    type: string
+                    example: >-
+                      eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiIyNTQ3OTQxIiwiZXhwIj
+                       oxNjA4NzY0MDM2LCJqdGkiOiI3ZGRhYmE3Ny01MDE2LTQ1ZmQtYTZlYS0yZmExMDFkY
+                       zQyN2QiLCJpYXQiOjE2MDg3NjA0MzYsImlzcyI6IllleHQiLCJzdWIiOiI5MDM5NCIs
+                       ImZxcCI6e30sInJlcXVlc3RlciI6eyJidXNpbmVzc0lkIjoyNTQ3OTQxLCJhcHBJZCI
+                       6OTAzOTQsInJlYWRFbmRwb2ludEdyb3VwSWQiOlsxLDMsOCwxMywxNSwxNywyMywyNi
+                       wyN10sIndyaXRlRW5kcG9pbnRHcm91cElkIjpbMSwzLDgsMTMsMTUsMTcsMjMsMjYsM
+                       jddLCJjdXN0b21GaWVsZEJlaGF2aW9yIjp7InR5cGUiOjB9LCJza2lwc1F1b3RhQ2hl
+                       Y2siOmZhbHNlLCJ1c2VDYXNlIjoiRVhURVJOQUwifX0.3eOnrDxrd5x1Xz9f2G86HG4
+                       Jph9VoI6URUpOEdvhZIQ
+                    description: The API token.
+              statusCode:
+                title: Status Code
+                type: integer
+                example: 201
+                description: The status code of the request.
+    ExampleErrorResponse:
+      description: Example Error Response
+      content:
+        application/json:
+          schema:
+            title: Example Error Response
+            type: object
+            properties:
+              body:
+                type: object
+                example: null
+              statusCode:
+                type: integer
+                example: 401
+                description: The status code of the request.
+              error:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    example: 1
+                    description: |
+                      Code that uniquely identifies the error or warning.
+                  type:
+                    type: integer
+                    example: 1
+                    description: >-
+                      Code that uniquely identifies the name of the error.
+                      Errors of type “1” are considered fatal errors.
+                  message:
+                    type: string
+                    example: invalid api key
+                    description: Message explaining the problem.
+security:
+  - api_key: []
+  - api-key: []
+tags:
+  - name: Secure Token API
