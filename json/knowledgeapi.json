@@ -58271,7 +58271,7 @@
                   "properties": {
                     "id": {
                       "type": "integer",
-                      "description": "<msg>If the **`v`** parameter is before `20210616`, **`id`** will be returned as a\ntype string instead of an integer.</msg>\n"
+                      "description": "If the **`v`** parameter is before `20210616`, **`id`** will be returned as a\ntype string instead of an integer.\n"
                     }
                   }
                 }

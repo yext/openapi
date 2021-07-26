@@ -30,7 +30,7 @@
             "$ref": "#/components/parameters/autocompleteInput"
           }
         ],
-        "summary": "Answers: Autocomplete",
+        "summary": "Universal Search: Autocomplete",
         "description": "Retrieve a list of suggested queries across all verticals in the experience based on the characters already typed by the user. This API is meant to be hit after each keystroke.",
         "responses": {
           "200": {
@@ -83,7 +83,7 @@
             "$ref": "#/components/parameters/skipSpellCheck"
           }
         ],
-        "summary": "Answers: Universal Query",
+        "summary": "Universal Search: Query",
         "description": "Search for entities across all verticals within an answers experience.  Modules are returned for all verticals with relevant entities. Further fine tuning and filtering of the results can then be done using the vertical query endpoint.",
         "responses": {
           "200": {
@@ -118,7 +118,7 @@
             "$ref": "#/components/parameters/autocompleteInput"
           }
         ],
-        "summary": "Answers: Vertical Autocomplete",
+        "summary": "Vertical Search: Autocomplete",
         "description": "Retrieve a list of suggested queries for the selected vertical based on the characters already typed by the user or the most popular queries when no user input is given.",
         "responses": {
           "200": {
@@ -192,7 +192,7 @@
             "$ref": "#/components/parameters/SortBys"
           }
         ],
-        "summary": "Answers: Vertical Query",
+        "summary": "Vertical Search: Query",
         "description": "Search for entities within the selected vertical.  Vertical query allows for fine tuning of the search using filters, facets and sorts passed in through the API.",
         "responses": {
           "200": {
@@ -233,7 +233,7 @@
             "$ref": "#/components/parameters/requiredInput"
           }
         ],
-        "summary": "Answers: Filter Search",
+        "summary": "Vertical Search: Filter Search",
         "description": "Retrieve a list of potential filters that match the user's input up to that point.  This differs from query suggest by only returning the names of filters that can be searched rather than the broader corpus of suggested queries.",
         "responses": {
           "200": {

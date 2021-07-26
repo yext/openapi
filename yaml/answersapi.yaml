@@ -14,7 +14,7 @@ paths:
         - $ref: '#/components/parameters/experienceKey'
         - $ref: '#/components/parameters/locale'
         - $ref: '#/components/parameters/autocompleteInput'
-      summary: 'Answers: Autocomplete'
+      summary: 'Universal Search: Autocomplete'
       description: >-
         Retrieve a list of suggested queries across all verticals in the
         experience based on the characters already typed by the user. This API
@@ -40,7 +40,7 @@ paths:
         - $ref: '#/components/parameters/context'
         - $ref: '#/components/parameters/referrerPageUrl'
         - $ref: '#/components/parameters/skipSpellCheck'
-      summary: 'Answers: Universal Query'
+      summary: 'Universal Search: Query'
       description: >-
         Search for entities across all verticals within an answers experience. 
         Modules are returned for all verticals with relevant entities. Further
@@ -61,7 +61,7 @@ paths:
         - $ref: '#/components/parameters/verticalKey'
         - $ref: '#/components/parameters/locale'
         - $ref: '#/components/parameters/autocompleteInput'
-      summary: 'Answers: Vertical Autocomplete'
+      summary: 'Vertical Search: Autocomplete'
       description: >-
         Retrieve a list of suggested queries for the selected vertical based on
         the characters already typed by the user or the most popular queries
@@ -94,7 +94,7 @@ paths:
         - $ref: '#/components/parameters/FacetFilters'
         - $ref: '#/components/parameters/retrieveFacets'
         - $ref: '#/components/parameters/SortBys'
-      summary: 'Answers: Vertical Query'
+      summary: 'Vertical Search: Query'
       description: >-
         Search for entities within the selected vertical.  Vertical query allows
         for fine tuning of the search using filters, facets and sorts passed in
@@ -116,7 +116,7 @@ paths:
         - $ref: '#/components/parameters/excluded'
         - $ref: '#/components/parameters/SearchParameters'
         - $ref: '#/components/parameters/requiredInput'
-      summary: 'Answers: Filter Search'
+      summary: 'Vertical Search: Filter Search'
       description: >-
         Retrieve a list of potential filters that match the user's input up to
         that point.  This differs from query suggest by only returning the names
