@@ -8529,9 +8529,9 @@
             "description": "ID of this review",
             "readOnly": true
           },
-          "locationId": {
+          "entityId": {
             "type": "string",
-            "description": "ID of the location associated with this review"
+            "description": "ID of the entity associated with this review.\n\nIf the **`v`** parameter is before `20210728`, please refer to locationId as the parameter name instead of entityId.\n"
           },
           "publisherId": {
             "type": "string",

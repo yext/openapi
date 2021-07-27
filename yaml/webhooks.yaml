@@ -13966,9 +13966,14 @@ components:
           type: integer
           description: ID of this review
           readOnly: true
-        locationId:
+        entityId:
           type: string
-          description: ID of the location associated with this review
+          description: >
+            ID of the entity associated with this review.
+
+
+            If the **`v`** parameter is before `20210728`, please refer to
+            locationId as the parameter name instead of entityId.
         publisherId:
           type: string
           description: >
