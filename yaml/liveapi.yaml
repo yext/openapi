@@ -77280,6 +77280,24 @@ paths:
           $ref: '#/components/responses/GeoSearchResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
+  '/accounts/{accountId}/createQuestion':
+    post:
+      operationId: createQuestion
+      tags:
+        - Live API
+      summary: |
+        Question: Create
+      requestBody:
+        $ref: '#/components/requestBodies/createQuestionRequest'
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/v'
+      description: Create a new Question.
+      responses:
+        '201':
+          $ref: '#/components/responses/EmptyResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
 components:
   securitySchemes:
     api_key:
@@ -80177,6 +80195,42 @@ components:
           description: >-
             Distance in kilometers between the Location and the location
             specified in the Geo object.
+    QuestionRequest:
+      type: object
+      required:
+        - entityId
+        - site
+        - name
+        - email
+        - questionText
+        - questionLanguage
+      properties:
+        id:
+          type: integer
+          description: ID of this question.
+        entityId:
+          type: string
+          description: ID of the entity associated to this question.
+        site:
+          type: string
+          description: Site on which to create this question.
+        name:
+          type: string
+          description: The name of the author of the question.
+        email:
+          type: string
+          description: The email of the author of the question.
+        questionText:
+          type: string
+          description: The question that is being asked.
+        questionDescription:
+          type: string
+          description: Additional details for this question.
+        questionLanguage:
+          type: string
+          description: >-
+            The language code of the language that the question is being asked
+            in.
   responses:
     ErrorResponse:
       description: Error Response
@@ -80366,6 +80420,24 @@ components:
                     type: array
                     items:
                       $ref: '#/components/schemas/Location'
+    EmptyResponse:
+      description: Empty Response.
+      content:
+        application/json:
+          schema:
+            title: EmptyResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/ResponseMeta'
+              response:
+                type: object
+  requestBodies:
+    createQuestionRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuestionRequest'
 security:
   - api_key: []
   - api-key: []

@@ -50566,7 +50566,7 @@
         "tags": [
           "Listings"
         ],
-        "summary": "Questions: List",
+        "summary": "Questions: List\n",
         "parameters": [
           {
             "$ref": "#/components/parameters/accountId"
@@ -50587,7 +50587,7 @@
             "$ref": "#/components/parameters/pageToken"
           }
         ],
-        "description": "Retrieve a list of Questions within an account",
+        "description": "Retrieve a list of Questions within an account.",
         "responses": {
           "201": {
             "$ref": "#/components/responses/ListQuestionsResponse"
@@ -56691,7 +56691,7 @@
           "type": "boolean",
           "default": false
         },
-        "description": "Optional parameter to resolve all embedded fields in a Location object response.\n- `false`: Location object returns placeholder labels, e.g., \"Your [[CITY]] store\"\n- `true`: Location object returns placeholder values, e.g., \"Your Fairfax store\" \n"
+        "description": "Optional parameter to resolve all embedded fields in a Location object response.\n- `false`: Location object returns placeholder labels, e.g., \"Your [[CITY]] store\"\n- `true`: Location object returns placeholder values, e.g., \"Your Fairfax store\"\n"
       },
       "pageToken": {
         "name": "pageToken",
@@ -56700,7 +56700,7 @@
           "type": "string"
         },
         "required": false,
-        "description": "If a response to a previous request contained the **`nextPageToken`** field, pass that field's value as the **`pageToken`** parameter to retrieve the next page of data. \n"
+        "description": "If a response to a previous request contained the **`nextPageToken`** field, pass that field's value as the **`pageToken`** parameter to retrieve the next page of data.\n"
       },
       "searchoffset": {
         "name": "offset",
@@ -56773,7 +56773,7 @@
           "type": "string"
         },
         "required": false,
-        "description": "If a response to a previous request contained the **`pageToken`** field, pass that field's value as the **`pageToken`** parameter to retrieve the next page of data. \n"
+        "description": "If a response to a previous request contained the **`pageToken`** field, pass that field's value as the **`pageToken`** parameter to retrieve the next page of data.\n"
       },
       "language_code": {
         "name": "language_code",
