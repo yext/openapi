@@ -13984,9 +13984,9 @@ components:
           type: array
           description: >-
             List of SKUs that you would like to cancel on the location. The
-            location must have active services for all provided SKUs. If you do
-            not provide a list of SKUs, all active services for the location
-            will be canceled.
+            location must have active services for at least one of the provided
+            SKUs. If you do not provide a list of SKUs, all active services for
+            the location will be canceled.
           items:
             type: string
           example:
@@ -14054,11 +14054,11 @@ components:
           description: >
             List of objects representing the SKUs to be removed (or decreased in
             quantity) from the sub-account. The sub-account must have active
-            services for all provided SKUs. If the decrease in quantity would
-            result in 0 service quantity, the service will be STOPPED. The
-            removed quantity will default to 1 for any SKU without a specified
-            quantity. To cancel all active services provisioned on the
-            sub-account, use the **Services: Cancel All (Sub-Account)**
+            services for at least one of the provided SKUs. If the decrease in
+            quantity would result in 0 service quantity, the service will be
+            STOPPED. The removed quantity will default to 1 for any SKU without
+            a specified quantity. To cancel all active services provisioned on
+            the sub-account, use the **Services: Cancel All (Sub-Account)**
             endpoint.
           items:
             $ref: '#/components/schemas/SkuQuantity'
