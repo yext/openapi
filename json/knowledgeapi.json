@@ -51435,7 +51435,7 @@
                 "type": "string"
               }
             },
-            "description": "When provided, only invitations for locations in the given folders and their subfolders will be included in the results."
+            "description": "When provided, only invitations for locations in the given folders and their subfolders\nwill be included in the results.\n"
           },
           {
             "name": "locationLabels",
@@ -51446,7 +51446,7 @@
                 "type": "string"
               }
             },
-            "description": "When present, only invitations for locations with the provided labels will be returned."
+            "description": "When present, only invitations for locations with the provided labels will be returned.\n"
           },
           {
             "name": "templateIds",
@@ -51508,7 +51508,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/ReviewInvitation"
+                  "$ref": "#/components/schemas/CreateReviewInvitationRequest"
                 }
               }
             }
@@ -51532,7 +51532,7 @@
         }
       }
     },
-    "/accounts/{accountId}/reviewinvites/{invitationId}": {
+    "/accounts/{accountId}/reviewinvites/{uid}": {
       "parameters": [
         {
           "$ref": "#/components/parameters/accountId"
@@ -51550,10 +51550,56 @@
         "tags": [
           "Reviews"
         ],
-        "description": "Retrieve a specific review invitation",
+        "description": "Retrieve a specific review invitation.",
         "responses": {
           "200": {
             "$ref": "#/components/responses/ReviewInvitationResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteInvitation",
+        "summary": "Review Invitation: Delete",
+        "tags": [
+          "Reviews"
+        ],
+        "description": "Delete a specific review invitation.",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/EmptyResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        }
+      },
+      "put": {
+        "requestBody": {
+          "$ref": "#/components/requestBodies/updateReviewInvitationRequest"
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/accountId"
+          },
+          {
+            "$ref": "#/components/parameters/v"
+          },
+          {
+            "$ref": "#/components/parameters/invitationId"
+          }
+        ],
+        "operationId": "updateReviewInvitation",
+        "summary": "Review Invitation: Update",
+        "tags": [
+          "Reviews"
+        ],
+        "description": "Supports updating an existing review invitation. This endpoint will not create a new review\ninvitation or trigger a new SMS/Email to be sent, it will only update the data and/or metadata\nfor an existing review invitation. Any optional parameters which are excluded from the request\nwill simply be ignored.\n",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/IdResponse"
           },
           "default": {
             "$ref": "#/components/responses/ErrorResponse"
@@ -51594,46 +51640,6 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/UpdateReviewLabelsResponse"
-          },
-          "default": {
-            "$ref": "#/components/responses/ErrorResponse"
-          }
-        }
-      }
-    },
-    "/accounts/{accountId}/reviewinvites/{invitationId}:updatemetadata": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/accountId"
-        },
-        {
-          "$ref": "#/components/parameters/invitationId"
-        }
-      ],
-      "put": {
-        "requestBody": {
-          "$ref": "#/components/requestBodies/updateReviewInvitationRequest"
-        },
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/accountId"
-          },
-          {
-            "$ref": "#/components/parameters/v"
-          },
-          {
-            "$ref": "#/components/parameters/invitationId"
-          }
-        ],
-        "operationId": "updateReviewInvitation",
-        "summary": "Review Invitation: Update Metadata",
-        "tags": [
-          "Reviews"
-        ],
-        "description": "Updates the metadata for a specific review invitation. May also be used to cancel pending invitations.\n",
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/IdResponse"
           },
           "default": {
             "$ref": "#/components/responses/ErrorResponse"
@@ -56002,39 +56008,51 @@
       },
       "ReviewInvitation": {
         "type": "object",
+        "required": [
+          "locationId",
+          "entity.id",
+          "firstName",
+          "lastName",
+          "title",
+          "contact"
+        ],
         "properties": {
           "id": {
             "type": "string",
-            "description": "ID of this invitation",
+            "description": "ID of this invitation.",
             "readOnly": true
           },
           "locationId": {
             "type": "string",
-            "description": "ID of the location that will be reviewed"
+            "description": "ID of the location that will be reviewed.\n\nIf the **`v`** parameter is on or after `20210728`, please refer to the **`entity.id`**\nparameter instead of **`locationId`**.\n"
+          },
+          "entity.id": {
+            "type": "string",
+            "description": "ID of the entity this review is being requested for.\n\n**Example:** \"entity\": {\"id\": \"123\"}\n\nIf the **`v`** parameter is before `20210728`, please refer to the **`locationId`** parameter\ninstead of **`entity.id`**.\n"
           },
           "firstName": {
             "type": "string",
-            "description": "The consumer’s first name"
+            "description": "The first name of the person from whom a review is being requested."
           },
           "lastName": {
             "type": "string",
-            "description": "The consumer’s last name"
+            "description": "The last name of the person from whom a review is being requested."
           },
-          "titleName": {
+          "title": {
             "type": "string",
-            "description": "The consumer’s title (e.g., `Mr.`, `Mrs.`, `Miss`, etc.)"
+            "description": "The title of the person from whom a review is being requested\n(e.g., Mr., Mrs., Miss, etc.).\n"
           },
           "contact": {
             "type": "string",
-            "description": "The email address or phone number of the consumer.\n\nPhone numbers should be formatted in one of the following ways:\n* E.164 standard international format, with a leading \"+\"\n* National format, according to the country of the corresponding location\n"
+            "description": "The email address or phone number of the person from whom a review is being requested.\n\nPhone numbers should be formatted in one of the following ways:\n* E.164 standard international format, with a leading \"+\"\n* National format, according to the country of the corresponding location\n"
           },
-          "image": {
+          "includeImage": {
             "type": "boolean",
-            "description": "Only valid if “contact” is a phone number\n\nIf true, include a brand image with the phone number - otherwise nothing\n\nBrand images are only included in invitations sent to US phone numbers.\n"
+            "description": "Only valid for SMS invitations.\n\nIf set to true, include the image provided in the relevant template in the SMS invitation.\nPlease note that an image counts as an SMS message towards your SMS capacity.\n\nOtherwise, the SMS message will not include an image.\n\nIf the **`v`** parameter is before `20210728`, please refer to **`image`** as the parameter\nname instead of **`includeImage`**.\n"
           },
           "templateId": {
             "type": "string",
-            "description": "If specified, the ID of the template used to format the email.\n\nIf not specified, the location’s default email template is used.  If the location has no default template, the account’s default template is used.\n"
+            "description": "If specified, the ID of the template used to format the email.\n\nIf not specified, the entity’s default email template is used. If the entity has no default\ntemplate, the account’s default template is used.\n"
           },
           "transactionId": {
             "type": "string",
@@ -56056,7 +56074,33 @@
           },
           "language": {
             "type": "string",
-            "description": "The ISO 639-1 code of the review invitation's language. Only valid for invitations created from default templates. Defaults to `en`.\n\nSupported languages:\n  * `en`\n  * `de`\n  * `fr`\n  * `es`\n  * `it`\n  * `nl`\n  * `ja`\n"
+            "description": "The ISO 639-1 code of the review invitation's language. Only valid for invitations created\nfrom built-in templates. Defaults to `en`.\n\nSupported languages:\n  * `en`\n  * `de`\n  * `fr`\n  * `es`\n  * `it`\n  * `nl`\n  * `ja`\n"
+          },
+          "additionalUrlParameters": {
+            "type": "string",
+            "description": "A JSON object containing the key, value pairs for any additional URL parameters. These URL\nparameters will be appended to the First-Party Review Collection URL.\n\nThe **`additionalUrlParameters`** parameter will only be respected with the inclusion of\na **`v`** parameter of `20210728` or later.\n"
+          },
+          "sendInvitationFromYext": {
+            "type": "boolean",
+            "description": "Defaults to true. If set to false, Yext will not fulfill the invitation and will simply\nreturn the created invitation object.\n\nThe **`sendInvitationFromYext`** parameter will only be respected with the inclusion of a\n**`v`** parameter of `20210728` or later.\n"
+          },
+          "invitationUid": {
+            "type": "string",
+            "readOnly": true,
+            "description": "The UID of this Review Invitation. This UID can be included as part of Review Creation\nrequests for attribution.\n\nThe **`invitationUid`** parameter will only be respected with the inclusion of a **`v`**\nparameter of `20210728` or later.\n"
+          },
+          "feedbackURL": {
+            "type": "string",
+            "readOnly": true,
+            "description": "The created Feedback URL unique to this invitation.\n\nThe **`feedbackURL`** parameter will only be respected with the inclusion of a **`v`**\nparameter of `20210728` or later.\n"
+          },
+          "reviewLabels": {
+            "type": "array",
+            "readOnly": true,
+            "items": {
+              "type": "object"
+            },
+            "description": "Review Labels associated with the review.\n\nThe **`reviewLabels`** parameter will only be respected with the inclusion of a **`v`**\nparameter of `20210728` or later.\n"
           }
         }
       },
@@ -56071,17 +56115,17 @@
           "opened": {
             "type": "integer",
             "format": "int64",
-            "description": "The timestamp the invitation was opened, if the invitation was opened. This value will always be null for SMS type invitations."
+            "description": "The timestamp the invitation was opened, if the invitation was opened. This value will\nalways be null for SMS type invitations.\n"
           },
           "clicked": {
             "type": "integer",
             "format": "int64",
             "description": "The timestamp the invitation was clicked."
           },
-          "responded": {
+          "reviewed": {
             "type": "integer",
             "format": "int64",
-            "description": "The timestamp the review was generated as a result of this invitation."
+            "description": "The timestamp the review was generated as a result of this invitation.\n\nIf the **`v`** parameter is before `20210728`, please refer to **`responded`** as the\nparameter name instead of **`reviewed`**.\n"
           }
         }
       },
@@ -56125,6 +56169,76 @@
           }
         ]
       },
+      "CreateReviewInvitationRequest": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ReviewInvitation"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "reviewLabelNames": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "The names of the Review Labels which will be attached to the resulting review.\n\nThis is an upsert operation, meaning the system will determine if a Review Label exists\nalready in your account, and create and append a new label if not.\n\nThe **`reviewLabelNames`** parameter will only be respected with the inclusion of a\n**`v`** parameter of `20210728` or later.\n"
+              }
+            }
+          }
+        ]
+      },
+      "UpdateReviewInvitationRequest": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ReviewInvitationDates"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "firstName": {
+                "type": "string",
+                "description": "The first name of the person from whom a review is being requested.\n\nThe **`firstName`** parameter will only be respected for **`v`** parameters of `20210728`\nor later.\n"
+              },
+              "lastName": {
+                "type": "string",
+                "description": "The last name of the person from whom a review is being requested\n\nThe **`lastName`** parameter will only be respected for **`v`** parameters of `20210728`\nor later.\n"
+              },
+              "title": {
+                "type": "string",
+                "description": "The title of the person from whom a review is being requested (e.g., Mr., Mrs., Miss, etc.)\n\nThe **`title`** parameter will only be respected for **`v`** parameters of `20210728`\nor later.\n"
+              },
+              "contact": {
+                "type": "string",
+                "description": "The email address or phone number of the person from whom a review is being requested.\n\nPhone numbers should be formatted in one of the following ways:\n* E.164 standard international format, with a leading \"+\"\n* National format, according to the country of the corresponding location\n\nThe **`contact`** parameter will only be respected for **`v`** parameters of `20210728`\nor later.\n"
+              },
+              "transactionId": {
+                "type": "string",
+                "description": "The ID of the transaction being reviewed in response to this invitation.\n\nThe **`transactionId`** parameter will only be respected for **`v`** parameters of\n`20210728` or later.\n"
+              },
+              "additionalURLParameters": {
+                "type": "string",
+                "description": "A JSON object containing the key, value pairs for any additional URL parameters. These URL\nparameters will be appended to the First-Party Review Collection URL.\n\nThe **`additionalURLParameters`** parameter will only be respected for **`v`** parameters\nof `20210728` or later.\n"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "CANCELED"
+                ],
+                "description": "Cancel an existing review invitation with `PENDING` status by updating status to `CANCELED`\nPlease note that if the invitation status is not `PENDING`, attempting to set the status\nto `CANCELED` will fail.\n"
+              },
+              "errorCode": {
+                "type": "string",
+                "description": "The error code of the invitation if applicable. Required if `errorReason` is specified.\n\nThe **`errorCode`** parameter will only be respected for **`v`** parameters of `20210727`\nor earlier.\n"
+              },
+              "errorReason": {
+                "type": "string",
+                "description": "The error reason text of the invitation if applicable. Required if `errorCode` is specified.\n\nThe **`errorReason`** parameter will only be respected for **`v`** parameters of\n`20210727` or earlier.\n"
+              }
+            }
+          }
+        ]
+      },
       "UpdateReviewLabelsRequest": {
         "type": "object",
         "properties": {
@@ -56136,36 +56250,6 @@
             "description": "The IDs of the review labels added to the review."
           }
         }
-      },
-      "UpdateReviewInvitationRequest": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ReviewInvitationDates"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "status": {
-                "type": "string",
-                "enum": [
-                  "SENT",
-                  "CANCELED",
-                  "FAILED",
-                  "ERROR"
-                ],
-                "description": "Cancel an existing review invitation with `PENDING` status by updating status to `CANCELED`\n"
-              },
-              "errorCode": {
-                "type": "string",
-                "description": "The error code of the invitation if applicable. Required if `errorReason` is specified\n"
-              },
-              "errorReason": {
-                "type": "string",
-                "description": "The error reason text of the invitation if applicable. Required if `errorCode` is specified\n"
-              }
-            }
-          }
-        ]
       },
       "ReviewGenerationSettings": {
         "type": "object",
@@ -56936,13 +57020,13 @@
         }
       },
       "invitationId": {
-        "name": "invitationId",
+        "name": "uid",
         "in": "path",
         "required": true,
         "schema": {
           "type": "string"
         },
-        "description": "ID of this invitation."
+        "description": "The UID of this Review Invitation. This UID can be included as part of Review Creation\nrequests for attribution.\n"
       },
       "userId": {
         "name": "userId",
@@ -58345,7 +58429,11 @@
                 "response": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ReviewInvitation"
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/ReviewInvitation"
+                      }
+                    ]
                   }
                 }
               }
@@ -58988,21 +59076,21 @@
           }
         }
       },
-      "updateReviewLabelsRequest": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/UpdateReviewLabelsRequest"
-            }
-          }
-        }
-      },
       "updateReviewInvitationRequest": {
         "required": true,
         "content": {
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/UpdateReviewInvitationRequest"
+            }
+          }
+        }
+      },
+      "updateReviewLabelsRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/UpdateReviewLabelsRequest"
             }
           }
         }
