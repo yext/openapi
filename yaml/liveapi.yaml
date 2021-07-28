@@ -77365,6 +77365,74 @@ paths:
           $ref: '#/components/responses/ReviewsResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
+  '/accounts/{accountId}/api/{endpoint}/{docIDs}':
+    get:
+      servers:
+        - url: 'https://streams.yext.com'
+      operationId: streamsGet
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/endpoint'
+        - $ref: '#/components/parameters/docIDs'
+        - $ref: '#/components/parameters/v'
+      tags:
+        - Streams API
+      summary: 'Streams: Get'
+      description: Retrieve records by ID from a Streams Endpoint
+      responses:
+        '200':
+          $ref: '#/components/responses/StreamsResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  '/accounts/{accountId}/api/{endpoint}':
+    get:
+      servers:
+        - url: 'https://streams.yext.com'
+      operationId: streamsList
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/endpoint'
+        - $ref: '#/components/parameters/v'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/pageToken'
+      tags:
+        - Streams API
+      summary: 'Streams: List'
+      description: >
+        List records from a Streams Endpoint
+
+
+        In addition to the parameters above, users can filter on the content of
+        fields defined in the
+
+        endpoint's field indexes.
+
+
+        For example, with the parameter **`name=Alice`**, only records where the
+        field **`name`**
+
+        has value **`Alice`** will be returned.
+
+
+        Similarly, adding the parameters **`name__in=Alice`** and
+        **`name__in=Bob`** will result in
+
+        records with **`name`** equal to **`Alice`** or **`Bob`** being
+        returned.
+
+
+        Multiple filters on different fields and different filter types can be
+        combined in the same
+
+        query. When filtering on a field that contains more than one value (an
+        array field) the filter
+
+        will be satisfied if any value in the array matches the filter.
+      responses:
+        '200':
+          $ref: '#/components/responses/StreamsResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
 components:
   securitySchemes:
     api_key:
@@ -78056,6 +78124,35 @@ components:
         Get/List Knowledge API
 
         endpoints.
+    endpoint:
+      name: endpoint
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The name of the Streams API endpoint to query.
+    docIDs:
+      name: docIDs
+      in: path
+      required: true
+      schema:
+        type: array
+        items:
+          type: string
+      style: simple
+      description: >
+        The Streams API records to get. Multiple records IDs can be provided
+        separated by commas.
+    pageToken:
+      name: pageToken
+      in: query
+      schema:
+        type: string
+      required: false
+      description: >
+        If a response to a previous request contained the **`nextPageToken`**
+        field, pass that field's value as the **`pageToken`** parameter to
+        retrieve the next page of data.
   schemas:
     ResponseMeta:
       type: object
@@ -80674,6 +80771,38 @@ components:
 
                       * The invitationUid, if the review is associated with an
                       invitation.
+    StreamsResponse:
+      description: Streams Response
+      content:
+        application/json:
+          schema:
+            title: EntitiesResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/ResponseMeta'
+              response:
+                type: object
+                required:
+                  - count
+                properties:
+                  count:
+                    type: integer
+                    description: |
+
+                      Total number of documents that meet the filter criteria.
+                  docs:
+                    type: array
+                    description: >-
+                      Streams API documents containing your endpoint's
+                      configured fields.
+                    items:
+                      type: object
+                  pageToken:
+                    type: string
+                    description: >-
+                      If the response of a request contains the last page of
+                      data, a **`pageToken`** value will not be returned.
   requestBodies:
     createQuestionRequest:
       content:
@@ -80685,3 +80814,4 @@ security:
   - api-key: []
 tags:
   - name: Live API
+  - name: Streams API
