@@ -36979,6 +36979,118 @@
           }
         }
       }
+    },
+    "/accounts/{accountId}/reviewSubmission": {
+      "post": {
+        "operationId": "createReview",
+        "tags": [
+          "Live API"
+        ],
+        "description": "Create a new Review.",
+        "summary": "Review: Create\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/accountId"
+          },
+          {
+            "$ref": "#/components/parameters/v"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReview"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "$ref": "#/components/responses/ReviewsResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        }
+      }
+    },
+    "/accounts/{accountId}/reviewSubmission/{apiIdentifier}": {
+      "put": {
+        "operationId": "updateReview",
+        "tags": [
+          "Live API"
+        ],
+        "description": "Update a Review.",
+        "summary": "Review: Update\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/accountId"
+          },
+          {
+            "$ref": "#/components/parameters/v"
+          },
+          {
+            "$ref": "#/components/parameters/apiIdentifier"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateReview"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "$ref": "#/components/responses/ReviewsResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteReview",
+        "tags": [
+          "Live API"
+        ],
+        "description": "Delete a Review.",
+        "summary": "Review: Update\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/accountId"
+          },
+          {
+            "$ref": "#/components/parameters/v"
+          },
+          {
+            "$ref": "#/components/parameters/apiIdentifier"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateReview"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "$ref": "#/components/responses/ReviewsResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -37153,6 +37265,15 @@
         },
         "required": false,
         "description": "\nThe two-character ISO 3166-1 code of the country where the geocoder should be biased.\n\nThe value of the **`countryBias`** parameter influences the search results, but it does not guarantee that the geocoded location will be in the country provided.\n\nIf both **`countryBias`** and **`geocoderBias`** are provided, **`geocoderBias`** is given priority, but both values are considered in the search.\n"
+      },
+      "apiIdentifier": {
+        "name": "apiIdentifier",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "description": "The unique identifier of this review.\n\nOne of:\n* A UUID generated at the time the Review Creation request is accepted.\n* The invitationUid, if the review is associated with an invitation.\n\nThis token will be returned in the response to any requests to the Review: Create Live API\nendpoint.\n\nThis token will also be included in the Reviews Webhook, and the Review: Get/List Knowledge API\nendpoints.\n"
       }
     },
     "schemas": {
@@ -38958,6 +39079,120 @@
             "description": "The language code of the language that the question is being asked in."
           }
         }
+      },
+      "CreateReview": {
+        "type": "object",
+        "required": [
+          "entity",
+          "authorName",
+          "authorEmail",
+          "rating",
+          "content"
+        ],
+        "properties": {
+          "entity": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "description": "ID of the entity associated with this review."
+              }
+            }
+          },
+          "authorName": {
+            "type": "string",
+            "description": "The name of the person who wrote the review."
+          },
+          "authorEmail": {
+            "type": "string",
+            "description": "The email address of the person who wrote the review."
+          },
+          "title": {
+            "type": "string",
+            "description": "The title of the review."
+          },
+          "rating": {
+            "type": "number",
+            "format": "double",
+            "description": "Normalized rating out of 5."
+          },
+          "content": {
+            "type": "string",
+            "description": "The content of the review."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "LIVE",
+              "QUARANTINED",
+              "REMOVED"
+            ],
+            "description": "The status of the review. Defaults to `QUARANTINED` when creating.\n"
+          },
+          "reviewLabelNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The names of the Review Labels which will be attached to the resulting review.\n\nThis is an _upsert_ operation, meaning the system will determine if a Review Label exists\nalready in your account, and create and append a new label if not.\n"
+          },
+          "reviewDate": {
+            "type": "string",
+            "format": "date",
+            "description": "If provided, the date you received the review from the customer. Defaults to the date the\nreview was uploaded to Yext.\n\n(`YYYY-MM-DD` format)\n"
+          },
+          "invitationUid": {
+            "type": "string",
+            "description": "The ID of the invitation which should be associated with this review."
+          }
+        }
+      },
+      "UpdateReview": {
+        "type": "object",
+        "properties": {
+          "authorName": {
+            "type": "string",
+            "description": "The name of the person who wrote the review."
+          },
+          "authorEmail": {
+            "type": "string",
+            "description": "The email address of the person who wrote the review."
+          },
+          "title": {
+            "type": "string",
+            "description": "The title of the review."
+          },
+          "rating": {
+            "type": "number",
+            "format": "double",
+            "description": "Normalized rating out of 5."
+          },
+          "content": {
+            "type": "string",
+            "description": "The content of the review."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "LIVE",
+              "QUARANTINED",
+              "REMOVED"
+            ],
+            "description": "The status of the review. Defaults to `QUARANTINED` when creating.\n"
+          },
+          "reviewLabelNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The names of the Review Labels which will be attached to the resulting review.\n\nThis is an _upsert_ operation, meaning the system will determine if a Review Label exists\nalready in your account, and create and append a new label if not.\n"
+          },
+          "reviewDate": {
+            "type": "string",
+            "format": "date",
+            "description": "If provided, the date you received the review from the customer. Defaults to the date the\nreview was uploaded to Yext.\n\n(`YYYY-MM-DD` format)\n"
+          }
+        }
       }
     },
     "responses": {
@@ -39262,6 +39497,31 @@
                 },
                 "response": {
                   "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ReviewsResponse": {
+        "description": "Reviews Response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "title": "ReviewsResponse",
+              "type": "object",
+              "properties": {
+                "meta": {
+                  "$ref": "#/components/schemas/ResponseMeta"
+                },
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "apiIdentifier": {
+                      "type": "string",
+                      "description": "The unique identifier which will need to be included in any further requests to\nupdate or delete this review.\n\nOne of:\n* A UUID generated at the time the Review Creation request is accepted.\n* The invitationUid, if the review is associated with an invitation.\n"
+                    }
+                  }
                 }
               }
             }

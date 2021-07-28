@@ -77298,6 +77298,73 @@ paths:
           $ref: '#/components/responses/EmptyResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
+  '/accounts/{accountId}/reviewSubmission':
+    post:
+      operationId: createReview
+      tags:
+        - Live API
+      description: Create a new Review.
+      summary: |
+        Review: Create
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/v'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateReview'
+      responses:
+        '202':
+          $ref: '#/components/responses/ReviewsResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  '/accounts/{accountId}/reviewSubmission/{apiIdentifier}':
+    put:
+      operationId: updateReview
+      tags:
+        - Live API
+      description: Update a Review.
+      summary: |
+        Review: Update
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/v'
+        - $ref: '#/components/parameters/apiIdentifier'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateReview'
+      responses:
+        '202':
+          $ref: '#/components/responses/ReviewsResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    delete:
+      operationId: deleteReview
+      tags:
+        - Live API
+      description: Delete a Review.
+      summary: |
+        Review: Update
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/v'
+        - $ref: '#/components/parameters/apiIdentifier'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateReview'
+      responses:
+        '202':
+          $ref: '#/components/responses/ReviewsResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
 components:
   securitySchemes:
     api_key:
@@ -77962,6 +78029,33 @@ components:
         If both **`countryBias`** and **`geocoderBias`** are provided,
         **`geocoderBias`** is given priority, but both values are considered in
         the search.
+    apiIdentifier:
+      name: apiIdentifier
+      in: path
+      required: true
+      schema:
+        type: string
+      description: >
+        The unique identifier of this review.
+
+
+        One of:
+
+        * A UUID generated at the time the Review Creation request is accepted.
+
+        * The invitationUid, if the review is associated with an invitation.
+
+
+        This token will be returned in the response to any requests to the
+        Review: Create Live API
+
+        endpoint.
+
+
+        This token will also be included in the Reviews Webhook, and the Review:
+        Get/List Knowledge API
+
+        endpoints.
   schemas:
     ResponseMeta:
       type: object
@@ -80231,6 +80325,125 @@ components:
           description: >-
             The language code of the language that the question is being asked
             in.
+    CreateReview:
+      type: object
+      required:
+        - entity
+        - authorName
+        - authorEmail
+        - rating
+        - content
+      properties:
+        entity:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: ID of the entity associated with this review.
+        authorName:
+          type: string
+          description: The name of the person who wrote the review.
+        authorEmail:
+          type: string
+          description: The email address of the person who wrote the review.
+        title:
+          type: string
+          description: The title of the review.
+        rating:
+          type: number
+          format: double
+          description: Normalized rating out of 5.
+        content:
+          type: string
+          description: The content of the review.
+        status:
+          type: string
+          enum:
+            - LIVE
+            - QUARANTINED
+            - REMOVED
+          description: |
+            The status of the review. Defaults to `QUARANTINED` when creating.
+        reviewLabelNames:
+          type: array
+          items:
+            type: string
+          description: >
+            The names of the Review Labels which will be attached to the
+            resulting review.
+
+
+            This is an _upsert_ operation, meaning the system will determine if
+            a Review Label exists
+
+            already in your account, and create and append a new label if not.
+        reviewDate:
+          type: string
+          format: date
+          description: >
+            If provided, the date you received the review from the customer.
+            Defaults to the date the
+
+            review was uploaded to Yext.
+
+
+            (`YYYY-MM-DD` format)
+        invitationUid:
+          type: string
+          description: >-
+            The ID of the invitation which should be associated with this
+            review.
+    UpdateReview:
+      type: object
+      properties:
+        authorName:
+          type: string
+          description: The name of the person who wrote the review.
+        authorEmail:
+          type: string
+          description: The email address of the person who wrote the review.
+        title:
+          type: string
+          description: The title of the review.
+        rating:
+          type: number
+          format: double
+          description: Normalized rating out of 5.
+        content:
+          type: string
+          description: The content of the review.
+        status:
+          type: string
+          enum:
+            - LIVE
+            - QUARANTINED
+            - REMOVED
+          description: |
+            The status of the review. Defaults to `QUARANTINED` when creating.
+        reviewLabelNames:
+          type: array
+          items:
+            type: string
+          description: >
+            The names of the Review Labels which will be attached to the
+            resulting review.
+
+
+            This is an _upsert_ operation, meaning the system will determine if
+            a Review Label exists
+
+            already in your account, and create and append a new label if not.
+        reviewDate:
+          type: string
+          format: date
+          description: >
+            If provided, the date you received the review from the customer.
+            Defaults to the date the
+
+            review was uploaded to Yext.
+
+
+            (`YYYY-MM-DD` format)
   responses:
     ErrorResponse:
       description: Error Response
@@ -80432,6 +80645,35 @@ components:
                 $ref: '#/components/schemas/ResponseMeta'
               response:
                 type: object
+    ReviewsResponse:
+      description: Reviews Response
+      content:
+        application/json:
+          schema:
+            title: ReviewsResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/ResponseMeta'
+              response:
+                type: object
+                properties:
+                  apiIdentifier:
+                    type: string
+                    description: >
+                      The unique identifier which will need to be included in
+                      any further requests to
+
+                      update or delete this review.
+
+
+                      One of:
+
+                      * A UUID generated at the time the Review Creation request
+                      is accepted.
+
+                      * The invitationUid, if the review is associated with an
+                      invitation.
   requestBodies:
     createQuestionRequest:
       content:
