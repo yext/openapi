@@ -37092,7 +37092,7 @@
         }
       }
     },
-    "/accounts/{accountId}/api/{endpoint}/{docIDs}": {
+    "/accounts/{accountId}/api/{endpoint}/{ids}": {
       "get": {
         "servers": [
           {
@@ -37108,7 +37108,7 @@
             "$ref": "#/components/parameters/endpoint"
           },
           {
-            "$ref": "#/components/parameters/docIDs"
+            "$ref": "#/components/parameters/streamsDocIds"
           },
           {
             "$ref": "#/components/parameters/v"
@@ -37361,8 +37361,8 @@
         },
         "description": "The name of the Streams API endpoint to query."
       },
-      "docIDs": {
-        "name": "docIDs",
+      "streamsDocIds": {
+        "name": "ids",
         "in": "path",
         "required": true,
         "schema": {

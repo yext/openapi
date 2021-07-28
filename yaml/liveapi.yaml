@@ -77365,7 +77365,7 @@ paths:
           $ref: '#/components/responses/ReviewsResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/api/{endpoint}/{docIDs}':
+  '/accounts/{accountId}/api/{endpoint}/{ids}':
     get:
       servers:
         - url: 'https://streams.yext.com'
@@ -77373,7 +77373,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/accountId'
         - $ref: '#/components/parameters/endpoint'
-        - $ref: '#/components/parameters/docIDs'
+        - $ref: '#/components/parameters/streamsDocIds'
         - $ref: '#/components/parameters/v'
       tags:
         - Streams API
@@ -78131,8 +78131,8 @@ components:
       schema:
         type: string
       description: The name of the Streams API endpoint to query.
-    docIDs:
-      name: docIDs
+    streamsDocIds:
+      name: ids
       in: path
       required: true
       schema:
