@@ -51599,7 +51599,7 @@
         "description": "Supports updating an existing review invitation. This endpoint will not create a new review\ninvitation or trigger a new SMS/Email to be sent, it will only update the data and/or metadata\nfor an existing review invitation. Any optional parameters which are excluded from the request\nwill simply be ignored.\n",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/IdResponse"
+            "$ref": "#/components/responses/UpdateReviewInvitationResponse"
           },
           "default": {
             "$ref": "#/components/responses/ErrorResponse"
@@ -56017,18 +56017,23 @@
           "contact"
         ],
         "properties": {
-          "id": {
+          "invitationUid": {
             "type": "string",
-            "description": "ID of this invitation.",
-            "readOnly": true
+            "readOnly": true,
+            "description": "The UID of this Review Invitation. This UID can be included as part of Review Creation\nrequests for attribution.\n\nIf the **`v`** parameter is before `20210728`, please refer to **`id`** as the parameter\nname instead of **`invitationUid`**.\n"
           },
           "locationId": {
             "type": "string",
             "description": "ID of the location that will be reviewed.\n\nIf the **`v`** parameter is on or after `20210728`, please refer to the **`entity.id`**\nparameter instead of **`locationId`**.\n"
           },
-          "entity.id": {
-            "type": "string",
-            "description": "ID of the entity this review is being requested for.\n\n**Example:** \"entity\": {\"id\": \"123\"}\n\nIf the **`v`** parameter is before `20210728`, please refer to the **`locationId`** parameter\ninstead of **`entity.id`**.\n"
+          "entity": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "description": "ID of the entity associated with this review.\n\nIf the **`v`** parameter is before `20210728`, please refer to the **`locationId`** parameter\ninstead of **`entity`**.\n"
+              }
+            }
           },
           "firstName": {
             "type": "string",
@@ -56083,11 +56088,6 @@
           "sendInvitationFromYext": {
             "type": "boolean",
             "description": "Defaults to true. If set to false, Yext will not fulfill the invitation and will simply\nreturn the created invitation object.\n\nThe **`sendInvitationFromYext`** parameter will only be respected with the inclusion of a\n**`v`** parameter of `20210728` or later.\n"
-          },
-          "invitationUid": {
-            "type": "string",
-            "readOnly": true,
-            "description": "The UID of this Review Invitation. This UID can be included as part of Review Creation\nrequests for attribution.\n\nThe **`invitationUid`** parameter will only be respected with the inclusion of a **`v`**\nparameter of `20210728` or later.\n"
           },
           "feedbackURL": {
             "type": "string",
@@ -56236,6 +56236,80 @@
                 "description": "The error reason text of the invitation if applicable. Required if `errorCode` is specified.\n\nThe **`errorReason`** parameter will only be respected for **`v`** parameters of\n`20210727` or earlier.\n"
               }
             }
+          }
+        ]
+      },
+      "UpdatedReviewInvitation": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "invitationUid": {
+                "type": "string",
+                "readOnly": true,
+                "description": "The UID of this Review Invitation. This UID can be included as part of Review Creation\nrequests for attribution.\n\nIf the **`v`** parameter is before `20210728`, please refer to **`id`** as the parameter\nname instead of **`invitationUid`**.\n"
+              },
+              "entity": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "description": "ID of the entity associated with this review.\n\nIf the **`v`** parameter is before `20210728`, please refer to the **`locationId`**\nparameter instead of **`entity`**.\n"
+                  }
+                }
+              },
+              "locationId": {
+                "type": "string",
+                "description": "ID of the location that will be reviewed.\n\nIf the **`v`** parameter is on or after `20210728`, please refer to the **`entity.id`**\nparameter instead of **`locationId`**.\n"
+              },
+              "firstName": {
+                "type": "string",
+                "description": "The first name of the person from whom a review is being requested.\n\nThe **`firstName`** parameter will only be respected for **`v`** parameters of `20210728`\nor later.\n"
+              },
+              "lastName": {
+                "type": "string",
+                "description": "The last name of the person from whom a review is being requested.\n\nThe **`lastName`** parameter will only be respected for **`v`** parameters of `20210728`\nor later.\n"
+              },
+              "title": {
+                "type": "string",
+                "description": "The title of the person from whom a review is being requested\n(e.g., Mr., Mrs., Miss, etc.).\n\nThe **`title`** parameter will only be respected for **`v`** parameters of `20210728`\nor later.\n"
+              },
+              "contact": {
+                "type": "string",
+                "description": "The email address or phone number of the person from whom a review is being requested.\n\nPhone numbers will be formatted in the E.164 standard international format, with a\nleading \"+\".\n\nThe **`contact`** parameter will only be respected for **`v`** parameters of `20210728`\nor later.\n"
+              },
+              "transactionId": {
+                "type": "string",
+                "description": "The ID of the transaction being reviewed in response to this invitation.\n\nThe **`transactionId`** parameter will only be respected for **`v`** parameters of\n`20210728` or later.\n"
+              },
+              "additionalURLParameters": {
+                "type": "string",
+                "description": "A JSON object containing the key, value pairs for any additional URL parameters. These URL\nparameters will be appended to the First-Party Review Collection URL.\n\nThe **`additionalURLParameters`** parameter will only be respected for **`v`** parameters\nof `20210728` or later.\n"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "SENT",
+                  "PENDING",
+                  "CANCELED",
+                  "ATTEMPTED",
+                  "NOT_DELIVERED",
+                  "FAILED",
+                  "DISABLED"
+                ]
+              },
+              "errorCode": {
+                "type": "string",
+                "description": "The error code of the invitation if applicable.\n\nThe **`errorCode`** parameter will only be respected for **`v`** parameters of `20210727`\nor earlier.\n"
+              },
+              "errorReason": {
+                "type": "string",
+                "description": "The error reason text of the invitation if applicable.\n\nThe **`errorReason`** parameter will only be respected for **`v`** parameters of\n`20210727` or earlier.\n"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/ReviewInvitationDates"
           }
         ]
       },
@@ -58454,6 +58528,25 @@
                 },
                 "response": {
                   "$ref": "#/components/schemas/GetReviewInvitation"
+                }
+              }
+            }
+          }
+        }
+      },
+      "UpdateReviewInvitationResponse": {
+        "description": "Update Review Invitation Response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "title": "UpdateReviewInvitationResponse",
+              "type": "object",
+              "properties": {
+                "meta": {
+                  "$ref": "#/components/schemas/ResponseMeta"
+                },
+                "response": {
+                  "$ref": "#/components/schemas/UpdatedReviewInvitation"
                 }
               }
             }
