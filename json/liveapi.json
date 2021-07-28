@@ -37060,7 +37060,7 @@
           "Live API"
         ],
         "description": "Delete a Review.",
-        "summary": "Review: Update\n",
+        "summary": "Review: Delete\n",
         "parameters": [
           {
             "$ref": "#/components/parameters/accountId"

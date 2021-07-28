@@ -77349,7 +77349,7 @@ paths:
         - Live API
       description: Delete a Review.
       summary: |
-        Review: Update
+        Review: Delete
       parameters:
         - $ref: '#/components/parameters/accountId'
         - $ref: '#/components/parameters/v'
