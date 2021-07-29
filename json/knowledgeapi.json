@@ -55718,7 +55718,7 @@
         "properties": {
           "type": {
             "type": "string",
-            "description": "The type of the activity.  See possible values above."
+            "description": "The type of the activity. See possible values above."
           },
           "timestamp": {
             "type": "integer",
@@ -55731,7 +55731,20 @@
           },
           "actor": {
             "type": "string",
-            "description": "The performer of the activity.  See possible values above."
+            "description": "The performer of the activity. See possible values above."
+          },
+          "actorDetails": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of the actor if the activity was performed by a user. Otherwise an empty string (\"\")."
+              },
+              "email": {
+                "type": "string",
+                "description": "Email address of the actor if the activity was performed by a user. Otherwise an empty string (\"\")."
+              }
+            }
           },
           "content": {
             "type": "string",
