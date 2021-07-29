@@ -50751,6 +50751,32 @@
         }
       }
     },
+    "/accounts/{accountId}/analytics/catalog": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/accountId"
+        },
+        {
+          "$ref": "#/components/parameters/v"
+        }
+      ],
+      "get": {
+        "operationId": "getCatalog",
+        "tags": [
+          "Analytics"
+        ],
+        "summary": "Catalog",
+        "description": "List of all metrics for which reporting data is available, along with their completed dates.",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CatalogResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        }
+      }
+    },
     "/accounts/{accountId}/analytics/maxdates": {
       "parameters": [
         {
@@ -55188,6 +55214,20 @@
           }
         }
       },
+      "Metric": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The ID of an Analytics metric for which reporting data can be retrieved."
+          },
+          "completedDate": {
+            "format": "date",
+            "type": "string",
+            "description": "The date until which complete data for the metric is available, in `YYYY-MM-DD` format."
+          }
+        }
+      },
       "AnalyticsFilter": {
         "type": "object",
         "properties": {
@@ -58215,6 +58255,33 @@
                     "content": {
                       "type": "string",
                       "description": "The answer text"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "CatalogResponse": {
+        "description": "Completed dates of all metrics available",
+        "content": {
+          "application/json": {
+            "schema": {
+              "title": "CatalogResponse",
+              "type": "object",
+              "properties": {
+                "meta": {
+                  "$ref": "#/components/schemas/ResponseMeta"
+                },
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "metrics": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Metric"
+                      }
                     }
                   }
                 }
