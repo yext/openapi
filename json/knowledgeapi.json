@@ -51558,7 +51558,7 @@
         }
       }
     },
-    "/accounts/{accountId}/reviewinvites/{uid}": {
+    "/accounts/{accountId}/reviewinvites/{invitationUid}": {
       "parameters": [
         {
           "$ref": "#/components/parameters/accountId"
@@ -51580,22 +51580,6 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ReviewInvitationResponse"
-          },
-          "default": {
-            "$ref": "#/components/responses/ErrorResponse"
-          }
-        }
-      },
-      "delete": {
-        "operationId": "deleteInvitation",
-        "summary": "Review Invitation: Delete",
-        "tags": [
-          "Reviews"
-        ],
-        "description": "Delete a specific review invitation.",
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/EmptyResponse"
           },
           "default": {
             "$ref": "#/components/responses/ErrorResponse"
@@ -51626,6 +51610,22 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/UpdateReviewInvitationResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteInvitation",
+        "summary": "Review Invitation: Delete",
+        "tags": [
+          "Reviews"
+        ],
+        "description": "Delete a specific review invitation.",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/EmptyResponse"
           },
           "default": {
             "$ref": "#/components/responses/ErrorResponse"
@@ -56050,7 +56050,7 @@
         "type": "object",
         "required": [
           "locationId",
-          "entity.id",
+          "entity",
           "firstName",
           "lastName",
           "title",
@@ -56062,16 +56062,12 @@
             "readOnly": true,
             "description": "The UID of this Review Invitation. This UID can be included as part of Review Creation\nrequests for attribution.\n\nIf the **`v`** parameter is before `20210728`, please refer to **`id`** as the parameter\nname instead of **`invitationUid`**.\n"
           },
-          "locationId": {
-            "type": "string",
-            "description": "ID of the location that will be reviewed.\n\nIf the **`v`** parameter is on or after `20210728`, please refer to the **`entity.id`**\nparameter instead of **`locationId`**.\n"
-          },
           "entity": {
             "type": "object",
             "properties": {
               "id": {
                 "type": "integer",
-                "description": "ID of the entity associated with this review.\n\nIf the **`v`** parameter is before `20210728`, please refer to the **`locationId`** parameter\ninstead of **`entity`**.\n"
+                "description": "ID of the entity associated with this review.\n\nIf the **`v`** parameter is before `20210728`, please refer to **`locationId`** as the\nparameter name instead of **`entity`**.\n"
               }
             }
           },
@@ -56294,13 +56290,9 @@
                 "properties": {
                   "id": {
                     "type": "integer",
-                    "description": "ID of the entity associated with this review.\n\nIf the **`v`** parameter is before `20210728`, please refer to the **`locationId`**\nparameter instead of **`entity`**.\n"
+                    "description": "ID of the entity associated with this review.\n\nIf the **`v`** parameter is before `20210728`, please refer to **`locationId`** as the\nparameter name instead of **`entity`**.\n"
                   }
                 }
-              },
-              "locationId": {
-                "type": "string",
-                "description": "ID of the location that will be reviewed.\n\nIf the **`v`** parameter is on or after `20210728`, please refer to the **`entity.id`**\nparameter instead of **`locationId`**.\n"
               },
               "firstName": {
                 "type": "string",
@@ -57134,7 +57126,7 @@
         }
       },
       "invitationId": {
-        "name": "uid",
+        "name": "invitationUid",
         "in": "path",
         "required": true,
         "schema": {
