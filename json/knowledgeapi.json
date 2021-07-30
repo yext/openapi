@@ -50751,6 +50751,41 @@
         }
       }
     },
+    "/accounts/{accountId}/analytics/activity": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/accountId"
+        },
+        {
+          "$ref": "#/components/parameters/v"
+        }
+      ],
+      "post": {
+        "operationId": "activityLog",
+        "tags": [
+          "Analytics"
+        ],
+        "summary": "Activity Log",
+        "description": "Fetches account activity information.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivityLogRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ActivityLogResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        }
+      }
+    },
     "/accounts/{accountId}/analytics/catalog": {
       "parameters": [
         {
@@ -50792,7 +50827,7 @@
           "Analytics"
         ],
         "summary": "Max Dates",
-        "description": "The dates through which reporting data is available.",
+        "description": "Fetch the completed date for Listings and Bing metrics. Fetching the completed date for individual metrics can be done using the catalog endpoint.",
         "responses": {
           "200": {
             "$ref": "#/components/responses/MaxDatesResponse"
@@ -50833,8 +50868,8 @@
         "tags": [
           "Analytics"
         ],
-        "summary": "Create Reports",
-        "description": "Begins the process of producing a report.",
+        "summary": "Reports",
+        "description": "Create a report to retrieve analytics for each of your products using synchronous or asynchronous requests depending on the size of your data.",
         "requestBody": {
           "description": "JSON object containing any filters to be applied to the report",
           "content": {
@@ -50882,41 +50917,6 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ReportStatusResponse"
-          },
-          "default": {
-            "$ref": "#/components/responses/ErrorResponse"
-          }
-        }
-      }
-    },
-    "/accounts/{accountId}/analytics/activity": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/accountId"
-        },
-        {
-          "$ref": "#/components/parameters/v"
-        }
-      ],
-      "post": {
-        "operationId": "activityLog",
-        "tags": [
-          "Analytics"
-        ],
-        "summary": "Activity Log",
-        "description": "Fetches account activity information.",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ActivityLogRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/ActivityLogResponse"
           },
           "default": {
             "$ref": "#/components/responses/ErrorResponse"
@@ -55214,6 +55214,117 @@
           }
         }
       },
+      "ActivityFilter": {
+        "type": "object",
+        "properties": {
+          "startDate": {
+            "type": "string",
+            "format": "date",
+            "description": "The inclusive start date for the activity data."
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date",
+            "description": "The inclusive end date for the activity data."
+          },
+          "locationIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of locationIds"
+          },
+          "activityTypes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "LOCATION_UPDATED",
+                "PUBLISHER_SUGGESTION_CREATED",
+                "PUBLISHER_SUGGESTION_APPROVED",
+                "PUBLISHER_SUGGESTION_REJECTED",
+                "REVIEW_CREATED",
+                "SOCIAL_POST_CREATED",
+                "LISTING_LIVE",
+                "DUPLICATE_SUPPRESSED"
+              ]
+            },
+            "description": "Activity types to include in an Activity list."
+          },
+          "actors": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "YEXT_SYSTEM",
+                "SCHEDULED_CONTENT",
+                "API",
+                "PUBLISHER"
+              ]
+            },
+            "description": "List of actors whose activities should be included in an Activity list."
+          }
+        }
+      },
+      "ActivityLogRequest": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "description": "Optional.  Number of results to return, up to 200. Default 50."
+          },
+          "offset": {
+            "type": "integer",
+            "description": "Optional.  Number of results to skip.  Used to page through results. Default 0."
+          },
+          "filters": {
+            "$ref": "#/components/schemas/ActivityFilter"
+          }
+        }
+      },
+      "Activity": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The type of the activity. See possible values above."
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The timestamp when the activity occurred (milliseconds since epoch)."
+          },
+          "locationId": {
+            "type": "string",
+            "description": "The ID of the location affected by the activity, if applicable."
+          },
+          "actor": {
+            "type": "string",
+            "description": "The performer of the activity. See possible values above."
+          },
+          "actorDetails": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of the actor if the activity was performed by a user. Otherwise an empty string (\"\")."
+              },
+              "email": {
+                "type": "string",
+                "description": "Email address of the actor if the activity was performed by a user. Otherwise an empty string (\"\")."
+              }
+            }
+          },
+          "content": {
+            "type": "string",
+            "description": "A description of the activity (e.g., Listing Live on Facebook) or the text that was saved as a result of the activity (e.g., Call Today!, MAIN : 9085550506) May be an empty string (\"\") for certain activities (e.g., updates to Enhanced Content Lists)."
+          },
+          "details": {
+            "type": "string",
+            "description": "A description of the activity (e.g., Featured Message field updated, New Social post on Facebook)."
+          }
+        }
+      },
       "Metric": {
         "type": "object",
         "properties": {
@@ -55973,117 +56084,6 @@
           },
           "filters": {
             "$ref": "#/components/schemas/AnalyticsFilter"
-          }
-        }
-      },
-      "ActivityFilter": {
-        "type": "object",
-        "properties": {
-          "startDate": {
-            "type": "string",
-            "format": "date",
-            "description": "The inclusive start date for the activity data."
-          },
-          "endDate": {
-            "type": "string",
-            "format": "date",
-            "description": "The inclusive end date for the activity data."
-          },
-          "locationIds": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Array of locationIds"
-          },
-          "activityTypes": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "LOCATION_UPDATED",
-                "PUBLISHER_SUGGESTION_CREATED",
-                "PUBLISHER_SUGGESTION_APPROVED",
-                "PUBLISHER_SUGGESTION_REJECTED",
-                "REVIEW_CREATED",
-                "SOCIAL_POST_CREATED",
-                "LISTING_LIVE",
-                "DUPLICATE_SUPPRESSED"
-              ]
-            },
-            "description": "Activity types to include in an Activity list."
-          },
-          "actors": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "YEXT_SYSTEM",
-                "SCHEDULED_CONTENT",
-                "API",
-                "PUBLISHER"
-              ]
-            },
-            "description": "List of actors whose activities should be included in an Activity list."
-          }
-        }
-      },
-      "ActivityLogRequest": {
-        "type": "object",
-        "properties": {
-          "limit": {
-            "type": "integer",
-            "description": "Optional.  Number of results to return, up to 200. Default 50."
-          },
-          "offset": {
-            "type": "integer",
-            "description": "Optional.  Number of results to skip.  Used to page through results. Default 0."
-          },
-          "filters": {
-            "$ref": "#/components/schemas/ActivityFilter"
-          }
-        }
-      },
-      "Activity": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "The type of the activity. See possible values above."
-          },
-          "timestamp": {
-            "type": "integer",
-            "format": "int64",
-            "description": "The timestamp when the activity occurred (milliseconds since epoch)."
-          },
-          "locationId": {
-            "type": "string",
-            "description": "The ID of the location affected by the activity, if applicable."
-          },
-          "actor": {
-            "type": "string",
-            "description": "The performer of the activity. See possible values above."
-          },
-          "actorDetails": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string",
-                "description": "Name of the actor if the activity was performed by a user. Otherwise an empty string (\"\")."
-              },
-              "email": {
-                "type": "string",
-                "description": "Email address of the actor if the activity was performed by a user. Otherwise an empty string (\"\")."
-              }
-            }
-          },
-          "content": {
-            "type": "string",
-            "description": "A description of the activity (e.g., Listing Live on Facebook) or the text that was saved as a result of the activity (e.g., Call Today!, MAIN : 9085550506) May be an empty string (\"\") for certain activities (e.g., updates to Enhanced Content Lists)."
-          },
-          "details": {
-            "type": "string",
-            "description": "A description of the activity (e.g., Featured Message field updated, New Social post on Facebook)."
           }
         }
       },
@@ -58599,6 +58599,37 @@
           }
         }
       },
+      "ActivityLogResponse": {
+        "description": "Activities Response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "title": "ActivitiesResponse",
+              "type": "object",
+              "properties": {
+                "meta": {
+                  "$ref": "#/components/schemas/ResponseMeta"
+                },
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "description": "Total number of activities that meet the filter criteria (ignores limit / offset)"
+                    },
+                    "activities": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Activity"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "CatalogResponse": {
         "description": "Completed dates of all metrics available",
         "content": {
@@ -58717,37 +58748,6 @@
                     "url": {
                       "type": "string",
                       "description": "When status=DONE, contains the URL to download the report data as a text file."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "ActivityLogResponse": {
-        "description": "Activities Response",
-        "content": {
-          "application/json": {
-            "schema": {
-              "title": "ActivitiesResponse",
-              "type": "object",
-              "properties": {
-                "meta": {
-                  "$ref": "#/components/schemas/ResponseMeta"
-                },
-                "response": {
-                  "type": "object",
-                  "properties": {
-                    "count": {
-                      "type": "integer",
-                      "description": "Total number of activities that meet the filter criteria (ignores limit / offset)"
-                    },
-                    "activities": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Activity"
-                      }
                     }
                   }
                 }
