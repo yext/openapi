@@ -112,7 +112,7 @@
               "minLength": 0,
               "type": "string"
             },
-            "description": "If a response to a previous request contained the **`nextPageToken`** field, pass that field's value as the **`pageToken`** parameter to retrieve the next page of data.",
+            "description": "If a response to a previous request contained the **`pageToken`** field, pass that field's value as the **`pageToken`** parameter to retrieve the next page of data.",
             "name": "pageToken",
             "in": "query",
             "required": false
@@ -30574,7 +30574,7 @@
               "minLength": 0,
               "type": "string"
             },
-            "description": "If a response to a previous request contained the **`nextPageToken`** field, pass that field's value as the **`pageToken`** parameter to retrieve the next page of data.",
+            "description": "If a response to a previous request contained the **`pageToken`** field, pass that field's value as the **`pageToken`** parameter to retrieve the next page of data.",
             "name": "pageToken",
             "in": "query",
             "required": false
