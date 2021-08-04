@@ -7845,6 +7845,14 @@
                 "type": "string",
                 "description": "Person's title."
               },
+              "phone": {
+                "type": "string",
+                "description": "Item Phone."
+              },
+              "email": {
+                "type": "string",
+                "description": "Item Email."
+              },
               "education": {
                 "type": "array",
                 "description": "List of up to 10 strings.",
