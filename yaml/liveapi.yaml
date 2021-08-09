@@ -80441,7 +80441,7 @@ components:
           type: object
           properties:
             id:
-              type: integer
+              type: string
               description: ID of the entity associated with this review.
         authorName:
           type: string

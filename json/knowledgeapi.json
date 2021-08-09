@@ -56418,7 +56418,7 @@
             "type": "object",
             "properties": {
               "id": {
-                "type": "integer",
+                "type": "string",
                 "description": "ID of the entity associated with this review.\n\nIf the **`v`** parameter is before `20210728`, please refer to **`locationId`** as the\nparameter name instead of **`entity`**.\n"
               }
             }
@@ -56641,7 +56641,7 @@
                 "type": "object",
                 "properties": {
                   "id": {
-                    "type": "integer",
+                    "type": "string",
                     "description": "ID of the entity associated with this review.\n\nIf the **`v`** parameter is before `20210728`, please refer to **`locationId`** as the\nparameter name instead of **`entity`**.\n"
                   }
                 }
