@@ -78130,7 +78130,7 @@ components:
       required: true
       schema:
         type: string
-      description: The name of the Streams API endpoint to query.
+      description: The ID of the Streams Endpoint to query.
     streamsDocIds:
       name: ids
       in: path
@@ -78141,7 +78141,7 @@ components:
           type: string
       style: simple
       description: >
-        The Streams API records to get. Multiple records IDs can be provided
+        The Streams records to get. Multiple records IDs can be provided
         separated by commas.
     pageToken:
       name: pageToken

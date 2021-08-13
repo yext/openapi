@@ -37359,7 +37359,7 @@
         "schema": {
           "type": "string"
         },
-        "description": "The name of the Streams API endpoint to query."
+        "description": "The ID of the Streams Endpoint to query."
       },
       "streamsDocIds": {
         "name": "ids",
@@ -37372,7 +37372,7 @@
           }
         },
         "style": "simple",
-        "description": "The Streams API records to get. Multiple records IDs can be provided separated by commas.\n"
+        "description": "The Streams records to get. Multiple records IDs can be provided separated by commas.\n"
       },
       "pageToken": {
         "name": "pageToken",

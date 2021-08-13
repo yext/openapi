@@ -56498,22 +56498,22 @@
           "sent": {
             "type": "integer",
             "format": "int64",
-            "description": "The timestamp the invitation was sent, if the invitation was sent."
+            "description": "The timestamp the invitation was sent (seconds since epoch), if the invitation was sent.\n"
           },
           "opened": {
             "type": "integer",
             "format": "int64",
-            "description": "The timestamp the invitation was opened, if the invitation was opened. This value will\nalways be null for SMS type invitations.\n"
+            "description": "The timestamp the invitation was opened (seconds since epoch), if the invitation was opened.\nThis value will always be null for SMS type invitations.\n"
           },
           "clicked": {
             "type": "integer",
             "format": "int64",
-            "description": "The timestamp the invitation was clicked."
+            "description": "The timestamp the invitation was clicked (seconds since epoch)."
           },
           "reviewed": {
             "type": "integer",
             "format": "int64",
-            "description": "The timestamp the review was generated as a result of this invitation.\n\nIf the **`v`** parameter is before `20210728`, please refer to **`responded`** as the\nparameter name instead of **`reviewed`**.\n"
+            "description": "The timestamp the review was generated as a result of this invitation (seconds since epoch).\n\nIf the **`v`** parameter is before `20210728`, please refer to **`responded`** as the\nparameter name instead of **`reviewed`**.\n"
           }
         }
       },
