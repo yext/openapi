@@ -78114,13 +78114,13 @@ components:
         * The invitationUid, if the review is associated with an invitation.
 
 
-        This token will be returned in the response to any requests to the
-        Review: Create Live API
+        This ID will be returned in the response to any requests to the Review:
+        Create Live API
 
         endpoint.
 
 
-        This token will also be included in the Reviews Webhook, and the Review:
+        This ID will also be included in the Reviews Webhook, and the Review:
         Get/List Knowledge API
 
         endpoints.
@@ -78141,7 +78141,7 @@ components:
           type: string
       style: simple
       description: >
-        The Streams records to get. Multiple records IDs can be provided
+        The Streams records to get. Multiple record IDs can be provided
         separated by commas.
     pageToken:
       name: pageToken
