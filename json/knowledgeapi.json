@@ -56398,16 +56398,8 @@
           }
         }
       },
-      "ReviewInvitation": {
+      "ReviewInvitationOptional": {
         "type": "object",
-        "required": [
-          "locationId",
-          "entity",
-          "firstName",
-          "lastName",
-          "title",
-          "contact"
-        ],
         "properties": {
           "invitationUid": {
             "type": "string",
@@ -56520,7 +56512,7 @@
       "GetReviewInvitation": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/ReviewInvitation"
+            "$ref": "#/components/schemas/ReviewInvitationOptional"
           },
           {
             "type": "object",
@@ -56556,6 +56548,100 @@
             }
           }
         ]
+      },
+      "ReviewInvitation": {
+        "type": "object",
+        "required": [
+          "locationId",
+          "entity",
+          "firstName",
+          "lastName",
+          "title",
+          "contact"
+        ],
+        "properties": {
+          "invitationUid": {
+            "type": "string",
+            "readOnly": true,
+            "description": "The UID of this Review Invitation. This UID can be included as part of Review Creation\nrequests for attribution.\n\nIf the **`v`** parameter is before `20210728`, please refer to **`id`** as the parameter\nname instead of **`invitationUid`**.\n"
+          },
+          "entity": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "ID of the entity associated with this review.\n\nIf the **`v`** parameter is before `20210728`, please refer to **`locationId`** as the\nparameter name instead of **`entity`**.\n"
+              }
+            }
+          },
+          "firstName": {
+            "type": "string",
+            "description": "The first name of the person from whom a review is being requested."
+          },
+          "lastName": {
+            "type": "string",
+            "description": "The last name of the person from whom a review is being requested."
+          },
+          "title": {
+            "type": "string",
+            "description": "The title of the person from whom a review is being requested\n(e.g., Mr., Mrs., Miss, etc.).\n"
+          },
+          "contact": {
+            "type": "string",
+            "description": "The email address or phone number of the person from whom a review is being requested.\n\nPhone numbers should be formatted in one of the following ways:\n* E.164 standard international format, with a leading \"+\"\n* National format, according to the country of the corresponding location\n"
+          },
+          "includeImage": {
+            "type": "boolean",
+            "description": "Only valid for SMS invitations.\n\nIf set to true, include the image provided in the relevant template in the SMS invitation.\nPlease note that an image counts as an SMS message towards your SMS capacity.\n\nOtherwise, the SMS message will not include an image.\n\nIf the **`v`** parameter is before `20210728`, please refer to **`image`** as the parameter\nname instead of **`includeImage`**.\n"
+          },
+          "templateId": {
+            "type": "string",
+            "description": "If specified, the ID of the template used to format the email.\n\nIf not specified, the entity’s default email template is used. If the entity has no default\ntemplate, the account’s default template is used.\n"
+          },
+          "transactionId": {
+            "type": "string",
+            "description": "The ID of the transaction being reviewed in response to this invitation.\n"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACCEPTED",
+              "REJECTED",
+              "PENDING"
+            ],
+            "readOnly": true
+          },
+          "details": {
+            "type": "string",
+            "description": "If status is REJECTED, describes why the invitation could not be processed.",
+            "readOnly": true
+          },
+          "language": {
+            "type": "string",
+            "description": "The ISO 639-1 code of the review invitation's language. Only valid for invitations created\nfrom built-in templates. Defaults to `en`.\n\nSupported languages:\n  * `en`\n  * `de`\n  * `fr`\n  * `es`\n  * `it`\n  * `nl`\n  * `ja`\n"
+          },
+          "additionalUrlParameters": {
+            "type": "string",
+            "description": "A JSON object containing the key, value pairs for any additional URL parameters. These URL\nparameters will be appended to the First-Party Review Collection URL.\n\nThe **`additionalUrlParameters`** parameter will only be respected with the inclusion of\na **`v`** parameter of `20210728` or later.\n"
+          },
+          "sendInvitationFromYext": {
+            "type": "boolean",
+            "description": "Defaults to true. If set to false, Yext will not fulfill the invitation and will simply\nreturn the created invitation object.\n\nThe **`sendInvitationFromYext`** parameter will only be respected with the inclusion of a\n**`v`** parameter of `20210728` or later.\n"
+          },
+          "feedbackURL": {
+            "type": "string",
+            "readOnly": true,
+            "description": "The created Feedback URL unique to this invitation.\n\nThe **`feedbackURL`** parameter will only be respected with the inclusion of a **`v`**\nparameter of `20210728` or later.\n"
+          },
+          "reviewLabels": {
+            "type": "array",
+            "readOnly": true,
+            "items": {
+              "type": "object"
+            },
+            "description": "Review Labels associated with the review.\n\nThe **`reviewLabels`** parameter will only be respected with the inclusion of a **`v`**\nparameter of `20210728` or later.\n"
+          }
+        }
       },
       "CreateReviewInvitationRequest": {
         "allOf": [
@@ -58916,7 +59002,7 @@
                   "items": {
                     "allOf": [
                       {
-                        "$ref": "#/components/schemas/ReviewInvitation"
+                        "$ref": "#/components/schemas/ReviewInvitationOptional"
                       }
                     ]
                   }
