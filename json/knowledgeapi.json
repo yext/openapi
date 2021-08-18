@@ -52492,7 +52492,7 @@
       "post": {
         "operationId": "pushData",
         "requestBody": {
-          "description": "The data to be processed by the connector.",
+          "description": "The data to be processed by the Connector.",
           "required": true,
           "content": {
             "text/plain": {
@@ -52510,14 +52510,14 @@
             "schema": {
               "type": "string"
             },
-            "description": "ID of the connector."
+            "description": "ID of the Connector."
           }
         ],
         "tags": [
           "Connectors"
         ],
         "summary": "Connectors: Push Data",
-        "description": "Pushes data to be processed by a connector, then initiates a run for that connector.\n\n**NOTE**: If no connector is specified, all connectors with app-based source configurations will run.\n",
+        "description": "Pushes data to be processed by a Connector, then initiates a run for that Connector.\n\n**NOTE**: If no Connector ID is specified, all Connectors with the associated app (API key) will run.\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/PushDataResponse"
@@ -52547,7 +52547,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "ID of the connector."
+            "description": "ID of the Connector."
           },
           {
             "name": "runMode",
@@ -52560,14 +52560,14 @@
                 "COMPREHENSIVE"
               ]
             },
-            "description": "The run mode of the connector."
+            "description": "The run mode of the Connector."
           }
         ],
         "tags": [
           "Connectors"
         ],
         "summary": "Connectors: Trigger",
-        "description": "Triggers a run of the specified connector.",
+        "description": "Triggers a run of the specified Connector.",
         "responses": {
           "200": {
             "$ref": "#/components/responses/IdResponse"
@@ -59567,7 +59567,7 @@
                   "properties": {
                     "ids": {
                       "type": "string",
-                      "description": "A comma-seperated list of IDs of all connectors for which a run attempt was initiated."
+                      "description": "A comma-seperated list of IDs of all Connectors for which a run attempt was initiated."
                     }
                   }
                 }
