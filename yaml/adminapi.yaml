@@ -934,18 +934,6 @@ components:
           description: >
             *(Sandbox API only)* Forces this Add request into the `REVIEW`
             status if it otherwise would have completed successfully.
-    EntityWrite:
-      type: object
-      discriminator:
-        propertyName: EntityType
-      properties:
-        EntityType:
-          description: >
-            **This is used only to filter the fields below and should NOT be
-            included in any API calls.
-
-            Specify the entity type in the query parameter described above.**
-          type: string
     AtmWrite:
       allOf:
         - $ref: '#/components/schemas/EntityWrite'
@@ -3102,35 +3090,28 @@ components:
                     Cannot Include:
                     * common domain names, e.g., google.com, youtube.com, etc.
               description: Information about the website for this entity
-    NewLocationAddRequestATM:
-      allOf:
-        - $ref: '#/components/schemas/NewLocationAddRequest'
-        - type: object
-          properties:
-            newEntityData:
-              description: >
-                If you set `newLocationId`, you must specify either
-                `newLocationData` or `newEntityData`.
+    EntityWrite:
+      type: object
+      discriminator:
+        propertyName: EntityType
+        mapping:
+          atm: '#/components/schemas/AtmWrite'
+          event: '#/components/schemas/EventWrite'
+          faq: '#/components/schemas/FaqWrite'
+          healthcareFacility: '#/components/schemas/HealthcareFacilityWrite'
+          healthcareProfessional: '#/components/schemas/HealthcareProfessionalWrite'
+          hotel: '#/components/schemas/HotelWrite'
+          job: '#/components/schemas/JobWrite'
+          location: '#/components/schemas/LocationWrite'
+          restaurant: '#/components/schemas/RestaurantWrite'
+      properties:
+        EntityType:
+          description: >
+            **This is used only to filter the fields below and should NOT be
+            included in any API calls.
 
-
-                This field allows you to set the profile data for an entity.
-
-                Profile content is specified in the same format as when creating
-                an entity with the Entities: Create endpoint.
-
-                You can only create entities of a type specified by
-                `newEntityType`.
-
-
-                If the Add Request is processed successfully, this data will be
-                used to create a new entity in your account.
-
-
-                **The dropdown will specify the profile content for
-                `newEntityData`. Specify the entity type with `newEntityType`
-                described above.**
-              allOf:
-                - $ref: '#/components/schemas/AtmWrite'
+            Specify the entity type in the query parameter described above.**
+          type: string
     EventWrite:
       allOf:
         - $ref: '#/components/schemas/EntityWrite'
@@ -3814,35 +3795,6 @@ components:
                     Cannot Include:
                     * common domain names, e.g., google.com, youtube.com, etc.
               description: Information about the website for this entity
-    NewLocationAddRequestEvent:
-      allOf:
-        - $ref: '#/components/schemas/NewLocationAddRequest'
-        - type: object
-          properties:
-            newEntityData:
-              description: >
-                If you set `newLocationId`, you must specify either
-                `newLocationData` or `newEntityData`.
-
-
-                This field allows you to set the profile data for an entity.
-
-                Profile content is specified in the same format as when creating
-                an entity with the Entities: Create endpoint.
-
-                You can only create entities of a type specified by
-                `newEntityType`.
-
-
-                If the Add Request is processed successfully, this data will be
-                used to create a new entity in your account.
-
-
-                **The dropdown will specify the profile content for
-                `newEntityData`. Specify the entity type with `newEntityType`
-                described above.**
-              allOf:
-                - $ref: '#/components/schemas/EventWrite'
     FaqWrite:
       allOf:
         - $ref: '#/components/schemas/EntityWrite'
@@ -4095,35 +4047,6 @@ components:
               description: >-
                 The timezone of the entity, in the standard `IANA time zone
                 database` format (tz database). e.g. `"America/New_York"`
-    NewLocationAddRequestFaq:
-      allOf:
-        - $ref: '#/components/schemas/NewLocationAddRequest'
-        - type: object
-          properties:
-            newEntityData:
-              description: >
-                If you set `newLocationId`, you must specify either
-                `newLocationData` or `newEntityData`.
-
-
-                This field allows you to set the profile data for an entity.
-
-                Profile content is specified in the same format as when creating
-                an entity with the Entities: Create endpoint.
-
-                You can only create entities of a type specified by
-                `newEntityType`.
-
-
-                If the Add Request is processed successfully, this data will be
-                used to create a new entity in your account.
-
-
-                **The dropdown will specify the profile content for
-                `newEntityData`. Specify the entity type with `newEntityType`
-                described above.**
-              allOf:
-                - $ref: '#/components/schemas/FaqWrite'
     HealthcareFacilityWrite:
       allOf:
         - $ref: '#/components/schemas/EntityWrite'
@@ -7458,35 +7381,6 @@ components:
               maximum: 2028
               type: number
               description: The year the entity was established.
-    NewLocationAddRequestHealthcareFacility:
-      allOf:
-        - $ref: '#/components/schemas/NewLocationAddRequest'
-        - type: object
-          properties:
-            newEntityData:
-              description: >
-                If you set `newLocationId`, you must specify either
-                `newLocationData` or `newEntityData`.
-
-
-                This field allows you to set the profile data for an entity.
-
-                Profile content is specified in the same format as when creating
-                an entity with the Entities: Create endpoint.
-
-                You can only create entities of a type specified by
-                `newEntityType`.
-
-
-                If the Add Request is processed successfully, this data will be
-                used to create a new entity in your account.
-
-
-                **The dropdown will specify the profile content for
-                `newEntityData`. Specify the entity type with `newEntityType`
-                described above.**
-              allOf:
-                - $ref: '#/components/schemas/HealthcareFacilityWrite'
     HealthcareProfessionalWrite:
       allOf:
         - $ref: '#/components/schemas/EntityWrite'
@@ -10367,35 +10261,6 @@ components:
               maximum: 2028
               type: number
               description: The year the entity was established.
-    NewLocationAddRequestHealthcareProfessional:
-      allOf:
-        - $ref: '#/components/schemas/NewLocationAddRequest'
-        - type: object
-          properties:
-            newEntityData:
-              description: >
-                If you set `newLocationId`, you must specify either
-                `newLocationData` or `newEntityData`.
-
-
-                This field allows you to set the profile data for an entity.
-
-                Profile content is specified in the same format as when creating
-                an entity with the Entities: Create endpoint.
-
-                You can only create entities of a type specified by
-                `newEntityType`.
-
-
-                If the Add Request is processed successfully, this data will be
-                used to create a new entity in your account.
-
-
-                **The dropdown will specify the profile content for
-                `newEntityData`. Specify the entity type with `newEntityType`
-                described above.**
-              allOf:
-                - $ref: '#/components/schemas/HealthcareProfessionalWrite'
     HotelWrite:
       allOf:
         - $ref: '#/components/schemas/EntityWrite'
@@ -14603,35 +14468,6 @@ components:
               description: >-
                 The most recent year the entity was partially or completely
                 renovated.
-    NewLocationAddRequestHotel:
-      allOf:
-        - $ref: '#/components/schemas/NewLocationAddRequest'
-        - type: object
-          properties:
-            newEntityData:
-              description: >
-                If you set `newLocationId`, you must specify either
-                `newLocationData` or `newEntityData`.
-
-
-                This field allows you to set the profile data for an entity.
-
-                Profile content is specified in the same format as when creating
-                an entity with the Entities: Create endpoint.
-
-                You can only create entities of a type specified by
-                `newEntityType`.
-
-
-                If the Add Request is processed successfully, this data will be
-                used to create a new entity in your account.
-
-
-                **The dropdown will specify the profile content for
-                `newEntityData`. Specify the entity type with `newEntityType`
-                described above.**
-              allOf:
-                - $ref: '#/components/schemas/HotelWrite'
     JobWrite:
       allOf:
         - $ref: '#/components/schemas/EntityWrite'
@@ -14935,35 +14771,6 @@ components:
             workRemote:
               type: boolean
               description: Indicates whether the job is remote.
-    NewLocationAddRequestJob:
-      allOf:
-        - $ref: '#/components/schemas/NewLocationAddRequest'
-        - type: object
-          properties:
-            newEntityData:
-              description: >
-                If you set `newLocationId`, you must specify either
-                `newLocationData` or `newEntityData`.
-
-
-                This field allows you to set the profile data for an entity.
-
-                Profile content is specified in the same format as when creating
-                an entity with the Entities: Create endpoint.
-
-                You can only create entities of a type specified by
-                `newEntityType`.
-
-
-                If the Add Request is processed successfully, this data will be
-                used to create a new entity in your account.
-
-
-                **The dropdown will specify the profile content for
-                `newEntityData`. Specify the entity type with `newEntityType`
-                described above.**
-              allOf:
-                - $ref: '#/components/schemas/JobWrite'
     LocationWrite:
       allOf:
         - $ref: '#/components/schemas/EntityWrite'
@@ -20594,35 +20401,6 @@ components:
               maximum: 2028
               type: number
               description: The year the entity was established.
-    NewLocationAddRequestLocation:
-      allOf:
-        - $ref: '#/components/schemas/NewLocationAddRequest'
-        - type: object
-          properties:
-            newEntityData:
-              description: >
-                If you set `newLocationId`, you must specify either
-                `newLocationData` or `newEntityData`.
-
-
-                This field allows you to set the profile data for an entity.
-
-                Profile content is specified in the same format as when creating
-                an entity with the Entities: Create endpoint.
-
-                You can only create entities of a type specified by
-                `newEntityType`.
-
-
-                If the Add Request is processed successfully, this data will be
-                used to create a new entity in your account.
-
-
-                **The dropdown will specify the profile content for
-                `newEntityData`. Specify the entity type with `newEntityType`
-                described above.**
-              allOf:
-                - $ref: '#/components/schemas/LocationWrite'
     RestaurantWrite:
       allOf:
         - $ref: '#/components/schemas/EntityWrite'
@@ -26251,6 +26029,238 @@ components:
               maximum: 2028
               type: number
               description: The year the entity was established.
+    NewLocationAddRequestATM:
+      allOf:
+        - $ref: '#/components/schemas/NewLocationAddRequest'
+        - type: object
+          properties:
+            newEntityData:
+              description: >
+                If you set `newLocationId`, you must specify either
+                `newLocationData` or `newEntityData`.
+
+
+                This field allows you to set the profile data for an entity.
+
+                Profile content is specified in the same format as when creating
+                an entity with the Entities: Create endpoint.
+
+                You can only create entities of a type specified by
+                `newEntityType`.
+
+
+                If the Add Request is processed successfully, this data will be
+                used to create a new entity in your account.
+
+
+                **The dropdown will specify the profile content for
+                `newEntityData`. Specify the entity type with `newEntityType`
+                described above.**
+              allOf:
+                - $ref: '#/components/schemas/AtmWrite'
+    NewLocationAddRequestEvent:
+      allOf:
+        - $ref: '#/components/schemas/NewLocationAddRequest'
+        - type: object
+          properties:
+            newEntityData:
+              description: >
+                If you set `newLocationId`, you must specify either
+                `newLocationData` or `newEntityData`.
+
+
+                This field allows you to set the profile data for an entity.
+
+                Profile content is specified in the same format as when creating
+                an entity with the Entities: Create endpoint.
+
+                You can only create entities of a type specified by
+                `newEntityType`.
+
+
+                If the Add Request is processed successfully, this data will be
+                used to create a new entity in your account.
+
+
+                **The dropdown will specify the profile content for
+                `newEntityData`. Specify the entity type with `newEntityType`
+                described above.**
+              allOf:
+                - $ref: '#/components/schemas/EventWrite'
+    NewLocationAddRequestFaq:
+      allOf:
+        - $ref: '#/components/schemas/NewLocationAddRequest'
+        - type: object
+          properties:
+            newEntityData:
+              description: >
+                If you set `newLocationId`, you must specify either
+                `newLocationData` or `newEntityData`.
+
+
+                This field allows you to set the profile data for an entity.
+
+                Profile content is specified in the same format as when creating
+                an entity with the Entities: Create endpoint.
+
+                You can only create entities of a type specified by
+                `newEntityType`.
+
+
+                If the Add Request is processed successfully, this data will be
+                used to create a new entity in your account.
+
+
+                **The dropdown will specify the profile content for
+                `newEntityData`. Specify the entity type with `newEntityType`
+                described above.**
+              allOf:
+                - $ref: '#/components/schemas/FaqWrite'
+    NewLocationAddRequestHealthcareFacility:
+      allOf:
+        - $ref: '#/components/schemas/NewLocationAddRequest'
+        - type: object
+          properties:
+            newEntityData:
+              description: >
+                If you set `newLocationId`, you must specify either
+                `newLocationData` or `newEntityData`.
+
+
+                This field allows you to set the profile data for an entity.
+
+                Profile content is specified in the same format as when creating
+                an entity with the Entities: Create endpoint.
+
+                You can only create entities of a type specified by
+                `newEntityType`.
+
+
+                If the Add Request is processed successfully, this data will be
+                used to create a new entity in your account.
+
+
+                **The dropdown will specify the profile content for
+                `newEntityData`. Specify the entity type with `newEntityType`
+                described above.**
+              allOf:
+                - $ref: '#/components/schemas/HealthcareFacilityWrite'
+    NewLocationAddRequestHealthcareProfessional:
+      allOf:
+        - $ref: '#/components/schemas/NewLocationAddRequest'
+        - type: object
+          properties:
+            newEntityData:
+              description: >
+                If you set `newLocationId`, you must specify either
+                `newLocationData` or `newEntityData`.
+
+
+                This field allows you to set the profile data for an entity.
+
+                Profile content is specified in the same format as when creating
+                an entity with the Entities: Create endpoint.
+
+                You can only create entities of a type specified by
+                `newEntityType`.
+
+
+                If the Add Request is processed successfully, this data will be
+                used to create a new entity in your account.
+
+
+                **The dropdown will specify the profile content for
+                `newEntityData`. Specify the entity type with `newEntityType`
+                described above.**
+              allOf:
+                - $ref: '#/components/schemas/HealthcareProfessionalWrite'
+    NewLocationAddRequestHotel:
+      allOf:
+        - $ref: '#/components/schemas/NewLocationAddRequest'
+        - type: object
+          properties:
+            newEntityData:
+              description: >
+                If you set `newLocationId`, you must specify either
+                `newLocationData` or `newEntityData`.
+
+
+                This field allows you to set the profile data for an entity.
+
+                Profile content is specified in the same format as when creating
+                an entity with the Entities: Create endpoint.
+
+                You can only create entities of a type specified by
+                `newEntityType`.
+
+
+                If the Add Request is processed successfully, this data will be
+                used to create a new entity in your account.
+
+
+                **The dropdown will specify the profile content for
+                `newEntityData`. Specify the entity type with `newEntityType`
+                described above.**
+              allOf:
+                - $ref: '#/components/schemas/HotelWrite'
+    NewLocationAddRequestJob:
+      allOf:
+        - $ref: '#/components/schemas/NewLocationAddRequest'
+        - type: object
+          properties:
+            newEntityData:
+              description: >
+                If you set `newLocationId`, you must specify either
+                `newLocationData` or `newEntityData`.
+
+
+                This field allows you to set the profile data for an entity.
+
+                Profile content is specified in the same format as when creating
+                an entity with the Entities: Create endpoint.
+
+                You can only create entities of a type specified by
+                `newEntityType`.
+
+
+                If the Add Request is processed successfully, this data will be
+                used to create a new entity in your account.
+
+
+                **The dropdown will specify the profile content for
+                `newEntityData`. Specify the entity type with `newEntityType`
+                described above.**
+              allOf:
+                - $ref: '#/components/schemas/JobWrite'
+    NewLocationAddRequestLocation:
+      allOf:
+        - $ref: '#/components/schemas/NewLocationAddRequest'
+        - type: object
+          properties:
+            newEntityData:
+              description: >
+                If you set `newLocationId`, you must specify either
+                `newLocationData` or `newEntityData`.
+
+
+                This field allows you to set the profile data for an entity.
+
+                Profile content is specified in the same format as when creating
+                an entity with the Entities: Create endpoint.
+
+                You can only create entities of a type specified by
+                `newEntityType`.
+
+
+                If the Add Request is processed successfully, this data will be
+                used to create a new entity in your account.
+
+
+                **The dropdown will specify the profile content for
+                `newEntityData`. Specify the entity type with `newEntityType`
+                described above.**
+              allOf:
+                - $ref: '#/components/schemas/LocationWrite'
     NewLocationAddRequestRestaurant:
       allOf:
         - $ref: '#/components/schemas/NewLocationAddRequest'
