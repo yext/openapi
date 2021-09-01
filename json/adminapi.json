@@ -1056,12 +1056,9 @@
           "propertyName": "newEntityType",
           "mapping": {
             "atm": "#/components/schemas/NewLocationAddRequestATM",
-            "event": "#/components/schemas/NewLocationAddRequestEvent",
-            "faq": "#/components/schemas/NewLocationAddRequestFaq",
             "healthcareFacility": "#/components/schemas/NewLocationAddRequestHealthcareFacility",
             "healthcareProfessional": "#/components/schemas/NewLocationAddRequestHealthcareProfessional",
             "hotel": "#/components/schemas/NewLocationAddRequestHotel",
-            "job": "#/components/schemas/NewLocationAddRequestJob",
             "location": "#/components/schemas/NewLocationAddRequestLocation",
             "restaurant": "#/components/schemas/NewLocationAddRequestRestaurant"
           }
@@ -20067,46 +20064,6 @@
           }
         ]
       },
-      "NewLocationAddRequestEvent": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/NewLocationAddRequest"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "newEntityData": {
-                "description": "If you set `newLocationId`, you must specify either `newLocationData` or `newEntityData`.\n\nThis field allows you to set the profile data for an entity.\nProfile content is specified in the same format as when creating an entity with the Entities: Create endpoint.\nYou can only create entities of a type specified by `newEntityType`.\n\nIf the Add Request is processed successfully, this data will be used to create a new entity in your account.\n\n**The dropdown will specify the profile content for `newEntityData`. Specify the entity type with `newEntityType` described above.**\n",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/EventWrite"
-                  }
-                ]
-              }
-            }
-          }
-        ]
-      },
-      "NewLocationAddRequestFaq": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/NewLocationAddRequest"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "newEntityData": {
-                "description": "If you set `newLocationId`, you must specify either `newLocationData` or `newEntityData`.\n\nThis field allows you to set the profile data for an entity.\nProfile content is specified in the same format as when creating an entity with the Entities: Create endpoint.\nYou can only create entities of a type specified by `newEntityType`.\n\nIf the Add Request is processed successfully, this data will be used to create a new entity in your account.\n\n**The dropdown will specify the profile content for `newEntityData`. Specify the entity type with `newEntityType` described above.**\n",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/FaqWrite"
-                  }
-                ]
-              }
-            }
-          }
-        ]
-      },
       "NewLocationAddRequestHealthcareFacility": {
         "allOf": [
           {
@@ -20160,26 +20117,6 @@
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/HotelWrite"
-                  }
-                ]
-              }
-            }
-          }
-        ]
-      },
-      "NewLocationAddRequestJob": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/NewLocationAddRequest"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "newEntityData": {
-                "description": "If you set `newLocationId`, you must specify either `newLocationData` or `newEntityData`.\n\nThis field allows you to set the profile data for an entity.\nProfile content is specified in the same format as when creating an entity with the Entities: Create endpoint.\nYou can only create entities of a type specified by `newEntityType`.\n\nIf the Add Request is processed successfully, this data will be used to create a new entity in your account.\n\n**The dropdown will specify the profile content for `newEntityData`. Specify the entity type with `newEntityType` described above.**\n",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/JobWrite"
                   }
                 ]
               }
