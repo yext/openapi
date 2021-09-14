@@ -728,7 +728,7 @@ paths:
       operationId: getReview
       tags:
         - Reviews
-      summary: Review
+      summary: Get Review
       description: |
         Get the review object for a specific review ID.
       responses:
@@ -770,7 +770,7 @@ paths:
         provide that capability via this endpoint.
       responses:
         '200':
-          $ref: '#/components/responses/EmptyResponseNew'
+          $ref: '#/components/responses/NewCommentSuccess'
         '400':
           $ref: '#/components/responses/ErrorResponseNew'
         '404':
@@ -807,7 +807,7 @@ paths:
       operationId: deleteReviewComment
       tags:
         - Reviews
-      summary: Comment
+      summary: Delete Comment
       description: >
         Yext uses the DELETE operation to remove a review comment from the
         business owner on a specific review.
@@ -1864,7 +1864,7 @@ components:
     PartnerReviewResponse:
       type: object
       properties:
-        reviewid:
+        reviewId:
           type: string
           description: |
             The review's ID on your site
@@ -1884,7 +1884,7 @@ components:
     PartnerReviewResponseUpdate:
       type: object
       properties:
-        reviewid:
+        reviewId:
           type: string
           description: |
             The review's ID on your site
@@ -1900,7 +1900,7 @@ components:
         commentId:
           type: string
           description: |
-            The review comment's Id on your site 
+            The review comment's Id on your site
         comment:
           type: string
           description: |
@@ -2166,6 +2166,18 @@ components:
             properties:
               response:
                 $ref: '#/components/schemas/PartnerReview'
+    NewCommentSuccess:
+      description: OK
+      content:
+        application/json:
+          schema:
+            title: NewCommentSuccess
+            type: object
+            properties:
+              commentId:
+                type: string
+                description: The ID of the comment that was successfully created
+                example: f3j94g8h3
     GetSuggestionsSuccess:
       description: OK
       content:

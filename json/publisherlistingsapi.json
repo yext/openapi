@@ -243,7 +243,7 @@
         "tags": [
           "Reviews"
         ],
-        "summary": "Review",
+        "summary": "Get Review",
         "description": "Get the review object for a specific review ID.\n",
         "responses": {
           "200": {
@@ -278,7 +278,7 @@
         "description": "Yext uses RESPOND to allow business owners to interact with reviews left by consumers.\nThe endpoint supports review response by a business owner and the capability to flag reviews for inappropriate content. You should support any capabilities you already have on your site.\n\n# **Requirements**\n  Yext's customers would like to be able to manage all their reviews from one platform. To that end, they should be able to use the Yext platform to take advantage of the review-management features you have on your site.\n## Specifically:\n* Publishers who support review response from business owners must provide that capability via this endpoint.\n* Publishers who support flagging reviews for inappropriate content must provide that capability via this endpoint.\n",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/EmptyResponseNew"
+            "$ref": "#/components/responses/NewCommentSuccess"
           },
           "400": {
             "$ref": "#/components/responses/ErrorResponseNew"
@@ -337,7 +337,7 @@
         "tags": [
           "Reviews"
         ],
-        "summary": "Comment",
+        "summary": "Delete Comment",
         "description": "Yext uses the DELETE operation to remove a review comment from the business owner on a specific review.\n",
         "responses": {
           "200": {
@@ -1527,7 +1527,7 @@
       "PartnerReviewResponse": {
         "type": "object",
         "properties": {
-          "reviewid": {
+          "reviewId": {
             "type": "string",
             "description": "The review's ID on your site\n"
           },
@@ -1549,7 +1549,7 @@
       "PartnerReviewResponseUpdate": {
         "type": "object",
         "properties": {
-          "reviewid": {
+          "reviewId": {
             "type": "string",
             "description": "The review's ID on your site\n"
           },
@@ -1564,7 +1564,7 @@
           },
           "commentId": {
             "type": "string",
-            "description": "The review comment's Id on your site \n"
+            "description": "The review comment's Id on your site\n"
           },
           "comment": {
             "type": "string",
@@ -1912,6 +1912,24 @@
               "properties": {
                 "response": {
                   "$ref": "#/components/schemas/PartnerReview"
+                }
+              }
+            }
+          }
+        }
+      },
+      "NewCommentSuccess": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "title": "NewCommentSuccess",
+              "type": "object",
+              "properties": {
+                "commentId": {
+                  "type": "string",
+                  "description": "The ID of the comment that was successfully created",
+                  "example": "f3j94g8h3"
                 }
               }
             }
