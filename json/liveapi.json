@@ -36728,7 +36728,7 @@
     },
     "/accounts/{accountId}/locations/{locationId}/profiles": {
       "get": {
-        "operationId": "listLanguageProfiles",
+        "operationId": "listLocationLanguageProfiles",
         "parameters": [
           {
             "$ref": "#/components/parameters/accountId"
