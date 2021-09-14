@@ -7,7 +7,7 @@ servers:
 paths:
   '/accounts/{accountId}/entities':
     get:
-      operationId: LiveEntityApiServer.listEntities
+      operationId: listEntities
       parameters:
         - schema:
             minLength: 0
@@ -13491,7 +13491,7 @@ paths:
                 description: 'Filtering Type: `object`'
   '/accounts/{accountId}/entities/{entityId}':
     get:
-      operationId: LiveEntityApiServer.getEntity
+      operationId: getEntity
       parameters:
         - schema:
             minLength: 0
@@ -25418,7 +25418,7 @@ paths:
                 description: 'Filtering Type: `object`'
   '/accounts/{accountId}/entities/geosearch':
     get:
-      operationId: LiveEntityApiServer.geoSearchEntities
+      operationId: geoSearchEntities
       parameters:
         - schema:
             minLength: 0
@@ -39103,7 +39103,7 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
   '/accounts/{accountId}/entityprofiles/{entityId}/{languageCode}':
     get:
-      operationId: LiveEntityApiServer.getLanguageProfile
+      operationId: getLanguageProfile
       parameters:
         - schema:
             minLength: 0
@@ -51048,7 +51048,7 @@ paths:
                 description: 'Filtering Type: `object`'
   '/accounts/{accountId}/entityprofiles/{entityId}':
     get:
-      operationId: LiveEntityApiServer.listLanguageProfiles
+      operationId: listLanguageProfiles
       parameters:
         - schema:
             minLength: 0
@@ -63277,7 +63277,7 @@ paths:
                 description: 'Filtering Type: `object`'
   '/accounts/{accountId}/entityprofiles':
     get:
-      operationId: LiveEntityApiServer.listAllLanguageProfiles
+      operationId: listAllLanguageProfiles
       parameters:
         - schema:
             minLength: 0

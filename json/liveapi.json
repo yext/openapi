@@ -12,7 +12,7 @@
   "paths": {
     "/accounts/{accountId}/entities": {
       "get": {
-        "operationId": "LiveEntityApiServer.listEntities",
+        "operationId": "listEntities",
         "parameters": [
           {
             "schema": {
@@ -6115,7 +6115,7 @@
     },
     "/accounts/{accountId}/entities/{entityId}": {
       "get": {
-        "operationId": "LiveEntityApiServer.getEntity",
+        "operationId": "getEntity",
         "parameters": [
           {
             "schema": {
@@ -12125,7 +12125,7 @@
     },
     "/accounts/{accountId}/entities/geosearch": {
       "get": {
-        "operationId": "LiveEntityApiServer.geoSearchEntities",
+        "operationId": "geoSearchEntities",
         "parameters": [
           {
             "schema": {
@@ -18414,7 +18414,7 @@
     },
     "/accounts/{accountId}/entityprofiles/{entityId}/{languageCode}": {
       "get": {
-        "operationId": "LiveEntityApiServer.getLanguageProfile",
+        "operationId": "getLanguageProfile",
         "parameters": [
           {
             "schema": {
@@ -24434,7 +24434,7 @@
     },
     "/accounts/{accountId}/entityprofiles/{entityId}": {
       "get": {
-        "operationId": "LiveEntityApiServer.listLanguageProfiles",
+        "operationId": "listLanguageProfiles",
         "parameters": [
           {
             "schema": {
@@ -30474,7 +30474,7 @@
     },
     "/accounts/{accountId}/entityprofiles": {
       "get": {
-        "operationId": "LiveEntityApiServer.listAllLanguageProfiles",
+        "operationId": "listAllLanguageProfiles",
         "parameters": [
           {
             "schema": {
