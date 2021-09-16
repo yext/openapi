@@ -480,14 +480,23 @@ servers:
   - url: 'https://partner.example.com'
 paths:
   /listings/search:
+    parameters:
+      - $ref: '#/components/parameters/name'
+      - $ref: '#/components/parameters/address'
+      - $ref: '#/components/parameters/address2'
+      - $ref: '#/components/parameters/sublocality'
+      - $ref: '#/components/parameters/locality'
+      - $ref: '#/components/parameters/region'
+      - $ref: '#/components/parameters/postal_code'
+      - $ref: '#/components/parameters/country'
+      - $ref: '#/components/parameters/phone'
+      - $ref: '#/components/parameters/latlng'
+      - $ref: '#/components/parameters/firstName'
+      - $ref: '#/components/parameters/lastName'
+      - $ref: '#/components/parameters/npi'
+      - $ref: '#/components/parameters/type'
     get:
       operationId: Search
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ListingSearch'
       tags:
         - Listings
       summary: Search
@@ -503,7 +512,7 @@ paths:
         * Name and Lat/Lng OR Name and Address
       responses:
         '200':
-          $ref: '#/components/responses/SearchSuccess'
+          $ref: '#/components/responses/SearchResponse'
         '400':
           $ref: '#/components/responses/ErrorResponseNew'
         '500':
@@ -888,63 +897,210 @@ tags:
   - name: Reviews
   - name: Suggestions
 components:
+  parameters:
+    name:
+      in: query
+      name: name
+      description: |
+        Business name.
+
+        e.g. `Yext`
+      schema:
+        type: string
+    address:
+      in: query
+      name: address
+      description: |
+        Street address, including house numbers, to search.
+
+        e.g `75 9th Ave`, `Bismarckstraße 35`
+      schema:
+        type: string
+    address2:
+      in: query
+      name: address2
+      description: |
+        Address line 2 to search.
+
+        e.g. `7th floor`
+      schema:
+        type: string
+    sublocality:
+      in: query
+      name: sublocality
+      description: |
+        Sublocality (e.g., neighborhood, ward or district) in which to search.
+
+        e.g. `pos. Lesnoe` (Russia), `Saiwai-ku` (Japan)
+      schema:
+        type: string
+    locality:
+      in: query
+      name: city
+      description: |
+        City in which to search
+
+        e.g. `New York`
+      schema:
+        type: string
+    region:
+      in: query
+      name: state
+      description: >
+        State, region, or province in which to search. Abbreviations are used
+        for some countries.
+
+
+        e.g. `NY`, `Kanagawa`
+      schema:
+        type: string
+    postal_code:
+      in: query
+      name: zip
+      description: |
+        ZIP or postal code in which to search.
+
+        e.g. `10011`, `212-0011`, `4841 EP`
+      schema:
+        type: string
+    country:
+      in: query
+      name: countryCode
+      description: |
+        The ISO 3166-1 alpha-2 code of the country in which to search.
+
+        e.g. `GB`, `NL`, `GB`
+      schema:
+        type: string
+    phone:
+      in: query
+      name: phone
+      description: >
+        Location's phone number.
+
+        For international numbers, this number reflects how the number is dialed
+        within the country (i.e., no country code or punctuation).
+
+
+        e.g. `2126518966`
+      schema:
+        type: string
+    latlng:
+      in: query
+      name: latlng
+      description: |
+        latitude and longitude coordinates, separated by a comma.
+
+        e.g. `-27.1259105,-109.4789002`
+      schema:
+        type: string
+    firstName:
+      in: query
+      name: firstName
+      description: >
+        The first name of the healthcare professional whose records should be
+        returned.
+
+
+        NOTE: You only need to support this parameter if your site supports
+        first/last name search.
+      schema:
+        type: string
+    lastName:
+      in: query
+      name: lastName
+      description: >
+        The last name of the healthcare professional whose records should be
+        returned.
+
+
+        NOTE: You only need to support this parameter if your site supports
+        first/last name search.
+      schema:
+        type: string
+    npi:
+      in: query
+      name: npi
+      description: >
+        National Provider Identifier (NPI) of the healthcare professional or
+        facility whose records should be returned.
+
+
+        NOTE: This parameter will only be used if you have NPI data.
+      schema:
+        type: string
+    type:
+      in: query
+      name: type
+      description: >
+        The kind of records that should be returned.
+
+
+        NOTE: This parameter will only be used if you support more than just the
+        `Location` type.
+      schema:
+        type: string
+        enum:
+          - Location
+          - HealthcareFacility
+          - HealthcareProfessional
+    listingId:
+      name: listingId
+      in: query
+      required: true
+      schema:
+        type: string
+      description: >
+        The unique identifier of a listing on your site is known as the
+        listingId.
+    num:
+      name: num
+      in: query
+      required: true
+      schema:
+        type: string
+      description: |
+        The number of reviews to return
+    before:
+      name: before
+      in: query
+      required: false
+      schema:
+        type: string
+      description: >
+        An ISO-8601 date-time that filters results to those reviews posted
+        before this time (exclusive). If not specified, no filter should be
+        applied. 
+
+        NOTE: This parameter is used to page through results. For example, Yext
+        may fetch the newest 10 reviews and make a subsequent request with
+        before set to the last review's timestamp in order to fetch the second
+        page.
+    reviewId:
+      name: reviewId
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: ID of this Review.
+    commentId:
+      name: commentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: |
+        The review comment’s ID on your site
+    suggestionId:
+      name: suggestionId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: >
+        The unique identifier of a suggestion on your site is known as the
+        suggestionId.    
   schemas:
-    ListingSearch:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Business name
-          example: Yext
-        address:
-          type: string
-          description: Street address to search
-          example: 75 9th Ave
-        address2:
-          type: string
-          description: Address 2 line to search
-          example: 7th floor
-        sublocality:
-          type: string
-          description: 'Sublocality (e.g., neighborhood or district) in which to search'
-          example: pos. Lesnoe
-        city:
-          type: string
-          description: City in which to search
-          example: New York
-        state:
-          type: string
-          description: >-
-            State, region, or province in which to search. Abbreviations are
-            used for some countries.
-          example: NY
-        zip:
-          type: string
-          description: |
-            ZIP or postal code in which to search
-          example: '10011'
-        countryCode:
-          type: string
-          description: |
-            The ISO 3166-1 alpha-2 code of the area in which to search
-          example: GB
-        latlng:
-          type: string
-          description: |
-            Latitude/longitude to center the search
-          example: '-33.8670522,151.1957362'
-        radius:
-          type: string
-          description: |
-            Radius to search (in meters). Default value is 2500.
-          example: '1600'
-        phone:
-          type: string
-          description: >
-            Location's phone number . For international numbers, this number
-            reflects how the number is dialed within the country (i.e., no
-            country code or punctuation).
-          example: '2126518966'
     PartnerCategories:
       type: array
       description: >-
@@ -976,6 +1132,7 @@ components:
         - longitude
         - countryCode
         - categories
+        - type
       properties:
         id:
           type: string
@@ -1029,11 +1186,16 @@ components:
           type: string
           example: NY
           description: |
+            `required` for US, CA and some other countries.
+
             The state, region, or province of the result listing
         zip:
           type: string
           example: '10011'
           description: >
+            `required` for most countries.
+
+
             The ZIP or postal code of the result listing. Contact the
             Implementation team for valid formats.
         countryCode:
@@ -1068,13 +1230,12 @@ components:
           items:
             $ref: '#/components/schemas/PartnerCategories'
         type:
-          type: array
-          description: For Healthcare Only
-          items:
-            type: string
-            enum:
-              - HealthcareFacility
-              - HealthcareProfessional
+          type: string
+          description: The kind of listing
+          enum:
+            - Location
+            - HealthcareFacility
+            - HealthcareProfessional
         websiteUrl:
           type: string
           description: |
@@ -1983,16 +2144,18 @@ components:
             - ACTIVE
             - SUPPRESSED
   responses:
-    SearchSuccess:
+    SearchResponse:
       description: OK
       content:
         application/json:
           schema:
             title: SearchSuccess
-            type: object
-            properties:
-              response:
-                $ref: '#/components/schemas/SearchResult'
+            type: array
+            description: >-
+              A list of search results; empty if no matching listings could be
+              found.
+            items:
+              $ref: '#/components/schemas/SearchResult'
     ErrorResponseNew:
       description: Bad Request
       content:
@@ -2020,9 +2183,7 @@ components:
           schema:
             title: GetDetailsSuccess
             type: object
-            properties:
-              response:
-                $ref: '#/components/schemas/PartnerListing'
+            $ref: '#/components/schemas/PartnerListing'
     404NotFoundResponse:
       description: Not Found
       content:
@@ -2152,10 +2313,7 @@ components:
         application/json:
           schema:
             title: GetReviewsSuccess
-            type: object
-            properties:
-              response:
-                $ref: '#/components/schemas/PartnerReviewList'
+            $ref: '#/components/schemas/PartnerReviewList'
     GetSingleReviewSuccess:
       description: OK
       content:
@@ -2163,9 +2321,7 @@ components:
           schema:
             title: GetSingleReviewSuccess
             type: object
-            properties:
-              response:
-                $ref: '#/components/schemas/PartnerReview'
+            $ref: '#/components/schemas/PartnerReview'
     NewCommentSuccess:
       description: OK
       content:
@@ -2185,9 +2341,7 @@ components:
           schema:
             title: GetSuggestionsSuccess
             type: object
-            properties:
-              response:
-                $ref: '#/components/schemas/PartnerSuggestionList'
+            $ref: '#/components/schemas/PartnerSuggestionList'
     GetSingleSuggestionSuccess:
       description: OK
       content:
@@ -2195,63 +2349,4 @@ components:
           schema:
             title: GetSingleSuggestionSuccess
             type: object
-            properties:
-              response:
-                $ref: '#/components/schemas/PartnerSuggestion'
-  parameters:
-    listingId:
-      name: listingId
-      in: query
-      required: true
-      schema:
-        type: string
-      description: >
-        The unique identifier of a listing on your site is known as the
-        listingId.
-    num:
-      name: num
-      in: query
-      required: true
-      schema:
-        type: string
-      description: |
-        The number of reviews to return
-    before:
-      name: before
-      in: query
-      required: false
-      schema:
-        type: string
-      description: >
-        An ISO-8601 date-time that filters results to those reviews posted
-        before this time (exclusive). If not specified, no filter should be
-        applied. 
-
-        NOTE: This parameter is used to page through results. For example, Yext
-        may fetch the newest 10 reviews and make a subsequent request with
-        before set to the last review's timestamp in order to fetch the second
-        page.
-    reviewId:
-      name: reviewId
-      in: path
-      required: true
-      schema:
-        type: integer
-      description: ID of this Review.
-    commentId:
-      name: commentId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: |
-        The review comment’s ID on your site
-    suggestionId:
-      name: suggestionId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: >
-        The unique identifier of a suggestion on your site is known as the
-        suggestionId.    
+            $ref: '#/components/schemas/PartnerSuggestion'
