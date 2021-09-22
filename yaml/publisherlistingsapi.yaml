@@ -529,10 +529,18 @@ paths:
         Yext uses DETAILS to retrieve listings details from your site using a
         known existing listing ID. The Details API should be able to retrieve
         data for both Yext-powered listings and listings that are in your site’s
-        native format. 
+        native format.
+
+
+        *NB* For any of the array fields, if there are no items, please default
+        to an empty array, instead of omitting the field, or returning `null`.
+
+
+        If the `type` of the listing is `HealthcareProfessional` or
+        `HealthcareFacility`, additional fields are required.
       responses:
         '200':
-          $ref: '#/components/responses/GetDetailsSuccess'
+          $ref: '#/components/responses/DetailsResponse'
         '400':
           $ref: '#/components/responses/ErrorResponseNew'
         '404':
@@ -639,7 +647,7 @@ paths:
         listing.
       responses:
         '200':
-          $ref: '#/components/responses/EmptyResponse'
+          $ref: '#/components/responses/EmptyResponseNew'
         '400':
           $ref: '#/components/responses/ErrorResponse'
   /listings/suppress:
@@ -1101,7 +1109,16 @@ components:
         The unique identifier of a suggestion on your site is known as the
         suggestionId.    
   schemas:
-    PartnerCategories:
+    ListingStatus:
+      type: string
+      description: The status of the listing
+      enum:
+        - AVAILABLE
+        - ACTIVE
+        - CLAIMED
+        - SUPPRESSED
+        - BLOCKED
+    Categories:
       type: array
       description: >-
         List of business categories, in your taxonomy, ordered by importance /
@@ -1118,6 +1135,13 @@ components:
           name:
             type: string
             description: Category name
+    LocationType:
+      type: string
+      description: The kind of listing
+      enum:
+        - Location
+        - HealthcareFacility
+        - HealthcareProfessional
     SearchResult:
       type: object
       required:
@@ -1139,15 +1163,7 @@ components:
           description: 'The ID of this location, as assigned by you'
           example: '567482'
         status:
-          type: string
-          description: The status of the listing
-          example: AVAILABLE
-          enum:
-            - AVAILABLE
-            - ACTIVE
-            - CLAIMED
-            - SUPPRESSED
-            - BLOCKED
+          $ref: '#/components/schemas/ListingStatus'
         name:
           type: string
           example: Yext
@@ -1223,19 +1239,9 @@ components:
           example: 'http://www.example.publisher.com/profile/567482'
           description: The URL where the listing’s details page can be viewed
         categories:
-          type: array
-          description: >-
-            List of business categories, in your taxonomy, ordered by importance
-            / relevance
-          items:
-            $ref: '#/components/schemas/PartnerCategories'
+          $ref: '#/components/schemas/Categories'
         type:
-          type: string
-          description: The kind of listing
-          enum:
-            - Location
-            - HealthcareFacility
-            - HealthcareProfessional
+          $ref: '#/components/schemas/LocationType'
         websiteUrl:
           type: string
           description: |
@@ -1263,6 +1269,216 @@ components:
         message:
           type: string
           description: Message explaining the problem.
+    DetailsHours:
+      type: array
+      description: The hours associated with the listing.
+      items:
+        type: object
+        properties:
+          day:
+            type: string
+            enum:
+              - MONDAY
+              - TUESDAY
+              - WEDNESDAY
+              - THURSDAY
+              - FRIDAY
+              - SATURDAY
+              - SUNDAY
+          intervals:
+            type: array
+            description: A set of opening and closing times for the specified day
+            items:
+              type: object
+              properties:
+                start:
+                  type: string
+                  description: >-
+                    The starting time of the interval on the 24-hour clock
+                    (e.g., 09:00:00)
+                end:
+                  type: string
+                  description: >-
+                    The ending time of the interval on the 24-hour clock (e.g.,
+                    14:00:00)
+    Details:
+      type: object
+      description: Base fields for any type of listing
+      required:
+        - id
+        - url
+        - status
+        - name
+        - address
+        - phone
+      properties:
+        id:
+          type: string
+          description: 'The ID of this location, as assigned by you'
+          example: xTydnfger
+        status:
+          $ref: '#/components/schemas/ListingStatus'
+        name:
+          type: string
+          description: The name to be displayed on the listing
+        address:
+          type: string
+          description: The building number and street address of the location
+        address2:
+          type: string
+          description: 'Second line of address (e.g., suite number)'
+        sublocality:
+          type: string
+          description: 'The sublocality (e.g., neighborhood or district) of the location'
+        city:
+          type: string
+          description: City
+        state:
+          type: string
+          description: >-
+            The location's state, region, or province. Abbreviations are used
+            for some countries.
+        zip:
+          type: string
+          description: The ZIP or postal code of the location
+        countryCode:
+          type: string
+          description: The ISO 3166-1 alpha-2 code of the location
+        phone:
+          type: string
+          description: >-
+            The primary phone number of the listing. For international numbers,
+            the number should match how a person within the country would dial
+            it (i.e., no area code or punctuation).
+        url:
+          type: string
+          description: The URL where the listing’s details page can be viewed
+        rating:
+          type: number
+          description: >-
+            The current rating for the listing (if your site has ratings). This
+            is usually measured in “stars” and ranges from 0 to 5 in increments
+            of 0.5.
+        totalReviews:
+          type: integer
+          description: >-
+            The total number of reviews for the listing (if your site has
+            reviews).
+        categories:
+          $ref: '#/components/schemas/Categories'
+        website:
+          type: string
+          description: The website associated with the result listing.
+        description:
+          type: string
+          description: The business description associated with the result listing.
+        hours:
+          $ref: '#/components/schemas/DetailsHours'
+        photos:
+          type: array
+          description: Array of urls of photos associated with the result listing.
+          items:
+            type: string
+        yearEstablished:
+          type: integer
+          description: 'The year that the business opened (e.g., 1982)'
+        specialOfferMessage:
+          type: string
+          description: The "message" portion of the `specialOffer` that we send to you
+        specialOfferUrl:
+          type: string
+          description: The "URL" portion of the `specialOffer` that we send to you
+        contactEmail:
+          type: string
+          description: >-
+            The email address that consumers can use to contact a representative
+            of the business
+        latitude:
+          type: string
+          description: The latitude of the listing
+        longitude:
+          type: string
+          description: The longitude of the listing
+        video:
+          type: string
+          description: The URL of the business's YouTube video
+        paymentOptions:
+          type: array
+          description: A list of payment methods that the business accepts.
+          items:
+            type: string
+        twitter:
+          type: string
+          description: The Twitter username used by the business
+        facebook:
+          type: string
+          description: The URL of the business's Facebook Page
+        type:
+          $ref: '#/components/schemas/LocationType'
+    HealthcareProfessional:
+      type: object
+      description: >-
+        The following additional fields are available if `type` is
+        `HealthcareProfessional`.
+      required:
+        - npi
+        - firstName
+        - middleName
+        - lastName
+        - officeName
+        - gender
+      properties:
+        npi:
+          type: string
+          description: National Provider Identifier (NPI) of the healthcare professional.
+        firstName:
+          type: string
+          description: The first name of the healthcare professional.
+        middleName:
+          type: string
+          description: The middle name of the healthcare professional.
+        lastName:
+          type: string
+          description: The last name of the healthcare professional.
+        officeName:
+          type: string
+          description: The name of the office where the healthcare professional works.
+        gender:
+          type: string
+          description: The gender of the healthcare professional.
+        conditionsTreated:
+          type: array
+          description: A list of the conditions treated by the healthcare professional.
+          items:
+            type: string
+        acceptingNewPatients:
+          type: boolean
+          description: >-
+            Indicates whether the healthcare professional is accepting new
+            patients.
+          default: true
+    HealthcareFacility:
+      type: object
+      description: >-
+        The following additional fields are available if `type` is
+        `HealthcareFacility`.
+      required:
+        - npi
+      properties:
+        npi:
+          type: string
+          description: National Provider Identifier (NPI) of the healthcare facility.
+        conditionsTreated:
+          type: array
+          description: A list of the conditions treated by the healthcare professional.
+          items:
+            type: string
+        acceptingNewPatients:
+          type: boolean
+          description: >-
+            Indicates whether the healthcare professional is accepting new
+            patients.
+          default: true
     Address:
       type: object
       description: The structured address for the location
@@ -1312,75 +1528,6 @@ components:
         countryCode:
           type: string
           description: The ISO 3166-1 alpha-2 code of the location
-    Emails:
-      type: array
-      description: >-
-        A list of contact email addresses that consumers can use to reach
-        someone who represents the location
-      items:
-        type: object
-        properties:
-          address:
-            type: string
-            description: Email Address
-          description:
-            type: string
-            description: Description
-    PartnerListing:
-      type: object
-      required:
-        - id
-        - name
-        - status
-        - address
-        - phone
-        - url
-      properties:
-        id:
-          type: string
-          description: 'The ID of this location, as assigned by you'
-          example: xTydnfger
-        name:
-          type: string
-          description: The name to be displayed on the listing
-        status:
-          type: string
-          description: The status of the listing
-          enum:
-            - AVAILABLE
-            - ACTIVE
-            - CLAIMED
-            - SUPPRESSED
-            - BLOCKED
-        address:
-          $ref: '#/components/schemas/Address'
-        latitude:
-          type: string
-          description: The latidude of the listing
-        longitude:
-          type: string
-          description: The longitude of the listing
-        phone:
-          type: string
-          description: >-
-            The primary phone number of the listing. For international numbers,
-            the number should match how a person within the country would dial
-            it (i.e., no area code or punctuation).
-        url:
-          type: string
-          description: The URL where the listing’s details page can be viewed
-        categories:
-          type: array
-          description: >-
-            List of business categories, in your taxonomy, ordered by importance
-            / relevance
-          items:
-            $ref: '#/components/schemas/PartnerCategories'
-        emails:
-          type: array
-          description: List of emails associated with the listing
-          items:
-            $ref: '#/components/schemas/Emails'
     Phones:
       type: array
       description: >-
@@ -1412,6 +1559,37 @@ components:
               - MOBILE
               - TOLL_FREE
               - TTY
+    PartnerCategories:
+      type: array
+      description: >-
+        List of business categories, in your taxonomy, ordered by importance /
+        relevance
+      items:
+        type: object
+        required:
+          - id
+          - name
+        properties:
+          id:
+            type: string
+            description: Category ID in your taxonomy
+          name:
+            type: string
+            description: Category name
+    Emails:
+      type: array
+      description: >-
+        A list of contact email addresses that consumers can use to reach
+        someone who represents the location
+      items:
+        type: object
+        properties:
+          address:
+            type: string
+            description: Email Address
+          description:
+            type: string
+            description: Description
     GeoData:
       type: object
       description: Geolocation data describing where exactly the physical location is
@@ -2176,14 +2354,17 @@ components:
             properties:
               error:
                 $ref: '#/components/schemas/ResponseErrorNew'
-    GetDetailsSuccess:
+    DetailsResponse:
       description: OK
       content:
         application/json:
           schema:
-            title: GetDetailsSuccess
+            title: DetailsResponse
             type: object
-            $ref: '#/components/schemas/PartnerListing'
+            anyOf:
+              - $ref: '#/components/schemas/Details'
+              - $ref: '#/components/schemas/HealthcareProfessional'
+              - $ref: '#/components/schemas/HealthcareFacility'
     404NotFoundResponse:
       description: Not Found
       content:
@@ -2265,18 +2446,8 @@ components:
                       description: >-
                         (Optional) contains a value for the field that you would
                         accept
-    EmptyResponse:
-      description: Empty Response.
-      content:
-        application/json:
-          schema:
-            title: EmptyResponse
-            type: object
-            properties:
-              meta:
-                $ref: '#/components/schemas/ResponseMeta'
-              response:
-                type: object
+    EmptyResponseNew:
+      description: OK
     ErrorResponse:
       description: Error Response
       content:
@@ -2289,12 +2460,6 @@ components:
                 $ref: '#/components/schemas/ResponseMetaWithError'
               response:
                 type: object
-    EmptyResponseNew:
-      description: Ok
-      content:
-        application/json:
-          schema:
-            title: EmptyResponseNew
     BlockedSuppression:
       description: Blocked
       content:
