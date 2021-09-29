@@ -39155,17 +39155,12 @@
         "type": "object",
         "required": [
           "entityId",
-          "site",
           "name",
           "email",
           "questionText",
           "questionLanguage"
         ],
         "properties": {
-          "id": {
-            "type": "integer",
-            "description": "ID of this question."
-          },
           "entityId": {
             "type": "string",
             "description": "ID of the entity associated to this question."
