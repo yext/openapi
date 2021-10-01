@@ -77368,7 +77368,7 @@ paths:
   '/accounts/{accountId}/api/{endpoint}/{ids}':
     get:
       servers:
-        - url: 'https://streams.yext.com'
+        - url: 'https://streams.yext.com/v2'
       operationId: streamsGet
       parameters:
         - $ref: '#/components/parameters/accountId'
@@ -77387,7 +77387,7 @@ paths:
   '/accounts/{accountId}/api/{endpoint}':
     get:
       servers:
-        - url: 'https://streams.yext.com'
+        - url: 'https://streams.yext.com/v2'
       operationId: streamsList
       parameters:
         - $ref: '#/components/parameters/accountId'

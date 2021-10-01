@@ -37096,7 +37096,7 @@
       "get": {
         "servers": [
           {
-            "url": "https://streams.yext.com"
+            "url": "https://streams.yext.com/v2"
           }
         ],
         "operationId": "streamsGet",
@@ -37133,7 +37133,7 @@
       "get": {
         "servers": [
           {
-            "url": "https://streams.yext.com"
+            "url": "https://streams.yext.com/v2"
           }
         ],
         "operationId": "streamsList",
