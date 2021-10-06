@@ -77354,12 +77354,6 @@ paths:
         - $ref: '#/components/parameters/accountId'
         - $ref: '#/components/parameters/v'
         - $ref: '#/components/parameters/apiIdentifier'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateReview'
       responses:
         '202':
           $ref: '#/components/responses/ReviewsResponse'
