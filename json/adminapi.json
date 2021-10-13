@@ -1185,7 +1185,7 @@
                 "minLength": 0,
                 "maxLength": 5000,
                 "type": "string",
-                "description": "\n\n\nCannot Include:\n* HTML markup\n* a phone number"
+                "description": "\n\n\nCannot Include:\n* HTML markup"
               },
               "address": {
                 "additionalProperties": false,
@@ -2686,7 +2686,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`websiteUrl.url`**. You can use **`websiteUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`websiteUrl.url`**.\n\nMust be a valid URL and be specified along with **`websiteUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`websiteUrl.url`**. You can use **`websiteUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`websiteUrl.url`**.\n\nMust be a valid URL and be specified along with **`websiteUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -2697,7 +2697,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL for this entity's website\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL for this entity's website"
                   }
                 },
                 "description": "Information about the website for this entity"
@@ -2778,7 +2778,7 @@
                 "minLength": 0,
                 "maxLength": 5000,
                 "type": "string",
-                "description": "\n\n\nCannot Include:\n* HTML markup\n* a phone number"
+                "description": "\n\n\nCannot Include:\n* HTML markup"
               },
               "address": {
                 "additionalProperties": false,
@@ -3191,7 +3191,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`websiteUrl.url`**. You can use **`websiteUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`websiteUrl.url`**.\n\nMust be a valid URL and be specified along with **`websiteUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`websiteUrl.url`**. You can use **`websiteUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`websiteUrl.url`**.\n\nMust be a valid URL and be specified along with **`websiteUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -3202,7 +3202,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL for this entity's website\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL for this entity's website"
                   }
                 },
                 "description": "Information about the website for this entity"
@@ -3260,7 +3260,7 @@
                 "minLength": 0,
                 "maxLength": 5000,
                 "type": "string",
-                "description": "\n\n\nCannot Include:\n* HTML markup\n* a phone number"
+                "description": "\n\n\nCannot Include:\n* HTML markup"
               },
               "answer": {
                 "description": "The answer to the frequently asked question represented by this entity\n\n\nCharacter limit: 0 .. 15000\n\nSupported formats include:\n* BOLD\n* ITALICS\n* UNDERLINE\n* BULLETED_LIST\n* NUMBERED_LIST\n* HYPERLINK\n* IMAGE\n* CODE_SPAN\n* HEADINGS",
@@ -3417,7 +3417,7 @@
                 "minLength": 0,
                 "maxLength": 5000,
                 "type": "string",
-                "description": "\n\n\nCannot Include:\n* HTML markup\n* a phone number"
+                "description": "\n\n\nCannot Include:\n* HTML markup"
               },
               "address": {
                 "additionalProperties": false,
@@ -4593,7 +4593,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`menuUrl.url`**. You can use **`menuUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`menuUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`menuUrl.url`**. You can use **`menuUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`menuUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -4604,7 +4604,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL where consumers can view the entity's menu\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL where consumers can view the entity's menu"
                   }
                 },
                 "description": "Information about the URL where consumers can view the entity's menu"
@@ -4909,7 +4909,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`orderUrl.url`**. You can use **`orderUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`orderUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`orderUrl.url`**. You can use **`orderUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`orderUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -4920,7 +4920,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL used to place an order at this entity\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL used to place an order at this entity"
                   }
                 },
                 "description": "Information about the URL used to place orders that will be fulfilled by the entity"
@@ -5495,7 +5495,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`reservationUrl.url`**. You can use **`reservationUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`reservationUrl.url`**.\n\nMust be a valid URL and be specified along with **`reservationUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`reservationUrl.url`**. You can use **`reservationUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`reservationUrl.url`**.\n\nMust be a valid URL and be specified along with **`reservationUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -5506,7 +5506,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL used to make reservations at this entity\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL used to make reservations at this entity"
                   }
                 },
                 "description": "Information about the URL consumers can visit to make reservations at this entity"
@@ -5726,7 +5726,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`websiteUrl.url`**. You can use **`websiteUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`websiteUrl.url`**.\n\nMust be a valid URL and be specified along with **`websiteUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`websiteUrl.url`**. You can use **`websiteUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`websiteUrl.url`**.\n\nMust be a valid URL and be specified along with **`websiteUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -5737,7 +5737,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL for this entity's website\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL for this entity's website"
                   }
                 },
                 "description": "Information about the website for this entity"
@@ -5802,7 +5802,7 @@
                 "minLength": 0,
                 "maxLength": 5000,
                 "type": "string",
-                "description": "\n\n\nCannot Include:\n* HTML markup\n* a phone number"
+                "description": "\n\n\nCannot Include:\n* HTML markup"
               },
               "address": {
                 "additionalProperties": false,
@@ -6827,7 +6827,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`menuUrl.url`**. You can use **`menuUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`menuUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`menuUrl.url`**. You can use **`menuUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`menuUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -6838,7 +6838,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL where consumers can view the entity's menu\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL where consumers can view the entity's menu"
                   }
                 },
                 "description": "Information about the URL where consumers can view the entity's menu"
@@ -7154,7 +7154,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`orderUrl.url`**. You can use **`orderUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`orderUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`orderUrl.url`**. You can use **`orderUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`orderUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -7165,7 +7165,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL used to place an order at this entity\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL used to place an order at this entity"
                   }
                 },
                 "description": "Information about the URL used to place orders that will be fulfilled by the entity"
@@ -7463,7 +7463,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`reservationUrl.url`**. You can use **`reservationUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`reservationUrl.url`**.\n\nMust be a valid URL and be specified along with **`reservationUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`reservationUrl.url`**. You can use **`reservationUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`reservationUrl.url`**.\n\nMust be a valid URL and be specified along with **`reservationUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -7474,7 +7474,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL used to make reservations at this entity\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL used to make reservations at this entity"
                   }
                 },
                 "description": "Information about the URL consumers can visit to make reservations at this entity"
@@ -7694,7 +7694,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`websiteUrl.url`**. You can use **`websiteUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`websiteUrl.url`**.\n\nMust be a valid URL and be specified along with **`websiteUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`websiteUrl.url`**. You can use **`websiteUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`websiteUrl.url`**.\n\nMust be a valid URL and be specified along with **`websiteUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -7705,7 +7705,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL for this entity's website\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL for this entity's website"
                   }
                 },
                 "description": "Information about the website for this entity"
@@ -7770,7 +7770,7 @@
                 "minLength": 0,
                 "maxLength": 5000,
                 "type": "string",
-                "description": "\n\n\nCannot Include:\n* HTML markup\n* a phone number"
+                "description": "\n\n\nCannot Include:\n* HTML markup"
               },
               "address": {
                 "additionalProperties": false,
@@ -10175,7 +10175,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`menuUrl.url`**. You can use **`menuUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`menuUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`menuUrl.url`**. You can use **`menuUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`menuUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -10186,7 +10186,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL where consumers can view the entity's menu\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL where consumers can view the entity's menu"
                   }
                 },
                 "description": "Information about the URL where consumers can view the entity's menu"
@@ -10249,7 +10249,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`orderUrl.url`**. You can use **`orderUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`orderUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`orderUrl.url`**. You can use **`orderUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`orderUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -10260,7 +10260,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL used to place an order at this entity\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL used to place an order at this entity"
                   }
                 },
                 "description": "Information about the URL used to place orders that will be fulfilled by the entity"
@@ -10589,7 +10589,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`reservationUrl.url`**. You can use **`reservationUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`reservationUrl.url`**.\n\nMust be a valid URL and be specified along with **`reservationUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`reservationUrl.url`**. You can use **`reservationUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`reservationUrl.url`**.\n\nMust be a valid URL and be specified along with **`reservationUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -10600,7 +10600,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL used to make reservations at this entity\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL used to make reservations at this entity"
                   }
                 },
                 "description": "Information about the URL consumers can visit to make reservations at this entity"
@@ -11039,7 +11039,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`websiteUrl.url`**. You can use **`websiteUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`websiteUrl.url`**.\n\nMust be a valid URL and be specified along with **`websiteUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`websiteUrl.url`**. You can use **`websiteUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`websiteUrl.url`**.\n\nMust be a valid URL and be specified along with **`websiteUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -11050,7 +11050,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL for this entity's website\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL for this entity's website"
                   }
                 },
                 "description": "Information about the website for this entity"
@@ -11149,7 +11149,7 @@
                 "minLength": 0,
                 "maxLength": 5000,
                 "type": "string",
-                "description": "\n\n\nCannot Include:\n* HTML markup\n* a phone number"
+                "description": "\n\n\nCannot Include:\n* HTML markup"
               },
               "applicationUrl": {
                 "minLength": 0,
@@ -11380,7 +11380,7 @@
                 "minLength": 0,
                 "maxLength": 5000,
                 "type": "string",
-                "description": "\n\n\nCannot Include:\n* HTML markup\n* a phone number"
+                "description": "\n\n\nCannot Include:\n* HTML markup"
               },
               "address": {
                 "additionalProperties": false,
@@ -13925,7 +13925,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`menuUrl.url`**. You can use **`menuUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`menuUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`menuUrl.url`**. You can use **`menuUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`menuUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -13936,7 +13936,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL where consumers can view the entity's menu\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL where consumers can view the entity's menu"
                   }
                 },
                 "description": "Information about the URL where consumers can view the entity's menu"
@@ -14258,7 +14258,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`orderUrl.url`**. You can use **`orderUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`orderUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`orderUrl.url`**. You can use **`orderUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`orderUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -14269,7 +14269,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL used to place an order at this entity\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL used to place an order at this entity"
                   }
                 },
                 "description": "Information about the URL used to place orders that will be fulfilled by the entity"
@@ -14855,7 +14855,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`reservationUrl.url`**. You can use **`reservationUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`reservationUrl.url`**.\n\nMust be a valid URL and be specified along with **`reservationUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`reservationUrl.url`**. You can use **`reservationUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`reservationUrl.url`**.\n\nMust be a valid URL and be specified along with **`reservationUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -14866,7 +14866,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL used to make reservations at this entity\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL used to make reservations at this entity"
                   }
                 },
                 "description": "Information about the URL consumers can visit to make reservations at this entity"
@@ -15651,7 +15651,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`websiteUrl.url`**. You can use **`websiteUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`websiteUrl.url`**.\n\nMust be a valid URL and be specified along with **`websiteUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`websiteUrl.url`**. You can use **`websiteUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`websiteUrl.url`**.\n\nMust be a valid URL and be specified along with **`websiteUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -15662,7 +15662,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL for this entity's website\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL for this entity's website"
                   }
                 },
                 "description": "Information about the website for this entity"
@@ -15727,7 +15727,7 @@
                 "minLength": 0,
                 "maxLength": 5000,
                 "type": "string",
-                "description": "\n\n\nCannot Include:\n* HTML markup\n* a phone number"
+                "description": "\n\n\nCannot Include:\n* HTML markup"
               },
               "address": {
                 "additionalProperties": false,
@@ -18302,7 +18302,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`menuUrl.url`**. You can use **`menuUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`menuUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`menuUrl.url`**. You can use **`menuUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`menuUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -18313,7 +18313,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL where consumers can view the entity's menu\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL where consumers can view the entity's menu"
                   }
                 },
                 "description": "Information about the URL where consumers can view the entity's menu"
@@ -18635,7 +18635,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`orderUrl.url`**. You can use **`orderUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`orderUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`orderUrl.url`**. You can use **`orderUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`orderUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -18646,7 +18646,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL used to place an order at this entity\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL used to place an order at this entity"
                   }
                 },
                 "description": "Information about the URL used to place orders that will be fulfilled by the entity"
@@ -19221,7 +19221,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`reservationUrl.url`**. You can use **`reservationUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`reservationUrl.url`**.\n\nMust be a valid URL and be specified along with **`reservationUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`reservationUrl.url`**. You can use **`reservationUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`reservationUrl.url`**.\n\nMust be a valid URL and be specified along with **`reservationUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -19232,7 +19232,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL used to make reservations at this entity\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL used to make reservations at this entity"
                   }
                 },
                 "description": "Information about the URL consumers can visit to make reservations at this entity"
@@ -20017,7 +20017,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "The URL that is shown on your listings in place of **`websiteUrl.url`**. You can use **`websiteUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`websiteUrl.url`**.\n\nMust be a valid URL and be specified along with **`websiteUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "The URL that is shown on your listings in place of **`websiteUrl.url`**. You can use **`websiteUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`websiteUrl.url`**.\n\nMust be a valid URL and be specified along with **`websiteUrl.url`**."
                   },
                   "preferDisplayUrl": {
                     "type": "boolean",
@@ -20028,7 +20028,7 @@
                     "maxLength": 255,
                     "format": "uri",
                     "type": "string",
-                    "description": "A valid URL for this entity's website\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    "description": "A valid URL for this entity's website"
                   }
                 },
                 "description": "Information about the website for this entity"
@@ -21233,7 +21233,7 @@
             "minLength": 0,
             "maxLength": 5000,
             "type": "string",
-            "description": "\n\n\nCannot Include:\n* HTML markup\n* a phone number\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+            "description": "\n\n\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
           },
           "address": {
             "additionalProperties": false,
@@ -24668,7 +24668,7 @@
                 "maxLength": 255,
                 "format": "uri",
                 "type": "string",
-                "description": "The URL that is shown on your listings in place of **`menuUrl.url`**. You can use **`menuUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`menuUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc.\n\nFiltering Type: `text`"
+                "description": "The URL that is shown on your listings in place of **`menuUrl.url`**. You can use **`menuUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`menuUrl.url`**.\n\nFiltering Type: `text`"
               },
               "preferDisplayUrl": {
                 "type": "boolean",
@@ -24679,7 +24679,7 @@
                 "maxLength": 255,
                 "format": "uri",
                 "type": "string",
-                "description": "A valid URL where consumers can view the entity's menu\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc.\n\nFiltering Type: `text`"
+                "description": "A valid URL where consumers can view the entity's menu\n\nFiltering Type: `text`"
               }
             },
             "description": "Information about the URL where consumers can view the entity's menu\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
@@ -25052,7 +25052,7 @@
                 "maxLength": 255,
                 "format": "uri",
                 "type": "string",
-                "description": "The URL that is shown on your listings in place of **`orderUrl.url`**. You can use **`orderUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`orderUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc.\n\nFiltering Type: `text`"
+                "description": "The URL that is shown on your listings in place of **`orderUrl.url`**. You can use **`orderUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`orderUrl.url`**.\n\nFiltering Type: `text`"
               },
               "preferDisplayUrl": {
                 "type": "boolean",
@@ -25063,7 +25063,7 @@
                 "maxLength": 255,
                 "format": "uri",
                 "type": "string",
-                "description": "A valid URL used to place an order at this entity\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc.\n\nFiltering Type: `text`"
+                "description": "A valid URL used to place an order at this entity\n\nFiltering Type: `text`"
               }
             },
             "description": "Information about the URL used to place orders that will be fulfilled by the entity\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
@@ -25746,7 +25746,7 @@
                 "maxLength": 255,
                 "format": "uri",
                 "type": "string",
-                "description": "The URL that is shown on your listings in place of **`reservationUrl.url`**. You can use **`reservationUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`reservationUrl.url`**.\n\nMust be a valid URL and be specified along with **`reservationUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc.\n\nFiltering Type: `text`"
+                "description": "The URL that is shown on your listings in place of **`reservationUrl.url`**. You can use **`reservationUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`reservationUrl.url`**.\n\nMust be a valid URL and be specified along with **`reservationUrl.url`**.\n\nFiltering Type: `text`"
               },
               "preferDisplayUrl": {
                 "type": "boolean",
@@ -25757,7 +25757,7 @@
                 "maxLength": 255,
                 "format": "uri",
                 "type": "string",
-                "description": "A valid URL used to make reservations at this entity\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc.\n\nFiltering Type: `text`"
+                "description": "A valid URL used to make reservations at this entity\n\nFiltering Type: `text`"
               }
             },
             "description": "Information about the URL consumers can visit to make reservations at this entity\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
@@ -26879,7 +26879,7 @@
                 "maxLength": 255,
                 "format": "uri",
                 "type": "string",
-                "description": "The URL that is shown on your listings in place of **`websiteUrl.url`**. You can use **`websiteUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`websiteUrl.url`**.\n\nMust be a valid URL and be specified along with **`websiteUrl.url`**.\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc.\n\nFiltering Type: `text`"
+                "description": "The URL that is shown on your listings in place of **`websiteUrl.url`**. You can use **`websiteUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`websiteUrl.url`**.\n\nMust be a valid URL and be specified along with **`websiteUrl.url`**.\n\nFiltering Type: `text`"
               },
               "preferDisplayUrl": {
                 "type": "boolean",
@@ -26890,7 +26890,7 @@
                 "maxLength": 255,
                 "format": "uri",
                 "type": "string",
-                "description": "A valid URL for this entity's website\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc.\n\nFiltering Type: `text`"
+                "description": "A valid URL for this entity's website\n\nFiltering Type: `text`"
               }
             },
             "description": "Information about the website for this entity\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"

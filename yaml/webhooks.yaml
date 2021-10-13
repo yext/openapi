@@ -557,7 +557,6 @@ components:
 
             Cannot Include:
             * HTML markup
-            * a phone number
 
             Filtering Type: `text`
 
@@ -7135,12 +7134,6 @@ components:
                 to the URL given in **`menuUrl.url`**.
 
 
-
-                Cannot Include:
-
-                * common domain names, e.g., google.com, youtube.com, etc.
-
-
                 Filtering Type: `text`
             preferDisplayUrl:
               type: boolean
@@ -7158,10 +7151,6 @@ components:
               type: string
               description: |-
                 A valid URL where consumers can view the entity's menu
-
-
-                Cannot Include:
-                * common domain names, e.g., google.com, youtube.com, etc.
 
                 Filtering Type: `text`
           description: |-
@@ -7832,12 +7821,6 @@ components:
                 to the URL given in **`orderUrl.url`**.
 
 
-
-                Cannot Include:
-
-                * common domain names, e.g., google.com, youtube.com, etc.
-
-
                 Filtering Type: `text`
             preferDisplayUrl:
               type: boolean
@@ -7855,10 +7838,6 @@ components:
               type: string
               description: |-
                 A valid URL used to place an order at this entity
-
-
-                Cannot Include:
-                * common domain names, e.g., google.com, youtube.com, etc.
 
                 Filtering Type: `text`
           description: >-
@@ -9141,12 +9120,6 @@ components:
                 **`reservationUrl.url`**.
 
 
-
-                Cannot Include:
-
-                * common domain names, e.g., google.com, youtube.com, etc.
-
-
                 Filtering Type: `text`
             preferDisplayUrl:
               type: boolean
@@ -9164,10 +9137,6 @@ components:
               type: string
               description: |-
                 A valid URL used to make reservations at this entity
-
-
-                Cannot Include:
-                * common domain names, e.g., google.com, youtube.com, etc.
 
                 Filtering Type: `text`
           description: >-
@@ -11235,12 +11204,6 @@ components:
                 **`websiteUrl.url`**.
 
 
-
-                Cannot Include:
-
-                * common domain names, e.g., google.com, youtube.com, etc.
-
-
                 Filtering Type: `text`
             preferDisplayUrl:
               type: boolean
@@ -11258,10 +11221,6 @@ components:
               type: string
               description: |-
                 A valid URL for this entity's website
-
-
-                Cannot Include:
-                * common domain names, e.g., google.com, youtube.com, etc.
 
                 Filtering Type: `text`
           description: |-

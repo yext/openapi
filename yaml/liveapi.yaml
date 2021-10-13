@@ -375,8 +375,6 @@ paths:
             </table>
 
 
-            </br>
-
             **BOOLEAN**
 
 
@@ -404,8 +402,6 @@ paths:
               </tr>
             </table>
 
-
-            </br>
 
             **STRUCT**
 
@@ -441,8 +437,6 @@ paths:
               </tr>
             </table>
 
-
-            </br>
 
             **OPTION**
 
@@ -507,8 +501,6 @@ paths:
               </tr>
             </table>
 
-
-            </br>
 
             **PHONE**
 
@@ -583,8 +575,6 @@ paths:
               </tr>
             </table>
 
-
-            </br>
 
             **INTEGER, FLOAT, DATE, DATETIME, and TIME**
 
@@ -687,8 +677,6 @@ paths:
               </tr>
             </table>
 
-
-            </br>
 
             **LIST OF TEXT**
 
@@ -830,8 +818,6 @@ paths:
             </table>
 
 
-            </br>
-
             **LIST OF BOOLEAN, OPTION, PHONE, INTEGER, FLOAT, DATE, DATETIME, OR
             TIME**
 
@@ -894,8 +880,6 @@ paths:
             </table>
 
 
-            </br>
-
             **LIST OF STRUCT**
 
 
@@ -925,8 +909,6 @@ paths:
             integers could be applied to **`age`** in this case (`$eq`,
             `$eqAll`, `$eqAny`).
 
-
-            </br>
 
 
             **HOURS**
@@ -1054,8 +1036,6 @@ paths:
             </table>
 
 
-            </br>
-
 
             **Filtering by Dates and Times**
 
@@ -1151,8 +1131,6 @@ paths:
             give you today’s date without the time.
 
 
-            </br>
-
             **Filtering Across an Entity**
 
 
@@ -1180,8 +1158,6 @@ paths:
               </tr>
             </table>
 
-
-            </br>
 
             **Examples**
 
@@ -1482,7 +1458,6 @@ paths:
 
                                 Cannot Include:
                                 * HTML markup
-                                * a phone number
 
                                 Filtering Type: `text`
 
@@ -8649,13 +8624,6 @@ paths:
                                     **`menuUrl.url`**.
 
 
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
-
-
                                     Filtering Type: `text`
                                 preferDisplayUrl:
                                   type: boolean
@@ -8675,13 +8643,6 @@ paths:
                                   description: >-
                                     A valid URL where consumers can view the
                                     entity's menu
-
-
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
 
 
                                     Filtering Type: `text`
@@ -9411,13 +9372,6 @@ paths:
                                     **`orderUrl.url`**.
 
 
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
-
-
                                     Filtering Type: `text`
                                 preferDisplayUrl:
                                   type: boolean
@@ -9437,13 +9391,6 @@ paths:
                                   description: >-
                                     A valid URL used to place an order at this
                                     entity
-
-
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
 
 
                                     Filtering Type: `text`
@@ -10820,13 +10767,6 @@ paths:
                                     with **`reservationUrl.url`**.
 
 
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
-
-
                                     Filtering Type: `text`
                                 preferDisplayUrl:
                                   type: boolean
@@ -10846,13 +10786,6 @@ paths:
                                   description: >-
                                     A valid URL used to make reservations at
                                     this entity
-
-
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
 
 
                                     Filtering Type: `text`
@@ -13111,13 +13044,6 @@ paths:
                                     with **`websiteUrl.url`**.
 
 
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
-
-
                                     Filtering Type: `text`
                                 preferDisplayUrl:
                                   type: boolean
@@ -13134,16 +13060,8 @@ paths:
                                   maxLength: 255
                                   format: uri
                                   type: string
-                                  description: >-
+                                  description: |-
                                     A valid URL for this entity's website
-
-
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
-
 
                                     Filtering Type: `text`
                               description: |-
@@ -13670,7 +13588,6 @@ paths:
 
                           Cannot Include:
                           * HTML markup
-                          * a phone number
 
                           Filtering Type: `text`
 
@@ -20677,13 +20594,6 @@ paths:
                               the URL given in **`menuUrl.url`**.
 
 
-
-                              Cannot Include:
-
-                              * common domain names, e.g., google.com,
-                              youtube.com, etc.
-
-
                               Filtering Type: `text`
                           preferDisplayUrl:
                             type: boolean
@@ -20702,13 +20612,6 @@ paths:
                             description: >-
                               A valid URL where consumers can view the entity's
                               menu
-
-
-
-                              Cannot Include:
-
-                              * common domain names, e.g., google.com,
-                              youtube.com, etc.
 
 
                               Filtering Type: `text`
@@ -21420,13 +21323,6 @@ paths:
                               the URL given in **`orderUrl.url`**.
 
 
-
-                              Cannot Include:
-
-                              * common domain names, e.g., google.com,
-                              youtube.com, etc.
-
-
                               Filtering Type: `text`
                           preferDisplayUrl:
                             type: boolean
@@ -21442,16 +21338,8 @@ paths:
                             maxLength: 255
                             format: uri
                             type: string
-                            description: >-
+                            description: |-
                               A valid URL used to place an order at this entity
-
-
-
-                              Cannot Include:
-
-                              * common domain names, e.g., google.com,
-                              youtube.com, etc.
-
 
                               Filtering Type: `text`
                         description: >-
@@ -22815,13 +22703,6 @@ paths:
                               **`reservationUrl.url`**.
 
 
-
-                              Cannot Include:
-
-                              * common domain names, e.g., google.com,
-                              youtube.com, etc.
-
-
                               Filtering Type: `text`
                           preferDisplayUrl:
                             type: boolean
@@ -22840,13 +22721,6 @@ paths:
                             description: >-
                               A valid URL used to make reservations at this
                               entity
-
-
-
-                              Cannot Include:
-
-                              * common domain names, e.g., google.com,
-                              youtube.com, etc.
 
 
                               Filtering Type: `text`
@@ -25062,13 +24936,6 @@ paths:
                               **`websiteUrl.url`**.
 
 
-
-                              Cannot Include:
-
-                              * common domain names, e.g., google.com,
-                              youtube.com, etc.
-
-
                               Filtering Type: `text`
                           preferDisplayUrl:
                             type: boolean
@@ -25084,16 +24951,8 @@ paths:
                             maxLength: 255
                             format: uri
                             type: string
-                            description: >-
+                            description: |-
                               A valid URL for this entity's website
-
-
-
-                              Cannot Include:
-
-                              * common domain names, e.g., google.com,
-                              youtube.com, etc.
-
 
                               Filtering Type: `text`
                         description: |-
@@ -25828,8 +25687,6 @@ paths:
             </table>
 
 
-            </br>
-
             **BOOLEAN**
 
 
@@ -25857,8 +25714,6 @@ paths:
               </tr>
             </table>
 
-
-            </br>
 
             **STRUCT**
 
@@ -25894,8 +25749,6 @@ paths:
               </tr>
             </table>
 
-
-            </br>
 
             **OPTION**
 
@@ -25960,8 +25813,6 @@ paths:
               </tr>
             </table>
 
-
-            </br>
 
             **PHONE**
 
@@ -26036,8 +25887,6 @@ paths:
               </tr>
             </table>
 
-
-            </br>
 
             **INTEGER, FLOAT, DATE, DATETIME, and TIME**
 
@@ -26140,8 +25989,6 @@ paths:
               </tr>
             </table>
 
-
-            </br>
 
             **LIST OF TEXT**
 
@@ -26283,8 +26130,6 @@ paths:
             </table>
 
 
-            </br>
-
             **LIST OF BOOLEAN, OPTION, PHONE, INTEGER, FLOAT, DATE, DATETIME, OR
             TIME**
 
@@ -26347,8 +26192,6 @@ paths:
             </table>
 
 
-            </br>
-
             **LIST OF STRUCT**
 
 
@@ -26378,8 +26221,6 @@ paths:
             integers could be applied to **`age`** in this case (`$eq`,
             `$eqAll`, `$eqAny`).
 
-
-            </br>
 
 
             **HOURS**
@@ -26507,8 +26348,6 @@ paths:
             </table>
 
 
-            </br>
-
 
             **Filtering by Dates and Times**
 
@@ -26604,8 +26443,6 @@ paths:
             give you today’s date without the time.
 
 
-            </br>
-
             **Filtering Across an Entity**
 
 
@@ -26633,8 +26470,6 @@ paths:
               </tr>
             </table>
 
-
-            </br>
 
             **Examples**
 
@@ -26972,7 +26807,6 @@ paths:
 
                                 Cannot Include:
                                 * HTML markup
-                                * a phone number
 
                                 Filtering Type: `text`
 
@@ -34139,13 +33973,6 @@ paths:
                                     **`menuUrl.url`**.
 
 
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
-
-
                                     Filtering Type: `text`
                                 preferDisplayUrl:
                                   type: boolean
@@ -34165,13 +33992,6 @@ paths:
                                   description: >-
                                     A valid URL where consumers can view the
                                     entity's menu
-
-
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
 
 
                                     Filtering Type: `text`
@@ -34901,13 +34721,6 @@ paths:
                                     **`orderUrl.url`**.
 
 
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
-
-
                                     Filtering Type: `text`
                                 preferDisplayUrl:
                                   type: boolean
@@ -34927,13 +34740,6 @@ paths:
                                   description: >-
                                     A valid URL used to place an order at this
                                     entity
-
-
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
 
 
                                     Filtering Type: `text`
@@ -36310,13 +36116,6 @@ paths:
                                     with **`reservationUrl.url`**.
 
 
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
-
-
                                     Filtering Type: `text`
                                 preferDisplayUrl:
                                   type: boolean
@@ -36336,13 +36135,6 @@ paths:
                                   description: >-
                                     A valid URL used to make reservations at
                                     this entity
-
-
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
 
 
                                     Filtering Type: `text`
@@ -38601,13 +38393,6 @@ paths:
                                     with **`websiteUrl.url`**.
 
 
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
-
-
                                     Filtering Type: `text`
                                 preferDisplayUrl:
                                   type: boolean
@@ -38624,16 +38409,8 @@ paths:
                                   maxLength: 255
                                   format: uri
                                   type: string
-                                  description: >-
+                                  description: |-
                                     A valid URL for this entity's website
-
-
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
-
 
                                     Filtering Type: `text`
                               description: |-
@@ -39300,7 +39077,6 @@ paths:
 
                           Cannot Include:
                           * HTML markup
-                          * a phone number
 
                           Filtering Type: `text`
 
@@ -46307,13 +46083,6 @@ paths:
                               the URL given in **`menuUrl.url`**.
 
 
-
-                              Cannot Include:
-
-                              * common domain names, e.g., google.com,
-                              youtube.com, etc.
-
-
                               Filtering Type: `text`
                           preferDisplayUrl:
                             type: boolean
@@ -46332,13 +46101,6 @@ paths:
                             description: >-
                               A valid URL where consumers can view the entity's
                               menu
-
-
-
-                              Cannot Include:
-
-                              * common domain names, e.g., google.com,
-                              youtube.com, etc.
 
 
                               Filtering Type: `text`
@@ -47050,13 +46812,6 @@ paths:
                               the URL given in **`orderUrl.url`**.
 
 
-
-                              Cannot Include:
-
-                              * common domain names, e.g., google.com,
-                              youtube.com, etc.
-
-
                               Filtering Type: `text`
                           preferDisplayUrl:
                             type: boolean
@@ -47072,16 +46827,8 @@ paths:
                             maxLength: 255
                             format: uri
                             type: string
-                            description: >-
+                            description: |-
                               A valid URL used to place an order at this entity
-
-
-
-                              Cannot Include:
-
-                              * common domain names, e.g., google.com,
-                              youtube.com, etc.
-
 
                               Filtering Type: `text`
                         description: >-
@@ -48445,13 +48192,6 @@ paths:
                               **`reservationUrl.url`**.
 
 
-
-                              Cannot Include:
-
-                              * common domain names, e.g., google.com,
-                              youtube.com, etc.
-
-
                               Filtering Type: `text`
                           preferDisplayUrl:
                             type: boolean
@@ -48470,13 +48210,6 @@ paths:
                             description: >-
                               A valid URL used to make reservations at this
                               entity
-
-
-
-                              Cannot Include:
-
-                              * common domain names, e.g., google.com,
-                              youtube.com, etc.
 
 
                               Filtering Type: `text`
@@ -50692,13 +50425,6 @@ paths:
                               **`websiteUrl.url`**.
 
 
-
-                              Cannot Include:
-
-                              * common domain names, e.g., google.com,
-                              youtube.com, etc.
-
-
                               Filtering Type: `text`
                           preferDisplayUrl:
                             type: boolean
@@ -50714,16 +50440,8 @@ paths:
                             maxLength: 255
                             format: uri
                             type: string
-                            description: >-
+                            description: |-
                               A valid URL for this entity's website
-
-
-
-                              Cannot Include:
-
-                              * common domain names, e.g., google.com,
-                              youtube.com, etc.
-
 
                               Filtering Type: `text`
                         description: |-
@@ -51283,7 +51001,6 @@ paths:
 
                                 Cannot Include:
                                 * HTML markup
-                                * a phone number
 
                                 Filtering Type: `text`
 
@@ -58450,13 +58167,6 @@ paths:
                                     **`menuUrl.url`**.
 
 
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
-
-
                                     Filtering Type: `text`
                                 preferDisplayUrl:
                                   type: boolean
@@ -58476,13 +58186,6 @@ paths:
                                   description: >-
                                     A valid URL where consumers can view the
                                     entity's menu
-
-
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
 
 
                                     Filtering Type: `text`
@@ -59212,13 +58915,6 @@ paths:
                                     **`orderUrl.url`**.
 
 
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
-
-
                                     Filtering Type: `text`
                                 preferDisplayUrl:
                                   type: boolean
@@ -59238,13 +58934,6 @@ paths:
                                   description: >-
                                     A valid URL used to place an order at this
                                     entity
-
-
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
 
 
                                     Filtering Type: `text`
@@ -60621,13 +60310,6 @@ paths:
                                     with **`reservationUrl.url`**.
 
 
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
-
-
                                     Filtering Type: `text`
                                 preferDisplayUrl:
                                   type: boolean
@@ -60647,13 +60329,6 @@ paths:
                                   description: >-
                                     A valid URL used to make reservations at
                                     this entity
-
-
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
 
 
                                     Filtering Type: `text`
@@ -62912,13 +62587,6 @@ paths:
                                     with **`websiteUrl.url`**.
 
 
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
-
-
                                     Filtering Type: `text`
                                 preferDisplayUrl:
                                   type: boolean
@@ -62935,16 +62603,8 @@ paths:
                                   maxLength: 255
                                   format: uri
                                   type: string
-                                  description: >-
+                                  description: |-
                                     A valid URL for this entity's website
-
-
-
-                                    Cannot Include:
-
-                                    * common domain names, e.g., google.com,
-                                    youtube.com, etc.
-
 
                                     Filtering Type: `text`
                               description: |-
@@ -63645,8 +63305,6 @@ paths:
             </table>
 
 
-            </br>
-
             **BOOLEAN**
 
 
@@ -63674,8 +63332,6 @@ paths:
               </tr>
             </table>
 
-
-            </br>
 
             **STRUCT**
 
@@ -63711,8 +63367,6 @@ paths:
               </tr>
             </table>
 
-
-            </br>
 
             **OPTION**
 
@@ -63777,8 +63431,6 @@ paths:
               </tr>
             </table>
 
-
-            </br>
 
             **PHONE**
 
@@ -63853,8 +63505,6 @@ paths:
               </tr>
             </table>
 
-
-            </br>
 
             **INTEGER, FLOAT, DATE, DATETIME, and TIME**
 
@@ -63957,8 +63607,6 @@ paths:
               </tr>
             </table>
 
-
-            </br>
 
             **LIST OF TEXT**
 
@@ -64100,8 +63748,6 @@ paths:
             </table>
 
 
-            </br>
-
             **LIST OF BOOLEAN, OPTION, PHONE, INTEGER, FLOAT, DATE, DATETIME, OR
             TIME**
 
@@ -64164,8 +63810,6 @@ paths:
             </table>
 
 
-            </br>
-
             **LIST OF STRUCT**
 
 
@@ -64195,8 +63839,6 @@ paths:
             integers could be applied to **`age`** in this case (`$eq`,
             `$eqAll`, `$eqAny`).
 
-
-            </br>
 
 
             **HOURS**
@@ -64324,8 +63966,6 @@ paths:
             </table>
 
 
-            </br>
-
 
             **Filtering by Dates and Times**
 
@@ -64421,8 +64061,6 @@ paths:
             give you today’s date without the time.
 
 
-            </br>
-
             **Filtering Across an Entity**
 
 
@@ -64450,8 +64088,6 @@ paths:
               </tr>
             </table>
 
-
-            </br>
 
             **Examples**
 
@@ -64768,7 +64404,6 @@ paths:
 
                                       Cannot Include:
                                       * HTML markup
-                                      * a phone number
 
                                       Filtering Type: `text`
 
@@ -72087,13 +71722,6 @@ paths:
                                           **`menuUrl.url`**.
 
 
-
-                                          Cannot Include:
-
-                                          * common domain names, e.g., google.com,
-                                          youtube.com, etc.
-
-
                                           Filtering Type: `text`
                                       preferDisplayUrl:
                                         type: boolean
@@ -72113,13 +71741,6 @@ paths:
                                         description: >-
                                           A valid URL where consumers can view the
                                           entity's menu
-
-
-
-                                          Cannot Include:
-
-                                          * common domain names, e.g., google.com,
-                                          youtube.com, etc.
 
 
                                           Filtering Type: `text`
@@ -72869,13 +72490,6 @@ paths:
                                           **`orderUrl.url`**.
 
 
-
-                                          Cannot Include:
-
-                                          * common domain names, e.g., google.com,
-                                          youtube.com, etc.
-
-
                                           Filtering Type: `text`
                                       preferDisplayUrl:
                                         type: boolean
@@ -72895,13 +72509,6 @@ paths:
                                         description: >-
                                           A valid URL used to place an order at
                                           this entity
-
-
-
-                                          Cannot Include:
-
-                                          * common domain names, e.g., google.com,
-                                          youtube.com, etc.
 
 
                                           Filtering Type: `text`
@@ -74303,13 +73910,6 @@ paths:
                                           along with **`reservationUrl.url`**.
 
 
-
-                                          Cannot Include:
-
-                                          * common domain names, e.g., google.com,
-                                          youtube.com, etc.
-
-
                                           Filtering Type: `text`
                                       preferDisplayUrl:
                                         type: boolean
@@ -74329,13 +73929,6 @@ paths:
                                         description: >-
                                           A valid URL used to make reservations at
                                           this entity
-
-
-
-                                          Cannot Include:
-
-                                          * common domain names, e.g., google.com,
-                                          youtube.com, etc.
 
 
                                           Filtering Type: `text`
@@ -76666,13 +76259,6 @@ paths:
                                           along with **`websiteUrl.url`**.
 
 
-
-                                          Cannot Include:
-
-                                          * common domain names, e.g., google.com,
-                                          youtube.com, etc.
-
-
                                           Filtering Type: `text`
                                       preferDisplayUrl:
                                         type: boolean
@@ -76689,16 +76275,8 @@ paths:
                                         maxLength: 255
                                         format: uri
                                         type: string
-                                        description: >-
+                                        description: |-
                                           A valid URL for this entity's website
-
-
-
-                                          Cannot Include:
-
-                                          * common domain names, e.g., google.com,
-                                          youtube.com, etc.
-
 
                                           Filtering Type: `text`
                                     description: >-
