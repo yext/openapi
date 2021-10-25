@@ -136,7 +136,18 @@
         }
       }
     },
-    "/listings/update": {
+    "/listings/{listingId}": {
+      "parameters": [
+        {
+          "name": "listingId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "The unique identifier of a listing on your site is known as the listingId.\n"
+        }
+      ],
       "put": {
         "requestBody": {
           "required": true,
@@ -148,11 +159,6 @@
             }
           }
         },
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/listingId"
-          }
-        ],
         "operationId": "Update",
         "tags": [
           "Listings"
@@ -173,14 +179,7 @@
             "$ref": "#/components/responses/ServerError"
           }
         }
-      }
-    },
-    "/listings/delete": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/listingId"
-        }
-      ],
+      },
       "delete": {
         "operationId": "Cancel",
         "tags": [

@@ -593,7 +593,16 @@ paths:
           $ref: '#/components/responses/BlockedResponse'
         '500':
           $ref: '#/components/responses/ServerError'
-  /listings/update:
+  '/listings/{listingId}':
+    parameters:
+      - name: listingId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: >
+          The unique identifier of a listing on your site is known as the
+          listingId.
     put:
       requestBody:
         required: true
@@ -601,8 +610,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ListingDelivery'
-      parameters:
-        - $ref: '#/components/parameters/listingId'
       operationId: Update
       tags:
         - Listings
@@ -622,9 +629,6 @@ paths:
           $ref: '#/components/responses/BlockedResponse'
         '500':
           $ref: '#/components/responses/ServerError'
-  /listings/delete:
-    parameters:
-      - $ref: '#/components/parameters/listingId'
     delete:
       operationId: Cancel
       tags:
