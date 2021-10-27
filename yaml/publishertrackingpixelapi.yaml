@@ -84,7 +84,7 @@ info:
 
     </code></pre>
 servers:
-  - url: 'https://pixel.yext-pub.com'
+  - url: https://pixel.yext-pub.com
 paths:
   /plpixel:
     parameters:

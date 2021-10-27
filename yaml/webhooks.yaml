@@ -3,7 +3,7 @@ info:
   title: Webhooks
   version: '2.0'
 servers:
-  - url: 'https://api.yext.com/v2'
+  - url: https://api.yext.com/v2
 webhooks:
   entitiesWebhook:
     post:
@@ -595,7 +595,7 @@ components:
                 Filtering Type: `text`
             countryCode:
               minLength: 0
-              pattern: '^[a-zA-Z]{2}$'
+              pattern: ^[a-zA-Z]{2}$
               type: string
               description: 'Filtering Type: `text`'
             extraDescription:
@@ -11711,7 +11711,7 @@ components:
           description: Cannot be a P.O. Box
         suppressAddress:
           type: boolean
-          description: 'If true, do not show street address on listings. Defaults to false.'
+          description: If true, do not show street address on listings. Defaults to false.
         displayAddress:
           type: string
           maxLength: 255
@@ -13283,10 +13283,10 @@ components:
       properties:
         name:
           type: string
-          description: 'e.g., Small, Medium, Large, Add Bacon.'
+          description: e.g., Small, Medium, Large, Add Bacon.
         price:
           type: string
-          description: 'A simple price in USD, e.g., 1.00.'
+          description: A simple price in USD, e.g., 1.00.
         calorie:
           type: integer
           description: >-
@@ -13309,7 +13309,7 @@ components:
             less than or equal to 1000000.00.
         unit:
           type: string
-          description: 'e.g., Per Gallon, Each.'
+          description: e.g., Per Gallon, Each.
         rangeTo:
           type: string
           description: >-
@@ -13565,7 +13565,7 @@ components:
             - WARNING
         message:
           type: string
-          description: 'Explanation of the warning, or why the listing is unavailable'
+          description: Explanation of the warning, or why the listing is unavailable
         actionable:
           type: boolean
           description: Indicates whether the customer can take action to resolve the issue
@@ -13614,7 +13614,7 @@ components:
             Message
         statusDetails:
           type: array
-          description: 'List of warnings, or reasons why the listing is unavailable'
+          description: List of warnings, or reasons why the listing is unavailable
           items:
             $ref: '#/components/schemas/ListingStatusDetail'
         alternateBrands:
@@ -14107,7 +14107,7 @@ components:
           description: The consumer's last name
         titleName:
           type: string
-          description: 'The consumer’s title (e.g., `Mr.`, `Mrs.`, `Miss`, etc.)'
+          description: The consumer’s title (e.g., `Mr.`, `Mrs.`, `Miss`, etc.)
         contact:
           type: string
           description: The consumer's email address or phone number (in E.164 format)

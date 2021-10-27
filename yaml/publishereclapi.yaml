@@ -186,7 +186,7 @@ info:
 
     </code></pre>
 servers:
-  - url: 'https://lists.yext-pub.com'
+  - url: https://lists.yext-pub.com
 paths:
   /lists:
     parameters:

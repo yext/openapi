@@ -3,9 +3,9 @@ info:
   title: Live API
   version: '2.0'
 servers:
-  - url: 'https://liveapi.yext.com/v2'
+  - url: https://liveapi.yext.com/v2
 paths:
-  '/accounts/{accountId}/entities':
+  /accounts/{accountId}/entities:
     get:
       operationId: listEntities
       parameters:
@@ -1501,7 +1501,7 @@ paths:
                                     Filtering Type: `text`
                                 countryCode:
                                   minLength: 0
-                                  pattern: '^[a-zA-Z]{2}$'
+                                  pattern: ^[a-zA-Z]{2}$
                                   type: string
                                   description: 'Filtering Type: `text`'
                                 extraDescription:
@@ -13407,7 +13407,7 @@ paths:
                         minLength: 0
                         type: string
                 description: 'Filtering Type: `object`'
-  '/accounts/{accountId}/entities/{entityId}':
+  /accounts/{accountId}/entities/{entityId}:
     get:
       operationId: getEntity
       parameters:
@@ -13631,7 +13631,7 @@ paths:
                               Filtering Type: `text`
                           countryCode:
                             minLength: 0
-                            pattern: '^[a-zA-Z]{2}$'
+                            pattern: ^[a-zA-Z]{2}$
                             type: string
                             description: 'Filtering Type: `text`'
                           extraDescription:
@@ -25275,7 +25275,7 @@ paths:
                         minLength: 0
                         type: string
                 description: 'Filtering Type: `object`'
-  '/accounts/{accountId}/entities/geosearch':
+  /accounts/{accountId}/entities/geosearch:
     get:
       operationId: geoSearchEntities
       parameters:
@@ -26850,7 +26850,7 @@ paths:
                                     Filtering Type: `text`
                                 countryCode:
                                   minLength: 0
-                                  pattern: '^[a-zA-Z]{2}$'
+                                  pattern: ^[a-zA-Z]{2}$
                                   type: string
                                   description: 'Filtering Type: `text`'
                                 extraDescription:
@@ -38858,7 +38858,7 @@ paths:
                         minLength: 0
                         type: string
                 description: 'Filtering Type: `object`'
-  '/accounts/{accountId}/entityschema/{entityType}/{entityId}/{languageCode}':
+  /accounts/{accountId}/entityschema/{entityType}/{entityId}/{languageCode}:
     get:
       operationId: getEntitySchema
       parameters:
@@ -38878,7 +38878,7 @@ paths:
           $ref: '#/components/responses/EntitySchemaResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/entityprofiles/{entityId}/{languageCode}':
+  /accounts/{accountId}/entityprofiles/{entityId}/{languageCode}:
     get:
       operationId: getLanguageProfile
       parameters:
@@ -39120,7 +39120,7 @@ paths:
                               Filtering Type: `text`
                           countryCode:
                             minLength: 0
-                            pattern: '^[a-zA-Z]{2}$'
+                            pattern: ^[a-zA-Z]{2}$
                             type: string
                             description: 'Filtering Type: `text`'
                           extraDescription:
@@ -50764,7 +50764,7 @@ paths:
                         minLength: 0
                         type: string
                 description: 'Filtering Type: `object`'
-  '/accounts/{accountId}/entityprofiles/{entityId}':
+  /accounts/{accountId}/entityprofiles/{entityId}:
     get:
       operationId: listLanguageProfiles
       parameters:
@@ -51044,7 +51044,7 @@ paths:
                                     Filtering Type: `text`
                                 countryCode:
                                   minLength: 0
-                                  pattern: '^[a-zA-Z]{2}$'
+                                  pattern: ^[a-zA-Z]{2}$
                                   type: string
                                   description: 'Filtering Type: `text`'
                                 extraDescription:
@@ -62935,7 +62935,7 @@ paths:
                         minLength: 0
                         type: string
                 description: 'Filtering Type: `object`'
-  '/accounts/{accountId}/entityprofiles':
+  /accounts/{accountId}/entityprofiles:
     get:
       operationId: listAllLanguageProfiles
       parameters:
@@ -64447,7 +64447,7 @@ paths:
                                           Filtering Type: `text`
                                       countryCode:
                                         minLength: 0
-                                        pattern: '^[a-zA-Z]{2}$'
+                                        pattern: ^[a-zA-Z]{2}$
                                         type: string
                                         description: 'Filtering Type: `text`'
                                       extraDescription:
@@ -76620,7 +76620,7 @@ paths:
                         minLength: 0
                         type: string
                 description: 'Filtering Type: `object`'
-  '/accounts/{accountId}/menus/{listId}':
+  /accounts/{accountId}/menus/{listId}:
     get:
       operationId: getMenus
       parameters:
@@ -76636,7 +76636,7 @@ paths:
           $ref: '#/components/responses/MenuResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/bios/{listId}':
+  /accounts/{accountId}/bios/{listId}:
     get:
       operationId: getBios
       parameters:
@@ -76652,7 +76652,7 @@ paths:
           $ref: '#/components/responses/BioResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/products/{listId}':
+  /accounts/{accountId}/products/{listId}:
     get:
       operationId: getProducts
       parameters:
@@ -76668,7 +76668,7 @@ paths:
           $ref: '#/components/responses/ProductResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/events/{listId}':
+  /accounts/{accountId}/events/{listId}:
     get:
       operationId: getEvents
       parameters:
@@ -76684,7 +76684,7 @@ paths:
           $ref: '#/components/responses/EventResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/locations/{locationId}/profiles/{languageCode}':
+  /accounts/{accountId}/locations/{locationId}/profiles/{languageCode}:
     get:
       operationId: getLanguageProfiles
       parameters:
@@ -76713,7 +76713,7 @@ paths:
           $ref: '#/components/responses/LanguageProfileResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/locations/{locationId}/profiles':
+  /accounts/{accountId}/locations/{locationId}/profiles:
     get:
       operationId: listLocationLanguageProfiles
       parameters:
@@ -76741,7 +76741,7 @@ paths:
           $ref: '#/components/responses/LanguageProfilesResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/locations/{locationId}/profiles/{languageCode}/schema':
+  /accounts/{accountId}/locations/{locationId}/profiles/{languageCode}/schema:
     get:
       operationId: getLanguageProfilesSchema
       parameters:
@@ -76761,7 +76761,7 @@ paths:
           $ref: '#/components/responses/LanguageProfileSchemaResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/locations/{locationId}':
+  /accounts/{accountId}/locations/{locationId}:
     get:
       operationId: getLocation
       parameters:
@@ -76781,7 +76781,7 @@ paths:
           $ref: '#/components/responses/LocationResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/locations':
+  /accounts/{accountId}/locations:
     parameters:
       - $ref: '#/components/parameters/accountId'
       - $ref: '#/components/parameters/limit'
@@ -76807,7 +76807,7 @@ paths:
           $ref: '#/components/responses/LocationsResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/locations/{locationId}/schema':
+  /accounts/{accountId}/locations/{locationId}/schema:
     get:
       operationId: getLocationSchema
       parameters:
@@ -76826,7 +76826,7 @@ paths:
           $ref: '#/components/responses/LocationSchemaResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/locations/geosearch':
+  /accounts/{accountId}/locations/geosearch:
     parameters:
       - $ref: '#/components/parameters/accountId'
       - $ref: '#/components/parameters/limit'
@@ -76858,7 +76858,7 @@ paths:
           $ref: '#/components/responses/GeoSearchResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/createQuestion':
+  /accounts/{accountId}/createQuestion:
     post:
       operationId: createQuestion
       tags:
@@ -76876,7 +76876,7 @@ paths:
           $ref: '#/components/responses/EmptyResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/reviewSubmission':
+  /accounts/{accountId}/reviewSubmission:
     post:
       operationId: createReview
       tags:
@@ -76898,7 +76898,7 @@ paths:
           $ref: '#/components/responses/ReviewsResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/reviewSubmission/{apiIdentifier}':
+  /accounts/{accountId}/reviewSubmission/{apiIdentifier}:
     put:
       operationId: updateReview
       tags:
@@ -76937,10 +76937,10 @@ paths:
           $ref: '#/components/responses/ReviewsResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/api/{endpoint}/{ids}':
+  /accounts/{accountId}/api/{endpoint}/{ids}:
     get:
       servers:
-        - url: 'https://streams.yext.com/v2'
+        - url: https://streams.yext.com/v2
       operationId: streamsGet
       parameters:
         - $ref: '#/components/parameters/accountId'
@@ -76956,10 +76956,10 @@ paths:
           $ref: '#/components/responses/StreamsResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/api/{endpoint}':
+  /accounts/{accountId}/api/{endpoint}:
     get:
       servers:
-        - url: 'https://streams.yext.com/v2'
+        - url: https://streams.yext.com/v2
       operationId: streamsList
       parameters:
         - $ref: '#/components/parameters/accountId'
@@ -77893,10 +77893,10 @@ components:
       properties:
         name:
           type: string
-          description: 'e.g., Small, Medium, Large, Add Bacon.'
+          description: e.g., Small, Medium, Large, Add Bacon.
         price:
           type: string
-          description: 'A simple price in USD, e.g., 1.00.'
+          description: A simple price in USD, e.g., 1.00.
         calorie:
           type: integer
           description: >-
@@ -77919,7 +77919,7 @@ components:
             less than or equal to 1000000.00.
         unit:
           type: string
-          description: 'e.g., Per Gallon, Each.'
+          description: e.g., Per Gallon, Each.
         rangeTo:
           type: string
           description: >-
@@ -78359,7 +78359,7 @@ components:
           description: Cannot be a P.O. Box
         suppressAddress:
           type: boolean
-          description: 'If true, do not show street address on listings. Defaults to false.'
+          description: If true, do not show street address on listings. Defaults to false.
         displayAddress:
           type: string
           maxLength: 255
@@ -79898,16 +79898,16 @@ components:
       properties:
         latitude:
           type: string
-          description: 'Latitude as returned by geocoder. If no value, returns ""'
+          description: Latitude as returned by geocoder. If no value, returns ""
         longitude:
           type: string
-          description: 'Longitude as returned by geocoder. If no value, returns ""'
+          description: Longitude as returned by geocoder. If no value, returns ""
         address:
           type: string
-          description: 'Address field as returned by geocoder. If no value, returns ""'
+          description: Address field as returned by geocoder. If no value, returns ""
         address2:
           type: string
-          description: 'Address2 field as returned by geocoder. If no value, returns ""'
+          description: Address2 field as returned by geocoder. If no value, returns ""
         locality:
           type: string
           description: >-
@@ -79925,7 +79925,7 @@ components:
             ""
         country:
           type: string
-          description: 'Country field as returned by geocoder. If no value, returns ""'
+          description: Country field as returned by geocoder. If no value, returns ""
         granularity:
           type: string
           enum:

@@ -477,7 +477,7 @@ info:
     both Yext-powered listings and listings that are in your site’s default
     format.
 servers:
-  - url: 'https://partner.example.com'
+  - url: https://partner.example.com
 paths:
   /listings/search:
     parameters:
@@ -593,7 +593,7 @@ paths:
           $ref: '#/components/responses/BlockedResponse'
         '500':
           $ref: '#/components/responses/ServerError'
-  '/listings/{listingId}':
+  /listings/{listingId}:
     parameters:
       - name: listingId
         in: path
@@ -742,7 +742,7 @@ paths:
           $ref: '#/components/responses/404NotFoundResponse'
         '500':
           $ref: '#/components/responses/ServerError'
-  '/listings/reviews/{reviewId}':
+  /listings/reviews/{reviewId}:
     parameters:
       - $ref: '#/components/parameters/reviewId'
     get:
@@ -798,7 +798,7 @@ paths:
           $ref: '#/components/responses/404NotFoundResponse'
         '500':
           $ref: '#/components/responses/ServerError'
-  '/listings/reviews/{reviewId}/comment/{commentId}':
+  /listings/reviews/{reviewId}/comment/{commentId}:
     parameters:
       - $ref: '#/components/parameters/reviewId'
       - $ref: '#/components/parameters/commentId'
@@ -862,7 +862,7 @@ paths:
           $ref: '#/components/responses/404NotFoundResponse'
         '500':
           $ref: '#/components/responses/ServerError'
-  '/listings/suggestions/{suggestionId}':
+  /listings/suggestions/{suggestionId}:
     parameters:
       - $ref: '#/components/parameters/suggestionId'
     get:
@@ -1164,7 +1164,7 @@ components:
       properties:
         id:
           type: string
-          description: 'The ID of this location, as assigned by you'
+          description: The ID of this location, as assigned by you
           example: '567482'
         status:
           $ref: '#/components/schemas/ListingStatus'
@@ -1240,7 +1240,7 @@ components:
             it (i.e., no area code or punctuation).
         url:
           type: string
-          example: 'http://www.example.publisher.com/profile/567482'
+          example: http://www.example.publisher.com/profile/567482
           description: The URL where the listing’s details page can be viewed
         categories:
           $ref: '#/components/schemas/Categories'
@@ -1318,7 +1318,7 @@ components:
       properties:
         id:
           type: string
-          description: 'The ID of this location, as assigned by you'
+          description: The ID of this location, as assigned by you
           example: xTydnfger
         status:
           $ref: '#/components/schemas/ListingStatus'
@@ -1330,10 +1330,10 @@ components:
           description: The building number and street address of the location
         address2:
           type: string
-          description: 'Second line of address (e.g., suite number)'
+          description: Second line of address (e.g., suite number)
         sublocality:
           type: string
-          description: 'The sublocality (e.g., neighborhood or district) of the location'
+          description: The sublocality (e.g., neighborhood or district) of the location
         city:
           type: string
           description: City
@@ -1385,7 +1385,7 @@ components:
             type: string
         yearEstablished:
           type: integer
-          description: 'The year that the business opened (e.g., 1982)'
+          description: The year that the business opened (e.g., 1982)
         specialOfferMessage:
           type: string
           description: The "message" portion of the `specialOffer` that we send to you
@@ -1499,7 +1499,7 @@ components:
           description: The building number and street address of the location
         address2:
           type: string
-          description: 'Second line of address (e.g., suite number)'
+          description: Second line of address (e.g., suite number)
         displayAddress:
           type: string
           description: >-
@@ -1517,7 +1517,7 @@ components:
             state, and postalCode.
         sublocality:
           type: string
-          description: 'The sublocality (e.g., neighborhood or district) of the location'
+          description: The sublocality (e.g., neighborhood or district) of the location
         city:
           type: string
           description: City
@@ -1644,7 +1644,7 @@ components:
               09:00:00)
           end:
             type: string
-            description: 'The end time of the interval on the 24-hour clock (e.g., 14:00:00)'
+            description: The end time of the interval on the 24-hour clock (e.g., 14:00:00)
     HolidayHour:
       type: array
       description: A set of special hours that may vary from the standard business hours.
@@ -1727,10 +1727,10 @@ components:
             - HEADSHOT
         width:
           type: integer
-          description: 'The width of the image, in pixels.'
+          description: The width of the image, in pixels.
         height:
           type: integer
-          description: 'The height of the image, in pixels.'
+          description: The height of the image, in pixels.
         description:
           type: string
           description: A caption for the image.
@@ -1789,16 +1789,16 @@ components:
           description: URL where the image can be viewed
         width:
           type: integer
-          description: 'The width of the image, in pixels.'
+          description: The width of the image, in pixels.
         height:
           type: integer
-          description: 'The height of the image, in pixels.'
+          description: The height of the image, in pixels.
     ECLID:
       type: object
       properties:
         id:
           type: number
-          description: 'The list’s ID (numeric, Yext-assigned)'
+          description: The list’s ID (numeric, Yext-assigned)
         type:
           type: string
           enum:
@@ -1814,7 +1814,7 @@ components:
             of that type.
         name:
           type: string
-          description: 'Name of the List, which is shown on the List’s tab.'
+          description: Name of the List, which is shown on the List’s tab.
     FrequentlyAskedQuestion:
       type: object
       properties:
@@ -1916,7 +1916,7 @@ components:
             $ref: '#/components/schemas/URL'
         twitterHandle:
           type: string
-          description: 'The location’s Twitter username, without the leading ''@'''
+          description: The location’s Twitter username, without the leading '@'
         facebookPageUrl:
           type: string
           description: >-
@@ -1979,7 +1979,7 @@ components:
               - NO_CONTACT_DELIVERY
         specialties:
           type: array
-          description: 'A list of the location''s specialties (e.g., Pizza)'
+          description: A list of the location's specialties (e.g., Pizza)
           items:
             type: string
         brands:
@@ -2107,7 +2107,7 @@ components:
             description: >-
               Date and time that the review comment was posted in ISO-9601
               format
-            example: '2020-01-04T13:15:53Z'
+            example: 2020-01-04T13:15:53Z
           authorName:
             type: string
             description: The name of the user who posted the review comment
@@ -2130,7 +2130,7 @@ components:
       properties:
         reviewId:
           type: string
-          description: 'A unique ID for each review, as assinged by you'
+          description: A unique ID for each review, as assinged by you
           example: '5382'
         status:
           type: string
@@ -2141,7 +2141,7 @@ components:
         timestamp:
           type: string
           description: Date and time that the review was posted in ISO-9601 format
-          example: '2020-01-01T13:15:53Z'
+          example: 2020-01-01T13:15:53Z
         authorName:
           type: string
           description: The name of the user who posted the review
@@ -2157,7 +2157,7 @@ components:
         url:
           type: string
           description: The URL where consumers can read the review
-          example: 'http://www.partner.com/listings/382384/reviews/5382'
+          example: http://www.partner.com/listings/382384/reviews/5382
         rating:
           type: string
           description: The rating given by the review
@@ -2196,7 +2196,7 @@ components:
           description: The average rating across all reviews for this listing
         maxRating:
           type: integer
-          description: 'The maximum possible rating (e.g., 5)'
+          description: The maximum possible rating (e.g., 5)
         reviews:
           type: array
           description: >-
@@ -2259,7 +2259,7 @@ components:
       properties:
         id:
           type: string
-          description: 'A unique ID for each suggestion, as assigned by you'
+          description: A unique ID for each suggestion, as assigned by you
           example: '5382'
         field:
           type: string
@@ -2282,7 +2282,7 @@ components:
         timestamp:
           type: string
           description: Date and time that the suggestion was created in ISO-9601 format
-          example: '2020-01-04T13:15:53Z'
+          example: 2020-01-04T13:15:53Z
         currentValue:
           type: string
           description: The existing field data
@@ -2393,7 +2393,7 @@ components:
             properties:
               status:
                 type: string
-                description: 'In the case of a 200 response, should always be ''LIVE'''
+                description: In the case of a 200 response, should always be 'LIVE'
                 example: LIVE
               id:
                 type: string
@@ -2404,7 +2404,7 @@ components:
               url:
                 type: string
                 description: The URL where the listing can be seen on your site
-                example: 'http://partner.com/places/73ghf90jd0.html'
+                example: http://partner.com/places/73ghf90jd0.html
     BlockedResponse:
       description: Blocked
       content:

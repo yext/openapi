@@ -4,7 +4,7 @@ info:
   title: Webhook Documentation
   description: This is the Webhook section description
 servers:
-  - url: 'https://pl.yext.com'
+  - url: https://pl.yext.com
 webhooks:
   notifyReview:
     parameters:
@@ -97,7 +97,7 @@ components:
             description: >-
               Date and time that the review comment was posted in ISO-9601
               format
-            example: '2020-01-04T13:15:53Z'
+            example: 2020-01-04T13:15:53Z
           authorName:
             type: string
             description: The name of the user who posted the review comment
@@ -121,7 +121,7 @@ components:
         properties:
           reviewId:
             type: string
-            description: 'A unique ID for each review, as assinged by you'
+            description: A unique ID for each review, as assinged by you
             example: '5382'
           status:
             type: string
@@ -132,7 +132,7 @@ components:
           timestamp:
             type: string
             description: Date and time that the review was posted in ISO-9601 format
-            example: '2020-01-01T13:15:53Z'
+            example: 2020-01-01T13:15:53Z
           authorName:
             type: string
             description: The name of the user who posted the review
@@ -148,7 +148,7 @@ components:
           url:
             type: string
             description: The URL where consumers can read the review
-            example: 'http://www.partner.com/listings/382384/reviews/5382'
+            example: http://www.partner.com/listings/382384/reviews/5382
           rating:
             type: string
             description: The rating given by the review
@@ -187,12 +187,12 @@ components:
           example: '5269143'
         total:
           type: string
-          description: 'Total number of reviews on the listing, overall'
+          description: Total number of reviews on the listing, overall
           example: '25'
         timestamp:
           type: string
           description: Official time the event occurred
-          example: '2020-01-02T13:15:53Z'
+          example: 2020-01-02T13:15:53Z
         averageRating:
           type: string
           description: >-
@@ -213,7 +213,7 @@ components:
       properties:
         id:
           type: string
-          description: 'A unique ID for each suggestion, as assigned by you'
+          description: A unique ID for each suggestion, as assigned by you
           example: '5382'
         field:
           type: string
@@ -236,7 +236,7 @@ components:
         timestamp:
           type: string
           description: Date and time that the suggestion was created in ISO-9601 format
-          example: '2020-01-04T13:15:53Z'
+          example: 2020-01-04T13:15:53Z
         currentValue:
           type: string
           description: The existing field data
@@ -267,6 +267,6 @@ components:
         timestamp:
           type: string
           description: Official time the event occurred
-          example: '2020-01-02T13:15:53Z'
+          example: 2020-01-02T13:15:53Z
         suggestion:
           $ref: '#/components/schemas/PartnerSuggestion'

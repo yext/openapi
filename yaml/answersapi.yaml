@@ -3,9 +3,9 @@ info:
   title: Answers API
   version: '2.0'
 servers:
-  - url: 'https://liveapi.yext.com/v2'
+  - url: https://liveapi.yext.com/v2
 paths:
-  '/accounts/{accountId}/answers/autocomplete':
+  /accounts/{accountId}/answers/autocomplete:
     get:
       operationId: autocomplete
       parameters:
@@ -24,7 +24,7 @@ paths:
           $ref: '#/components/responses/AutocompleteResponse'
         '400':
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/answers/query':
+  /accounts/{accountId}/answers/query:
     get:
       operationId: query
       parameters:
@@ -51,7 +51,7 @@ paths:
           $ref: '#/components/responses/UniversalQueryResponse'
         '400':
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/answers/vertical/autocomplete':
+  /accounts/{accountId}/answers/vertical/autocomplete:
     get:
       operationId: verticalAutocomplete
       parameters:
@@ -71,7 +71,7 @@ paths:
           $ref: '#/components/responses/AutocompleteResponse'
         '400':
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/answers/vertical/query':
+  /accounts/{accountId}/answers/vertical/query:
     get:
       operationId: verticalQuery
       parameters:
@@ -104,7 +104,7 @@ paths:
           $ref: '#/components/responses/VerticalQueryResponse'
         '400':
           $ref: '#/components/responses/ErrorResponse'
-  '/accounts/{accountId}/answers/filtersearch':
+  /accounts/{accountId}/answers/filtersearch:
     get:
       operationId: filtersearch
       parameters:
@@ -1355,7 +1355,7 @@ components:
       properties:
         originalQuery:
           type: string
-          description: 'The unedited, original query from the request.'
+          description: The unedited, original query from the request.
         correctedQuery:
           $ref: '#/components/schemas/HighlightedValue'
         type:
@@ -1387,16 +1387,16 @@ components:
       properties:
         latitude:
           type: number
-          description: 'The geographic coordinate, latitude, used to bias the search.'
+          description: The geographic coordinate, latitude, used to bias the search.
           example: 41.7828
         longitude:
           type: number
-          description: 'The geographic coordinate, latitude, used to bias the search.'
+          description: The geographic coordinate, latitude, used to bias the search.
           example: -87.8781
         locationDisplayName:
           type: string
           description: The display name of the location.
-          example: 'Countryside, Illinois, United States'
+          example: Countryside, Illinois, United States
         accuracy:
           type: string
           description: >
