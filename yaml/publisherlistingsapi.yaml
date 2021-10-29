@@ -519,7 +519,13 @@ paths:
           $ref: '#/components/responses/ServerError'
   /listings/details:
     parameters:
-      - $ref: '#/components/parameters/listingId'
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: |
+          The unique identifier of a listing on your site.
     get:
       operationId: Details
       tags:
