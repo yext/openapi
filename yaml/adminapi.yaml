@@ -959,9 +959,11 @@ components:
                   uniqueItems: false
                   type: array
                   items:
-                    multipleOf: 1
-                    type: number
-                  description: This Entity's labels
+                    minLength: 0
+                    type: string
+                  description: >-
+                    This Entity's labels. If the **`v`** parameter is before
+                    `20211215`, this will be an integer.
                 language:
                   minLength: 0
                   type: string
@@ -3049,7 +3051,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -3070,7 +3072,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL for this entity's website
@@ -3125,9 +3127,11 @@ components:
                   uniqueItems: false
                   type: array
                   items:
-                    multipleOf: 1
-                    type: number
-                  description: This Entity's labels
+                    minLength: 0
+                    type: string
+                  description: >-
+                    This Entity's labels. If the **`v`** parameter is before
+                    `20211215`, this will be an integer.
                 language:
                   minLength: 0
                   type: string
@@ -3742,7 +3746,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -3763,7 +3767,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL for this entity's website
@@ -3796,9 +3800,11 @@ components:
                   uniqueItems: false
                   type: array
                   items:
-                    multipleOf: 1
-                    type: number
-                  description: This Entity's labels
+                    minLength: 0
+                    type: string
+                  description: >-
+                    This Entity's labels. If the **`v`** parameter is before
+                    `20211215`, this will be an integer.
                 language:
                   minLength: 0
                   type: string
@@ -4047,9 +4053,11 @@ components:
                   uniqueItems: false
                   type: array
                   items:
-                    multipleOf: 1
-                    type: number
-                  description: This Entity's labels
+                    minLength: 0
+                    type: string
+                  description: >-
+                    This Entity's labels. If the **`v`** parameter is before
+                    `20211215`, this will be an integer.
                 language:
                   minLength: 0
                   type: string
@@ -5818,7 +5826,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -5834,7 +5842,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL where consumers can view the entity's menu
@@ -6204,7 +6212,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -6220,7 +6228,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL used to place an order at this entity
@@ -6947,7 +6955,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -6968,7 +6976,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL used to make reservations at this entity
@@ -7276,7 +7284,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -7297,7 +7305,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL for this entity's website
@@ -7336,9 +7344,11 @@ components:
                   uniqueItems: false
                   type: array
                   items:
-                    multipleOf: 1
-                    type: number
-                  description: This Entity's labels
+                    minLength: 0
+                    type: string
+                  description: >-
+                    This Entity's labels. If the **`v`** parameter is before
+                    `20211215`, this will be an integer.
                 language:
                   minLength: 0
                   type: string
@@ -7787,6 +7797,7 @@ components:
                   - MD
                   - MPH
                   - ND
+                  - NNP
                   - NP
                   - OD
                   - PA
@@ -8953,7 +8964,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -8969,7 +8980,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL where consumers can view the entity's menu
@@ -9356,7 +9367,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -9372,7 +9383,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL used to place an order at this entity
@@ -9782,7 +9793,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -9803,7 +9814,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL used to make reservations at this entity
@@ -10111,7 +10122,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -10132,7 +10143,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL for this entity's website
@@ -10171,9 +10182,11 @@ components:
                   uniqueItems: false
                   type: array
                   items:
-                    multipleOf: 1
-                    type: number
-                  description: This Entity's labels
+                    minLength: 0
+                    type: string
+                  description: >-
+                    This Entity's labels. If the **`v`** parameter is before
+                    `20211215`, this will be an integer.
                 language:
                   minLength: 0
                   type: string
@@ -13210,7 +13223,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -13226,7 +13239,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL where consumers can view the entity's menu
@@ -13296,7 +13309,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -13312,7 +13325,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL used to place an order at this entity
@@ -13744,7 +13757,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -13765,7 +13778,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL used to make reservations at this entity
@@ -14244,7 +14257,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -14265,7 +14278,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL for this entity's website
@@ -14333,9 +14346,11 @@ components:
                   uniqueItems: false
                   type: array
                   items:
-                    multipleOf: 1
-                    type: number
-                  description: This Entity's labels
+                    minLength: 0
+                    type: string
+                  description: >-
+                    This Entity's labels. If the **`v`** parameter is before
+                    `20211215`, this will be an integer.
                 language:
                   minLength: 0
                   type: string
@@ -14635,9 +14650,11 @@ components:
                   uniqueItems: false
                   type: array
                   items:
-                    multipleOf: 1
-                    type: number
-                  description: This Entity's labels
+                    minLength: 0
+                    type: string
+                  description: >-
+                    This Entity's labels. If the **`v`** parameter is before
+                    `20211215`, this will be an integer.
                 language:
                   minLength: 0
                   type: string
@@ -17985,7 +18002,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -18001,7 +18018,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL where consumers can view the entity's menu
@@ -18392,7 +18409,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -18408,7 +18425,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL used to place an order at this entity
@@ -19161,7 +19178,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -19182,7 +19199,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL used to make reservations at this entity
@@ -20160,7 +20177,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -20181,7 +20198,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL for this entity's website
@@ -20220,9 +20237,11 @@ components:
                   uniqueItems: false
                   type: array
                   items:
-                    multipleOf: 1
-                    type: number
-                  description: This Entity's labels
+                    minLength: 0
+                    type: string
+                  description: >-
+                    This Entity's labels. If the **`v`** parameter is before
+                    `20211215`, this will be an integer.
                 language:
                   minLength: 0
                   type: string
@@ -23594,7 +23613,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -23610,7 +23629,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL where consumers can view the entity's menu
@@ -24001,7 +24020,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -24017,7 +24036,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL used to place an order at this entity
@@ -24744,7 +24763,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -24765,7 +24784,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL used to make reservations at this entity
@@ -25743,7 +25762,7 @@ components:
               properties:
                 displayUrl:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: >-
@@ -25764,7 +25783,7 @@ components:
                     URLs for this field.
                 url:
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 2000
                   format: uri
                   type: string
                   description: A valid URL for this entity's website
@@ -27669,13 +27688,15 @@ components:
               uniqueItems: false
               type: array
               items:
-                multipleOf: 1
-                type: number
-                description: 'Filtering Type: `integer`'
-              description: |-
-                This Entity's labels
+                minLength: 0
+                type: string
+                description: 'Filtering Type: `text`'
+              description: >-
+                This Entity's labels. If the **`v`** parameter is before
+                `20211215`, this will be an integer.
 
-                Filtering Type: `list of integer`
+
+                Filtering Type: `list of text`
             language:
               minLength: 0
               type: string
@@ -29925,6 +29946,7 @@ components:
               - MD
               - MPH
               - ND
+              - NNP
               - NP
               - OD
               - PA
@@ -34294,7 +34316,7 @@ components:
           properties:
             displayUrl:
               minLength: 0
-              maxLength: 255
+              maxLength: 2000
               format: uri
               type: string
               description: >-
@@ -34316,7 +34338,7 @@ components:
                 Filtering Type: `boolean`
             url:
               minLength: 0
-              maxLength: 255
+              maxLength: 2000
               format: uri
               type: string
               description: |-
@@ -34981,7 +35003,7 @@ components:
           properties:
             displayUrl:
               minLength: 0
-              maxLength: 255
+              maxLength: 2000
               format: uri
               type: string
               description: >-
@@ -35003,7 +35025,7 @@ components:
                 Filtering Type: `boolean`
             url:
               minLength: 0
-              maxLength: 255
+              maxLength: 2000
               format: uri
               type: string
               description: |-
@@ -36275,7 +36297,7 @@ components:
           properties:
             displayUrl:
               minLength: 0
-              maxLength: 255
+              maxLength: 2000
               format: uri
               type: string
               description: >-
@@ -36302,7 +36324,7 @@ components:
                 Filtering Type: `boolean`
             url:
               minLength: 0
-              maxLength: 255
+              maxLength: 2000
               format: uri
               type: string
               description: |-
@@ -38360,7 +38382,7 @@ components:
           properties:
             displayUrl:
               minLength: 0
-              maxLength: 255
+              maxLength: 2000
               format: uri
               type: string
               description: >-
@@ -38386,7 +38408,7 @@ components:
                 Filtering Type: `boolean`
             url:
               minLength: 0
-              maxLength: 255
+              maxLength: 2000
               format: uri
               type: string
               description: |-

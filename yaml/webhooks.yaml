@@ -499,13 +499,15 @@ components:
               uniqueItems: false
               type: array
               items:
-                multipleOf: 1
-                type: number
-                description: 'Filtering Type: `integer`'
-              description: |-
-                This Entity's labels
+                minLength: 0
+                type: string
+                description: 'Filtering Type: `text`'
+              description: >-
+                This Entity's labels. If the **`v`** parameter is before
+                `20211215`, this will be an integer.
 
-                Filtering Type: `list of integer`
+
+                Filtering Type: `list of text`
             language:
               minLength: 0
               type: string
@@ -2755,6 +2757,7 @@ components:
               - MD
               - MPH
               - ND
+              - NNP
               - NP
               - OD
               - PA
@@ -7124,7 +7127,7 @@ components:
           properties:
             displayUrl:
               minLength: 0
-              maxLength: 255
+              maxLength: 2000
               format: uri
               type: string
               description: >-
@@ -7146,7 +7149,7 @@ components:
                 Filtering Type: `boolean`
             url:
               minLength: 0
-              maxLength: 255
+              maxLength: 2000
               format: uri
               type: string
               description: |-
@@ -7811,7 +7814,7 @@ components:
           properties:
             displayUrl:
               minLength: 0
-              maxLength: 255
+              maxLength: 2000
               format: uri
               type: string
               description: >-
@@ -7833,7 +7836,7 @@ components:
                 Filtering Type: `boolean`
             url:
               minLength: 0
-              maxLength: 255
+              maxLength: 2000
               format: uri
               type: string
               description: |-
@@ -9105,7 +9108,7 @@ components:
           properties:
             displayUrl:
               minLength: 0
-              maxLength: 255
+              maxLength: 2000
               format: uri
               type: string
               description: >-
@@ -9132,7 +9135,7 @@ components:
                 Filtering Type: `boolean`
             url:
               minLength: 0
-              maxLength: 255
+              maxLength: 2000
               format: uri
               type: string
               description: |-
@@ -11190,7 +11193,7 @@ components:
           properties:
             displayUrl:
               minLength: 0
-              maxLength: 255
+              maxLength: 2000
               format: uri
               type: string
               description: >-
@@ -11216,7 +11219,7 @@ components:
                 Filtering Type: `boolean`
             url:
               minLength: 0
-              maxLength: 255
+              maxLength: 2000
               format: uri
               type: string
               description: |-
