@@ -628,6 +628,53 @@ paths:
           $ref: '#/components/responses/CreateSubAccountResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
+  /accounts/{accountId}/resourcesapplyrequests:
+    parameters:
+      - $ref: '#/components/parameters/accountId'
+      - $ref: '#/components/parameters/v'
+    post:
+      operationId: resourcesApplyRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResourcesApplyRequest'
+      tags:
+        - Administrative API
+      summary: 'Resources Apply Request: Create (Account)'
+      description: >
+        Create a request to asynchronously apply resources using the URL of a
+        GitHub repository.
+      responses:
+        '200':
+          $ref: '#/components/responses/ResourcesApplyRequestResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /accounts/{accountId}/resourcesapplyrequests/{requestId}:
+    parameters:
+      - name: requestId
+        in: path
+        schema:
+          type: integer
+        description: >
+          requestId returned from a previous call to **Resources Apply Requests:
+          Create (Account)**
+        required: true
+      - $ref: '#/components/parameters/accountId'
+      - $ref: '#/components/parameters/v'
+    get:
+      operationId: getResourcesApplyRequestStatus
+      tags:
+        - Administrative API
+      summary: 'Resources Apply Request Status: Get (Account)'
+      description: |
+        Make a request to get the status of the Resources Apply Request.
+      responses:
+        '200':
+          $ref: '#/components/responses/ResourcesApplyRequestResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
   /accounts:
     parameters:
       - $ref: '#/components/parameters/v'
@@ -39193,6 +39240,82 @@ components:
           description: |
             The country code for the newly created sub-account.
           example: US
+    Source:
+      type: object
+      required:
+        - type
+        - url
+      description: >
+        This is an object containing the information about where the Resources
+        are located. The attributes in this object include type, url and
+        variables.
+      properties:
+        type:
+          type: string
+          description: Type of repository for resources
+          example: GitHub
+        url:
+          type: string
+          description: URL path for the CaC resources. It varies with the source type.
+          example: https://github.com/YextSolutions/basic-free-trial
+        variables:
+          type: object
+          description: >-
+            This is an object containing any resources variables that should be
+            passed to the applier.
+          example:
+            title: Yext source
+    ResourcesApplyRequest:
+      type: object
+      required:
+        - targetAccountId
+        - source
+      properties:
+        targetAccountId:
+          type: string
+          description: |
+            ID for the account which the resources will be applied to.
+          example: B093879
+        source:
+          $ref: '#/components/schemas/Source'
+    ResourcesApplyRequestResponse:
+      title: Resources Apply Request Response
+      type: object
+      properties:
+        targetAccountId:
+          type: string
+          description: |
+            ID for the account which the resources were applied to.
+          example: B093879
+        source:
+          $ref: '#/components/schemas/Source'
+        status:
+          type: string
+          readOnly: true
+          description: The current status of the resources apply request.
+          enum:
+            - SUBMITTED
+            - PROCESSING
+            - COMPLETE
+            - CANCELED
+            - REVIEW
+            - FAILED
+        dateSubmitted:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The date the resources apply request was submitted.
+        dateCompleted:
+          type: string
+          format: date-time
+          readOnly: true
+          description: >-
+            The date the resources apply request was completed. An empty string
+            if the request has not been completed.
+        statusDetail:
+          type: string
+          readOnly: true
+          description: Results from processing.
     Account:
       type: object
       properties:
@@ -39826,6 +39949,33 @@ components:
               newSubAccountId: B093879
               newSubAccountName: Yext Sub-Account
               countryCode: US
+    ResourcesApplyRequestResponse:
+      description: Resources Apply Request Response
+      content:
+        application/json:
+          schema:
+            title: ResourcesApplyRequestResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/ResponseMeta'
+              response:
+                $ref: '#/components/schemas/ResourcesApplyRequestResponse'
+          example:
+            meta:
+              uuid: 4f72b877-e2d0-4de4-9324-b9cf2c03e1a0
+              errors: []
+            response:
+              id: 13027
+              targetAccountId: B093879
+              status: COMPLETE
+              dateSubmitted: 2017-05-10T19:23:07
+              dateCompleted: 2017-05-10T19:31:29
+              source:
+                type: GITHUB
+                url: https://github.com/YextSolutions/basic-free-trial
+                variables:
+                  title: Yext source
     AccountsResponse:
       description: Accounts Response
       content:
