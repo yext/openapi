@@ -454,8 +454,6 @@ components:
         </table>
 
 
-        </br>
-
         **BOOLEAN**
 
 
@@ -483,8 +481,6 @@ components:
           </tr>
         </table>
 
-
-        </br>
 
         **OPTION**
 
@@ -514,8 +510,6 @@ components:
             }
         </table>
 
-
-        </br>
 
         **INTEGER, FLOAT, DATE, DATETIME, and TIME**
 
@@ -630,9 +624,6 @@ components:
 
           </tr>
         </table>
-
-
-        </br>
     FacetFilters:
       name: facetFilters
       in: query
