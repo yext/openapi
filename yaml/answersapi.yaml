@@ -40,6 +40,7 @@ paths:
         - $ref: '#/components/parameters/context'
         - $ref: '#/components/parameters/referrerPageUrl'
         - $ref: '#/components/parameters/skipSpellCheck'
+        - $ref: '#/components/parameters/restrictVerticals'
       summary: 'Universal Search: Query'
       description: >-
         Search for entities across all verticals within an answers experience. 
@@ -258,6 +259,15 @@ components:
       schema:
         type: boolean
       description: If true the query will skip spell checking.
+    restrictVerticals:
+      name: restrictVerticals
+      in: query
+      required: false
+      schema:
+        type: string
+      description: >-
+        A comma-separated list of verticals (e.g. `"people,locations"`). If
+        specified, only results from these verticals will be returned.
     verticalKey:
       name: verticalKey
       in: query
