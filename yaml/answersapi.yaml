@@ -911,6 +911,17 @@ components:
                         type: string
                         description: |
                           Intent that was derived from the user's input.
+                    verticalKeys:
+                      type: array
+                      description: >
+                        List of verticals that the autocomplete result is
+                        derived from. For results coming from universal search,
+                        this field will be blank.
+                      items:
+                        type: string
+                        description: >
+                          A single vertical represented in the autocomplete
+                          result.
           example:
             meta:
               uuid: 4f72b877-e2d0-4de4-9324-b9cf2c03e1a0

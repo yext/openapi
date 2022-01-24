@@ -572,6 +572,14 @@
                           "type": "string",
                           "description": "Intent that was derived from the user's input.\n"
                         }
+                      },
+                      "verticalKeys": {
+                        "type": "array",
+                        "description": "List of verticals that the autocomplete result is derived from. For results coming from universal search, this field will be blank.\n",
+                        "items": {
+                          "type": "string",
+                          "description": "A single vertical represented in the autocomplete result.\n"
+                        }
                       }
                     }
                   }
