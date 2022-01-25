@@ -39257,6 +39257,15 @@
       "UpdateReview": {
         "type": "object",
         "properties": {
+          "entity": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "ID of the entity associated with this review."
+              }
+            }
+          },
           "authorName": {
             "type": "string",
             "description": "The name of the person who wrote the review."
