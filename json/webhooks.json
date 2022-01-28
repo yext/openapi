@@ -2748,7 +2748,7 @@
             ],
             "additionalProperties": false,
             "type": "object",
-            "description": "The cover photo for the entity's Facebook profile\n\nDisplayed as a 851 x 315 pixel image\n\nYou may need a cover photo in order for your listing to appear on Facebook. Please check your listings tab to learn more.\n\n\nImage must be at least 400 x 150 pixels\n\nImage may be no more than 30000 x 30000 pixels\n\nSupported Aspect Ratios:\n* 1 x 1\n* 4 x 3\n* 3 x 2\n* 5 x 3\n* 16 x 9\n* 3 x 1\n* 2 x 3\n* 5 x 7\n* 4 x 5\n* 4 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
+            "description": "The cover photo for the entity's Facebook profile\n\nDisplayed as a 851 x 315 pixel image\n\nYou may need a cover photo in order for your listing to appear on Facebook. Please check your listings tab to learn more.\n\n\nImage must be at least 400 x 150 pixels\n\nImage area (width x height) may be no more than 41000000 pixels\n\nImage may be no more than 30000 x 30000 pixels\n\nSupported Aspect Ratios:\n* 1 x 1\n* 4 x 3\n* 3 x 2\n* 5 x 3\n* 16 x 9\n* 3 x 1\n* 2 x 3\n* 5 x 7\n* 4 x 5\n* 4 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
             "properties": {
               "alternateText": {
                 "minLength": 0,
@@ -2790,7 +2790,7 @@
             ],
             "additionalProperties": false,
             "type": "object",
-            "description": "The profile picture for the entity's Facebook profile\n\nYou must have a profile picture in order for your listing to appear on Facebook.\n\n\nImage must be at least 180 x 180 pixels\n\nImage may be no more than 30000 x 30000 pixels\n\nSupported Aspect Ratios:\n* 1 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
+            "description": "The profile picture for the entity's Facebook profile\n\nYou must have a profile picture in order for your listing to appear on Facebook.\n\n\nImage must be at least 180 x 180 pixels\n\nImage area (width x height) may be no more than 41000000 pixels\n\nImage may be no more than 30000 x 30000 pixels\n\nSupported Aspect Ratios:\n* 1 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
             "properties": {
               "alternateText": {
                 "minLength": 0,

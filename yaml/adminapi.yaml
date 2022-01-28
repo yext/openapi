@@ -2042,6 +2042,9 @@ components:
                 Image must be at least 400 x 150 pixels
 
 
+                Image area (width x height) may be no more than 41000000 pixels
+
+
                 Image may be no more than 30000 x 30000 pixels
 
 
@@ -2148,6 +2151,9 @@ components:
 
 
                 Image must be at least 180 x 180 pixels
+
+
+                Image area (width x height) may be no more than 41000000 pixels
 
 
                 Image may be no more than 30000 x 30000 pixels
@@ -4959,6 +4965,9 @@ components:
                 Image must be at least 400 x 150 pixels
 
 
+                Image area (width x height) may be no more than 41000000 pixels
+
+
                 Image may be no more than 30000 x 30000 pixels
 
 
@@ -5065,6 +5074,9 @@ components:
 
 
                 Image must be at least 180 x 180 pixels
+
+
+                Image area (width x height) may be no more than 41000000 pixels
 
 
                 Image may be no more than 30000 x 30000 pixels
@@ -8049,6 +8061,9 @@ components:
                 Image must be at least 400 x 150 pixels
 
 
+                Image area (width x height) may be no more than 41000000 pixels
+
+
                 Image may be no more than 30000 x 30000 pixels
 
 
@@ -8155,6 +8170,9 @@ components:
 
 
                 Image must be at least 180 x 180 pixels
+
+
+                Image area (width x height) may be no more than 41000000 pixels
 
 
                 Image may be no more than 30000 x 30000 pixels
@@ -11579,6 +11597,9 @@ components:
                 Image must be at least 400 x 150 pixels
 
 
+                Image area (width x height) may be no more than 41000000 pixels
+
+
                 Image may be no more than 30000 x 30000 pixels
 
 
@@ -11685,6 +11706,9 @@ components:
 
 
                 Image must be at least 180 x 180 pixels
+
+
+                Image area (width x height) may be no more than 41000000 pixels
 
 
                 Image may be no more than 30000 x 30000 pixels
@@ -16510,6 +16534,9 @@ components:
                 Image must be at least 400 x 150 pixels
 
 
+                Image area (width x height) may be no more than 41000000 pixels
+
+
                 Image may be no more than 30000 x 30000 pixels
 
 
@@ -16616,6 +16643,9 @@ components:
 
 
                 Image must be at least 180 x 180 pixels
+
+
+                Image area (width x height) may be no more than 41000000 pixels
 
 
                 Image may be no more than 30000 x 30000 pixels
@@ -22108,6 +22138,9 @@ components:
                 Image must be at least 400 x 150 pixels
 
 
+                Image area (width x height) may be no more than 41000000 pixels
+
+
                 Image may be no more than 30000 x 30000 pixels
 
 
@@ -22214,6 +22247,9 @@ components:
 
 
                 Image must be at least 180 x 180 pixels
+
+
+                Image area (width x height) may be no more than 41000000 pixels
 
 
                 Image may be no more than 30000 x 30000 pixels
@@ -31336,6 +31372,9 @@ components:
             Image must be at least 400 x 150 pixels
 
 
+            Image area (width x height) may be no more than 41000000 pixels
+
+
             Image may be no more than 30000 x 30000 pixels
 
 
@@ -31523,6 +31562,9 @@ components:
 
 
             Image must be at least 180 x 180 pixels
+
+
+            Image area (width x height) may be no more than 41000000 pixels
 
 
             Image may be no more than 30000 x 30000 pixels
@@ -39460,7 +39502,7 @@ components:
                 - SKU-00000167
               agreementId: 1588
               status: SUBMITTED
-              dateSubmitted: 2017-05-12T16:08:25
+              dateSubmitted: '2017-05-12T16:08:25'
               statusDetail: >-
                 The request has been submitted for processing. Updated status
                 should be available soon, usually within seconds.
@@ -39488,7 +39530,7 @@ components:
                 - SKU-00000170
               agreementId: 1588
               status: SUBMITTED
-              dateSubmitted: 2017-05-13T14:22:18
+              dateSubmitted: '2017-05-13T14:22:18'
               statusDetail: >-
                 The request has been submitted for processing. Updated status
                 should be available soon, usually within seconds.
@@ -39518,7 +39560,7 @@ components:
                   quantity: 2
               agreementId: 1588
               status: SUBMITTED
-              dateSubmitted: 2021-02-26T14:22:18
+              dateSubmitted: '2021-02-26T14:22:18'
               statusDetail: >-
                 The request has been submitted for processing. Updated status
                 should be available soon, usually within seconds.
@@ -39547,8 +39589,8 @@ components:
                 agreementId: 1588
                 locationId: '1775725677797917505'
                 status: STOPPED
-                started: 2017-02-10
-                stopped: 2017-05-14
+                started: '2017-02-10'
+                stopped: '2017-05-14'
     CancelSubAccountServicesResponse:
       description: Cancel Sub-Account Services Response
       content:
@@ -39574,7 +39616,7 @@ components:
                 sku: SKU-00000195
                 serviceDescription: Answers Experience
                 serviceQuantity: 2
-                started: 2021-01-10
+                started: '2021-01-10'
                 status: ACTIVE
               - id: 9001
                 subAccountId: B093879
@@ -39582,8 +39624,8 @@ components:
                 sku: SKU-00000196
                 serviceDescription: Answers Experience 2
                 serviceQuantity: 1
-                started: 2021-01-10
-                stopped: 2021-03-01
+                started: '2021-01-10'
+                stopped: '2021-03-01'
                 status: STOPPED
     CancelAllSubAccountServicesResponse:
       description: Cancel All Sub-Account Services Response
@@ -39610,8 +39652,8 @@ components:
                 sku: SKU-00000195
                 serviceDescription: Answers Experience
                 serviceQuantity: 1
-                started: 2021-01-10
-                stopped: 2021-03-01
+                started: '2021-01-10'
+                stopped: '2021-03-01'
                 status: STOPPED
               - id: 9001
                 subAccountId: B093879
@@ -39619,8 +39661,8 @@ components:
                 sku: SKU-00000196
                 serviceDescription: Answers Experience 2
                 serviceQuantity: 3
-                started: 2021-01-10
-                stopped: 2021-03-01
+                started: '2021-01-10'
+                stopped: '2021-03-01'
                 status: STOPPED
               - id: 9002
                 subAccountId: B093879
@@ -39628,8 +39670,8 @@ components:
                 sku: SKU-00000197
                 serviceDescription: Answers Experience 3
                 serviceQuantity: 1
-                started: 2021-01-11
-                stopped: 2021-03-01
+                started: '2021-01-11'
+                stopped: '2021-03-01'
                 status: STOPPED
     EmptyResponse:
       description: Empty Response.
@@ -39675,8 +39717,8 @@ components:
                     - SKU-00000167
                   agreementId: 1588
                   status: COMPLETE
-                  dateSubmitted: 2017-05-10T19:23:07
-                  dateCompleted: 2017-05-10T19:31:29
+                  dateSubmitted: '2017-05-10T19:23:07'
+                  dateCompleted: '2017-05-10T19:31:29'
                   statusDetail: >-
                     The request was completed and the specified services were
                     started. Location ID LOC-123 was created in this request.
@@ -39687,7 +39729,7 @@ components:
                     - SKU-00000167
                   agreementId: 1588
                   status: REVIEW
-                  dateSubmitted: 2017-05-10T19:23:07
+                  dateSubmitted: '2017-05-10T19:23:07'
                   dateCompleted: ''
                   statusDetail: >-
                     Yext is reviewing this request to ensure that the specified
@@ -39700,8 +39742,8 @@ components:
                     - SKU-00000167
                   agreementId: 1588
                   status: COMPLETE
-                  dateSubmitted: 2017-05-10T18:36:52
-                  dateCompleted: 2017-05-10T18:36:53
+                  dateSubmitted: '2017-05-10T18:36:52'
+                  dateCompleted: '2017-05-10T18:36:53'
                   statusDetail: >-
                     The request was completed and the specified services were
                     started.
@@ -39729,8 +39771,8 @@ components:
                 - SKU-00000167
               agreementId: 1588
               status: COMPLETE
-              dateSubmitted: 2017-05-10T19:23:07
-              dateCompleted: 2017-05-10T19:31:29
+              dateSubmitted: '2017-05-10T19:23:07'
+              dateCompleted: '2017-05-10T19:31:29'
               statusDetail: >-
                 The request was completed and the specified services were
                 started. Location ID LOC-123 was created in this request.
@@ -39768,8 +39810,8 @@ components:
                       quantity: 2
                   agreementId: 1588
                   status: COMPLETE
-                  dateSubmitted: 2021-02-26T14:22:48
-                  dateCompleted: 2021-02-26T14:23:05
+                  dateSubmitted: '2021-02-26T14:22:48'
+                  dateCompleted: '2021-02-26T14:23:05'
                   statusDetail: >-
                     The request was completed and the specified services were
                     started/updated.
@@ -39782,8 +39824,8 @@ components:
                       quantity: 2
                   agreementId: 1588
                   status: COMPLETE
-                  dateSubmitted: 2021-02-27T15:22:48
-                  dateCompleted: 2021-02-27T15:23:05
+                  dateSubmitted: '2021-02-27T15:22:48'
+                  dateCompleted: '2021-02-27T15:23:05'
                   statusDetail: >-
                     The request was completed and the specified services were
                     started/updated.
@@ -39794,8 +39836,8 @@ components:
                       quantity: 1
                   agreementId: 1588
                   status: COMPLETE
-                  dateSubmitted: 2021-02-27T15:42:47
-                  dateCompleted: 2021-02-27T15:43:01
+                  dateSubmitted: '2021-02-27T15:42:47'
+                  dateCompleted: '2021-02-27T15:43:01'
                   statusDetail: >-
                     The request was completed and the specified services were
                     started/updated.
@@ -39826,8 +39868,8 @@ components:
                   quantity: 2
               agreementId: 1588
               status: COMPLETE
-              dateSubmitted: 2021-02-26T14:22:48
-              dateCompleted: 2021-02-26T14:23:05
+              dateSubmitted: '2021-02-26T14:22:48'
+              dateCompleted: '2021-02-26T14:23:05'
               statusDetail: >-
                 The request was completed and the specified services were
                 started/updated.
@@ -39863,22 +39905,22 @@ components:
                   agreementId: 1588
                   locationId: LOC-123
                   status: ACTIVE
-                  started: 2017-05-13
+                  started: '2017-05-13'
                 - id: 8001
                   sku: SKU-00000167
                   serviceDescription: Location Cloud Starter (Partner)
                   agreementId: 1588
                   locationId: LOC-123
                   status: ACTIVE
-                  started: 2017-05-10
+                  started: '2017-05-10'
                 - id: 8002
                   sku: SKU-00000167
                   serviceDescription: Location Cloud Starter (Partner)
                   agreementId: 1588
                   locationId: LOC-267
                   status: STOPPED
-                  started: 2017-05-10
-                  stopped: 2017-05-15
+                  started: '2017-05-10'
+                  stopped: '2017-05-15'
     SubAccountServicesResponse:
       description: Sub-Account Services Response
       content:
@@ -39911,7 +39953,7 @@ components:
                   sku: SKU-00000195
                   serviceDescription: Answers Experience
                   serviceQuantity: 3
-                  started: 2021-02-03
+                  started: '2021-02-03'
                   status: ACTIVE
                 - id: 8001
                   subAccountId: B093879
@@ -39919,7 +39961,7 @@ components:
                   sku: SKU-00000196
                   serviceDescription: Answers Experience 2
                   serviceQuantity: 1
-                  started: 2021-02-25
+                  started: '2021-02-25'
                   status: ACTIVE
                 - id: 8002
                   subAccountId: B093879
@@ -39927,7 +39969,7 @@ components:
                   sku: SKU-00000197
                   serviceDescription: Answers Experience 3
                   serviceQuantity: 1
-                  started: 2021-02-26
+                  started: '2021-02-26'
                   status: ACTIVE
     CreateSubAccountResponse:
       description: Create Sub-Account Response
@@ -39969,8 +40011,8 @@ components:
               id: 13027
               targetAccountId: B093879
               status: COMPLETE
-              dateSubmitted: 2017-05-10T19:23:07
-              dateCompleted: 2017-05-10T19:31:29
+              dateSubmitted: '2017-05-10T19:23:07'
+              dateCompleted: '2017-05-10T19:31:29'
               source:
                 type: GITHUB
                 url: https://github.com/YextSolutions/basic-free-trial

@@ -2113,7 +2113,7 @@ components:
             description: >-
               Date and time that the review comment was posted in ISO-9601
               format
-            example: 2020-01-04T13:15:53Z
+            example: '2020-01-04T13:15:53Z'
           authorName:
             type: string
             description: The name of the user who posted the review comment
@@ -2147,7 +2147,7 @@ components:
         timestamp:
           type: string
           description: Date and time that the review was posted in ISO-9601 format
-          example: 2020-01-01T13:15:53Z
+          example: '2020-01-01T13:15:53Z'
         authorName:
           type: string
           description: The name of the user who posted the review
@@ -2288,7 +2288,7 @@ components:
         timestamp:
           type: string
           description: Date and time that the suggestion was created in ISO-9601 format
-          example: 2020-01-04T13:15:53Z
+          example: '2020-01-04T13:15:53Z'
         currentValue:
           type: string
           description: The existing field data

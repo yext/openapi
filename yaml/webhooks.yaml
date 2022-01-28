@@ -4159,6 +4159,9 @@ components:
             Image must be at least 400 x 150 pixels
 
 
+            Image area (width x height) may be no more than 41000000 pixels
+
+
             Image may be no more than 30000 x 30000 pixels
 
 
@@ -4346,6 +4349,9 @@ components:
 
 
             Image must be at least 180 x 180 pixels
+
+
+            Image area (width x height) may be no more than 41000000 pixels
 
 
             Image may be no more than 30000 x 30000 pixels
