@@ -2135,9 +2135,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -3399,9 +3399,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -4369,9 +4369,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -4961,9 +4961,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -6666,9 +6666,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -7256,9 +7256,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -8056,10 +8056,10 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
-                                non-overlapping sets of hours.
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more smokeFreeProperty `openIntervals`
+                                values with non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
                                 not set `isClosed` to true for that day.
@@ -9345,9 +9345,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -10344,9 +10344,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -11483,9 +11483,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -12262,9 +12262,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -14259,9 +14259,9 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
+                          again from 1:00 PM to 5:00 PM), supply two or more
                           `openIntervals` values with non-overlapping sets of
                           hours.
 
@@ -15505,9 +15505,9 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
+                          again from 1:00 PM to 5:00 PM), supply two or more
                           `openIntervals` values with non-overlapping sets of
                           hours.
 
@@ -16445,9 +16445,9 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
+                          again from 1:00 PM to 5:00 PM), supply two or more
                           `openIntervals` values with non-overlapping sets of
                           hours.
 
@@ -17033,9 +17033,9 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
+                          again from 1:00 PM to 5:00 PM), supply two or more
                           `openIntervals` values with non-overlapping sets of
                           hours.
 
@@ -18698,9 +18698,9 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
+                          again from 1:00 PM to 5:00 PM), supply two or more
                           `openIntervals` values with non-overlapping sets of
                           hours.
 
@@ -19274,9 +19274,9 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
+                          again from 1:00 PM to 5:00 PM), supply two or more
                           `openIntervals` values with non-overlapping sets of
                           hours.
 
@@ -20063,11 +20063,11 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
-                          `openIntervals` values with non-overlapping sets of
-                          hours.
+                          again from 1:00 PM to 5:00 PM), supply two or more
+                          smokeFreeProperty `openIntervals` values with
+                          non-overlapping sets of hours.
 
                           * If you are providing `openIntervals`, you may not
                           set `isClosed` to true for that day.
@@ -21307,9 +21307,9 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
+                          again from 1:00 PM to 5:00 PM), supply two or more
                           `openIntervals` values with non-overlapping sets of
                           hours.
 
@@ -22292,9 +22292,9 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
+                          again from 1:00 PM to 5:00 PM), supply two or more
                           `openIntervals` values with non-overlapping sets of
                           hours.
 
@@ -23410,9 +23410,9 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
+                          again from 1:00 PM to 5:00 PM), supply two or more
                           `openIntervals` values with non-overlapping sets of
                           hours.
 
@@ -24183,9 +24183,9 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
+                          again from 1:00 PM to 5:00 PM), supply two or more
                           `openIntervals` values with non-overlapping sets of
                           hours.
 
@@ -27507,9 +27507,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -28771,9 +28771,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -29741,9 +29741,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -30333,9 +30333,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -32038,9 +32038,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -32628,9 +32628,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -33428,10 +33428,10 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
-                                non-overlapping sets of hours.
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more smokeFreeProperty `openIntervals`
+                                values with non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
                                 not set `isClosed` to true for that day.
@@ -34717,9 +34717,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -35716,9 +35716,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -36855,9 +36855,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -37634,9 +37634,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -39771,9 +39771,9 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
+                          again from 1:00 PM to 5:00 PM), supply two or more
                           `openIntervals` values with non-overlapping sets of
                           hours.
 
@@ -41017,9 +41017,9 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
+                          again from 1:00 PM to 5:00 PM), supply two or more
                           `openIntervals` values with non-overlapping sets of
                           hours.
 
@@ -41957,9 +41957,9 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
+                          again from 1:00 PM to 5:00 PM), supply two or more
                           `openIntervals` values with non-overlapping sets of
                           hours.
 
@@ -42545,9 +42545,9 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
+                          again from 1:00 PM to 5:00 PM), supply two or more
                           `openIntervals` values with non-overlapping sets of
                           hours.
 
@@ -44210,9 +44210,9 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
+                          again from 1:00 PM to 5:00 PM), supply two or more
                           `openIntervals` values with non-overlapping sets of
                           hours.
 
@@ -44786,9 +44786,9 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
+                          again from 1:00 PM to 5:00 PM), supply two or more
                           `openIntervals` values with non-overlapping sets of
                           hours.
 
@@ -45575,11 +45575,11 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
-                          `openIntervals` values with non-overlapping sets of
-                          hours.
+                          again from 1:00 PM to 5:00 PM), supply two or more
+                          smokeFreeProperty `openIntervals` values with
+                          non-overlapping sets of hours.
 
                           * If you are providing `openIntervals`, you may not
                           set `isClosed` to true for that day.
@@ -46819,9 +46819,9 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
+                          again from 1:00 PM to 5:00 PM), supply two or more
                           `openIntervals` values with non-overlapping sets of
                           hours.
 
@@ -47804,9 +47804,9 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
+                          again from 1:00 PM to 5:00 PM), supply two or more
                           `openIntervals` values with non-overlapping sets of
                           hours.
 
@@ -48922,9 +48922,9 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
+                          again from 1:00 PM to 5:00 PM), supply two or more
                           `openIntervals` values with non-overlapping sets of
                           hours.
 
@@ -49695,9 +49695,9 @@ paths:
                           specific day, set start to 00:00 and end to 23:59 in
                           `openIntervals` for that day.
 
-                          * To indicate that an Entity has split hours on
+                          * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
-                          again from 1:00 PM to 5:00 PM), supply up to two
+                          again from 1:00 PM to 5:00 PM), supply two or more
                           `openIntervals` values with non-overlapping sets of
                           hours.
 
@@ -51724,9 +51724,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -52988,9 +52988,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -53958,9 +53958,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -54550,9 +54550,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -56255,9 +56255,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -56845,9 +56845,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -57645,10 +57645,10 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
-                                non-overlapping sets of hours.
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more smokeFreeProperty `openIntervals`
+                                values with non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
                                 not set `isClosed` to true for that day.
@@ -58934,9 +58934,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -59933,9 +59933,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -61072,9 +61072,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -61851,9 +61851,9 @@ paths:
                                 23:59 in `openIntervals` for that day.
 
                                 * To indicate that an Entity has split hours on
-                                specific day (e.g., open from 9:00 AM to 12:00
-                                PM and again from 1:00 PM to 5:00 PM), supply up
-                                to two `openIntervals` values with
+                                a specific day (e.g., open from 9:00 AM to 12:00
+                                PM and again from 1:00 PM to 5:00 PM), supply
+                                two or more `openIntervals` values with
                                 non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
@@ -65151,9 +65151,9 @@ paths:
                                       for that day.
 
                                       * To indicate that an Entity has split
-                                      hours on specific day (e.g., open from
+                                      hours on a specific day (e.g., open from
                                       9:00 AM to 12:00 PM and again from 1:00 PM
-                                      to 5:00 PM), supply up to two
+                                      to 5:00 PM), supply two or more
                                       `openIntervals` values with
                                       non-overlapping sets of hours.
 
@@ -66435,9 +66435,9 @@ paths:
                                       for that day.
 
                                       * To indicate that an Entity has split
-                                      hours on specific day (e.g., open from
+                                      hours on a specific day (e.g., open from
                                       9:00 AM to 12:00 PM and again from 1:00 PM
-                                      to 5:00 PM), supply up to two
+                                      to 5:00 PM), supply two or more
                                       `openIntervals` values with
                                       non-overlapping sets of hours.
 
@@ -67418,9 +67418,9 @@ paths:
                                       for that day.
 
                                       * To indicate that an Entity has split
-                                      hours on specific day (e.g., open from
+                                      hours on a specific day (e.g., open from
                                       9:00 AM to 12:00 PM and again from 1:00 PM
-                                      to 5:00 PM), supply up to two
+                                      to 5:00 PM), supply two or more
                                       `openIntervals` values with
                                       non-overlapping sets of hours.
 
@@ -68018,9 +68018,9 @@ paths:
                                       for that day.
 
                                       * To indicate that an Entity has split
-                                      hours on specific day (e.g., open from
+                                      hours on a specific day (e.g., open from
                                       9:00 AM to 12:00 PM and again from 1:00 PM
-                                      to 5:00 PM), supply up to two
+                                      to 5:00 PM), supply two or more
                                       `openIntervals` values with
                                       non-overlapping sets of hours.
 
@@ -69779,9 +69779,9 @@ paths:
                                       for that day.
 
                                       * To indicate that an Entity has split
-                                      hours on specific day (e.g., open from
+                                      hours on a specific day (e.g., open from
                                       9:00 AM to 12:00 PM and again from 1:00 PM
-                                      to 5:00 PM), supply up to two
+                                      to 5:00 PM), supply two or more
                                       `openIntervals` values with
                                       non-overlapping sets of hours.
 
@@ -70383,9 +70383,9 @@ paths:
                                       for that day.
 
                                       * To indicate that an Entity has split
-                                      hours on specific day (e.g., open from
+                                      hours on a specific day (e.g., open from
                                       9:00 AM to 12:00 PM and again from 1:00 PM
-                                      to 5:00 PM), supply up to two
+                                      to 5:00 PM), supply two or more
                                       `openIntervals` values with
                                       non-overlapping sets of hours.
 
@@ -71194,11 +71194,11 @@ paths:
                                       for that day.
 
                                       * To indicate that an Entity has split
-                                      hours on specific day (e.g., open from
+                                      hours on a specific day (e.g., open from
                                       9:00 AM to 12:00 PM and again from 1:00 PM
-                                      to 5:00 PM), supply up to two
-                                      `openIntervals` values with
-                                      non-overlapping sets of hours.
+                                      to 5:00 PM), supply two or more
+                                      smokeFreeProperty `openIntervals` values
+                                      with non-overlapping sets of hours.
 
                                       * If you are providing `openIntervals`,
                                       you may not set `isClosed` to true for
@@ -72519,9 +72519,9 @@ paths:
                                       for that day.
 
                                       * To indicate that an Entity has split
-                                      hours on specific day (e.g., open from
+                                      hours on a specific day (e.g., open from
                                       9:00 AM to 12:00 PM and again from 1:00 PM
-                                      to 5:00 PM), supply up to two
+                                      to 5:00 PM), supply two or more
                                       `openIntervals` values with
                                       non-overlapping sets of hours.
 
@@ -73541,9 +73541,9 @@ paths:
                                       for that day.
 
                                       * To indicate that an Entity has split
-                                      hours on specific day (e.g., open from
+                                      hours on a specific day (e.g., open from
                                       9:00 AM to 12:00 PM and again from 1:00 PM
-                                      to 5:00 PM), supply up to two
+                                      to 5:00 PM), supply two or more
                                       `openIntervals` values with
                                       non-overlapping sets of hours.
 
@@ -74692,9 +74692,9 @@ paths:
                                       for that day.
 
                                       * To indicate that an Entity has split
-                                      hours on specific day (e.g., open from
+                                      hours on a specific day (e.g., open from
                                       9:00 AM to 12:00 PM and again from 1:00 PM
-                                      to 5:00 PM), supply up to two
+                                      to 5:00 PM), supply two or more
                                       `openIntervals` values with
                                       non-overlapping sets of hours.
 
@@ -75488,9 +75488,9 @@ paths:
                                       for that day.
 
                                       * To indicate that an Entity has split
-                                      hours on specific day (e.g., open from
+                                      hours on a specific day (e.g., open from
                                       9:00 AM to 12:00 PM and again from 1:00 PM
-                                      to 5:00 PM), supply up to two
+                                      to 5:00 PM), supply two or more
                                       `openIntervals` values with
                                       non-overlapping sets of hours.
 
