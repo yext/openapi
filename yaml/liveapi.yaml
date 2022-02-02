@@ -79800,9 +79800,8 @@ components:
         folderId:
           type: string
           description: >-
-            The folder that this location is in. If the location is in the
-            customer-level (root) folder, its folderId will be 0. Must be a
-            valid, existing Yext Folder ID or 0
+            The folder that this location is in. Must be a valid, existing Yext
+            Folder ID
         labelIds:
           type: array
           items:
@@ -80510,8 +80509,8 @@ components:
                   count:
                     type: integer
                     description: >-
-                      Total number of Locations that meet filter criteria
-                      (ignores limit / offset).
+                      Total number of Locations (up to 10,000) that meet filter
+                      criteria (ignores limit / offset).
                   locations:
                     type: array
                     items:
@@ -80545,8 +80544,8 @@ components:
                     type: integer
                     description: >
 
-                      Total number of Locations that meet filter criteria
-                      (ignores **`limit`** / **`offset`** parameters)
+                      Total number of Locations (up to 10,000) that meet filter
+                      criteria (ignores **`limit`** / **`offset`** parameters)
                   geo:
                     $ref: '#/components/schemas/Geo'
                   locationDistances:

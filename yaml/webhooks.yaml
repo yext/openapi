@@ -12973,9 +12973,8 @@ components:
         folderId:
           type: string
           description: >-
-            The folder that this location is in. If the location is in the
-            customer-level (root) folder, its folderId will be 0. Must be a
-            valid, existing Yext Folder ID or 0
+            The folder that this location is in. Must be a valid, existing Yext
+            Folder ID
         labelIds:
           type: array
           items:
