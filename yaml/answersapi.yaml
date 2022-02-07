@@ -323,8 +323,8 @@ components:
 
 
         For example, if the filter JSON is `{"name":{"$eq":"John"}}`, then the
-        filter param after URL-encoding will be:
-        `filter=%7B%22name%22%3A%7B%22%24eq%22%3A%22John%22%7D%7D`
+        filters param after URL-encoding will be:
+        `filters=%7B%22name%22%3A%7B%22%24eq%22%3A%22John%22%7D%7D`
 
 
         **Basic Filter Structure**
@@ -829,7 +829,7 @@ components:
           </tr>
           <tr>
             <th>entityTypeId</th>
-            <th>The numeric entityTypeId for the entity type the filter belongs to.</th>
+            <th>The api name for the entity type the filter belongs to.</th>
           </tr>
           <tr>
             <th>shouldFetchEntities</th>
