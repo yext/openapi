@@ -855,7 +855,6 @@ components:
 
 
 
-
                 Array must be ordered.
 
 
@@ -2006,7 +2005,6 @@ components:
 
 
 
-
                 Array must be ordered.
 
 
@@ -2888,7 +2886,6 @@ components:
 
 
 
-
                 Array must be ordered.
 
 
@@ -3427,7 +3424,6 @@ components:
                 Hours that does not include Holiday Hours that you sent in your
                 last update, Yext considers the missing Holiday Hours to be
                 deleted, and we remove them.
-
 
 
 
@@ -5020,7 +5016,6 @@ components:
 
 
 
-
                 Array must be ordered.
 
 
@@ -5557,7 +5552,6 @@ components:
                 Hours that does not include Holiday Hours that you sent in your
                 last update, Yext considers the missing Holiday Hours to be
                 deleted, and we remove them.
-
 
 
 
@@ -6291,7 +6285,6 @@ components:
 
 
 
-
                 Array must be ordered.
 
 
@@ -6666,8 +6659,8 @@ components:
 
             * To indicate that an Entity has split hours on a specific day
             (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00
-            PM), supply two or more smokeFreeProperty `openIntervals` values
-            with non-overlapping sets of hours.
+            PM), supply two or more `openIntervals` values with non-overlapping
+            sets of hours.
 
             * If you are providing `openIntervals`, you may not set `isClosed`
             to true for that day.
@@ -7464,7 +7457,6 @@ components:
                 Hours that does not include Holiday Hours that you sent in your
                 last update, Yext considers the missing Holiday Hours to be
                 deleted, and we remove them.
-
 
 
 
@@ -8416,7 +8408,6 @@ components:
                 Hours that does not include Holiday Hours that you sent in your
                 last update, Yext considers the missing Holiday Hours to be
                 deleted, and we remove them.
-
 
 
 
@@ -9458,7 +9449,6 @@ components:
 
 
 
-
                 Array must be ordered.
 
 
@@ -9861,7 +9851,6 @@ components:
                  - the name of a city.
 
 
-
                 Array must be ordered.
 
 
@@ -10167,7 +10156,6 @@ components:
                 Hours that does not include Holiday Hours that you sent in your
                 last update, Yext considers the missing Holiday Hours to be
                 deleted, and we remove them.
-
 
 
 

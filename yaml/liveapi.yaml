@@ -8058,8 +8058,8 @@ paths:
                                 * To indicate that an Entity has split hours on
                                 a specific day (e.g., open from 9:00 AM to 12:00
                                 PM and again from 1:00 PM to 5:00 PM), supply
-                                two or more smokeFreeProperty `openIntervals`
-                                values with non-overlapping sets of hours.
+                                two or more `openIntervals` values with
+                                non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
                                 not set `isClosed` to true for that day.
@@ -13857,7 +13857,6 @@ paths:
 
 
 
-
                               Array must be ordered.
 
 
@@ -15099,7 +15098,6 @@ paths:
 
 
 
-
                               Array must be ordered.
 
 
@@ -16043,7 +16041,6 @@ paths:
 
 
 
-
                               Array must be ordered.
 
 
@@ -16621,7 +16618,6 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
-
 
 
 
@@ -18296,7 +18292,6 @@ paths:
 
 
 
-
                               Array must be ordered.
 
 
@@ -18869,7 +18864,6 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
-
 
 
 
@@ -19657,7 +19651,6 @@ paths:
 
 
 
-
                               Array must be ordered.
 
 
@@ -20066,8 +20059,8 @@ paths:
                           * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
                           again from 1:00 PM to 5:00 PM), supply two or more
-                          smokeFreeProperty `openIntervals` values with
-                          non-overlapping sets of hours.
+                          `openIntervals` values with non-overlapping sets of
+                          hours.
 
                           * If you are providing `openIntervals`, you may not
                           set `isClosed` to true for that day.
@@ -20902,7 +20895,6 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
-
 
 
 
@@ -21882,7 +21874,6 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
-
 
 
 
@@ -23008,7 +22999,6 @@ paths:
 
 
 
-
                               Array must be ordered.
 
 
@@ -23441,7 +23431,6 @@ paths:
                                - the name of a city.
 
 
-
                               Array must be ordered.
 
 
@@ -23771,7 +23760,6 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
-
 
 
 
@@ -27096,7 +27084,6 @@ paths:
 
 
 
-
                                     Array must be ordered.
 
 
@@ -28360,7 +28347,6 @@ paths:
 
 
 
-
                                     Array must be ordered.
 
 
@@ -29329,7 +29315,6 @@ paths:
 
 
 
-
                                     Array must be ordered.
 
 
@@ -29917,7 +29902,6 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
-
 
 
 
@@ -31627,7 +31611,6 @@ paths:
 
 
 
-
                                     Array must be ordered.
 
 
@@ -32214,7 +32197,6 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
-
 
 
 
@@ -33017,7 +32999,6 @@ paths:
 
 
 
-
                                     Array must be ordered.
 
 
@@ -33430,8 +33411,8 @@ paths:
                                 * To indicate that an Entity has split hours on
                                 a specific day (e.g., open from 9:00 AM to 12:00
                                 PM and again from 1:00 PM to 5:00 PM), supply
-                                two or more smokeFreeProperty `openIntervals`
-                                values with non-overlapping sets of hours.
+                                two or more `openIntervals` values with
+                                non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
                                 not set `isClosed` to true for that day.
@@ -34301,7 +34282,6 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
-
 
 
 
@@ -35302,7 +35282,6 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
-
 
 
 
@@ -36444,7 +36423,6 @@ paths:
 
 
 
-
                                     Array must be ordered.
 
 
@@ -36885,7 +36863,6 @@ paths:
                                      - the name of a city.
 
 
-
                                     Array must be ordered.
 
 
@@ -37220,7 +37197,6 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
-
 
 
 
@@ -39369,7 +39345,6 @@ paths:
 
 
 
-
                               Array must be ordered.
 
 
@@ -40611,7 +40586,6 @@ paths:
 
 
 
-
                               Array must be ordered.
 
 
@@ -41555,7 +41529,6 @@ paths:
 
 
 
-
                               Array must be ordered.
 
 
@@ -42133,7 +42106,6 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
-
 
 
 
@@ -43808,7 +43780,6 @@ paths:
 
 
 
-
                               Array must be ordered.
 
 
@@ -44381,7 +44352,6 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
-
 
 
 
@@ -45169,7 +45139,6 @@ paths:
 
 
 
-
                               Array must be ordered.
 
 
@@ -45578,8 +45547,8 @@ paths:
                           * To indicate that an Entity has split hours on a
                           specific day (e.g., open from 9:00 AM to 12:00 PM and
                           again from 1:00 PM to 5:00 PM), supply two or more
-                          smokeFreeProperty `openIntervals` values with
-                          non-overlapping sets of hours.
+                          `openIntervals` values with non-overlapping sets of
+                          hours.
 
                           * If you are providing `openIntervals`, you may not
                           set `isClosed` to true for that day.
@@ -46414,7 +46383,6 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
-
 
 
 
@@ -47394,7 +47362,6 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
-
 
 
 
@@ -48520,7 +48487,6 @@ paths:
 
 
 
-
                               Array must be ordered.
 
 
@@ -48953,7 +48919,6 @@ paths:
                                - the name of a city.
 
 
-
                               Array must be ordered.
 
 
@@ -49283,7 +49248,6 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
-
 
 
 
@@ -51313,7 +51277,6 @@ paths:
 
 
 
-
                                     Array must be ordered.
 
 
@@ -52577,7 +52540,6 @@ paths:
 
 
 
-
                                     Array must be ordered.
 
 
@@ -53546,7 +53508,6 @@ paths:
 
 
 
-
                                     Array must be ordered.
 
 
@@ -54134,7 +54095,6 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
-
 
 
 
@@ -55844,7 +55804,6 @@ paths:
 
 
 
-
                                     Array must be ordered.
 
 
@@ -56431,7 +56390,6 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
-
 
 
 
@@ -57234,7 +57192,6 @@ paths:
 
 
 
-
                                     Array must be ordered.
 
 
@@ -57647,8 +57604,8 @@ paths:
                                 * To indicate that an Entity has split hours on
                                 a specific day (e.g., open from 9:00 AM to 12:00
                                 PM and again from 1:00 PM to 5:00 PM), supply
-                                two or more smokeFreeProperty `openIntervals`
-                                values with non-overlapping sets of hours.
+                                two or more `openIntervals` values with
+                                non-overlapping sets of hours.
 
                                 * If you are providing `openIntervals`, you may
                                 not set `isClosed` to true for that day.
@@ -58518,7 +58475,6 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
-
 
 
 
@@ -59519,7 +59475,6 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
-
 
 
 
@@ -60661,7 +60616,6 @@ paths:
 
 
 
-
                                     Array must be ordered.
 
 
@@ -61102,7 +61056,6 @@ paths:
                                      - the name of a city.
 
 
-
                                     Array must be ordered.
 
 
@@ -61437,7 +61390,6 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
-
 
 
 
@@ -64735,7 +64687,6 @@ paths:
 
 
 
-
                                           Array must be ordered.
 
 
@@ -66019,7 +65970,6 @@ paths:
 
 
 
-
                                           Array must be ordered.
 
 
@@ -67001,7 +66951,6 @@ paths:
 
 
 
-
                                           Array must be ordered.
 
 
@@ -67598,7 +67547,6 @@ paths:
                                           update, Yext considers the missing
                                           Holiday Hours to be deleted, and we
                                           remove them.
-
 
 
 
@@ -69363,7 +69311,6 @@ paths:
 
 
 
-
                                           Array must be ordered.
 
 
@@ -69966,7 +69913,6 @@ paths:
                                           update, Yext considers the missing
                                           Holiday Hours to be deleted, and we
                                           remove them.
-
 
 
 
@@ -70778,7 +70724,6 @@ paths:
 
 
 
-
                                           Array must be ordered.
 
 
@@ -71197,8 +71142,8 @@ paths:
                                       hours on a specific day (e.g., open from
                                       9:00 AM to 12:00 PM and again from 1:00 PM
                                       to 5:00 PM), supply two or more
-                                      smokeFreeProperty `openIntervals` values
-                                      with non-overlapping sets of hours.
+                                      `openIntervals` values with
+                                      non-overlapping sets of hours.
 
                                       * If you are providing `openIntervals`,
                                       you may not set `isClosed` to true for
@@ -72099,7 +72044,6 @@ paths:
                                           update, Yext considers the missing
                                           Holiday Hours to be deleted, and we
                                           remove them.
-
 
 
 
@@ -73122,7 +73066,6 @@ paths:
                                           update, Yext considers the missing
                                           Holiday Hours to be deleted, and we
                                           remove them.
-
 
 
 
@@ -74276,7 +74219,6 @@ paths:
 
 
 
-
                                           Array must be ordered.
 
 
@@ -74724,7 +74666,6 @@ paths:
                                            - the name of a city.
 
 
-
                                           Array must be ordered.
 
 
@@ -75069,7 +75010,6 @@ paths:
                                           update, Yext considers the missing
                                           Holiday Hours to be deleted, and we
                                           remove them.
-
 
 
 

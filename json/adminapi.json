@@ -7842,7 +7842,7 @@
                 "minLength": 0,
                 "maxLength": 5000,
                 "type": "string",
-                "description": "\n\n\nCannot Include:\n* HTML markup"
+                "description": "\n\nCannot Include:\n* HTML markup"
               },
               "address": {
                 "additionalProperties": false,
@@ -7940,7 +7940,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -8261,7 +8261,7 @@
                 "description": "The URL where consumers can download the entity's Android app"
               },
               "associations": {
-                "description": "Association memberships relevant to the entity (e.g., `\"New York Doctors Association\"`)\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "description": "Association memberships relevant to the entity (e.g., `\"New York Doctors Association\"`)\nAll strings must be non-empty when trimmed of whitespace.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -8357,7 +8357,7 @@
                 "description": "Indicates whether the entity has a boutique store. Gift shop or convenience store are not eligible."
               },
               "brands": {
-                "description": "Brands sold by this entity\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "description": "Brands sold by this entity\nAll strings must be non-empty when trimmed of whitespace.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -8412,7 +8412,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -8862,7 +8862,7 @@
                 "description": "Indicates whether the entity has an elliptical machine."
               },
               "emails": {
-                "description": "Emails addresses for this entity's point of contact\n\nMust be valid email addresses\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 5 elements.\n",
+                "description": "Emails addresses for this entity's point of contact\n\nMust be valid email addresses\n\n\nArray must be ordered.\n\nArray may have a maximum of 5 elements.\n",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -9193,7 +9193,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -9492,7 +9492,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -9771,7 +9771,7 @@
                 "description": "The ISO 3166-2 region code for the entity\n\nYext will determine the entity's code and update **`isoRegionCode`** with that value. If Yext is unable to determine the code for the entity, the entity'ss ISO 3166-1 alpha-2 country code will be used."
               },
               "keywords": {
-                "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -9844,7 +9844,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -10083,7 +10083,7 @@
                     }
                   }
                 },
-                "description": "Contains the daily kitchen hours, holiday kitchen hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `kitchenHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday kitchen hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more smokeFreeProperty `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day."
+                "description": "Contains the daily kitchen hours, holiday kitchen hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `kitchenHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday kitchen hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day."
               },
               "labels": {
                 "uniqueItems": false,
@@ -10101,7 +10101,7 @@
                 "description": "The URL of this entity's Landing Page that was created with Yext Pages"
               },
               "languages": {
-                "description": "The langauges in which consumers can commicate with this entity or its staff members\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "description": "The langauges in which consumers can commicate with this entity or its staff members\nAll strings must be non-empty when trimmed of whitespace.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -10467,7 +10467,7 @@
                 "description": "Indicates if the entity is pet friendly."
               },
               "photoGallery": {
-                "description": "\n**NOTE:** The list of photos that you send us must be comprehensive. For example, if you send us a list of photos that does not include photos that you sent in your last update, Yext considers the missing photos to be deleted, and we remove them from your listings.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Supported Aspect Ratios:\n>* 1 x 1\n>* 4 x 3\n>* 3 x 2\n>* 5 x 3\n>* 16 x 9\n>* 3 x 1\n>* 2 x 3\n>* 5 x 7\n>* 4 x 5\n>* 4 x 1\n>\n>**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n>",
+                "description": "\n**NOTE:** The list of photos that you send us must be comprehensive. For example, if you send us a list of photos that does not include photos that you sent in your last update, Yext considers the missing photos to be deleted, and we remove them from your listings.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Supported Aspect Ratios:\n>* 1 x 1\n>* 4 x 3\n>* 3 x 2\n>* 5 x 3\n>* 16 x 9\n>* 3 x 1\n>* 2 x 3\n>* 5 x 7\n>* 4 x 5\n>* 4 x 1\n>\n>**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n>",
                 "uniqueItems": false,
                 "type": "array",
                 "items": {
@@ -10765,7 +10765,7 @@
                 "type": "object",
                 "properties": {
                   "places": {
-                    "description": "A list of places served by the entity, where each place is either:\n - a postal code, or\n - the name of a city.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 200 elements.\n",
+                    "description": "A list of places served by the entity, where each place is either:\n - a postal code, or\n - the name of a city.\n\n\nArray must be ordered.\n\nArray may have a maximum of 200 elements.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -10804,7 +10804,7 @@
                 }
               },
               "services": {
-                "description": "Services offered by this entity\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "description": "Services offered by this entity\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -10989,7 +10989,7 @@
                 "description": "Indicates whether the entity has a vending machine."
               },
               "videos": {
-                "description": "Valid YouTube URLs for embedding a video on some publisher sites\n\n**NOTE:** Currently, only the first URL in the Array appears in your listings.\n\n\n\nArray must be ordered.\n",
+                "description": "Valid YouTube URLs for embedding a video on some publisher sites\n\n**NOTE:** Currently, only the first URL in the Array appears in your listings.\n\n\nArray must be ordered.\n",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -11452,7 +11452,7 @@
                 "minLength": 0,
                 "maxLength": 5000,
                 "type": "string",
-                "description": "\n\n\nCannot Include:\n* HTML markup"
+                "description": "\n\nCannot Include:\n* HTML markup"
               },
               "address": {
                 "additionalProperties": false,
@@ -11550,7 +11550,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -11835,7 +11835,7 @@
                 "description": "The URL where consumers can download the entity's Android app"
               },
               "associations": {
-                "description": "Association memberships relevant to the entity (e.g., `\"New York Doctors Association\"`)\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "description": "Association memberships relevant to the entity (e.g., `\"New York Doctors Association\"`)\nAll strings must be non-empty when trimmed of whitespace.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -11868,7 +11868,7 @@
                 "description": "Information about the Bio Content Lists associated with this entity"
               },
               "brands": {
-                "description": "Brands sold by this entity\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "description": "Brands sold by this entity\nAll strings must be non-empty when trimmed of whitespace.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -11914,7 +11914,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -12236,7 +12236,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -12536,7 +12536,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -12795,7 +12795,7 @@
                 "description": "Coordinates of the drop-off area for the entity, as provided by you"
               },
               "emails": {
-                "description": "Emails addresses for this entity's point of contact\n\nMust be valid email addresses\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 5 elements.\n",
+                "description": "Emails addresses for this entity's point of contact\n\nMust be valid email addresses\n\n\nArray must be ordered.\n\nArray may have a maximum of 5 elements.\n",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -13066,7 +13066,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -13347,7 +13347,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -13611,7 +13611,7 @@
                 "description": "The ISO 3166-2 region code for the entity\n\nYext will determine the entity's code and update **`isoRegionCode`** with that value. If Yext is unable to determine the code for the entity, the entity'ss ISO 3166-1 alpha-2 country code will be used."
               },
               "keywords": {
-                "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -13657,7 +13657,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -13896,7 +13896,7 @@
                     }
                   }
                 },
-                "description": "Contains the daily kitchen hours, holiday kitchen hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `kitchenHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday kitchen hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more smokeFreeProperty `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day."
+                "description": "Contains the daily kitchen hours, holiday kitchen hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `kitchenHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday kitchen hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day."
               },
               "labels": {
                 "uniqueItems": false,
@@ -13914,7 +13914,7 @@
                 "description": "The URL of this entity's Landing Page that was created with Yext Pages"
               },
               "languages": {
-                "description": "The langauges in which consumers can commicate with this entity or its staff members\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "description": "The langauges in which consumers can commicate with this entity or its staff members\nAll strings must be non-empty when trimmed of whitespace.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -14080,7 +14080,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -14452,7 +14452,7 @@
                 "description": "The payment methods accepted by this entity\n\nValid elements depend on the entity's country.\n"
               },
               "photoGallery": {
-                "description": "\n**NOTE:** The list of photos that you send us must be comprehensive. For example, if you send us a list of photos that does not include photos that you sent in your last update, Yext considers the missing photos to be deleted, and we remove them from your listings.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Supported Aspect Ratios:\n>* 1 x 1\n>* 4 x 3\n>* 3 x 2\n>* 5 x 3\n>* 16 x 9\n>* 3 x 1\n>* 2 x 3\n>* 5 x 7\n>* 4 x 5\n>* 4 x 1\n>\n>**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n>",
+                "description": "\n**NOTE:** The list of photos that you send us must be comprehensive. For example, if you send us a list of photos that does not include photos that you sent in your last update, Yext considers the missing photos to be deleted, and we remove them from your listings.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Supported Aspect Ratios:\n>* 1 x 1\n>* 4 x 3\n>* 3 x 2\n>* 5 x 3\n>* 16 x 9\n>* 3 x 1\n>* 2 x 3\n>* 5 x 7\n>* 4 x 5\n>* 4 x 1\n>\n>**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n>",
                 "uniqueItems": false,
                 "type": "array",
                 "items": {
@@ -14551,7 +14551,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -14831,7 +14831,7 @@
                 "description": "Information about the Products & Services Content Lists associated with this entity"
               },
               "products": {
-                "description": "Products sold by this entity\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "description": "Products sold by this entity\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -15005,7 +15005,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -15251,7 +15251,7 @@
                 "type": "object",
                 "properties": {
                   "places": {
-                    "description": "A list of places served by the entity, where each place is either:\n - a postal code, or\n - the name of a city.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 200 elements.\n",
+                    "description": "A list of places served by the entity, where each place is either:\n - a postal code, or\n - the name of a city.\n\n\nArray must be ordered.\n\nArray may have a maximum of 200 elements.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -15290,7 +15290,7 @@
                 }
               },
               "services": {
-                "description": "Services offered by this entity\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "description": "Services offered by this entity\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -15301,7 +15301,7 @@
                 }
               },
               "specialities": {
-                "description": "Up to 100 of this entity's specialities (e.g., for food and dining: `Chicago style`)\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "description": "Up to 100 of this entity's specialities (e.g., for food and dining: `Chicago style`)\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -15347,7 +15347,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -15664,7 +15664,7 @@
                 "description": "Information about the call-to-action consumers will see in the Uber app during a trip to your entity"
               },
               "videos": {
-                "description": "Valid YouTube URLs for embedding a video on some publisher sites\n\n**NOTE:** Currently, only the first URL in the Array appears in your listings.\n\n\n\nArray must be ordered.\n",
+                "description": "Valid YouTube URLs for embedding a video on some publisher sites\n\n**NOTE:** Currently, only the first URL in the Array appears in your listings.\n\n\nArray must be ordered.\n",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -15799,7 +15799,7 @@
                 "minLength": 0,
                 "maxLength": 5000,
                 "type": "string",
-                "description": "\n\n\nCannot Include:\n* HTML markup"
+                "description": "\n\nCannot Include:\n* HTML markup"
               },
               "address": {
                 "additionalProperties": false,
@@ -15901,7 +15901,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -16186,7 +16186,7 @@
                 "description": "The URL where consumers can download the entity's Android app"
               },
               "associations": {
-                "description": "Association memberships relevant to the entity (e.g., `\"New York Doctors Association\"`)\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "description": "Association memberships relevant to the entity (e.g., `\"New York Doctors Association\"`)\nAll strings must be non-empty when trimmed of whitespace.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -16229,7 +16229,7 @@
                 "description": "Information about the Bio Content Lists associated with this entity"
               },
               "brands": {
-                "description": "Brands sold by this entity\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "description": "Brands sold by this entity\nAll strings must be non-empty when trimmed of whitespace.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -16275,7 +16275,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -16597,7 +16597,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -16897,7 +16897,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -17156,7 +17156,7 @@
                 "description": "Coordinates of the drop-off area for the entity, as provided by you"
               },
               "emails": {
-                "description": "Emails addresses for this entity's point of contact\n\nMust be valid email addresses\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 5 elements.\n",
+                "description": "Emails addresses for this entity's point of contact\n\nMust be valid email addresses\n\n\nArray must be ordered.\n\nArray may have a maximum of 5 elements.\n",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -17427,7 +17427,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -17708,7 +17708,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -17972,7 +17972,7 @@
                 "description": "The ISO 3166-2 region code for the entity\n\nYext will determine the entity's code and update **`isoRegionCode`** with that value. If Yext is unable to determine the code for the entity, the entity'ss ISO 3166-1 alpha-2 country code will be used."
               },
               "keywords": {
-                "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -18018,7 +18018,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -18257,7 +18257,7 @@
                     }
                   }
                 },
-                "description": "Contains the daily kitchen hours, holiday kitchen hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `kitchenHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday kitchen hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more smokeFreeProperty `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day."
+                "description": "Contains the daily kitchen hours, holiday kitchen hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `kitchenHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday kitchen hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day."
               },
               "labels": {
                 "uniqueItems": false,
@@ -18275,7 +18275,7 @@
                 "description": "The URL of this entity's Landing Page that was created with Yext Pages"
               },
               "languages": {
-                "description": "The langauges in which consumers can commicate with this entity or its staff members\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "description": "The langauges in which consumers can commicate with this entity or its staff members\nAll strings must be non-empty when trimmed of whitespace.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -18457,7 +18457,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -18829,7 +18829,7 @@
                 "description": "The payment methods accepted by this entity\n\nValid elements depend on the entity's country.\n"
               },
               "photoGallery": {
-                "description": "\n**NOTE:** The list of photos that you send us must be comprehensive. For example, if you send us a list of photos that does not include photos that you sent in your last update, Yext considers the missing photos to be deleted, and we remove them from your listings.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Supported Aspect Ratios:\n>* 1 x 1\n>* 4 x 3\n>* 3 x 2\n>* 5 x 3\n>* 16 x 9\n>* 3 x 1\n>* 2 x 3\n>* 5 x 7\n>* 4 x 5\n>* 4 x 1\n>\n>**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n>",
+                "description": "\n**NOTE:** The list of photos that you send us must be comprehensive. For example, if you send us a list of photos that does not include photos that you sent in your last update, Yext considers the missing photos to be deleted, and we remove them from your listings.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Supported Aspect Ratios:\n>* 1 x 1\n>* 4 x 3\n>* 3 x 2\n>* 5 x 3\n>* 16 x 9\n>* 3 x 1\n>* 2 x 3\n>* 5 x 7\n>* 4 x 5\n>* 4 x 1\n>\n>**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n>",
                 "uniqueItems": false,
                 "type": "array",
                 "items": {
@@ -18928,7 +18928,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -19371,7 +19371,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -19617,7 +19617,7 @@
                 "type": "object",
                 "properties": {
                   "places": {
-                    "description": "A list of places served by the entity, where each place is either:\n - a postal code, or\n - the name of a city.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 200 elements.\n",
+                    "description": "A list of places served by the entity, where each place is either:\n - a postal code, or\n - the name of a city.\n\n\nArray must be ordered.\n\nArray may have a maximum of 200 elements.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -19656,7 +19656,7 @@
                 }
               },
               "services": {
-                "description": "Services offered by this entity\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "description": "Services offered by this entity\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -19667,7 +19667,7 @@
                 }
               },
               "specialities": {
-                "description": "Up to 100 of this entity's specialities (e.g., for food and dining: `Chicago style`)\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "description": "Up to 100 of this entity's specialities (e.g., for food and dining: `Chicago style`)\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -19713,7 +19713,7 @@
                     }
                   },
                   "holidayHours": {
-                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n",
                     "uniqueItems": true,
                     "type": "array",
                     "items": {
@@ -20030,7 +20030,7 @@
                 "description": "Information about the call-to-action consumers will see in the Uber app during a trip to your entity"
               },
               "videos": {
-                "description": "Valid YouTube URLs for embedding a video on some publisher sites\n\n**NOTE:** Currently, only the first URL in the Array appears in your listings.\n\n\n\nArray must be ordered.\n",
+                "description": "Valid YouTube URLs for embedding a video on some publisher sites\n\n**NOTE:** Currently, only the first URL in the Array appears in your listings.\n\n\nArray must be ordered.\n",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -21414,7 +21414,7 @@
                 "description": "Filtering Type: `object`"
               },
               "holidayHours": {
-                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
+                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -21986,7 +21986,7 @@
                 "description": "Filtering Type: `object`"
               },
               "holidayHours": {
-                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
+                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -22480,7 +22480,7 @@
                 "description": "Filtering Type: `object`"
               },
               "holidayHours": {
-                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
+                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -22816,7 +22816,7 @@
                 "description": "Filtering Type: `object`"
               },
               "holidayHours": {
-                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
+                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -23543,7 +23543,7 @@
                 "description": "Filtering Type: `object`"
               },
               "holidayHours": {
-                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
+                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -23884,7 +23884,7 @@
                 "description": "Filtering Type: `object`"
               },
               "holidayHours": {
-                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
+                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -24271,7 +24271,7 @@
                 "description": "Filtering Type: `object`"
               },
               "holidayHours": {
-                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
+                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -24524,7 +24524,7 @@
                 "description": "Filtering Type: `object`"
               }
             },
-            "description": "Contains the daily kitchen hours, holiday kitchen hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `kitchenHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday kitchen hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more smokeFreeProperty `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day.\n\nFiltering Type: `hours`\n\n```\nEligible For: \n   * hotel\n   * location\n   * restaurant\n```"
+            "description": "Contains the daily kitchen hours, holiday kitchen hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `kitchenHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday kitchen hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day.\n\nFiltering Type: `hours`\n\n```\nEligible For: \n   * hotel\n   * location\n   * restaurant\n```"
           },
           "labels": {
             "uniqueItems": false,
@@ -24861,7 +24861,7 @@
                 "description": "Filtering Type: `object`"
               },
               "holidayHours": {
-                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
+                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -25407,7 +25407,7 @@
                 "description": "Filtering Type: `object`"
               },
               "holidayHours": {
-                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
+                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -25958,7 +25958,7 @@
                 "description": "Filtering Type: `object`"
               },
               "holidayHours": {
-                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
+                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -26218,7 +26218,7 @@
             "type": "object",
             "properties": {
               "places": {
-                "description": "A list of places served by the entity, where each place is either:\n - a postal code, or\n - the name of a city.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 200 elements.\n\n\nFiltering Type: `list of text`",
+                "description": "A list of places served by the entity, where each place is either:\n - a postal code, or\n - the name of a city.\n\n\nArray must be ordered.\n\nArray may have a maximum of 200 elements.\n\n\nFiltering Type: `list of text`",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
@@ -26365,7 +26365,7 @@
                 "description": "Filtering Type: `object`"
               },
               "holidayHours": {
-                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
+                "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`",
                 "uniqueItems": true,
                 "type": "array",
                 "items": {
