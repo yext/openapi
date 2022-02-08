@@ -1304,6 +1304,86 @@
                                 "type": "string",
                                 "description": "Indicates whether the entity has a convenience store.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
                               },
+                              "covidMessaging": {
+                                "minLength": 0,
+                                "maxLength": 15000,
+                                "type": "string",
+                                "description": "Information or messaging related to COVID-19.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * healthcareProfessional\n   * location\n```"
+                              },
+                              "covidTestAppointmentUrl": {
+                                "minLength": 0,
+                                "format": "uri",
+                                "type": "string",
+                                "description": "An appointment URL for scheduling a COVID-19 test.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidTestingAppointmentRequired": {
+                                "type": "boolean",
+                                "description": "Indicates whether an appointment is required for a COVID-19 test.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidTestingDriveThroughSite": {
+                                "type": "boolean",
+                                "description": "Indicates whether location is a drive-through site for COVID-19 tests.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidTestingIsFree": {
+                                "type": "boolean",
+                                "description": "Indicates whether location offers free COVID-19 testing.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidTestingPatientRestrictions": {
+                                "type": "boolean",
+                                "description": "Indicates whether there are patient restrictions for COVID-19 testing.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidTestingReferralRequired": {
+                                "type": "boolean",
+                                "description": "Indicates whether a referral is required for COVID-19 testing.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidTestingSiteInstructions": {
+                                "minLength": 0,
+                                "maxLength": 15000,
+                                "type": "string",
+                                "description": "Information or instructions for the COVID-19 testing site.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccineAppointmentRequired": {
+                                "type": "boolean",
+                                "description": "Indicates whether an appointment is required for a COVID-19 vaccine.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccineDriveThroughSite": {
+                                "type": "boolean",
+                                "description": "Indicates whether location is a drive-through site for COVID-19 vaccines.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccineInformationUrl": {
+                                "minLength": 0,
+                                "format": "uri",
+                                "type": "string",
+                                "description": "An information URL for more information about COVID-19 vaccines.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccinePatientRestrictions": {
+                                "type": "boolean",
+                                "description": "Indicates whether there are patient restrictions for a COVID-19 vaccine.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccineReferralRequired": {
+                                "type": "boolean",
+                                "description": "Indicates whether a referral is required for a COVID-19 vaccine.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccineSiteInstructions": {
+                                "minLength": 0,
+                                "maxLength": 15000,
+                                "type": "string",
+                                "description": "Information or instructions for the COVID-19 vaccination site.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccinesOffered": {
+                                "uniqueItems": true,
+                                "type": "array",
+                                "items": {
+                                  "enum": [
+                                    "PFIZER",
+                                    "MODERNA",
+                                    "JOHNSON_&_JOHNSON"
+                                  ],
+                                  "type": "string",
+                                  "description": "Filtering Type: `option`"
+                                },
+                                "description": "Indicates which COVID-19 vaccines the location offers.\n\nFiltering Type: `list of option`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
                               "currencyExchange": {
                                 "enum": [
                                   "YES",
@@ -2328,6 +2408,10 @@
                                 ],
                                 "type": "string",
                                 "description": "Indicates whether the entity has a front desk.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
+                              },
+                              "fullyVaccinatedStaff": {
+                                "type": "boolean",
+                                "description": "Indicates whether the staff is vaccinated against COVID-19.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * hotel\n   * location\n   * restaurant\n```"
                               },
                               "gameRoom": {
                                 "enum": [
@@ -4115,98 +4199,36 @@
                                     "ALIPAY",
                                     "AMERICANEXPRESS",
                                     "ANDROIDPAY",
-                                    "APPLEPAY",
                                     "ATM",
                                     "ATMQUICK",
                                     "BACS",
-                                    "BANCONTACT",
-                                    "BANKDEPOSIT",
-                                    "BANKPAY",
                                     "BGO",
                                     "BITCOIN",
-                                    "Bar",
-                                    "CARTASI",
                                     "CASH",
-                                    "CCS",
                                     "CHECK",
                                     "CONB",
                                     "CVVV",
                                     "DEBITNOTE",
                                     "DINERSCLUB",
-                                    "DIRECTDEBIT",
                                     "DISCOVER",
-                                    "ECKARTE",
-                                    "ECOCHEQUE",
-                                    "EKENA",
-                                    "EMV",
                                     "FINANCING",
-                                    "GOPAY",
-                                    "HAYAKAKEN",
-                                    "HEBAG",
-                                    "IBOD",
-                                    "ICCARDS",
-                                    "ICOCA",
-                                    "ID",
                                     "IDEAL",
                                     "INCA",
                                     "INVOICE",
                                     "JCB",
-                                    "JCoinPay",
-                                    "JKOPAY",
-                                    "KITACA",
                                     "KLA",
-                                    "KLARNA",
-                                    "LINEPAY",
-                                    "MAESTRO",
-                                    "MANACA",
                                     "MASTERCARD",
-                                    "MIPAY",
-                                    "MONIZZE",
-                                    "MPAY",
-                                    "Manuelle Lastsch",
-                                    "Merpay",
-                                    "NANACO",
-                                    "NEXI",
-                                    "NIMOCA",
+                                    "MONSTERCARD",
                                     "OREM",
-                                    "PASMO",
-                                    "PAYBACKPAY",
                                     "PAYBOX",
-                                    "PAYCONIQ",
                                     "PAYPAL",
-                                    "PAYPAY",
-                                    "PAYSEC",
-                                    "PIN",
-                                    "POSTEPAY",
-                                    "QRCODE",
-                                    "QUICPAY",
-                                    "RAKUTENEDY",
-                                    "RAKUTENPAY",
-                                    "SAMSUNGPAY",
                                     "SODEXO",
-                                    "SUGOCA",
-                                    "SUICA",
-                                    "SWISH",
-                                    "TICKETRESTAURANT",
-                                    "TOICA",
+                                    "TEST",
                                     "TRAVELERSCHECK",
-                                    "TSCUBIC",
-                                    "TWINT",
-                                    "UNIONPAY",
                                     "VEV",
                                     "VISA",
-                                    "VISAELECTRON",
                                     "VOB",
-                                    "VOUCHER",
-                                    "VPAY",
-                                    "WAON",
-                                    "WECHATPAY",
-                                    "WIRETRANSFER",
-                                    "Yucho Pay",
-                                    "ZELLE",
-                                    "auPay",
-                                    "dBarai",
-                                    "Überweisung"
+                                    "YEET"
                                   ],
                                   "type": "string",
                                   "description": "Filtering Type: `option`"
@@ -4228,7 +4250,8 @@
                                 "enum": [
                                   "PETS_WELCOME",
                                   "PETS_WELCOME_FOR_FREE",
-                                  "NOT_APPLICABLE"
+                                  "NOT_APPLICABLE",
+                                  "NOT_ALLOWED"
                                 ],
                                 "type": "string",
                                 "description": "Indicates if the entity is pet friendly.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
@@ -7323,6 +7346,86 @@
                           "type": "string",
                           "description": "Indicates whether the entity has a convenience store.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
                         },
+                        "covidMessaging": {
+                          "minLength": 0,
+                          "maxLength": 15000,
+                          "type": "string",
+                          "description": "Information or messaging related to COVID-19.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * healthcareProfessional\n   * location\n```"
+                        },
+                        "covidTestAppointmentUrl": {
+                          "minLength": 0,
+                          "format": "uri",
+                          "type": "string",
+                          "description": "An appointment URL for scheduling a COVID-19 test.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidTestingAppointmentRequired": {
+                          "type": "boolean",
+                          "description": "Indicates whether an appointment is required for a COVID-19 test.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidTestingDriveThroughSite": {
+                          "type": "boolean",
+                          "description": "Indicates whether location is a drive-through site for COVID-19 tests.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidTestingIsFree": {
+                          "type": "boolean",
+                          "description": "Indicates whether location offers free COVID-19 testing.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidTestingPatientRestrictions": {
+                          "type": "boolean",
+                          "description": "Indicates whether there are patient restrictions for COVID-19 testing.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidTestingReferralRequired": {
+                          "type": "boolean",
+                          "description": "Indicates whether a referral is required for COVID-19 testing.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidTestingSiteInstructions": {
+                          "minLength": 0,
+                          "maxLength": 15000,
+                          "type": "string",
+                          "description": "Information or instructions for the COVID-19 testing site.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidVaccineAppointmentRequired": {
+                          "type": "boolean",
+                          "description": "Indicates whether an appointment is required for a COVID-19 vaccine.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidVaccineDriveThroughSite": {
+                          "type": "boolean",
+                          "description": "Indicates whether location is a drive-through site for COVID-19 vaccines.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidVaccineInformationUrl": {
+                          "minLength": 0,
+                          "format": "uri",
+                          "type": "string",
+                          "description": "An information URL for more information about COVID-19 vaccines.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidVaccinePatientRestrictions": {
+                          "type": "boolean",
+                          "description": "Indicates whether there are patient restrictions for a COVID-19 vaccine.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidVaccineReferralRequired": {
+                          "type": "boolean",
+                          "description": "Indicates whether a referral is required for a COVID-19 vaccine.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidVaccineSiteInstructions": {
+                          "minLength": 0,
+                          "maxLength": 15000,
+                          "type": "string",
+                          "description": "Information or instructions for the COVID-19 vaccination site.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidVaccinesOffered": {
+                          "uniqueItems": true,
+                          "type": "array",
+                          "items": {
+                            "enum": [
+                              "PFIZER",
+                              "MODERNA",
+                              "JOHNSON_&_JOHNSON"
+                            ],
+                            "type": "string",
+                            "description": "Filtering Type: `option`"
+                          },
+                          "description": "Indicates which COVID-19 vaccines the location offers.\n\nFiltering Type: `list of option`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
                         "currencyExchange": {
                           "enum": [
                             "YES",
@@ -8347,6 +8450,10 @@
                           ],
                           "type": "string",
                           "description": "Indicates whether the entity has a front desk.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
+                        },
+                        "fullyVaccinatedStaff": {
+                          "type": "boolean",
+                          "description": "Indicates whether the staff is vaccinated against COVID-19.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * hotel\n   * location\n   * restaurant\n```"
                         },
                         "gameRoom": {
                           "enum": [
@@ -10134,98 +10241,36 @@
                               "ALIPAY",
                               "AMERICANEXPRESS",
                               "ANDROIDPAY",
-                              "APPLEPAY",
                               "ATM",
                               "ATMQUICK",
                               "BACS",
-                              "BANCONTACT",
-                              "BANKDEPOSIT",
-                              "BANKPAY",
                               "BGO",
                               "BITCOIN",
-                              "Bar",
-                              "CARTASI",
                               "CASH",
-                              "CCS",
                               "CHECK",
                               "CONB",
                               "CVVV",
                               "DEBITNOTE",
                               "DINERSCLUB",
-                              "DIRECTDEBIT",
                               "DISCOVER",
-                              "ECKARTE",
-                              "ECOCHEQUE",
-                              "EKENA",
-                              "EMV",
                               "FINANCING",
-                              "GOPAY",
-                              "HAYAKAKEN",
-                              "HEBAG",
-                              "IBOD",
-                              "ICCARDS",
-                              "ICOCA",
-                              "ID",
                               "IDEAL",
                               "INCA",
                               "INVOICE",
                               "JCB",
-                              "JCoinPay",
-                              "JKOPAY",
-                              "KITACA",
                               "KLA",
-                              "KLARNA",
-                              "LINEPAY",
-                              "MAESTRO",
-                              "MANACA",
                               "MASTERCARD",
-                              "MIPAY",
-                              "MONIZZE",
-                              "MPAY",
-                              "Manuelle Lastsch",
-                              "Merpay",
-                              "NANACO",
-                              "NEXI",
-                              "NIMOCA",
+                              "MONSTERCARD",
                               "OREM",
-                              "PASMO",
-                              "PAYBACKPAY",
                               "PAYBOX",
-                              "PAYCONIQ",
                               "PAYPAL",
-                              "PAYPAY",
-                              "PAYSEC",
-                              "PIN",
-                              "POSTEPAY",
-                              "QRCODE",
-                              "QUICPAY",
-                              "RAKUTENEDY",
-                              "RAKUTENPAY",
-                              "SAMSUNGPAY",
                               "SODEXO",
-                              "SUGOCA",
-                              "SUICA",
-                              "SWISH",
-                              "TICKETRESTAURANT",
-                              "TOICA",
+                              "TEST",
                               "TRAVELERSCHECK",
-                              "TSCUBIC",
-                              "TWINT",
-                              "UNIONPAY",
                               "VEV",
                               "VISA",
-                              "VISAELECTRON",
                               "VOB",
-                              "VOUCHER",
-                              "VPAY",
-                              "WAON",
-                              "WECHATPAY",
-                              "WIRETRANSFER",
-                              "Yucho Pay",
-                              "ZELLE",
-                              "auPay",
-                              "dBarai",
-                              "Überweisung"
+                              "YEET"
                             ],
                             "type": "string",
                             "description": "Filtering Type: `option`"
@@ -10247,7 +10292,8 @@
                           "enum": [
                             "PETS_WELCOME",
                             "PETS_WELCOME_FOR_FREE",
-                            "NOT_APPLICABLE"
+                            "NOT_APPLICABLE",
+                            "NOT_ALLOWED"
                           ],
                           "type": "string",
                           "description": "Indicates if the entity is pet friendly.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
@@ -13474,6 +13520,86 @@
                                 "type": "string",
                                 "description": "Indicates whether the entity has a convenience store.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
                               },
+                              "covidMessaging": {
+                                "minLength": 0,
+                                "maxLength": 15000,
+                                "type": "string",
+                                "description": "Information or messaging related to COVID-19.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * healthcareProfessional\n   * location\n```"
+                              },
+                              "covidTestAppointmentUrl": {
+                                "minLength": 0,
+                                "format": "uri",
+                                "type": "string",
+                                "description": "An appointment URL for scheduling a COVID-19 test.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidTestingAppointmentRequired": {
+                                "type": "boolean",
+                                "description": "Indicates whether an appointment is required for a COVID-19 test.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidTestingDriveThroughSite": {
+                                "type": "boolean",
+                                "description": "Indicates whether location is a drive-through site for COVID-19 tests.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidTestingIsFree": {
+                                "type": "boolean",
+                                "description": "Indicates whether location offers free COVID-19 testing.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidTestingPatientRestrictions": {
+                                "type": "boolean",
+                                "description": "Indicates whether there are patient restrictions for COVID-19 testing.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidTestingReferralRequired": {
+                                "type": "boolean",
+                                "description": "Indicates whether a referral is required for COVID-19 testing.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidTestingSiteInstructions": {
+                                "minLength": 0,
+                                "maxLength": 15000,
+                                "type": "string",
+                                "description": "Information or instructions for the COVID-19 testing site.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccineAppointmentRequired": {
+                                "type": "boolean",
+                                "description": "Indicates whether an appointment is required for a COVID-19 vaccine.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccineDriveThroughSite": {
+                                "type": "boolean",
+                                "description": "Indicates whether location is a drive-through site for COVID-19 vaccines.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccineInformationUrl": {
+                                "minLength": 0,
+                                "format": "uri",
+                                "type": "string",
+                                "description": "An information URL for more information about COVID-19 vaccines.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccinePatientRestrictions": {
+                                "type": "boolean",
+                                "description": "Indicates whether there are patient restrictions for a COVID-19 vaccine.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccineReferralRequired": {
+                                "type": "boolean",
+                                "description": "Indicates whether a referral is required for a COVID-19 vaccine.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccineSiteInstructions": {
+                                "minLength": 0,
+                                "maxLength": 15000,
+                                "type": "string",
+                                "description": "Information or instructions for the COVID-19 vaccination site.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccinesOffered": {
+                                "uniqueItems": true,
+                                "type": "array",
+                                "items": {
+                                  "enum": [
+                                    "PFIZER",
+                                    "MODERNA",
+                                    "JOHNSON_&_JOHNSON"
+                                  ],
+                                  "type": "string",
+                                  "description": "Filtering Type: `option`"
+                                },
+                                "description": "Indicates which COVID-19 vaccines the location offers.\n\nFiltering Type: `list of option`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
                               "currencyExchange": {
                                 "enum": [
                                   "YES",
@@ -14498,6 +14624,10 @@
                                 ],
                                 "type": "string",
                                 "description": "Indicates whether the entity has a front desk.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
+                              },
+                              "fullyVaccinatedStaff": {
+                                "type": "boolean",
+                                "description": "Indicates whether the staff is vaccinated against COVID-19.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * hotel\n   * location\n   * restaurant\n```"
                               },
                               "gameRoom": {
                                 "enum": [
@@ -16285,98 +16415,36 @@
                                     "ALIPAY",
                                     "AMERICANEXPRESS",
                                     "ANDROIDPAY",
-                                    "APPLEPAY",
                                     "ATM",
                                     "ATMQUICK",
                                     "BACS",
-                                    "BANCONTACT",
-                                    "BANKDEPOSIT",
-                                    "BANKPAY",
                                     "BGO",
                                     "BITCOIN",
-                                    "Bar",
-                                    "CARTASI",
                                     "CASH",
-                                    "CCS",
                                     "CHECK",
                                     "CONB",
                                     "CVVV",
                                     "DEBITNOTE",
                                     "DINERSCLUB",
-                                    "DIRECTDEBIT",
                                     "DISCOVER",
-                                    "ECKARTE",
-                                    "ECOCHEQUE",
-                                    "EKENA",
-                                    "EMV",
                                     "FINANCING",
-                                    "GOPAY",
-                                    "HAYAKAKEN",
-                                    "HEBAG",
-                                    "IBOD",
-                                    "ICCARDS",
-                                    "ICOCA",
-                                    "ID",
                                     "IDEAL",
                                     "INCA",
                                     "INVOICE",
                                     "JCB",
-                                    "JCoinPay",
-                                    "JKOPAY",
-                                    "KITACA",
                                     "KLA",
-                                    "KLARNA",
-                                    "LINEPAY",
-                                    "MAESTRO",
-                                    "MANACA",
                                     "MASTERCARD",
-                                    "MIPAY",
-                                    "MONIZZE",
-                                    "MPAY",
-                                    "Manuelle Lastsch",
-                                    "Merpay",
-                                    "NANACO",
-                                    "NEXI",
-                                    "NIMOCA",
+                                    "MONSTERCARD",
                                     "OREM",
-                                    "PASMO",
-                                    "PAYBACKPAY",
                                     "PAYBOX",
-                                    "PAYCONIQ",
                                     "PAYPAL",
-                                    "PAYPAY",
-                                    "PAYSEC",
-                                    "PIN",
-                                    "POSTEPAY",
-                                    "QRCODE",
-                                    "QUICPAY",
-                                    "RAKUTENEDY",
-                                    "RAKUTENPAY",
-                                    "SAMSUNGPAY",
                                     "SODEXO",
-                                    "SUGOCA",
-                                    "SUICA",
-                                    "SWISH",
-                                    "TICKETRESTAURANT",
-                                    "TOICA",
+                                    "TEST",
                                     "TRAVELERSCHECK",
-                                    "TSCUBIC",
-                                    "TWINT",
-                                    "UNIONPAY",
                                     "VEV",
                                     "VISA",
-                                    "VISAELECTRON",
                                     "VOB",
-                                    "VOUCHER",
-                                    "VPAY",
-                                    "WAON",
-                                    "WECHATPAY",
-                                    "WIRETRANSFER",
-                                    "Yucho Pay",
-                                    "ZELLE",
-                                    "auPay",
-                                    "dBarai",
-                                    "Überweisung"
+                                    "YEET"
                                   ],
                                   "type": "string",
                                   "description": "Filtering Type: `option`"
@@ -16398,7 +16466,8 @@
                                 "enum": [
                                   "PETS_WELCOME",
                                   "PETS_WELCOME_FOR_FREE",
-                                  "NOT_APPLICABLE"
+                                  "NOT_APPLICABLE",
+                                  "NOT_ALLOWED"
                                 ],
                                 "type": "string",
                                 "description": "Indicates if the entity is pet friendly.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
@@ -19634,6 +19703,86 @@
                           "type": "string",
                           "description": "Indicates whether the entity has a convenience store.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
                         },
+                        "covidMessaging": {
+                          "minLength": 0,
+                          "maxLength": 15000,
+                          "type": "string",
+                          "description": "Information or messaging related to COVID-19.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * healthcareProfessional\n   * location\n```"
+                        },
+                        "covidTestAppointmentUrl": {
+                          "minLength": 0,
+                          "format": "uri",
+                          "type": "string",
+                          "description": "An appointment URL for scheduling a COVID-19 test.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidTestingAppointmentRequired": {
+                          "type": "boolean",
+                          "description": "Indicates whether an appointment is required for a COVID-19 test.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidTestingDriveThroughSite": {
+                          "type": "boolean",
+                          "description": "Indicates whether location is a drive-through site for COVID-19 tests.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidTestingIsFree": {
+                          "type": "boolean",
+                          "description": "Indicates whether location offers free COVID-19 testing.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidTestingPatientRestrictions": {
+                          "type": "boolean",
+                          "description": "Indicates whether there are patient restrictions for COVID-19 testing.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidTestingReferralRequired": {
+                          "type": "boolean",
+                          "description": "Indicates whether a referral is required for COVID-19 testing.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidTestingSiteInstructions": {
+                          "minLength": 0,
+                          "maxLength": 15000,
+                          "type": "string",
+                          "description": "Information or instructions for the COVID-19 testing site.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidVaccineAppointmentRequired": {
+                          "type": "boolean",
+                          "description": "Indicates whether an appointment is required for a COVID-19 vaccine.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidVaccineDriveThroughSite": {
+                          "type": "boolean",
+                          "description": "Indicates whether location is a drive-through site for COVID-19 vaccines.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidVaccineInformationUrl": {
+                          "minLength": 0,
+                          "format": "uri",
+                          "type": "string",
+                          "description": "An information URL for more information about COVID-19 vaccines.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidVaccinePatientRestrictions": {
+                          "type": "boolean",
+                          "description": "Indicates whether there are patient restrictions for a COVID-19 vaccine.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidVaccineReferralRequired": {
+                          "type": "boolean",
+                          "description": "Indicates whether a referral is required for a COVID-19 vaccine.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidVaccineSiteInstructions": {
+                          "minLength": 0,
+                          "maxLength": 15000,
+                          "type": "string",
+                          "description": "Information or instructions for the COVID-19 vaccination site.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
+                        "covidVaccinesOffered": {
+                          "uniqueItems": true,
+                          "type": "array",
+                          "items": {
+                            "enum": [
+                              "PFIZER",
+                              "MODERNA",
+                              "JOHNSON_&_JOHNSON"
+                            ],
+                            "type": "string",
+                            "description": "Filtering Type: `option`"
+                          },
+                          "description": "Indicates which COVID-19 vaccines the location offers.\n\nFiltering Type: `list of option`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                        },
                         "currencyExchange": {
                           "enum": [
                             "YES",
@@ -20658,6 +20807,10 @@
                           ],
                           "type": "string",
                           "description": "Indicates whether the entity has a front desk.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
+                        },
+                        "fullyVaccinatedStaff": {
+                          "type": "boolean",
+                          "description": "Indicates whether the staff is vaccinated against COVID-19.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * hotel\n   * location\n   * restaurant\n```"
                         },
                         "gameRoom": {
                           "enum": [
@@ -22445,98 +22598,36 @@
                               "ALIPAY",
                               "AMERICANEXPRESS",
                               "ANDROIDPAY",
-                              "APPLEPAY",
                               "ATM",
                               "ATMQUICK",
                               "BACS",
-                              "BANCONTACT",
-                              "BANKDEPOSIT",
-                              "BANKPAY",
                               "BGO",
                               "BITCOIN",
-                              "Bar",
-                              "CARTASI",
                               "CASH",
-                              "CCS",
                               "CHECK",
                               "CONB",
                               "CVVV",
                               "DEBITNOTE",
                               "DINERSCLUB",
-                              "DIRECTDEBIT",
                               "DISCOVER",
-                              "ECKARTE",
-                              "ECOCHEQUE",
-                              "EKENA",
-                              "EMV",
                               "FINANCING",
-                              "GOPAY",
-                              "HAYAKAKEN",
-                              "HEBAG",
-                              "IBOD",
-                              "ICCARDS",
-                              "ICOCA",
-                              "ID",
                               "IDEAL",
                               "INCA",
                               "INVOICE",
                               "JCB",
-                              "JCoinPay",
-                              "JKOPAY",
-                              "KITACA",
                               "KLA",
-                              "KLARNA",
-                              "LINEPAY",
-                              "MAESTRO",
-                              "MANACA",
                               "MASTERCARD",
-                              "MIPAY",
-                              "MONIZZE",
-                              "MPAY",
-                              "Manuelle Lastsch",
-                              "Merpay",
-                              "NANACO",
-                              "NEXI",
-                              "NIMOCA",
+                              "MONSTERCARD",
                               "OREM",
-                              "PASMO",
-                              "PAYBACKPAY",
                               "PAYBOX",
-                              "PAYCONIQ",
                               "PAYPAL",
-                              "PAYPAY",
-                              "PAYSEC",
-                              "PIN",
-                              "POSTEPAY",
-                              "QRCODE",
-                              "QUICPAY",
-                              "RAKUTENEDY",
-                              "RAKUTENPAY",
-                              "SAMSUNGPAY",
                               "SODEXO",
-                              "SUGOCA",
-                              "SUICA",
-                              "SWISH",
-                              "TICKETRESTAURANT",
-                              "TOICA",
+                              "TEST",
                               "TRAVELERSCHECK",
-                              "TSCUBIC",
-                              "TWINT",
-                              "UNIONPAY",
                               "VEV",
                               "VISA",
-                              "VISAELECTRON",
                               "VOB",
-                              "VOUCHER",
-                              "VPAY",
-                              "WAON",
-                              "WECHATPAY",
-                              "WIRETRANSFER",
-                              "Yucho Pay",
-                              "ZELLE",
-                              "auPay",
-                              "dBarai",
-                              "Überweisung"
+                              "YEET"
                             ],
                             "type": "string",
                             "description": "Filtering Type: `option`"
@@ -22558,7 +22649,8 @@
                           "enum": [
                             "PETS_WELCOME",
                             "PETS_WELCOME_FOR_FREE",
-                            "NOT_APPLICABLE"
+                            "NOT_APPLICABLE",
+                            "NOT_ALLOWED"
                           ],
                           "type": "string",
                           "description": "Indicates if the entity is pet friendly.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
@@ -25672,6 +25764,86 @@
                                 "type": "string",
                                 "description": "Indicates whether the entity has a convenience store.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
                               },
+                              "covidMessaging": {
+                                "minLength": 0,
+                                "maxLength": 15000,
+                                "type": "string",
+                                "description": "Information or messaging related to COVID-19.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * healthcareProfessional\n   * location\n```"
+                              },
+                              "covidTestAppointmentUrl": {
+                                "minLength": 0,
+                                "format": "uri",
+                                "type": "string",
+                                "description": "An appointment URL for scheduling a COVID-19 test.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidTestingAppointmentRequired": {
+                                "type": "boolean",
+                                "description": "Indicates whether an appointment is required for a COVID-19 test.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidTestingDriveThroughSite": {
+                                "type": "boolean",
+                                "description": "Indicates whether location is a drive-through site for COVID-19 tests.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidTestingIsFree": {
+                                "type": "boolean",
+                                "description": "Indicates whether location offers free COVID-19 testing.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidTestingPatientRestrictions": {
+                                "type": "boolean",
+                                "description": "Indicates whether there are patient restrictions for COVID-19 testing.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidTestingReferralRequired": {
+                                "type": "boolean",
+                                "description": "Indicates whether a referral is required for COVID-19 testing.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidTestingSiteInstructions": {
+                                "minLength": 0,
+                                "maxLength": 15000,
+                                "type": "string",
+                                "description": "Information or instructions for the COVID-19 testing site.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccineAppointmentRequired": {
+                                "type": "boolean",
+                                "description": "Indicates whether an appointment is required for a COVID-19 vaccine.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccineDriveThroughSite": {
+                                "type": "boolean",
+                                "description": "Indicates whether location is a drive-through site for COVID-19 vaccines.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccineInformationUrl": {
+                                "minLength": 0,
+                                "format": "uri",
+                                "type": "string",
+                                "description": "An information URL for more information about COVID-19 vaccines.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccinePatientRestrictions": {
+                                "type": "boolean",
+                                "description": "Indicates whether there are patient restrictions for a COVID-19 vaccine.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccineReferralRequired": {
+                                "type": "boolean",
+                                "description": "Indicates whether a referral is required for a COVID-19 vaccine.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccineSiteInstructions": {
+                                "minLength": 0,
+                                "maxLength": 15000,
+                                "type": "string",
+                                "description": "Information or instructions for the COVID-19 vaccination site.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
+                              "covidVaccinesOffered": {
+                                "uniqueItems": true,
+                                "type": "array",
+                                "items": {
+                                  "enum": [
+                                    "PFIZER",
+                                    "MODERNA",
+                                    "JOHNSON_&_JOHNSON"
+                                  ],
+                                  "type": "string",
+                                  "description": "Filtering Type: `option`"
+                                },
+                                "description": "Indicates which COVID-19 vaccines the location offers.\n\nFiltering Type: `list of option`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                              },
                               "currencyExchange": {
                                 "enum": [
                                   "YES",
@@ -26696,6 +26868,10 @@
                                 ],
                                 "type": "string",
                                 "description": "Indicates whether the entity has a front desk.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
+                              },
+                              "fullyVaccinatedStaff": {
+                                "type": "boolean",
+                                "description": "Indicates whether the staff is vaccinated against COVID-19.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * hotel\n   * location\n   * restaurant\n```"
                               },
                               "gameRoom": {
                                 "enum": [
@@ -28483,98 +28659,36 @@
                                     "ALIPAY",
                                     "AMERICANEXPRESS",
                                     "ANDROIDPAY",
-                                    "APPLEPAY",
                                     "ATM",
                                     "ATMQUICK",
                                     "BACS",
-                                    "BANCONTACT",
-                                    "BANKDEPOSIT",
-                                    "BANKPAY",
                                     "BGO",
                                     "BITCOIN",
-                                    "Bar",
-                                    "CARTASI",
                                     "CASH",
-                                    "CCS",
                                     "CHECK",
                                     "CONB",
                                     "CVVV",
                                     "DEBITNOTE",
                                     "DINERSCLUB",
-                                    "DIRECTDEBIT",
                                     "DISCOVER",
-                                    "ECKARTE",
-                                    "ECOCHEQUE",
-                                    "EKENA",
-                                    "EMV",
                                     "FINANCING",
-                                    "GOPAY",
-                                    "HAYAKAKEN",
-                                    "HEBAG",
-                                    "IBOD",
-                                    "ICCARDS",
-                                    "ICOCA",
-                                    "ID",
                                     "IDEAL",
                                     "INCA",
                                     "INVOICE",
                                     "JCB",
-                                    "JCoinPay",
-                                    "JKOPAY",
-                                    "KITACA",
                                     "KLA",
-                                    "KLARNA",
-                                    "LINEPAY",
-                                    "MAESTRO",
-                                    "MANACA",
                                     "MASTERCARD",
-                                    "MIPAY",
-                                    "MONIZZE",
-                                    "MPAY",
-                                    "Manuelle Lastsch",
-                                    "Merpay",
-                                    "NANACO",
-                                    "NEXI",
-                                    "NIMOCA",
+                                    "MONSTERCARD",
                                     "OREM",
-                                    "PASMO",
-                                    "PAYBACKPAY",
                                     "PAYBOX",
-                                    "PAYCONIQ",
                                     "PAYPAL",
-                                    "PAYPAY",
-                                    "PAYSEC",
-                                    "PIN",
-                                    "POSTEPAY",
-                                    "QRCODE",
-                                    "QUICPAY",
-                                    "RAKUTENEDY",
-                                    "RAKUTENPAY",
-                                    "SAMSUNGPAY",
                                     "SODEXO",
-                                    "SUGOCA",
-                                    "SUICA",
-                                    "SWISH",
-                                    "TICKETRESTAURANT",
-                                    "TOICA",
+                                    "TEST",
                                     "TRAVELERSCHECK",
-                                    "TSCUBIC",
-                                    "TWINT",
-                                    "UNIONPAY",
                                     "VEV",
                                     "VISA",
-                                    "VISAELECTRON",
                                     "VOB",
-                                    "VOUCHER",
-                                    "VPAY",
-                                    "WAON",
-                                    "WECHATPAY",
-                                    "WIRETRANSFER",
-                                    "Yucho Pay",
-                                    "ZELLE",
-                                    "auPay",
-                                    "dBarai",
-                                    "Überweisung"
+                                    "YEET"
                                   ],
                                   "type": "string",
                                   "description": "Filtering Type: `option`"
@@ -28596,7 +28710,8 @@
                                 "enum": [
                                   "PETS_WELCOME",
                                   "PETS_WELCOME_FOR_FREE",
-                                  "NOT_APPLICABLE"
+                                  "NOT_APPLICABLE",
+                                  "NOT_ALLOWED"
                                 ],
                                 "type": "string",
                                 "description": "Indicates if the entity is pet friendly.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
@@ -31773,6 +31888,86 @@
                                       "type": "string",
                                       "description": "Indicates whether the entity has a convenience store.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
                                     },
+                                    "covidMessaging": {
+                                      "minLength": 0,
+                                      "maxLength": 15000,
+                                      "type": "string",
+                                      "description": "Information or messaging related to COVID-19.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * healthcareProfessional\n   * location\n```"
+                                    },
+                                    "covidTestAppointmentUrl": {
+                                      "minLength": 0,
+                                      "format": "uri",
+                                      "type": "string",
+                                      "description": "An appointment URL for scheduling a COVID-19 test.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                                    },
+                                    "covidTestingAppointmentRequired": {
+                                      "type": "boolean",
+                                      "description": "Indicates whether an appointment is required for a COVID-19 test.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                                    },
+                                    "covidTestingDriveThroughSite": {
+                                      "type": "boolean",
+                                      "description": "Indicates whether location is a drive-through site for COVID-19 tests.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                                    },
+                                    "covidTestingIsFree": {
+                                      "type": "boolean",
+                                      "description": "Indicates whether location offers free COVID-19 testing.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                                    },
+                                    "covidTestingPatientRestrictions": {
+                                      "type": "boolean",
+                                      "description": "Indicates whether there are patient restrictions for COVID-19 testing.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                                    },
+                                    "covidTestingReferralRequired": {
+                                      "type": "boolean",
+                                      "description": "Indicates whether a referral is required for COVID-19 testing.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                                    },
+                                    "covidTestingSiteInstructions": {
+                                      "minLength": 0,
+                                      "maxLength": 15000,
+                                      "type": "string",
+                                      "description": "Information or instructions for the COVID-19 testing site.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                                    },
+                                    "covidVaccineAppointmentRequired": {
+                                      "type": "boolean",
+                                      "description": "Indicates whether an appointment is required for a COVID-19 vaccine.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                                    },
+                                    "covidVaccineDriveThroughSite": {
+                                      "type": "boolean",
+                                      "description": "Indicates whether location is a drive-through site for COVID-19 vaccines.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                                    },
+                                    "covidVaccineInformationUrl": {
+                                      "minLength": 0,
+                                      "format": "uri",
+                                      "type": "string",
+                                      "description": "An information URL for more information about COVID-19 vaccines.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                                    },
+                                    "covidVaccinePatientRestrictions": {
+                                      "type": "boolean",
+                                      "description": "Indicates whether there are patient restrictions for a COVID-19 vaccine.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                                    },
+                                    "covidVaccineReferralRequired": {
+                                      "type": "boolean",
+                                      "description": "Indicates whether a referral is required for a COVID-19 vaccine.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                                    },
+                                    "covidVaccineSiteInstructions": {
+                                      "minLength": 0,
+                                      "maxLength": 15000,
+                                      "type": "string",
+                                      "description": "Information or instructions for the COVID-19 vaccination site.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                                    },
+                                    "covidVaccinesOffered": {
+                                      "uniqueItems": true,
+                                      "type": "array",
+                                      "items": {
+                                        "enum": [
+                                          "PFIZER",
+                                          "MODERNA",
+                                          "JOHNSON_&_JOHNSON"
+                                        ],
+                                        "type": "string",
+                                        "description": "Filtering Type: `option`"
+                                      },
+                                      "description": "Indicates which COVID-19 vaccines the location offers.\n\nFiltering Type: `list of option`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n```"
+                                    },
                                     "currencyExchange": {
                                       "enum": [
                                         "YES",
@@ -32797,6 +32992,10 @@
                                       ],
                                       "type": "string",
                                       "description": "Indicates whether the entity has a front desk.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
+                                    },
+                                    "fullyVaccinatedStaff": {
+                                      "type": "boolean",
+                                      "description": "Indicates whether the staff is vaccinated against COVID-19.\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * healthcareFacility\n   * hotel\n   * location\n   * restaurant\n```"
                                     },
                                     "gameRoom": {
                                       "enum": [
@@ -34584,98 +34783,36 @@
                                           "ALIPAY",
                                           "AMERICANEXPRESS",
                                           "ANDROIDPAY",
-                                          "APPLEPAY",
                                           "ATM",
                                           "ATMQUICK",
                                           "BACS",
-                                          "BANCONTACT",
-                                          "BANKDEPOSIT",
-                                          "BANKPAY",
                                           "BGO",
                                           "BITCOIN",
-                                          "Bar",
-                                          "CARTASI",
                                           "CASH",
-                                          "CCS",
                                           "CHECK",
                                           "CONB",
                                           "CVVV",
                                           "DEBITNOTE",
                                           "DINERSCLUB",
-                                          "DIRECTDEBIT",
                                           "DISCOVER",
-                                          "ECKARTE",
-                                          "ECOCHEQUE",
-                                          "EKENA",
-                                          "EMV",
                                           "FINANCING",
-                                          "GOPAY",
-                                          "HAYAKAKEN",
-                                          "HEBAG",
-                                          "IBOD",
-                                          "ICCARDS",
-                                          "ICOCA",
-                                          "ID",
                                           "IDEAL",
                                           "INCA",
                                           "INVOICE",
                                           "JCB",
-                                          "JCoinPay",
-                                          "JKOPAY",
-                                          "KITACA",
                                           "KLA",
-                                          "KLARNA",
-                                          "LINEPAY",
-                                          "MAESTRO",
-                                          "MANACA",
                                           "MASTERCARD",
-                                          "MIPAY",
-                                          "MONIZZE",
-                                          "MPAY",
-                                          "Manuelle Lastsch",
-                                          "Merpay",
-                                          "NANACO",
-                                          "NEXI",
-                                          "NIMOCA",
+                                          "MONSTERCARD",
                                           "OREM",
-                                          "PASMO",
-                                          "PAYBACKPAY",
                                           "PAYBOX",
-                                          "PAYCONIQ",
                                           "PAYPAL",
-                                          "PAYPAY",
-                                          "PAYSEC",
-                                          "PIN",
-                                          "POSTEPAY",
-                                          "QRCODE",
-                                          "QUICPAY",
-                                          "RAKUTENEDY",
-                                          "RAKUTENPAY",
-                                          "SAMSUNGPAY",
                                           "SODEXO",
-                                          "SUGOCA",
-                                          "SUICA",
-                                          "SWISH",
-                                          "TICKETRESTAURANT",
-                                          "TOICA",
+                                          "TEST",
                                           "TRAVELERSCHECK",
-                                          "TSCUBIC",
-                                          "TWINT",
-                                          "UNIONPAY",
                                           "VEV",
                                           "VISA",
-                                          "VISAELECTRON",
                                           "VOB",
-                                          "VOUCHER",
-                                          "VPAY",
-                                          "WAON",
-                                          "WECHATPAY",
-                                          "WIRETRANSFER",
-                                          "Yucho Pay",
-                                          "ZELLE",
-                                          "auPay",
-                                          "dBarai",
-                                          "Überweisung"
+                                          "YEET"
                                         ],
                                         "type": "string",
                                         "description": "Filtering Type: `option`"
@@ -34697,7 +34834,8 @@
                                       "enum": [
                                         "PETS_WELCOME",
                                         "PETS_WELCOME_FOR_FREE",
-                                        "NOT_APPLICABLE"
+                                        "NOT_APPLICABLE",
+                                        "NOT_ALLOWED"
                                       ],
                                       "type": "string",
                                       "description": "Indicates if the entity is pet friendly.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"

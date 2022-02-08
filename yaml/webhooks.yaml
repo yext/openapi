@@ -2708,6 +2708,221 @@ components:
             Eligible For: 
                * hotel
             ```
+        covidMessaging:
+          minLength: 0
+          maxLength: 15000
+          type: string
+          description: |-
+            Information or messaging related to COVID-19.
+
+            Filtering Type: `text`
+
+            ```
+            Eligible For: 
+               * healthcareFacility
+               * healthcareProfessional
+               * location
+            ```
+        covidTestAppointmentUrl:
+          minLength: 0
+          format: uri
+          type: string
+          description: |-
+            An appointment URL for scheduling a COVID-19 test.
+
+            Filtering Type: `text`
+
+            ```
+            Eligible For: 
+               * healthcareFacility
+               * location
+            ```
+        covidTestingAppointmentRequired:
+          type: boolean
+          description: |-
+            Indicates whether an appointment is required for a COVID-19 test.
+
+            Filtering Type: `boolean`
+
+            ```
+            Eligible For: 
+               * healthcareFacility
+               * location
+            ```
+        covidTestingDriveThroughSite:
+          type: boolean
+          description: >-
+            Indicates whether location is a drive-through site for COVID-19
+            tests.
+
+
+            Filtering Type: `boolean`
+
+
+            ```
+
+            Eligible For: 
+               * healthcareFacility
+               * location
+            ```
+        covidTestingIsFree:
+          type: boolean
+          description: |-
+            Indicates whether location offers free COVID-19 testing.
+
+            Filtering Type: `boolean`
+
+            ```
+            Eligible For: 
+               * healthcareFacility
+               * location
+            ```
+        covidTestingPatientRestrictions:
+          type: boolean
+          description: >-
+            Indicates whether there are patient restrictions for COVID-19
+            testing.
+
+
+            Filtering Type: `boolean`
+
+
+            ```
+
+            Eligible For: 
+               * healthcareFacility
+               * location
+            ```
+        covidTestingReferralRequired:
+          type: boolean
+          description: |-
+            Indicates whether a referral is required for COVID-19 testing.
+
+            Filtering Type: `boolean`
+
+            ```
+            Eligible For: 
+               * healthcareFacility
+               * location
+            ```
+        covidTestingSiteInstructions:
+          minLength: 0
+          maxLength: 15000
+          type: string
+          description: |-
+            Information or instructions for the COVID-19 testing site.
+
+            Filtering Type: `text`
+
+            ```
+            Eligible For: 
+               * healthcareFacility
+               * location
+            ```
+        covidVaccineAppointmentRequired:
+          type: boolean
+          description: |-
+            Indicates whether an appointment is required for a COVID-19 vaccine.
+
+            Filtering Type: `boolean`
+
+            ```
+            Eligible For: 
+               * healthcareFacility
+               * location
+            ```
+        covidVaccineDriveThroughSite:
+          type: boolean
+          description: >-
+            Indicates whether location is a drive-through site for COVID-19
+            vaccines.
+
+
+            Filtering Type: `boolean`
+
+
+            ```
+
+            Eligible For: 
+               * healthcareFacility
+               * location
+            ```
+        covidVaccineInformationUrl:
+          minLength: 0
+          format: uri
+          type: string
+          description: |-
+            An information URL for more information about COVID-19 vaccines.
+
+            Filtering Type: `text`
+
+            ```
+            Eligible For: 
+               * healthcareFacility
+               * location
+            ```
+        covidVaccinePatientRestrictions:
+          type: boolean
+          description: >-
+            Indicates whether there are patient restrictions for a COVID-19
+            vaccine.
+
+
+            Filtering Type: `boolean`
+
+
+            ```
+
+            Eligible For: 
+               * healthcareFacility
+               * location
+            ```
+        covidVaccineReferralRequired:
+          type: boolean
+          description: |-
+            Indicates whether a referral is required for a COVID-19 vaccine.
+
+            Filtering Type: `boolean`
+
+            ```
+            Eligible For: 
+               * healthcareFacility
+               * location
+            ```
+        covidVaccineSiteInstructions:
+          minLength: 0
+          maxLength: 15000
+          type: string
+          description: |-
+            Information or instructions for the COVID-19 vaccination site.
+
+            Filtering Type: `text`
+
+            ```
+            Eligible For: 
+               * healthcareFacility
+               * location
+            ```
+        covidVaccinesOffered:
+          uniqueItems: true
+          type: array
+          items:
+            enum:
+              - PFIZER
+              - MODERNA
+              - JOHNSON_&_JOHNSON
+            type: string
+            description: 'Filtering Type: `option`'
+          description: |-
+            Indicates which COVID-19 vaccines the location offers.
+
+            Filtering Type: `list of option`
+
+            ```
+            Eligible For: 
+               * healthcareFacility
+               * location
+            ```
         currencyExchange:
           enum:
             - 'YES'
@@ -4639,6 +4854,20 @@ components:
             ```
             Eligible For: 
                * hotel
+            ```
+        fullyVaccinatedStaff:
+          type: boolean
+          description: |-
+            Indicates whether the staff is vaccinated against COVID-19.
+
+            Filtering Type: `boolean`
+
+            ```
+            Eligible For: 
+               * healthcareFacility
+               * hotel
+               * location
+               * restaurant
             ```
         gameRoom:
           enum:
@@ -8003,98 +8232,36 @@ components:
               - ALIPAY
               - AMERICANEXPRESS
               - ANDROIDPAY
-              - APPLEPAY
               - ATM
               - ATMQUICK
               - BACS
-              - BANCONTACT
-              - BANKDEPOSIT
-              - BANKPAY
               - BGO
               - BITCOIN
-              - Bar
-              - CARTASI
               - CASH
-              - CCS
               - CHECK
               - CONB
               - CVVV
               - DEBITNOTE
               - DINERSCLUB
-              - DIRECTDEBIT
               - DISCOVER
-              - ECKARTE
-              - ECOCHEQUE
-              - EKENA
-              - EMV
               - FINANCING
-              - GOPAY
-              - HAYAKAKEN
-              - HEBAG
-              - IBOD
-              - ICCARDS
-              - ICOCA
-              - ID
               - IDEAL
               - INCA
               - INVOICE
               - JCB
-              - JCoinPay
-              - JKOPAY
-              - KITACA
               - KLA
-              - KLARNA
-              - LINEPAY
-              - MAESTRO
-              - MANACA
               - MASTERCARD
-              - MIPAY
-              - MONIZZE
-              - MPAY
-              - Manuelle Lastsch
-              - Merpay
-              - NANACO
-              - NEXI
-              - NIMOCA
+              - MONSTERCARD
               - OREM
-              - PASMO
-              - PAYBACKPAY
               - PAYBOX
-              - PAYCONIQ
               - PAYPAL
-              - PAYPAY
-              - PAYSEC
-              - PIN
-              - POSTEPAY
-              - QRCODE
-              - QUICPAY
-              - RAKUTENEDY
-              - RAKUTENPAY
-              - SAMSUNGPAY
               - SODEXO
-              - SUGOCA
-              - SUICA
-              - SWISH
-              - TICKETRESTAURANT
-              - TOICA
+              - TEST
               - TRAVELERSCHECK
-              - TSCUBIC
-              - TWINT
-              - UNIONPAY
               - VEV
               - VISA
-              - VISAELECTRON
               - VOB
-              - VOUCHER
-              - VPAY
-              - WAON
-              - WECHATPAY
-              - WIRETRANSFER
-              - Yucho Pay
-              - ZELLE
-              - auPay
-              - dBarai
-              - Überweisung
+              - YEET
             type: string
             description: 'Filtering Type: `option`'
           description: |-
@@ -8142,6 +8309,7 @@ components:
             - PETS_WELCOME
             - PETS_WELCOME_FOR_FREE
             - NOT_APPLICABLE
+            - NOT_ALLOWED
           type: string
           description: |-
             Indicates if the entity is pet friendly.
