@@ -41,6 +41,7 @@ paths:
         - $ref: '#/components/parameters/referrerPageUrl'
         - $ref: '#/components/parameters/skipSpellCheck'
         - $ref: '#/components/parameters/restrictVerticals'
+        - $ref: '#/components/parameters/ignoreQueryRules'
       summary: 'Universal Search: Query'
       description: >-
         Search for entities across all verticals within an answers experience. 
@@ -95,6 +96,7 @@ paths:
         - $ref: '#/components/parameters/FacetFilters'
         - $ref: '#/components/parameters/retrieveFacets'
         - $ref: '#/components/parameters/SortBys'
+        - $ref: '#/components/parameters/ignoreQueryRules'
       summary: 'Vertical Search: Query'
       description: >-
         Search for entities within the selected vertical.  Vertical query allows
@@ -268,6 +270,15 @@ components:
       description: >-
         A comma-separated list of verticals (e.g. `"people,locations"`). If
         specified, only results from these verticals will be returned.
+    ignoreQueryRules:
+      name: ignoreQueryRules
+      in: query
+      required: false
+      schema:
+        type: boolean
+      description: >-
+        When set to true, ignores any Query Rules that would otherwise affect
+        the results. Defaults to false.
     verticalKey:
       name: verticalKey
       in: query

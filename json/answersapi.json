@@ -84,6 +84,9 @@
           },
           {
             "$ref": "#/components/parameters/restrictVerticals"
+          },
+          {
+            "$ref": "#/components/parameters/ignoreQueryRules"
           }
         ],
         "summary": "Universal Search: Query",
@@ -193,6 +196,9 @@
           },
           {
             "$ref": "#/components/parameters/SortBys"
+          },
+          {
+            "$ref": "#/components/parameters/ignoreQueryRules"
           }
         ],
         "summary": "Vertical Search: Query",
@@ -396,6 +402,15 @@
           "type": "string"
         },
         "description": "A comma-separated list of verticals (e.g. `\"people,locations\"`). If specified, only results from these verticals will be returned."
+      },
+      "ignoreQueryRules": {
+        "name": "ignoreQueryRules",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "description": "When set to true, ignores any Query Rules that would otherwise affect the results. Defaults to false."
       },
       "verticalKey": {
         "name": "verticalKey",
