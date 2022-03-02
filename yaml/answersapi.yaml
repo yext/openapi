@@ -42,6 +42,7 @@ paths:
         - $ref: '#/components/parameters/skipSpellCheck'
         - $ref: '#/components/parameters/restrictVerticals'
         - $ref: '#/components/parameters/ignoreQueryRules'
+        - $ref: '#/components/parameters/jsLibVersion'
       summary: 'Universal Search: Query'
       description: >-
         Search for entities across all verticals within an answers experience. 
@@ -97,6 +98,7 @@ paths:
         - $ref: '#/components/parameters/retrieveFacets'
         - $ref: '#/components/parameters/SortBys'
         - $ref: '#/components/parameters/ignoreQueryRules'
+        - $ref: '#/components/parameters/jsLibVersion'
       summary: 'Vertical Search: Query'
       description: >-
         Search for entities within the selected vertical.  Vertical query allows
@@ -279,6 +281,15 @@ components:
       description: >-
         When set to true, ignores any Query Rules that would otherwise affect
         the results. Defaults to false.
+    jsLibVersion:
+      name: jsLibVersion
+      in: query
+      required: false
+      schema:
+        type: string
+      description: >-
+        The version of the Answers Search UI used for this search request.
+        Deprecated.
     verticalKey:
       name: verticalKey
       in: query

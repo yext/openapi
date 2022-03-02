@@ -87,6 +87,9 @@
           },
           {
             "$ref": "#/components/parameters/ignoreQueryRules"
+          },
+          {
+            "$ref": "#/components/parameters/jsLibVersion"
           }
         ],
         "summary": "Universal Search: Query",
@@ -199,6 +202,9 @@
           },
           {
             "$ref": "#/components/parameters/ignoreQueryRules"
+          },
+          {
+            "$ref": "#/components/parameters/jsLibVersion"
           }
         ],
         "summary": "Vertical Search: Query",
@@ -411,6 +417,15 @@
           "type": "boolean"
         },
         "description": "When set to true, ignores any Query Rules that would otherwise affect the results. Defaults to false."
+      },
+      "jsLibVersion": {
+        "name": "jsLibVersion",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "description": "The version of the Answers Search UI used for this search request. Deprecated."
       },
       "verticalKey": {
         "name": "verticalKey",
