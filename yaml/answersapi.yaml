@@ -42,6 +42,7 @@ paths:
         - $ref: '#/components/parameters/skipSpellCheck'
         - $ref: '#/components/parameters/restrictVerticals'
         - $ref: '#/components/parameters/ignoreQueryRules'
+        - $ref: '#/components/parameters/queryId'
         - $ref: '#/components/parameters/jsLibVersion'
       summary: 'Universal Search: Query'
       description: >-
@@ -98,6 +99,7 @@ paths:
         - $ref: '#/components/parameters/retrieveFacets'
         - $ref: '#/components/parameters/SortBys'
         - $ref: '#/components/parameters/ignoreQueryRules'
+        - $ref: '#/components/parameters/queryId'
         - $ref: '#/components/parameters/jsLibVersion'
       summary: 'Vertical Search: Query'
       description: >-
@@ -281,6 +283,15 @@ components:
       description: >-
         When set to true, ignores any Query Rules that would otherwise affect
         the results. Defaults to false.
+    queryId:
+      name: queryId
+      in: query
+      required: false
+      schema:
+        type: string
+      description: >-
+        UUID of the query; recommended when moving through results, to associate
+        multiple requests to the same query.
     jsLibVersion:
       name: jsLibVersion
       in: query
