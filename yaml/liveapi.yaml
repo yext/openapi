@@ -6220,8 +6220,8 @@ paths:
                               type: object
                               properties: {}
                               description: >-
-                                The unique IDs of the entity's Google My
-                                Business keywords, as well as the unique IDs of
+                                The unique IDs of the entity's Google Business
+                                Profile keywords, as well as the unique IDs of
                                 any values selected for each keyword.
 
 
@@ -6312,8 +6312,8 @@ paths:
                                   description: 'Filtering Type: `text`'
                             googleMyBusinessLabels:
                               description: >-
-                                Google My Business Labels help users organize
-                                their locations into groups within GMB.
+                                Google Business Profile Labels help users
+                                organize their locations into groups within GBP.
 
 
 
@@ -6437,8 +6437,8 @@ paths:
                               format: uri
                               type: string
                               description: >-
-                                The URL you would like to submit to Google My
-                                Business in place of the one given in
+                                The URL you would like to submit to Google
+                                Business Profile in place of the one given in
                                 **`websiteUrl`** (if applicable).
 
 
@@ -9786,36 +9786,98 @@ paths:
                                   - ALIPAY
                                   - AMERICANEXPRESS
                                   - ANDROIDPAY
+                                  - APPLEPAY
                                   - ATM
                                   - ATMQUICK
                                   - BACS
+                                  - BANCONTACT
+                                  - BANKDEPOSIT
+                                  - BANKPAY
                                   - BGO
                                   - BITCOIN
+                                  - Bar
+                                  - CARTASI
                                   - CASH
+                                  - CCS
                                   - CHECK
                                   - CONB
                                   - CVVV
                                   - DEBITNOTE
                                   - DINERSCLUB
+                                  - DIRECTDEBIT
                                   - DISCOVER
+                                  - ECKARTE
+                                  - ECOCHEQUE
+                                  - EKENA
+                                  - EMV
                                   - FINANCING
+                                  - GOPAY
+                                  - HAYAKAKEN
+                                  - HEBAG
+                                  - IBOD
+                                  - ICCARDS
+                                  - ICOCA
+                                  - ID
                                   - IDEAL
                                   - INCA
                                   - INVOICE
                                   - JCB
+                                  - JCoinPay
+                                  - JKOPAY
+                                  - KITACA
                                   - KLA
+                                  - KLARNA
+                                  - LINEPAY
+                                  - MAESTRO
+                                  - MANACA
                                   - MASTERCARD
-                                  - MONSTERCARD
+                                  - MIPAY
+                                  - MONIZZE
+                                  - MPAY
+                                  - Manuelle Lastsch
+                                  - Merpay
+                                  - NANACO
+                                  - NEXI
+                                  - NIMOCA
                                   - OREM
+                                  - PASMO
+                                  - PAYBACKPAY
                                   - PAYBOX
+                                  - PAYCONIQ
                                   - PAYPAL
+                                  - PAYPAY
+                                  - PAYSEC
+                                  - PIN
+                                  - POSTEPAY
+                                  - QRCODE
+                                  - QUICPAY
+                                  - RAKUTENEDY
+                                  - RAKUTENPAY
+                                  - SAMSUNGPAY
                                   - SODEXO
-                                  - TEST
+                                  - SUGOCA
+                                  - SUICA
+                                  - SWISH
+                                  - TICKETRESTAURANT
+                                  - TOICA
                                   - TRAVELERSCHECK
+                                  - TSCUBIC
+                                  - TWINT
+                                  - UNIONPAY
                                   - VEV
                                   - VISA
+                                  - VISAELECTRON
                                   - VOB
-                                  - YEET
+                                  - VOUCHER
+                                  - VPAY
+                                  - WAON
+                                  - WECHATPAY
+                                  - WIRETRANSFER
+                                  - Yucho Pay
+                                  - ZELLE
+                                  - auPay
+                                  - dBarai
+                                  - Überweisung
                                 type: string
                                 description: 'Filtering Type: `option`'
                               description: |-
@@ -9890,7 +9952,7 @@ paths:
                                 Array must be ordered.
 
 
-                                Array may have a maximum of 100 elements.
+                                Array may have a maximum of 500 elements.
 
 
                                 Array item description:
@@ -9934,6 +9996,7 @@ paths:
                                 ```
 
                                 Eligible For: 
+                                   * atm
                                    * event
                                    * financialProfessional
                                    * healthcareFacility
@@ -11747,10 +11810,10 @@ paths:
                                 and/or postal codes.
 
 
-                                **Only for Google My Business and Bing:**
+                                **Only for Google Business Profile and Bing:**
                                 Currently, **serviceArea** is only supported by
-                                Google My Business and Bing and will not affect
-                                your listings on other sites.
+                                Google Business Profile and Bing and will not
+                                affect your listings on other sites.
 
 
                                 Filtering Type: `object`
@@ -11771,10 +11834,10 @@ paths:
                                 this entity. It is specified as a list of
                                 service area names and their associated types.
 
-                                **Only for Google My Business and Bing:**
+                                **Only for Google Business Profile and Bing:**
                                 Currently, **serviceArea** is only supported by
-                                Google My Business and Bing and will not affect
-                                your listings on other sites.
+                                Google Business Profile and Bing and will not
+                                affect your listings on other sites.
 
 
 
@@ -14069,6 +14132,7 @@ paths:
 
 
 
+
                               Array must be ordered.
 
 
@@ -15310,6 +15374,7 @@ paths:
 
 
 
+
                               Array must be ordered.
 
 
@@ -16500,6 +16565,7 @@ paths:
 
 
 
+
                               Array must be ordered.
 
 
@@ -17077,6 +17143,7 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
+
 
 
 
@@ -18471,7 +18538,7 @@ paths:
                         type: object
                         properties: {}
                         description: >-
-                          The unique IDs of the entity's Google My Business
+                          The unique IDs of the entity's Google Business Profile
                           keywords, as well as the unique IDs of any values
                           selected for each keyword.
 
@@ -18560,8 +18627,8 @@ paths:
                             description: 'Filtering Type: `text`'
                       googleMyBusinessLabels:
                         description: >-
-                          Google My Business Labels help users organize their
-                          locations into groups within GMB.
+                          Google Business Profile Labels help users organize
+                          their locations into groups within GBP.
 
 
 
@@ -18680,9 +18747,9 @@ paths:
                         format: uri
                         type: string
                         description: >-
-                          The URL you would like to submit to Google My Business
-                          in place of the one given in **`websiteUrl`** (if
-                          applicable).
+                          The URL you would like to submit to Google Business
+                          Profile in place of the one given in **`websiteUrl`**
+                          (if applicable).
 
 
                           For example, if you want to analyze the traffic driven
@@ -18766,6 +18833,7 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
+
 
 
 
@@ -19341,6 +19409,7 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
+
 
 
 
@@ -20125,6 +20194,7 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
+
 
 
 
@@ -21375,6 +21445,7 @@ paths:
 
 
 
+
                               Array must be ordered.
 
 
@@ -21937,36 +22008,98 @@ paths:
                             - ALIPAY
                             - AMERICANEXPRESS
                             - ANDROIDPAY
+                            - APPLEPAY
                             - ATM
                             - ATMQUICK
                             - BACS
+                            - BANCONTACT
+                            - BANKDEPOSIT
+                            - BANKPAY
                             - BGO
                             - BITCOIN
+                            - Bar
+                            - CARTASI
                             - CASH
+                            - CCS
                             - CHECK
                             - CONB
                             - CVVV
                             - DEBITNOTE
                             - DINERSCLUB
+                            - DIRECTDEBIT
                             - DISCOVER
+                            - ECKARTE
+                            - ECOCHEQUE
+                            - EKENA
+                            - EMV
                             - FINANCING
+                            - GOPAY
+                            - HAYAKAKEN
+                            - HEBAG
+                            - IBOD
+                            - ICCARDS
+                            - ICOCA
+                            - ID
                             - IDEAL
                             - INCA
                             - INVOICE
                             - JCB
+                            - JCoinPay
+                            - JKOPAY
+                            - KITACA
                             - KLA
+                            - KLARNA
+                            - LINEPAY
+                            - MAESTRO
+                            - MANACA
                             - MASTERCARD
-                            - MONSTERCARD
+                            - MIPAY
+                            - MONIZZE
+                            - MPAY
+                            - Manuelle Lastsch
+                            - Merpay
+                            - NANACO
+                            - NEXI
+                            - NIMOCA
                             - OREM
+                            - PASMO
+                            - PAYBACKPAY
                             - PAYBOX
+                            - PAYCONIQ
                             - PAYPAL
+                            - PAYPAY
+                            - PAYSEC
+                            - PIN
+                            - POSTEPAY
+                            - QRCODE
+                            - QUICPAY
+                            - RAKUTENEDY
+                            - RAKUTENPAY
+                            - SAMSUNGPAY
                             - SODEXO
-                            - TEST
+                            - SUGOCA
+                            - SUICA
+                            - SWISH
+                            - TICKETRESTAURANT
+                            - TOICA
                             - TRAVELERSCHECK
+                            - TSCUBIC
+                            - TWINT
+                            - UNIONPAY
                             - VEV
                             - VISA
+                            - VISAELECTRON
                             - VOB
-                            - YEET
+                            - VOUCHER
+                            - VPAY
+                            - WAON
+                            - WECHATPAY
+                            - WIRETRANSFER
+                            - Yucho Pay
+                            - ZELLE
+                            - auPay
+                            - dBarai
+                            - Überweisung
                           type: string
                           description: 'Filtering Type: `option`'
                         description: |-
@@ -22040,7 +22173,7 @@ paths:
                           Array must be ordered.
 
 
-                          Array may have a maximum of 100 elements.
+                          Array may have a maximum of 500 elements.
 
 
                           Array item description:
@@ -22084,6 +22217,7 @@ paths:
                           ```
 
                           Eligible For: 
+                             * atm
                              * event
                              * financialProfessional
                              * healthcareFacility
@@ -22290,6 +22424,7 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
+
 
 
 
@@ -23415,6 +23550,7 @@ paths:
 
 
 
+
                               Array must be ordered.
 
 
@@ -23847,6 +23983,7 @@ paths:
                                - the name of a city.
 
 
+
                               Array must be ordered.
 
 
@@ -23868,10 +24005,10 @@ paths:
                           postal codes.
 
 
-                          **Only for Google My Business and Bing:** Currently,
-                          **serviceArea** is only supported by Google My
-                          Business and Bing and will not affect your listings on
-                          other sites.
+                          **Only for Google Business Profile and Bing:**
+                          Currently, **serviceArea** is only supported by Google
+                          Business Profile and Bing and will not affect your
+                          listings on other sites.
 
 
                           Filtering Type: `object`
@@ -23892,10 +24029,10 @@ paths:
                           entity. It is specified as a list of service area
                           names and their associated types.
 
-                          **Only for Google My Business and Bing:** Currently,
-                          **serviceArea** is only supported by Google My
-                          Business and Bing and will not affect your listings on
-                          other sites.
+                          **Only for Google Business Profile and Bing:**
+                          Currently, **serviceArea** is only supported by Google
+                          Business Profile and Bing and will not affect your
+                          listings on other sites.
 
 
 
@@ -24176,6 +24313,7 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
+
 
 
 
@@ -27500,6 +27638,7 @@ paths:
 
 
 
+
                                     Array must be ordered.
 
 
@@ -28763,6 +28902,7 @@ paths:
 
 
 
+
                                     Array must be ordered.
 
 
@@ -29986,6 +30126,7 @@ paths:
 
 
 
+
                                     Array must be ordered.
 
 
@@ -30573,6 +30714,7 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
+
 
 
 
@@ -31992,8 +32134,8 @@ paths:
                               type: object
                               properties: {}
                               description: >-
-                                The unique IDs of the entity's Google My
-                                Business keywords, as well as the unique IDs of
+                                The unique IDs of the entity's Google Business
+                                Profile keywords, as well as the unique IDs of
                                 any values selected for each keyword.
 
 
@@ -32084,8 +32226,8 @@ paths:
                                   description: 'Filtering Type: `text`'
                             googleMyBusinessLabels:
                               description: >-
-                                Google My Business Labels help users organize
-                                their locations into groups within GMB.
+                                Google Business Profile Labels help users
+                                organize their locations into groups within GBP.
 
 
 
@@ -32209,8 +32351,8 @@ paths:
                               format: uri
                               type: string
                               description: >-
-                                The URL you would like to submit to Google My
-                                Business in place of the one given in
+                                The URL you would like to submit to Google
+                                Business Profile in place of the one given in
                                 **`websiteUrl`** (if applicable).
 
 
@@ -32297,6 +32439,7 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
+
 
 
 
@@ -32886,6 +33029,7 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
+
 
 
 
@@ -33685,6 +33829,7 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
+
 
 
 
@@ -34974,6 +35119,7 @@ paths:
 
 
 
+
                                     Array must be ordered.
 
 
@@ -35554,36 +35700,98 @@ paths:
                                   - ALIPAY
                                   - AMERICANEXPRESS
                                   - ANDROIDPAY
+                                  - APPLEPAY
                                   - ATM
                                   - ATMQUICK
                                   - BACS
+                                  - BANCONTACT
+                                  - BANKDEPOSIT
+                                  - BANKPAY
                                   - BGO
                                   - BITCOIN
+                                  - Bar
+                                  - CARTASI
                                   - CASH
+                                  - CCS
                                   - CHECK
                                   - CONB
                                   - CVVV
                                   - DEBITNOTE
                                   - DINERSCLUB
+                                  - DIRECTDEBIT
                                   - DISCOVER
+                                  - ECKARTE
+                                  - ECOCHEQUE
+                                  - EKENA
+                                  - EMV
                                   - FINANCING
+                                  - GOPAY
+                                  - HAYAKAKEN
+                                  - HEBAG
+                                  - IBOD
+                                  - ICCARDS
+                                  - ICOCA
+                                  - ID
                                   - IDEAL
                                   - INCA
                                   - INVOICE
                                   - JCB
+                                  - JCoinPay
+                                  - JKOPAY
+                                  - KITACA
                                   - KLA
+                                  - KLARNA
+                                  - LINEPAY
+                                  - MAESTRO
+                                  - MANACA
                                   - MASTERCARD
-                                  - MONSTERCARD
+                                  - MIPAY
+                                  - MONIZZE
+                                  - MPAY
+                                  - Manuelle Lastsch
+                                  - Merpay
+                                  - NANACO
+                                  - NEXI
+                                  - NIMOCA
                                   - OREM
+                                  - PASMO
+                                  - PAYBACKPAY
                                   - PAYBOX
+                                  - PAYCONIQ
                                   - PAYPAL
+                                  - PAYPAY
+                                  - PAYSEC
+                                  - PIN
+                                  - POSTEPAY
+                                  - QRCODE
+                                  - QUICPAY
+                                  - RAKUTENEDY
+                                  - RAKUTENPAY
+                                  - SAMSUNGPAY
                                   - SODEXO
-                                  - TEST
+                                  - SUGOCA
+                                  - SUICA
+                                  - SWISH
+                                  - TICKETRESTAURANT
+                                  - TOICA
                                   - TRAVELERSCHECK
+                                  - TSCUBIC
+                                  - TWINT
+                                  - UNIONPAY
                                   - VEV
                                   - VISA
+                                  - VISAELECTRON
                                   - VOB
-                                  - YEET
+                                  - VOUCHER
+                                  - VPAY
+                                  - WAON
+                                  - WECHATPAY
+                                  - WIRETRANSFER
+                                  - Yucho Pay
+                                  - ZELLE
+                                  - auPay
+                                  - dBarai
+                                  - Überweisung
                                 type: string
                                 description: 'Filtering Type: `option`'
                               description: |-
@@ -35658,7 +35866,7 @@ paths:
                                 Array must be ordered.
 
 
-                                Array may have a maximum of 100 elements.
+                                Array may have a maximum of 500 elements.
 
 
                                 Array item description:
@@ -35702,6 +35910,7 @@ paths:
                                 ```
 
                                 Eligible For: 
+                                   * atm
                                    * event
                                    * financialProfessional
                                    * healthcareFacility
@@ -35910,6 +36119,7 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
+
 
 
 
@@ -37051,6 +37261,7 @@ paths:
 
 
 
+
                                     Array must be ordered.
 
 
@@ -37491,6 +37702,7 @@ paths:
                                      - the name of a city.
 
 
+
                                     Array must be ordered.
 
 
@@ -37512,10 +37724,10 @@ paths:
                                 and/or postal codes.
 
 
-                                **Only for Google My Business and Bing:**
+                                **Only for Google Business Profile and Bing:**
                                 Currently, **serviceArea** is only supported by
-                                Google My Business and Bing and will not affect
-                                your listings on other sites.
+                                Google Business Profile and Bing and will not
+                                affect your listings on other sites.
 
 
                                 Filtering Type: `object`
@@ -37536,10 +37748,10 @@ paths:
                                 this entity. It is specified as a list of
                                 service area names and their associated types.
 
-                                **Only for Google My Business and Bing:**
+                                **Only for Google Business Profile and Bing:**
                                 Currently, **serviceArea** is only supported by
-                                Google My Business and Bing and will not affect
-                                your listings on other sites.
+                                Google Business Profile and Bing and will not
+                                affect your listings on other sites.
 
 
 
@@ -37825,6 +38037,7 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
+
 
 
 
@@ -39973,6 +40186,7 @@ paths:
 
 
 
+
                               Array must be ordered.
 
 
@@ -41214,6 +41428,7 @@ paths:
 
 
 
+
                               Array must be ordered.
 
 
@@ -42404,6 +42619,7 @@ paths:
 
 
 
+
                               Array must be ordered.
 
 
@@ -42981,6 +43197,7 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
+
 
 
 
@@ -44375,7 +44592,7 @@ paths:
                         type: object
                         properties: {}
                         description: >-
-                          The unique IDs of the entity's Google My Business
+                          The unique IDs of the entity's Google Business Profile
                           keywords, as well as the unique IDs of any values
                           selected for each keyword.
 
@@ -44464,8 +44681,8 @@ paths:
                             description: 'Filtering Type: `text`'
                       googleMyBusinessLabels:
                         description: >-
-                          Google My Business Labels help users organize their
-                          locations into groups within GMB.
+                          Google Business Profile Labels help users organize
+                          their locations into groups within GBP.
 
 
 
@@ -44584,9 +44801,9 @@ paths:
                         format: uri
                         type: string
                         description: >-
-                          The URL you would like to submit to Google My Business
-                          in place of the one given in **`websiteUrl`** (if
-                          applicable).
+                          The URL you would like to submit to Google Business
+                          Profile in place of the one given in **`websiteUrl`**
+                          (if applicable).
 
 
                           For example, if you want to analyze the traffic driven
@@ -44670,6 +44887,7 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
+
 
 
 
@@ -45245,6 +45463,7 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
+
 
 
 
@@ -46029,6 +46248,7 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
+
 
 
 
@@ -47279,6 +47499,7 @@ paths:
 
 
 
+
                               Array must be ordered.
 
 
@@ -47841,36 +48062,98 @@ paths:
                             - ALIPAY
                             - AMERICANEXPRESS
                             - ANDROIDPAY
+                            - APPLEPAY
                             - ATM
                             - ATMQUICK
                             - BACS
+                            - BANCONTACT
+                            - BANKDEPOSIT
+                            - BANKPAY
                             - BGO
                             - BITCOIN
+                            - Bar
+                            - CARTASI
                             - CASH
+                            - CCS
                             - CHECK
                             - CONB
                             - CVVV
                             - DEBITNOTE
                             - DINERSCLUB
+                            - DIRECTDEBIT
                             - DISCOVER
+                            - ECKARTE
+                            - ECOCHEQUE
+                            - EKENA
+                            - EMV
                             - FINANCING
+                            - GOPAY
+                            - HAYAKAKEN
+                            - HEBAG
+                            - IBOD
+                            - ICCARDS
+                            - ICOCA
+                            - ID
                             - IDEAL
                             - INCA
                             - INVOICE
                             - JCB
+                            - JCoinPay
+                            - JKOPAY
+                            - KITACA
                             - KLA
+                            - KLARNA
+                            - LINEPAY
+                            - MAESTRO
+                            - MANACA
                             - MASTERCARD
-                            - MONSTERCARD
+                            - MIPAY
+                            - MONIZZE
+                            - MPAY
+                            - Manuelle Lastsch
+                            - Merpay
+                            - NANACO
+                            - NEXI
+                            - NIMOCA
                             - OREM
+                            - PASMO
+                            - PAYBACKPAY
                             - PAYBOX
+                            - PAYCONIQ
                             - PAYPAL
+                            - PAYPAY
+                            - PAYSEC
+                            - PIN
+                            - POSTEPAY
+                            - QRCODE
+                            - QUICPAY
+                            - RAKUTENEDY
+                            - RAKUTENPAY
+                            - SAMSUNGPAY
                             - SODEXO
-                            - TEST
+                            - SUGOCA
+                            - SUICA
+                            - SWISH
+                            - TICKETRESTAURANT
+                            - TOICA
                             - TRAVELERSCHECK
+                            - TSCUBIC
+                            - TWINT
+                            - UNIONPAY
                             - VEV
                             - VISA
+                            - VISAELECTRON
                             - VOB
-                            - YEET
+                            - VOUCHER
+                            - VPAY
+                            - WAON
+                            - WECHATPAY
+                            - WIRETRANSFER
+                            - Yucho Pay
+                            - ZELLE
+                            - auPay
+                            - dBarai
+                            - Überweisung
                           type: string
                           description: 'Filtering Type: `option`'
                         description: |-
@@ -47944,7 +48227,7 @@ paths:
                           Array must be ordered.
 
 
-                          Array may have a maximum of 100 elements.
+                          Array may have a maximum of 500 elements.
 
 
                           Array item description:
@@ -47988,6 +48271,7 @@ paths:
                           ```
 
                           Eligible For: 
+                             * atm
                              * event
                              * financialProfessional
                              * healthcareFacility
@@ -48194,6 +48478,7 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
+
 
 
 
@@ -49319,6 +49604,7 @@ paths:
 
 
 
+
                               Array must be ordered.
 
 
@@ -49751,6 +50037,7 @@ paths:
                                - the name of a city.
 
 
+
                               Array must be ordered.
 
 
@@ -49772,10 +50059,10 @@ paths:
                           postal codes.
 
 
-                          **Only for Google My Business and Bing:** Currently,
-                          **serviceArea** is only supported by Google My
-                          Business and Bing and will not affect your listings on
-                          other sites.
+                          **Only for Google Business Profile and Bing:**
+                          Currently, **serviceArea** is only supported by Google
+                          Business Profile and Bing and will not affect your
+                          listings on other sites.
 
 
                           Filtering Type: `object`
@@ -49796,10 +50083,10 @@ paths:
                           entity. It is specified as a list of service area
                           names and their associated types.
 
-                          **Only for Google My Business and Bing:** Currently,
-                          **serviceArea** is only supported by Google My
-                          Business and Bing and will not affect your listings on
-                          other sites.
+                          **Only for Google Business Profile and Bing:**
+                          Currently, **serviceArea** is only supported by Google
+                          Business Profile and Bing and will not affect your
+                          listings on other sites.
 
 
 
@@ -50080,6 +50367,7 @@ paths:
                               Holiday Hours that you sent in your last update,
                               Yext considers the missing Holiday Hours to be
                               deleted, and we remove them.
+
 
 
 
@@ -52109,6 +52397,7 @@ paths:
 
 
 
+
                                     Array must be ordered.
 
 
@@ -53372,6 +53661,7 @@ paths:
 
 
 
+
                                     Array must be ordered.
 
 
@@ -54595,6 +54885,7 @@ paths:
 
 
 
+
                                     Array must be ordered.
 
 
@@ -55182,6 +55473,7 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
+
 
 
 
@@ -56601,8 +56893,8 @@ paths:
                               type: object
                               properties: {}
                               description: >-
-                                The unique IDs of the entity's Google My
-                                Business keywords, as well as the unique IDs of
+                                The unique IDs of the entity's Google Business
+                                Profile keywords, as well as the unique IDs of
                                 any values selected for each keyword.
 
 
@@ -56693,8 +56985,8 @@ paths:
                                   description: 'Filtering Type: `text`'
                             googleMyBusinessLabels:
                               description: >-
-                                Google My Business Labels help users organize
-                                their locations into groups within GMB.
+                                Google Business Profile Labels help users
+                                organize their locations into groups within GBP.
 
 
 
@@ -56818,8 +57110,8 @@ paths:
                               format: uri
                               type: string
                               description: >-
-                                The URL you would like to submit to Google My
-                                Business in place of the one given in
+                                The URL you would like to submit to Google
+                                Business Profile in place of the one given in
                                 **`websiteUrl`** (if applicable).
 
 
@@ -56906,6 +57198,7 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
+
 
 
 
@@ -57495,6 +57788,7 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
+
 
 
 
@@ -58294,6 +58588,7 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
+
 
 
 
@@ -59583,6 +59878,7 @@ paths:
 
 
 
+
                                     Array must be ordered.
 
 
@@ -60163,36 +60459,98 @@ paths:
                                   - ALIPAY
                                   - AMERICANEXPRESS
                                   - ANDROIDPAY
+                                  - APPLEPAY
                                   - ATM
                                   - ATMQUICK
                                   - BACS
+                                  - BANCONTACT
+                                  - BANKDEPOSIT
+                                  - BANKPAY
                                   - BGO
                                   - BITCOIN
+                                  - Bar
+                                  - CARTASI
                                   - CASH
+                                  - CCS
                                   - CHECK
                                   - CONB
                                   - CVVV
                                   - DEBITNOTE
                                   - DINERSCLUB
+                                  - DIRECTDEBIT
                                   - DISCOVER
+                                  - ECKARTE
+                                  - ECOCHEQUE
+                                  - EKENA
+                                  - EMV
                                   - FINANCING
+                                  - GOPAY
+                                  - HAYAKAKEN
+                                  - HEBAG
+                                  - IBOD
+                                  - ICCARDS
+                                  - ICOCA
+                                  - ID
                                   - IDEAL
                                   - INCA
                                   - INVOICE
                                   - JCB
+                                  - JCoinPay
+                                  - JKOPAY
+                                  - KITACA
                                   - KLA
+                                  - KLARNA
+                                  - LINEPAY
+                                  - MAESTRO
+                                  - MANACA
                                   - MASTERCARD
-                                  - MONSTERCARD
+                                  - MIPAY
+                                  - MONIZZE
+                                  - MPAY
+                                  - Manuelle Lastsch
+                                  - Merpay
+                                  - NANACO
+                                  - NEXI
+                                  - NIMOCA
                                   - OREM
+                                  - PASMO
+                                  - PAYBACKPAY
                                   - PAYBOX
+                                  - PAYCONIQ
                                   - PAYPAL
+                                  - PAYPAY
+                                  - PAYSEC
+                                  - PIN
+                                  - POSTEPAY
+                                  - QRCODE
+                                  - QUICPAY
+                                  - RAKUTENEDY
+                                  - RAKUTENPAY
+                                  - SAMSUNGPAY
                                   - SODEXO
-                                  - TEST
+                                  - SUGOCA
+                                  - SUICA
+                                  - SWISH
+                                  - TICKETRESTAURANT
+                                  - TOICA
                                   - TRAVELERSCHECK
+                                  - TSCUBIC
+                                  - TWINT
+                                  - UNIONPAY
                                   - VEV
                                   - VISA
+                                  - VISAELECTRON
                                   - VOB
-                                  - YEET
+                                  - VOUCHER
+                                  - VPAY
+                                  - WAON
+                                  - WECHATPAY
+                                  - WIRETRANSFER
+                                  - Yucho Pay
+                                  - ZELLE
+                                  - auPay
+                                  - dBarai
+                                  - Überweisung
                                 type: string
                                 description: 'Filtering Type: `option`'
                               description: |-
@@ -60267,7 +60625,7 @@ paths:
                                 Array must be ordered.
 
 
-                                Array may have a maximum of 100 elements.
+                                Array may have a maximum of 500 elements.
 
 
                                 Array item description:
@@ -60311,6 +60669,7 @@ paths:
                                 ```
 
                                 Eligible For: 
+                                   * atm
                                    * event
                                    * financialProfessional
                                    * healthcareFacility
@@ -60519,6 +60878,7 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
+
 
 
 
@@ -61660,6 +62020,7 @@ paths:
 
 
 
+
                                     Array must be ordered.
 
 
@@ -62100,6 +62461,7 @@ paths:
                                      - the name of a city.
 
 
+
                                     Array must be ordered.
 
 
@@ -62121,10 +62483,10 @@ paths:
                                 and/or postal codes.
 
 
-                                **Only for Google My Business and Bing:**
+                                **Only for Google Business Profile and Bing:**
                                 Currently, **serviceArea** is only supported by
-                                Google My Business and Bing and will not affect
-                                your listings on other sites.
+                                Google Business Profile and Bing and will not
+                                affect your listings on other sites.
 
 
                                 Filtering Type: `object`
@@ -62145,10 +62507,10 @@ paths:
                                 this entity. It is specified as a list of
                                 service area names and their associated types.
 
-                                **Only for Google My Business and Bing:**
+                                **Only for Google Business Profile and Bing:**
                                 Currently, **serviceArea** is only supported by
-                                Google My Business and Bing and will not affect
-                                your listings on other sites.
+                                Google Business Profile and Bing and will not
+                                affect your listings on other sites.
 
 
 
@@ -62434,6 +62796,7 @@ paths:
                                     in your last update, Yext considers the
                                     missing Holiday Hours to be deleted, and we
                                     remove them.
+
 
 
 
@@ -65731,6 +66094,7 @@ paths:
 
 
 
+
                                           Array must be ordered.
 
 
@@ -67014,6 +67378,7 @@ paths:
 
 
 
+
                                           Array must be ordered.
 
 
@@ -68254,6 +68619,7 @@ paths:
 
 
 
+
                                           Array must be ordered.
 
 
@@ -68850,6 +69216,7 @@ paths:
                                           update, Yext considers the missing
                                           Holiday Hours to be deleted, and we
                                           remove them.
+
 
 
 
@@ -70313,9 +70680,9 @@ paths:
                                     type: object
                                     properties: {}
                                     description: >-
-                                      The unique IDs of the entity's Google My
-                                      Business keywords, as well as the unique
-                                      IDs of any values selected for each
+                                      The unique IDs of the entity's Google
+                                      Business Profile keywords, as well as the
+                                      unique IDs of any values selected for each
                                       keyword.
 
 
@@ -70413,9 +70780,9 @@ paths:
                                         description: 'Filtering Type: `text`'
                                   googleMyBusinessLabels:
                                     description: >-
-                                      Google My Business Labels help users
+                                      Google Business Profile Labels help users
                                       organize their locations into groups
-                                      within GMB.
+                                      within GBP.
 
 
 
@@ -70540,8 +70907,8 @@ paths:
                                     type: string
                                     description: >-
                                       The URL you would like to submit to Google
-                                      My Business in place of the one given in
-                                      **`websiteUrl`** (if applicable).
+                                      Business Profile in place of the one given
+                                      in **`websiteUrl`** (if applicable).
 
 
                                       For example, if you want to analyze the
@@ -70629,6 +70996,7 @@ paths:
                                           update, Yext considers the missing
                                           Holiday Hours to be deleted, and we
                                           remove them.
+
 
 
 
@@ -71234,6 +71602,7 @@ paths:
                                           update, Yext considers the missing
                                           Holiday Hours to be deleted, and we
                                           remove them.
+
 
 
 
@@ -72042,6 +72411,7 @@ paths:
                                           update, Yext considers the missing
                                           Holiday Hours to be deleted, and we
                                           remove them.
+
 
 
 
@@ -73368,6 +73738,7 @@ paths:
 
 
 
+
                                           Array must be ordered.
 
 
@@ -73959,36 +74330,98 @@ paths:
                                         - ALIPAY
                                         - AMERICANEXPRESS
                                         - ANDROIDPAY
+                                        - APPLEPAY
                                         - ATM
                                         - ATMQUICK
                                         - BACS
+                                        - BANCONTACT
+                                        - BANKDEPOSIT
+                                        - BANKPAY
                                         - BGO
                                         - BITCOIN
+                                        - Bar
+                                        - CARTASI
                                         - CASH
+                                        - CCS
                                         - CHECK
                                         - CONB
                                         - CVVV
                                         - DEBITNOTE
                                         - DINERSCLUB
+                                        - DIRECTDEBIT
                                         - DISCOVER
+                                        - ECKARTE
+                                        - ECOCHEQUE
+                                        - EKENA
+                                        - EMV
                                         - FINANCING
+                                        - GOPAY
+                                        - HAYAKAKEN
+                                        - HEBAG
+                                        - IBOD
+                                        - ICCARDS
+                                        - ICOCA
+                                        - ID
                                         - IDEAL
                                         - INCA
                                         - INVOICE
                                         - JCB
+                                        - JCoinPay
+                                        - JKOPAY
+                                        - KITACA
                                         - KLA
+                                        - KLARNA
+                                        - LINEPAY
+                                        - MAESTRO
+                                        - MANACA
                                         - MASTERCARD
-                                        - MONSTERCARD
+                                        - MIPAY
+                                        - MONIZZE
+                                        - MPAY
+                                        - Manuelle Lastsch
+                                        - Merpay
+                                        - NANACO
+                                        - NEXI
+                                        - NIMOCA
                                         - OREM
+                                        - PASMO
+                                        - PAYBACKPAY
                                         - PAYBOX
+                                        - PAYCONIQ
                                         - PAYPAL
+                                        - PAYPAY
+                                        - PAYSEC
+                                        - PIN
+                                        - POSTEPAY
+                                        - QRCODE
+                                        - QUICPAY
+                                        - RAKUTENEDY
+                                        - RAKUTENPAY
+                                        - SAMSUNGPAY
                                         - SODEXO
-                                        - TEST
+                                        - SUGOCA
+                                        - SUICA
+                                        - SWISH
+                                        - TICKETRESTAURANT
+                                        - TOICA
                                         - TRAVELERSCHECK
+                                        - TSCUBIC
+                                        - TWINT
+                                        - UNIONPAY
                                         - VEV
                                         - VISA
+                                        - VISAELECTRON
                                         - VOB
-                                        - YEET
+                                        - VOUCHER
+                                        - VPAY
+                                        - WAON
+                                        - WECHATPAY
+                                        - WIRETRANSFER
+                                        - Yucho Pay
+                                        - ZELLE
+                                        - auPay
+                                        - dBarai
+                                        - Überweisung
                                       type: string
                                       description: 'Filtering Type: `option`'
                                     description: >-
@@ -74070,7 +74503,7 @@ paths:
                                       Array must be ordered.
 
 
-                                      Array may have a maximum of 100 elements.
+                                      Array may have a maximum of 500 elements.
 
 
                                       Array item description:
@@ -74114,6 +74547,7 @@ paths:
                                       ```
 
                                       Eligible For: 
+                                         * atm
                                          * event
                                          * financialProfessional
                                          * healthcareFacility
@@ -74326,6 +74760,7 @@ paths:
                                           update, Yext considers the missing
                                           Holiday Hours to be deleted, and we
                                           remove them.
+
 
 
 
@@ -75479,6 +75914,7 @@ paths:
 
 
 
+
                                           Array must be ordered.
 
 
@@ -75926,6 +76362,7 @@ paths:
                                            - the name of a city.
 
 
+
                                           Array must be ordered.
 
 
@@ -75948,11 +76385,11 @@ paths:
                                       of cities and/or postal codes.
 
 
-                                      **Only for Google My Business and Bing:**
-                                      Currently, **serviceArea** is only
-                                      supported by Google My Business and Bing
-                                      and will not affect your listings on other
-                                      sites.
+                                      **Only for Google Business Profile and
+                                      Bing:** Currently, **serviceArea** is only
+                                      supported by Google Business Profile and
+                                      Bing and will not affect your listings on
+                                      other sites.
 
 
                                       Filtering Type: `object`
@@ -75974,11 +76411,11 @@ paths:
                                       of service area names and their associated
                                       types.
 
-                                      **Only for Google My Business and Bing:**
-                                      Currently, **serviceArea** is only
-                                      supported by Google My Business and Bing
-                                      and will not affect your listings on other
-                                      sites.
+                                      **Only for Google Business Profile and
+                                      Bing:** Currently, **serviceArea** is only
+                                      supported by Google Business Profile and
+                                      Bing and will not affect your listings on
+                                      other sites.
 
 
 
@@ -76270,6 +76707,7 @@ paths:
                                           update, Yext considers the missing
                                           Holiday Hours to be deleted, and we
                                           remove them.
+
 
 
 
@@ -79861,8 +80299,8 @@ components:
                 The distance around the location that the business serves
 
 
-                **NOTE:** This field is no longer supported by Google My
-                Business and is deprecated. We no longer accept or store values
+                **NOTE:** This field is no longer supported by Google Business
+                Profile and is deprecated. We no longer accept or store values
                 for **`radius`**.
             unit:
               type: string
@@ -79870,8 +80308,8 @@ components:
                 The unit in which radius is measured.
 
 
-                **NOTE:** This field is no longer supported by Google My
-                Business and is deprecated. We no longer accept or store values
+                **NOTE:** This field is no longer supported by Google Business
+                Profile and is deprecated. We no longer accept or store values
                 for **`units`**.
             places:
               type: array
@@ -79890,9 +80328,9 @@ components:
             postal codes.
 
 
-            **Only for Google My Business:** Currently, **serviceArea** is only
-            supported by Google My Business and will not affect your listings on
-            other sites.
+            **Only for Google Business Profile:** Currently, **serviceArea** is
+            only supported by Google Business Profile and will not affect your
+            listings on other sites.
         phone:
           type: string
           description: Must be a valid phone number.
@@ -80431,8 +80869,8 @@ components:
           type: string
           maxLength: 255
           description: >
-            The URL you would like to submit to Google My Business in place of
-            the one given in **websiteUrl** (if applicable).
+            The URL you would like to submit to Google Business Profile in place
+            of the one given in **websiteUrl** (if applicable).
 
 
             For example, if you want to analyze the traffic driven by your
@@ -80471,7 +80909,7 @@ components:
               id:
                 type: string
                 description: >
-                  The unique ID Of the Google My Business keyword
+                  The unique ID Of the Google Business Profile keyword
 
 
                   Keywords are determined by the location's primary category
@@ -80490,7 +80928,7 @@ components:
                   `has_drive_through`, **`optionIds`** may be `true` or
                   `false`).
           description: |
-            The Google My Business attributes for this location.
+            The Google Business Profile attributes for this location.
         facebookPageUrl:
           type: string
           maxLength: 255
@@ -80527,7 +80965,7 @@ components:
 
             * It is opted out of Facebook.
         facebookCallToAction:
-          description: 'Designates the Facebook Call-to-Action button text and value      '
+          description: Designates the Facebook Call-to-Action button text and value
           type: object
           properties:
             type:
@@ -80676,7 +81114,7 @@ components:
 
 
             **NOTE**: This field is only available in the LiveAPI and only for
-            US locations. 
+            US locations.
         yearEstablished:
           type: string
           maxLength: 4
