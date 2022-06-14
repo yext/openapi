@@ -78823,6 +78823,50 @@ paths:
         `rating` field has a value greater than or equal to `4`.
 
 
+        #### GeoSearch
+
+
+        Supports filtering to records for which the specified field is within
+        the supplied radius to the supplied latitude and longitude. 
+
+
+        Supported Types: Coordinates (ex: `yextDisplayCoordinate`,
+        `displayCoordinate`, etc.).
+
+
+        GeoSearch queries are constructed by appending a `__geo` comparator to a
+        coordinate field in the request. The details of the GeoSearch must then
+        be included, comma separated, as part of the query value, optionally
+        surrounded by parantheses. 
+
+
+        The following parameters are supported:
+
+        * The latitude of the point to geosearch from, specified as `lat`
+
+        * The longitude of the point to geosearch from, specified as `lon`
+
+        * The numeric radius from the point which results will be filtered to,
+        specifed as `radius`
+
+        * The unit of measurement for the radius, specified as `unit`. One of
+        `km`, `mi`, `m`, `ft`. Defaults to `mi`
+
+
+        *Example:*
+
+        Adding
+        **`&yextDisplayCoordinate__geo=(lat:40.740,lon:-73.987565,radius:50,unit:km)`**
+        as a query parameter
+
+        will return records where the `yextDisplayCoordinate` field on the
+        entities is within 50 km of the provided latitude and longitude.
+
+
+        Like all other filters, the field which is being geosearched upon must
+        be specified in the `fieldIndexes` of the endpoint definition. 
+
+
         ### Sorting
 
 
