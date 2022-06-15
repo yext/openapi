@@ -3291,7 +3291,7 @@ components:
             If create, specify the entity type in the query parameter. If
             update, specify the entity type
 
-            in the request body in the `meta` object. **
+            in the request body in the `meta` object.**
           type: string
     EventWrite:
       allOf:

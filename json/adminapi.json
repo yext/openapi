@@ -2842,7 +2842,7 @@
         },
         "properties": {
           "EntityType": {
-            "description": "**This is used only to filter the fields below and should NOT be included in any API calls.\nIf create, specify the entity type in the query parameter. If update, specify the entity type\nin the request body in the `meta` object. **\n",
+            "description": "**This is used only to filter the fields below and should NOT be included in any API calls.\nIf create, specify the entity type in the query parameter. If update, specify the entity type\nin the request body in the `meta` object.**\n",
             "type": "string"
           }
         }
