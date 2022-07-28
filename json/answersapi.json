@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Answers API",
+    "title": "Search API",
     "version": "2.0"
   },
   "servers": [
@@ -10,7 +10,7 @@
     }
   ],
   "paths": {
-    "/accounts/{accountId}/answers/autocomplete": {
+    "/accounts/{accountId}/search/autocomplete": {
       "get": {
         "operationId": "autocomplete",
         "parameters": [
@@ -42,7 +42,7 @@
         }
       }
     },
-    "/accounts/{accountId}/answers/query": {
+    "/accounts/{accountId}/search/query": {
       "get": {
         "operationId": "query",
         "parameters": [
@@ -96,7 +96,7 @@
           }
         ],
         "summary": "Universal Search: Query",
-        "description": "Search for entities across all verticals within an answers experience.  Modules are returned for all verticals with relevant entities. Further fine tuning and filtering of the results can then be done using the vertical query endpoint.",
+        "description": "Search for entities across all verticals within a Search experience.  Modules are returned for all verticals with relevant entities. Further fine tuning and filtering of the results can then be done using the vertical query endpoint.",
         "responses": {
           "200": {
             "$ref": "#/components/responses/UniversalQueryResponse"
@@ -107,7 +107,7 @@
         }
       }
     },
-    "/accounts/{accountId}/answers/vertical/autocomplete": {
+    "/accounts/{accountId}/search/vertical/autocomplete": {
       "get": {
         "operationId": "verticalAutocomplete",
         "parameters": [
@@ -142,7 +142,7 @@
         }
       }
     },
-    "/accounts/{accountId}/answers/vertical/query": {
+    "/accounts/{accountId}/search/vertical/query": {
       "get": {
         "operationId": "verticalQuery",
         "parameters": [
@@ -225,7 +225,7 @@
         }
       }
     },
-    "/accounts/{accountId}/answers/filtersearch": {
+    "/accounts/{accountId}/search/filtersearch": {
       "get": {
         "operationId": "filtersearch",
         "parameters": [
@@ -305,7 +305,7 @@
         "schema": {
           "type": "string"
         },
-        "description": "String key that uniquely identifies the answers experience."
+        "description": "String key that uniquely identifies the Search experience."
       },
       "locale": {
         "name": "locale",
@@ -440,7 +440,7 @@
         "schema": {
           "type": "string"
         },
-        "description": "The version of the Answers Search UI used for this search request. Deprecated."
+        "description": "The version of the Search UI used for this request. Deprecated."
       },
       "verticalKey": {
         "name": "verticalKey",
@@ -643,7 +643,7 @@
                 },
                 "results": [
                   {
-                    "value": "Yext Search Experience Cloud",
+                    "value": "Yext Listings",
                     "matchedSubstrings": [
                       {
                         "offset": 0,
@@ -652,7 +652,7 @@
                     ]
                   },
                   {
-                    "value": "Yext Answers",
+                    "value": "Yext Search",
                     "matchedSubstrings": [
                       {
                         "offset": 0,
@@ -965,7 +965,7 @@
       },
       "businessId": {
         "type": "integer",
-        "description": "ID of the account associated with this Answers experience"
+        "description": "ID of the account associated with this Search experience"
       },
       "queryId": {
         "type": "string",
@@ -1009,8 +1009,8 @@
       },
       "filter": {
         "type": "object",
-        "description": "The filter, in the filter format, that was applied.\n<br><br>\nFor example: `\"c_exampleFieldId\": { $eq\": \"Answers\" }`\n",
-        "example": "c_exampleFieldId: { $eq\": \"Answers\" }\n"
+        "description": "The filter, in the filter format, that was applied.\n<br><br>\nFor example: `\"c_exampleFieldId\": { $eq\": \"Search\" }`\n",
+        "example": "c_exampleFieldId: { $eq\": \"Search\" }\n"
       },
       "AppliedQueryFilters": {
         "type": "array",
@@ -1277,7 +1277,7 @@
   ],
   "tags": [
     {
-      "name": "Answers API"
+      "name": "Search API"
     }
   ]
 }
