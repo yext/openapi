@@ -723,6 +723,56 @@
           }
         }
       }
+    },
+    "suggestionsWebhook": {
+      "post": {
+        "operationId": "suggestionsWebhook",
+        "tags": [
+          "Knowledge Manager"
+        ],
+        "summary": "Suggestions: Webhook",
+        "description": "Sends an updated Suggestion object to your server.\n\n**NOTE:**\n  * App must have **Manage Suggestions: Read/Write** permission to set up webhook.\n",
+        "requestBody": {
+          "description": "The updated Suggestion",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "meta": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/RequestMeta"
+                      }
+                    ],
+                    "properties": {
+                      "eventType": {
+                        "type": "string",
+                        "enum": [
+                          "SUGGESTION_CREATED",
+                          "SUGGESTION_APPROVED",
+                          "SUGGESTION_REJECTED",
+                          "SUGGESTION_UPDATED",
+                          "SUGGESTION_CANCELED",
+                          "SUGGESTION_ASSIGNED",
+                          "SUGGESTION_COMMENT_CREATED",
+                          "SUGGESTION_LOCKED",
+                          "SUGGESTION_UNLOCKED",
+                          "SUGGESTION_INVALIDATED"
+                        ]
+                      }
+                    }
+                  },
+                  "suggestion": {
+                    "$ref": "#/components/schemas/SuggestionRead"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "tags": [
@@ -8953,6 +9003,219 @@
             "type": "string",
             "readOnly": true,
             "description": "Results from processing."
+          }
+        }
+      },
+      "Source": {
+        "type": "object",
+        "description": "Provides information about the user/system responsible for creating the suggestion.",
+        "properties": {
+          "userId": {
+            "description": "The Yext User ID of the user responsible for the suggestion. Only included when the suggester is a Yext User.\n",
+            "type": "string"
+          },
+          "appId": {
+            "description": "The Yext App ID of the app responsible for the suggestion. Only included when the suggester is an App.\n",
+            "type": "string"
+          },
+          "publisherId": {
+            "description": "The ID of the publisher responsible for the suggestion. Only included when the suggester is a Publisher\n",
+            "type": "string"
+          },
+          "yextSource": {
+            "description": "A string identifier denoting the source of the Yext Suggestion.\n\nFor now, the only valid value here will be:\n  * employee\n",
+            "type": "string"
+          }
+        }
+      },
+      "EntityRead": {
+        "type": "object",
+        "description": "The Entity information for the suggestion.",
+        "properties": {
+          "id": {
+            "description": "The ID of the entity.\n",
+            "type": "string"
+          },
+          "uid": {
+            "description": "The UID of the entity. Formerly known as the Yext ID, this is the immutable ID of the entity.\n",
+            "type": "string"
+          },
+          "type": {
+            "description": "The type of the entity.\n",
+            "type": "string"
+          },
+          "language": {
+            "description": "Language code of this Entity's Language Profile.\n",
+            "type": "string"
+          },
+          "folderId": {
+            "description": "The ID of the folder which the entity is in, if the entity is in a folder.\n",
+            "type": "string"
+          },
+          "labels": {
+            "description": "Any labels included on the entity.\n",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "EntityFieldSuggestionRead": {
+        "type": "object",
+        "properties": {
+          "entity": {
+            "description": "Information about the entity which the suggestion is being made on.\n",
+            "type": "object",
+            "$ref": "#/components/schemas/EntityRead"
+          },
+          "existingContent": {
+            "description": "Contains the fields and existing values for the field(s) which are included in the suggestion.\n",
+            "type": "object",
+            "$ref": "#/components/schemas/Entity"
+          },
+          "suggestedContent": {
+            "description": "Contains the fields and suggested values for the field(s) which are included in the suggestion.\n",
+            "type": "object",
+            "$ref": "#/components/schemas/Entity"
+          }
+        }
+      },
+      "Assignee": {
+        "type": "object",
+        "description": "Object containing information about who the suggestion is assigned to.\n\nOmitted if suggestion is unassigned.\n",
+        "properties": {
+          "userId": {
+            "description": "The Yext User ID of the user to whom the suggestion is assigned.\n",
+            "type": "string"
+          },
+          "userGroupId": {
+            "description": "The Yext User Group ID of the user group to which the suggestion is assigned.\n",
+            "type": "string"
+          }
+        }
+      },
+      "Commenter": {
+        "type": "object",
+        "description": "Provides information about the user/system responsible for creating the comment.",
+        "properties": {
+          "userId": {
+            "description": "The Yext User ID of the user responsible for the comment. Only included when the commenter is a Yext User.\n",
+            "type": "string"
+          },
+          "appId": {
+            "description": "The Yext App ID of the app responsible for the comment. Only included when the commenter is an App.\n",
+            "type": "string"
+          },
+          "yextSource": {
+            "description": "A string identifier denoting the source of the comment when a Yext system is responsible.\n\nFor now, the only valid value here will be:\n  * employee\n",
+            "type": "string"
+          }
+        }
+      },
+      "Attachment": {
+        "type": "object",
+        "description": "Attachment on a Comment on a Suggestion",
+        "properties": {
+          "name": {
+            "description": "The name of the file.\n",
+            "type": "string"
+          },
+          "downloadUrl": {
+            "description": "The download URL of the file.\n",
+            "type": "string"
+          }
+        }
+      },
+      "Comment": {
+        "type": "object",
+        "description": "A comment on a Suggestion.",
+        "properties": {
+          "commenter": {
+            "$ref": "#/components/schemas/Commenter"
+          },
+          "text": {
+            "description": "The text of the comment.\n",
+            "type": "string"
+          },
+          "createdDate": {
+            "description": "Timestamp for when the comment was created. The format is \"yyyy-MM-dd HH:mm:ss\".\n",
+            "type": "string"
+          },
+          "attachments": {
+            "description": "Attachments included in the comment.\n",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Attachment"
+            }
+          }
+        }
+      },
+      "Approver": {
+        "type": "object",
+        "description": "Provides information about the user/system responsible for approving/rejecting the suggestion.",
+        "properties": {
+          "userId": {
+            "description": "The Yext User ID of the user responsible for resolving the suggestion. Only included when the approver is a Yext User.\n",
+            "type": "string"
+          },
+          "appId": {
+            "description": "The Yext App ID of the app responsible for resolving the suggestion. Only included when the approver is an App.\n",
+            "type": "string"
+          }
+        }
+      },
+      "SuggestionRead": {
+        "type": "object",
+        "properties": {
+          "uid": {
+            "description": "The Yext-generated unique identifier for the Suggestion.\n",
+            "type": "string"
+          },
+          "accountId": {
+            "description": "The ID of the account in which the Suggestion exists.\n",
+            "type": "string"
+          },
+          "createdDate": {
+            "description": "Timestamp for when the Suggestion was created. The format is \"yyyy-MM-dd HH:mm:ss\".\n",
+            "type": "string"
+          },
+          "lastUpdatedDate": {
+            "description": "Timestamp for when the Suggestion was last updated. The format is \"yyyy-MM-dd HH:mm:ss\".\n",
+            "type": "string"
+          },
+          "resolvedDate": {
+            "description": "Timestamp for when the Suggestion was approved, rejected, or canceled (empty if status = PENDING). The format is \"yyyy-MM-dd HH:mm:ss\".\n",
+            "type": "string"
+          },
+          "source": {
+            "$ref": "#/components/schemas/Source"
+          },
+          "entityFieldSuggestion": {
+            "description": "An object containing suggestion content and data for the entity and field the suggestion is\non.\n",
+            "type": "object",
+            "$ref": "#/components/schemas/EntityFieldSuggestionRead"
+          },
+          "status": {
+            "description": "The status of the suggestion. One of: PENDING, APPROVED, REJECTED, CANCELED.\n",
+            "type": "string"
+          },
+          "locked": {
+            "description": "Boolean value specifying if the suggestion is locked or not.\n",
+            "type": "boolean"
+          },
+          "assignee": {
+            "$ref": "#/components/schemas/Assignee"
+          },
+          "comments": {
+            "description": "List of objects representing comments on a given Suggestion.\n",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Comment"
+            }
+          },
+          "approver": {
+            "$ref": "#/components/schemas/Approver"
           }
         }
       }
