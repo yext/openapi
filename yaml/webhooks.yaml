@@ -536,7 +536,7 @@ components:
           description: Unique ID for this request.
         timestamp:
           type: string
-          description: Official time the change occurred.
+          description: Official time the change occurred (milliseconds since epoch).
         accountId:
           type: string
           description: Account ID this request pertains to.
@@ -14753,8 +14753,8 @@ components:
           type: string
         createdDate:
           description: >
-            Timestamp for when the comment was created. The format is
-            "yyyy-MM-dd HH:mm:ss".
+            Timestamp for when the comment was created. The format is ISO 8601
+            standard in UTC, e.g. **`yyyy-MM-ddTHH:mm:ssZ`**.
           type: string
         attachments:
           description: |
@@ -14766,7 +14766,8 @@ components:
       type: object
       description: >-
         Provides information about the user/system responsible for
-        approving/rejecting the suggestion.
+        approving/rejecting the suggestion. Only included if the suggestion has
+        been approved or rejected.
       properties:
         userId:
           description: >
@@ -14791,19 +14792,20 @@ components:
           type: string
         createdDate:
           description: >
-            Timestamp for when the Suggestion was created. The format is
-            "yyyy-MM-dd HH:mm:ss".
+            Timestamp for when the Suggestion was created. The format is ISO
+            8601 standard in UTC, e.g. **`yyyy-MM-ddTHH:mm:ssZ`**.
           type: string
         lastUpdatedDate:
           description: >
             Timestamp for when the Suggestion was last updated. The format is
-            "yyyy-MM-dd HH:mm:ss".
+            ISO 8601 standard in UTC, e.g. **`yyyy-MM-ddTHH:mm:ssZ`**.
           type: string
         resolvedDate:
           description: >
             Timestamp for when the Suggestion was approved, rejected, or
-            canceled (empty if status = PENDING). The format is "yyyy-MM-dd
-            HH:mm:ss".
+            canceled. The format is ISO 8601 standard in UTC, e.g.
+            **`yyyy-MM-ddTHH:mm:ssZ`**. Only included if the suggestion has been
+            resolved.
           type: string
         source:
           $ref: '#/components/schemas/Source'

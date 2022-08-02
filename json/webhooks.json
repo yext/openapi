@@ -791,7 +791,7 @@
           },
           "timestamp": {
             "type": "string",
-            "description": "Official time the change occurred."
+            "description": "Official time the change occurred (milliseconds since epoch)."
           },
           "accountId": {
             "type": "string",
@@ -9139,7 +9139,7 @@
             "type": "string"
           },
           "createdDate": {
-            "description": "Timestamp for when the comment was created. The format is \"yyyy-MM-dd HH:mm:ss\".\n",
+            "description": "Timestamp for when the comment was created. The format is ISO 8601 standard in UTC, e.g. **`yyyy-MM-ddTHH:mm:ssZ`**.\n",
             "type": "string"
           },
           "attachments": {
@@ -9153,7 +9153,7 @@
       },
       "Approver": {
         "type": "object",
-        "description": "Provides information about the user/system responsible for approving/rejecting the suggestion.",
+        "description": "Provides information about the user/system responsible for approving/rejecting the suggestion. Only included if the suggestion has been approved or rejected.",
         "properties": {
           "userId": {
             "description": "The Yext User ID of the user responsible for resolving the suggestion. Only included when the approver is a Yext User.\n",
@@ -9177,15 +9177,15 @@
             "type": "string"
           },
           "createdDate": {
-            "description": "Timestamp for when the Suggestion was created. The format is \"yyyy-MM-dd HH:mm:ss\".\n",
+            "description": "Timestamp for when the Suggestion was created. The format is ISO 8601 standard in UTC, e.g. **`yyyy-MM-ddTHH:mm:ssZ`**.\n",
             "type": "string"
           },
           "lastUpdatedDate": {
-            "description": "Timestamp for when the Suggestion was last updated. The format is \"yyyy-MM-dd HH:mm:ss\".\n",
+            "description": "Timestamp for when the Suggestion was last updated. The format is ISO 8601 standard in UTC, e.g. **`yyyy-MM-ddTHH:mm:ssZ`**.\n",
             "type": "string"
           },
           "resolvedDate": {
-            "description": "Timestamp for when the Suggestion was approved, rejected, or canceled (empty if status = PENDING). The format is \"yyyy-MM-dd HH:mm:ss\".\n",
+            "description": "Timestamp for when the Suggestion was approved, rejected, or canceled. The format is ISO 8601 standard in UTC, e.g. **`yyyy-MM-ddTHH:mm:ssZ`**. Only included if the suggestion has been resolved.\n",
             "type": "string"
           },
           "source": {
