@@ -753,7 +753,7 @@
                           "SUGGESTION_CREATED",
                           "SUGGESTION_APPROVED",
                           "SUGGESTION_REJECTED",
-                          "SUGGESTION_UPDATED",
+                          "SUGGESTION_CONTENT_UPDATED",
                           "SUGGESTION_CANCELED",
                           "SUGGESTION_ASSIGNED",
                           "SUGGESTION_COMMENT_CREATED",
