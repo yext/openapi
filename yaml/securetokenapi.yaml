@@ -46,31 +46,18 @@ components:
         api_key:
           type: string
           example: oin3rqnka321ojas
-          description: >-
-            A valid Yext API key for an app with the Secure Token Live Api
-            permission enabled.
+          description: A valid Yext API key for an app with the Secure Token Live Api permission enabled.
         expires_in:
           type: integer
           example: 60
-          description: >-
-            The number of minutes the Api Token will be valid for. Per Yext
-            requirements, an Api Token must be valid for at least an hour but
-            for no longer than a day. As such, expires_in can take values within
-            the range of [60, 1440].
+          description: The number of minutes the Api Token will be valid for. Per Yext requirements, an Api Token must be valid for at least an hour but for no longer than a day. As such, expires_in can take values within the range of [60, 1440].
         auth_identifier:
           type: string
           example: John Doe
-          description: >-
-            A freeform string identifying the user for whom the token is being
-            created.
+          description: A freeform string identifying the user for whom the token is being created.
         fixed_query_params:
           type: object
-          description: >-
-            Optional JSON object specifying a set of query parameters and
-            subsequent values that should be applied to the URL of any request
-            that uses the token as an Api Key. If these parameters are present
-            in the original request, they will be replaced with the values
-            contained in this field.
+          description: Optional JSON object specifying a set of query parameters and subsequent values that should be applied to the URL of any request that uses the token as an Api Key. If these parameters are present in the original request, they will be replaced with the values contained in this field.
         signing_algorithm:
           type: string
           example: HS256
@@ -99,7 +86,7 @@ components:
                     description: The unique ID that corresponds to the generated token.
                   token:
                     type: string
-                    example: >-
+                    example: |-
                       eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiIyNTQ3OTQxIiwiZXhwIj
                        oxNjA4NzY0MDM2LCJqdGkiOiI3ZGRhYmE3Ny01MDE2LTQ1ZmQtYTZlYS0yZmExMDFkY
                        zQyN2QiLCJpYXQiOjE2MDg3NjA0MzYsImlzcyI6IllleHQiLCJzdWIiOiI5MDM5NCIs
@@ -141,9 +128,7 @@ components:
                   type:
                     type: integer
                     example: 1
-                    description: >-
-                      Code that uniquely identifies the name of the error.
-                      Errors of type “1” are considered fatal errors.
+                    description: Code that uniquely identifies the name of the error. Errors of type “1” are considered fatal errors.
                   message:
                     type: string
                     example: invalid api key

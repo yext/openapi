@@ -8724,6 +8724,21 @@
           }
         }
       },
+      "ReviewLabel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The ID of this review label.",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of this review label.",
+            "readOnly": true
+          }
+        }
+      },
       "WebhookReview": {
         "type": "object",
         "properties": {
@@ -8735,6 +8750,10 @@
           "entityId": {
             "type": "string",
             "description": "ID of the entity associated with this review.\n\nIf the **`v`** parameter is before `20210728`, please refer to locationId as the parameter name instead of entityId.\n"
+          },
+          "accountId": {
+            "type": "string",
+            "description": "ID of the account associated with this review"
           },
           "publisherId": {
             "type": "string",
@@ -8797,12 +8816,24 @@
             ],
             "description": "Indicates whether the review has been flagged for inappropriate or irrelevant content. Note that only First Party and External First Party reviews can be flagged."
           },
+          "reviewLanguage": {
+            "type": "string",
+            "description": "The language of the review, if identified."
+          },
           "comments": {
             "type": "array",
             "description": "An ordered array of Comments on the review.\n\n**NOTE:** The order is a flattened tree with depth ties broken by publisher date.\n",
             "readOnly": true,
             "items": {
               "$ref": "#/components/schemas/ReviewComment"
+            }
+          },
+          "reviewLabels": {
+            "type": "array",
+            "description": "The names and IDs of the review labels added to the review.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API.\n",
+            "readOnly": true,
+            "items": {
+              "$ref": "#/components/schemas/ReviewLabel"
             }
           },
           "reviewType": {

@@ -40,9 +40,7 @@ paths:
     get:
       operationId: getAnswersConfigResource
       summary: 'Answers Config: Get'
-      description: >-
-        Get an existing Answers Config resource with the given $id for an
-        account.
+      description: Get an existing Answers Config resource with the given $id for an account.
       responses:
         '200':
           $ref: '#/components/responses/Resource'
@@ -129,9 +127,8 @@ components:
                 $ref: '#/components/schemas/ResponseError'
     Resource:
       type: object
-      description: >
-        A JSON representation of the resource. Please refer to the Hitchhiker's
-        guide for the exact resource schema.
+      description: |
+        A JSON representation of the resource. Please refer to the Hitchhiker's guide for the exact resource schema.
   responses:
     ErrorResponse:
       description: Error Response

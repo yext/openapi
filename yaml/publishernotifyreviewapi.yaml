@@ -19,14 +19,10 @@ webhooks:
       tags:
         - Webhooks
       summary: Notify Review
-      description: >
-        Publishers use this endpoint to notify Yext of review activity on
-        listings. Specifically: 
-
+      description: |
+        Publishers use this endpoint to notify Yext of review activity on listings. Specifically: 
         * A new review has been posted
-
         * A new comment has been posted on an existing review
-
         * A review has been suppressed due to abuse reports
       responses:
         '200':
@@ -50,12 +46,9 @@ webhooks:
       tags:
         - Webhooks
       summary: Notify Suggestion
-      description: >
-        Publishers use this endpoint to notify Yext of data suggestion on
-        listings. Specifically, notifications for:
-
+      description: |
+        Publishers use this endpoint to notify Yext of data suggestion on listings. Specifically, notifications for:
         * a new suggestion has been received
-
         * an existing suggestion has been update
       responses:
         '200':
@@ -94,9 +87,7 @@ components:
             example: '832813382'
           timestamp:
             type: string
-            description: >-
-              Date and time that the review comment was posted in ISO-9601
-              format
+            description: Date and time that the review comment was posted in ISO-9601 format
             example: '2020-01-04T13:15:53Z'
           authorName:
             type: string
@@ -158,9 +149,7 @@ components:
             description: The maximum possible rating of a review on your site
           flagReason:
             type: string
-            description: >-
-              If present, the business owner has flagged the review a specific
-              reason
+            description: If present, the business owner has flagged the review a specific reason
             enum:
               - INAPPROPRIATE_CONTENT
               - SPAM
@@ -169,9 +158,7 @@ components:
             $ref: '#/components/schemas/PartnerReviewComments'
           generated:
             type: boolean
-            description: >-
-              Indicates whether the review was written in response to a request
-              from a review_generation program
+            description: Indicates whether the review was written in response to a request from a review_generation program
     ReviewNotification:
       type: object
       required:
@@ -195,9 +182,7 @@ components:
           example: '2020-01-02T13:15:53Z'
         averageRating:
           type: string
-          description: >-
-            The average rating across all reviews for this listing (of which
-            there are total)
+          description: The average rating across all reviews for this listing (of which there are total)
           example: '3.4'
         reviews:
           description: A list containing one element - the updated review
@@ -217,9 +202,7 @@ components:
           example: '5382'
         field:
           type: string
-          description: >-
-            The name of the listing field associated with the suggestion (e.g.
-            main_phone, website_url)
+          description: The name of the listing field associated with the suggestion (e.g. main_phone, website_url)
           example: name
         status:
           type: string
@@ -243,9 +226,7 @@ components:
           example: DeeDee’s Doughnuts
         proposedValue:
           type: string
-          description: >-
-            The content of the suggestion. The type of this value should match
-            the type structure of the field
+          description: The content of the suggestion. The type of this value should match the type structure of the field
           example: Dee's Doughnuts
     SuggestionNotification:
       type: object

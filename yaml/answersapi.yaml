@@ -15,10 +15,7 @@ paths:
         - $ref: '#/components/parameters/locale'
         - $ref: '#/components/parameters/autocompleteInput'
       summary: 'Universal Search: Autocomplete'
-      description: >-
-        Retrieve a list of suggested queries across all verticals in the
-        experience based on the characters already typed by the user. This API
-        is meant to be hit after each keystroke.
+      description: Retrieve a list of suggested queries across all verticals in the experience based on the characters already typed by the user. This API is meant to be hit after each keystroke.
       responses:
         '200':
           $ref: '#/components/responses/AutocompleteResponse'
@@ -45,11 +42,7 @@ paths:
         - $ref: '#/components/parameters/queryId'
         - $ref: '#/components/parameters/jsLibVersion'
       summary: 'Universal Search: Query'
-      description: >-
-        Search for entities across all verticals within a Search experience. 
-        Modules are returned for all verticals with relevant entities. Further
-        fine tuning and filtering of the results can then be done using the
-        vertical query endpoint.
+      description: Search for entities across all verticals within a Search experience.  Modules are returned for all verticals with relevant entities. Further fine tuning and filtering of the results can then be done using the vertical query endpoint.
       responses:
         '200':
           $ref: '#/components/responses/UniversalQueryResponse'
@@ -66,10 +59,7 @@ paths:
         - $ref: '#/components/parameters/locale'
         - $ref: '#/components/parameters/autocompleteInput'
       summary: 'Vertical Search: Autocomplete'
-      description: >-
-        Retrieve a list of suggested queries for the selected vertical based on
-        the characters already typed by the user or the most popular queries
-        when no user input is given.
+      description: Retrieve a list of suggested queries for the selected vertical based on the characters already typed by the user or the most popular queries when no user input is given.
       responses:
         '200':
           $ref: '#/components/responses/AutocompleteResponse'
@@ -102,10 +92,7 @@ paths:
         - $ref: '#/components/parameters/queryId'
         - $ref: '#/components/parameters/jsLibVersion'
       summary: 'Vertical Search: Query'
-      description: >-
-        Search for entities within the selected vertical.  Vertical query allows
-        for fine tuning of the search using filters, facets and sorts passed in
-        through the API.
+      description: Search for entities within the selected vertical.  Vertical query allows for fine tuning of the search using filters, facets and sorts passed in through the API.
       responses:
         '200':
           $ref: '#/components/responses/VerticalQueryResponse'
@@ -124,11 +111,7 @@ paths:
         - $ref: '#/components/parameters/SearchParameters'
         - $ref: '#/components/parameters/requiredInput'
       summary: 'Vertical Search: Filter Search'
-      description: >-
-        Retrieve a list of potential filters that match the user's input up to
-        that point.  This differs from query suggest by only returning the names
-        of filters that can be searched rather than the broader corpus of
-        suggested queries.
+      description: Retrieve a list of potential filters that match the user's input up to that point.  This differs from query suggest by only returning the names of filters that can be searched rather than the broader corpus of suggested queries.
       responses:
         '200':
           $ref: '#/components/responses/FilterSearchResponse'
@@ -185,9 +168,7 @@ components:
       required: true
       schema:
         type: string
-      description: >-
-        The locale code of the experience (e.g. `en_GB`). Only returns entities
-        that have an entity profile associated with this locale.
+      description: The locale code of the experience (e.g. `en_GB`). Only returns entities that have an entity profile associated with this locale.
     requiredInput:
       name: input
       in: query
@@ -201,9 +182,7 @@ components:
       required: false
       schema:
         type: string
-      description: >-
-        The user's location as a comma separated latitude and longitude (e.g.
-        `"40.740957,-73.987565"`).
+      description: The user's location as a comma separated latitude and longitude (e.g. `"40.740957,-73.987565"`).
     session_id:
       name: session_id
       in: query
@@ -217,47 +196,32 @@ components:
       required: false
       schema:
         type: string
-      description: >-
-        JSON object specifying the limit for each vertical.  Each key is a
-        vertical key and the value for each of those keys is a number 1-50 that
-        denotes the limit for that vertical. This parameter should be provided
-        as a URL-encoded string containing a JSON object.
+      description: JSON object specifying the limit for each vertical.  Each key is a vertical key and the value for each of those keys is a number 1-50 that denotes the limit for that vertical. This parameter should be provided as a URL-encoded string containing a JSON object.
     queryTrigger:
       name: queryTrigger
       in: query
       required: false
       schema:
         type: string
-      description: >
-        String value that is logged to analytics denoting the trigger for the
-        query.
-
+      description: |
+        String value that is logged to analytics denoting the trigger for the query.
         Options include:
-
         * `suggest`, sent if the query is triggered from a spelling correction.
-
-        * `initialize`, sent if the query is being triggered by a default
-        initial search (in other words, the user did not enter query).
+        * `initialize`, sent if the query is being triggered by a default initial search (in other words, the user did not enter query).
     context:
       name: context
       in: query
       required: false
       schema:
         type: string
-      description: >-
-        Context is an arbitrary JSON object that is passed to query rules to be
-        used for triggering rules as well as passing data to those rules. This
-        parameter should be provided as a URL-encoded string containing a JSON
-        object.
+      description: Context is an arbitrary JSON object that is passed to query rules to be used for triggering rules as well as passing data to those rules. This parameter should be provided as a URL-encoded string containing a JSON object.
     referrerPageUrl:
       name: referrerPageUrl
       in: query
       required: false
       schema:
         type: string
-      description: >-
-        The URL of the webpage that directed to the page this request was made
-        from.
+      description: The URL of the webpage that directed to the page this request was made from.
     skipSpellCheck:
       name: skipSpellCheck
       in: query
@@ -271,27 +235,21 @@ components:
       required: false
       schema:
         type: string
-      description: >-
-        A comma-separated list of verticals (e.g. `"people,locations"`). If
-        specified, only results from these verticals will be returned.
+      description: A comma-separated list of verticals (e.g. `"people,locations"`). If specified, only results from these verticals will be returned.
     ignoreQueryRules:
       name: ignoreQueryRules
       in: query
       required: false
       schema:
         type: boolean
-      description: >-
-        When set to true, ignores any Query Rules that would otherwise affect
-        the results. Defaults to false.
+      description: When set to true, ignores any Query Rules that would otherwise affect the results. Defaults to false.
     queryId:
       name: queryId
       in: query
       required: false
       schema:
         type: string
-      description: >-
-        UUID of the query; recommended when moving through results, to associate
-        multiple requests to the same query.
+      description: UUID of the query; recommended when moving through results, to associate multiple requests to the same query.
     jsLibVersion:
       name: jsLibVersion
       in: query
@@ -319,9 +277,7 @@ components:
       required: false
       schema:
         type: string
-      description: >-
-        Radius (in meters) that should be applied to any location filter that
-        does not already have an explicit radius.
+      description: Radius (in meters) that should be applied to any location filter that does not already have an explicit radius.
     limit:
       name: limit
       in: query
@@ -346,58 +302,35 @@ components:
       required: false
       schema:
         type: string
-      description: >
-        This parameter represents one or more filtering conditions that are
-        applied to the set of entities that would otherwise be returned. This
-        parameter should be provided as a URL-encoded string containing a JSON
-        object.
+      description: |
+        This parameter represents one or more filtering conditions that are applied to the set of entities that would otherwise be returned. This parameter should be provided as a URL-encoded string containing a JSON object.
 
-
-        For example, if the filter JSON is `{"name":{"$eq":"John"}}`, then the
-        filters param after URL-encoding will be:
-        `filters=%7B%22name%22%3A%7B%22%24eq%22%3A%22John%22%7D%7D`
-
+        For example, if the filter JSON is `{"name":{"$eq":"John"}}`, then the filters param after URL-encoding will be: `filters=%7B%22name%22%3A%7B%22%24eq%22%3A%22John%22%7D%7D`
 
         **Basic Filter Structure**
 
-
-        The filter object at its core consists of a *matcher*, a *field*, and an
-        *argument*.
-
+        The filter object at its core consists of a *matcher*, a *field*, and an *argument*.
 
         For example, in the following filter JSON:
 
-
         ```
-
         {
           "name":{
             "$eq":"John"
           }
         }
-
         ```
 
-
-        `$eq` is the *matcher*, or filtering operation (equals, in this
-        example),
-
+        `$eq` is the *matcher*, or filtering operation (equals, in this example),
 
         `name` is the *field* being filtered by, and
 
-
         `John` is *value* to be matched against.
-
 
         **Combining Multiple Filters**
 
-
-        Multiple filters can be combined to form a conjunction (AND) of
-        disjunctions (ORs) using the *combinators* `$and` and `$or`.  For
-        example:
-
+        Multiple filters can be combined to form a conjunction (AND) of disjunctions (ORs) using the *combinators* `$and` and `$or`.  For example:
         ```
-
         {
           "$and": [
             {
@@ -421,21 +354,14 @@ components:
             }
           ]
         }
-
         ```
-
-        Any filter that is the only item in its respective combinator may omit
-        the combinator as is done with the lastName above.
-
+        Any filter that is the only item in its respective combinator may omit the combinator as is done with the lastName above.
 
         **Filter Negation**
 
-
         Certain filter types may be negated. For example:
 
-
         ```
-
         {
           "$not" {
             "name":{
@@ -443,31 +369,21 @@ components:
             }
           }
         }
-
         ```
 
-
-        This can also be written more simply with a `!` in the `$eq` parameter.
-        The following filter would have the same effect:
-
+        This can also be written more simply with a `!` in the `$eq` parameter. The following filter would have the same effect:
 
         ```
-
         {
           "name":{
             "!$eq":"John"
           }
         }
-
         ```
-
 
         **TEXT**
 
-
-        The `TEXT` filter type is supported for text fields. (e.g., **`name`**,
-        **`countryCode`**)
-
+        The `TEXT` filter type is supported for text fields. (e.g., **`name`**, **`countryCode`**)
 
         <table style="width:100%">
           <tr>
@@ -494,14 +410,10 @@ components:
           <tr>
         </table>
 
-
         **BOOLEAN**
 
 
-
-        The BOOLEAN filter type is supported for boolean fields and Yes / No
-        custom fields.
-
+        The BOOLEAN filter type is supported for boolean fields and Yes / No custom fields.
         <table style="width:100%">
           <tr>
             <th>Matcher</th>
@@ -522,12 +434,9 @@ components:
           </tr>
         </table>
 
-
         **OPTION**
 
-
-        The OPTION filter type is supported for option custom fields and fields
-        that have a predetermined list of valid values.
+        The OPTION filter type is supported for option custom fields and fields that have a predetermined list of valid values.
 
          *e.g., **`eventStatus`**, **`gender`**, `SINGLE_OPTION` and `MULTI_OPTION` types of custom fields.*
 
@@ -551,19 +460,12 @@ components:
             }
         </table>
 
-
         **INTEGER, FLOAT, DATE, DATETIME, and TIME**
 
-
-        These filter types are strictly ordered -- therefore, they support the
-        following matchers:
-
+        These filter types are strictly ordered -- therefore, they support the following matchers:
         - Equals
-
         - Less Than / Less Than or Equal To
-
         - Greater Than / Greater Than or Equal To
-
 
         <table style="width:100%">
           <tr>
@@ -671,27 +573,15 @@ components:
       required: false
       schema:
         type: string
-      description: >
-        This parameter represents the state of the currently checked facet
-        options. This parameter should be provided as a URL-encoded string
-        containing a JSON object.
+      description: |
+        This parameter represents the state of the currently checked facet options. This parameter should be provided as a URL-encoded string containing a JSON object.
 
-
-        The JSON object contains a key for each facet category that has a
-        checked facet option.  The value for each of these keys is an array of
-        Filter objects that describe the filter that is applied by the facet
-        option.
-
+        The JSON object contains a key for each facet category that has a checked facet option.  The value for each of these keys is an array of Filter objects that describe the filter that is applied by the facet option.
 
         At the moment, facet options only support `$eq`.
 
-
-        For example, if `Engineering` was checked under the `Category` facet and
-        `Chicago` and `New York` are checked under the `Job Location` facet, the
-        `facetFilters` would look like:
-
+        For example, if `Engineering` was checked under the `Category` facet and `Chicago` and `New York` are checked under the `Job Location` facet, the `facetFilters` would look like:
         ```
-
         {
           "c_jobCategory": [
             {
@@ -713,7 +603,6 @@ components:
             }
           ]
         }
-
         ```
     retrieveFacets:
       name: retrieveFacets
@@ -728,18 +617,12 @@ components:
       required: false
       schema:
         type: string
-      description: >
-        This parameter overrides the sort options that are configured on the
-        experience configuration.  This parameter should be provided as a
-        URL-encoded string containing a JSON array.
+      description: |
+        This parameter overrides the sort options that are configured on the experience configuration.  This parameter should be provided as a URL-encoded string containing a JSON array.
 
-
-        The input is a JSON array containing each of the sort options in the
-        order in which they should be applied.
-
+        The input is a JSON array containing each of the sort options in the order in which they should be applied.
 
         Each sort options must contain a `type`
-
 
         <table style="width:100%">
           <tr>
@@ -760,17 +643,11 @@ components:
           </tr>
         </table>
 
-
         </br>
 
+        If the `type` is `FIELD` the sort options must also specify `field` which is the api name of the field to sort on.
 
-        If the `type` is `FIELD` the sort options must also specify `field`
-        which is the api name of the field to sort on.
-
-
-        Finally, if the `type` is `FIELD` the sort options must also specify the
-        `direction`.
-
+        Finally, if the `type` is `FIELD` the sort options must also specify the `direction`.
 
         <table style="width:100%">
           <tr>
@@ -787,14 +664,10 @@ components:
           </tr>
         </table>
 
-
         </br>
 
-
         **Examples**
-
         ```
-
         [
           {
             "type": "FIELD",
@@ -806,7 +679,6 @@ components:
             "direction": "ASC"
           }
         ]
-
         ```
     filterSearchVerticalKey:
       name: verticalKey
@@ -814,40 +686,26 @@ components:
       required: false
       schema:
         type: string
-      description: >-
-        String key that uniquely identifies the vertical to scope the filter
-        search request to.
+      description: String key that uniquely identifies the vertical to scope the filter search request to.
     excluded:
       name: excluded
       in: query
       required: false
       schema:
         type: string
-      description: >-
-        JSON array containing the IDs of all filters that should be excluded
-        from filter search results (if it has already been returned and
-        selected). This parameter should be provided as a URL-encoded string
-        containing a JSON array.
+      description: JSON array containing the IDs of all filters that should be excluded from filter search results (if it has already been returned and selected). This parameter should be provided as a URL-encoded string containing a JSON array.
     SearchParameters:
       name: search_parameters
       in: query
       required: true
       schema:
         type: string
-      description: >
-        This parameter represents the parameters that should be used for filter
-        search. This parameter should be provided as a URL-encoded string
-        containing a JSON object.
+      description: |
+        This parameter represents the parameters that should be used for filter search. This parameter should be provided as a URL-encoded string containing a JSON object.
 
+        Filter search uses the user's input string to find a set of existing filters that match the user's input query for the fields provided in the parameters.
 
-        Filter search uses the user's input string to find a set of existing
-        filters that match the user's input query for the fields provided in the
-        parameters.
-
-
-        The parameters are made up of a list of `FilterField` objects that have
-        the following properties:
-
+        The parameters are made up of a list of `FilterField` objects that have the following properties:
 
         <table style="width:100%">
           <tr>
@@ -868,13 +726,9 @@ components:
           </tr>
         </table>
 
-
         </br>
 
-
-        Additionally, there is an optional parameter `sectioned`.  If set to
-        true, the matching filters will be returned in a separate section per
-        field.  By default, they are all returned in the same section.
+        Additionally, there is an optional parameter `sectioned`.  If set to true, the matching filters will be returned in a separate section per field.  By default, they are all returned in the same section.
   responses:
     AutocompleteResponse:
       description: Autocomplete Request Response
@@ -901,9 +755,8 @@ components:
                         Intent that was derived from the user's input.
               results:
                 type: array
-                description: >
-                  The list of autocomplete results computed from the user's
-                  input.
+                description: |
+                  The list of autocomplete results computed from the user's input.
                 items:
                   type: object
                   description: |
@@ -915,44 +768,37 @@ components:
                         The plain text version of the autocomplete result.
                     matchedSubstrings:
                       type: array
-                      description: >
-                        The list of matched substrings within the value to
-                        highlight.
+                      description: |
+                        The list of matched substrings within the value to highlight.
                       items:
                         type: object
-                        description: >
-                          Highlight information for the string autocomplete
-                          value.
+                        description: |
+                          Highlight information for the string autocomplete value.
                         properties:
                           offsets:
                             type: integer
-                            description: >
-                              The zero indexed offset from the start of the
-                              value where the highlight starts.
+                            description: |
+                              The zero indexed offset from the start of the value where the highlight starts.
                           length:
                             type: integer
                             description: |
                               The length of the highlight.
                     queryIntents:
                       type: array
-                      description: >
-                        List of query intents that the input has been tagged
-                        with.
+                      description: |
+                        List of query intents that the input has been tagged with.
                       items:
                         type: string
                         description: |
                           Intent that was derived from the user's input.
                     verticalKeys:
                       type: array
-                      description: >
-                        List of verticals that the autocomplete result is
-                        derived from. For results coming from universal search,
-                        this field will be blank.
+                      description: |
+                        List of verticals that the autocomplete result is derived from. For results coming from universal search, this field will be blank.
                       items:
                         type: string
-                        description: >
-                          A single vertical represented in the autocomplete
-                          result.
+                        description: |
+                          A single vertical represented in the autocomplete result.
           example:
             meta:
               uuid: 4f72b877-e2d0-4de4-9324-b9cf2c03e1a0
@@ -1034,9 +880,7 @@ components:
                     $ref: '#/components/schemas/AppliedQueryFilters'
                   facets:
                     type: array
-                    description: >-
-                      Contextual facets that contain metadata about the facet as
-                      well as the full facet.
+                    description: Contextual facets that contain metadata about the facet as well as the full facet.
                     items:
                       $ref: '#/components/schemas/Facets'
                   searchIntents:
@@ -1049,9 +893,7 @@ components:
                     $ref: '#/components/schemas/DirectAnswer'
                   alternativeVerticals:
                     type: object
-                    description: >-
-                      Response information from running this query on other
-                      verticals.
+                    description: Response information from running this query on other verticals.
                     properties:
                       modules:
                         $ref: '#/components/schemas/Modules'
@@ -1075,9 +917,7 @@ components:
                         $ref: '#/components/schemas/Results'
                       facets:
                         type: array
-                        description: >-
-                          Contextual facets that contain metadata about the
-                          facet as well as the full facet.
+                        description: Contextual facets that contain metadata about the facet as well as the full facet.
                         items:
                           $ref: '#/components/schemas/Facets'
                       searchIntents:
@@ -1099,17 +939,15 @@ components:
                     $ref: '#/components/schemas/businessId'
                   sections:
                     type: array
-                    description: >
-                      The set of field names being queried, and their respective
-                      results for the current query
+                    description: |
+                      The set of field names being queried, and their respective results for the current query
                     items:
                       type: object
                       properties:
                         label:
                           type: string
-                          description: >
-                            The display name of the field being queried, can be
-                            used in a UI to distinguish one section from another
+                          description: |
+                            The display name of the field being queried, can be used in a UI to distinguish one section from another
                         results:
                           type: array
                           description: |
@@ -1119,43 +957,33 @@ components:
                             properties:
                               key:
                                 type: string
-                                description: >
-                                  The API name of a field with a match for the
-                                  current query
+                                description: |
+                                  The API name of a field with a match for the current query
                               value:
                                 type: string
-                                description: >
-                                  The display name of the field value with a
-                                  match for the current query
+                                description: |
+                                  The display name of the field value with a match for the current query
                               filter:
                                 $ref: '#/components/schemas/filter'
                               matchedSubstrings:
                                 type: array
-                                description: >
-                                  A set of offsets that represent the portion of
-                                  the "value" that is a match for the current
-                                  query
+                                description: |
+                                  A set of offsets that represent the portion of the "value" that is a match for the current query
                                 items:
                                   type: object
                                   properties:
                                     offset:
                                       type: integer
-                                      description: >
-                                        In the "value", the number of characters
-                                        between the beginning of the string and
-                                        the start of the match for the current
-                                        query
+                                      description: |
+                                        In the "value", the number of characters between the beginning of the string and the start of the match for the current query
                                     length:
                                       type: integer
-                                      description: >
-                                        In the "value", the number of characters
-                                        from the offset that represents the end
-                                        of the match for the current query
+                                      description: |
+                                        In the "value", the number of characters from the offset that represents the end of the match for the current query
                               relatedItem:
                                 type: object
-                                description: >
-                                  If a unique entity returns for the current
-                                  query, the full entity object
+                                description: |
+                                  If a unique entity returns for the current query, the full entity object
                   failedVerticals:
                     $ref: '#/components/schemas/FailedVerticals'
                   queryId:
@@ -1205,36 +1033,31 @@ components:
       description: String key that uniquely identifies the vertical.
     resultCount:
       type: integer
-      description: >
-        The number of entities within the vertical that are relevant to the
-        user's query.
+      description: |
+        The number of entities within the vertical that are relevant to the user's query.
     Entity:
       type: object
       properties:
         data:
           type: object
-          description: >
-            The data containing the main content of the entity. The format of
-            the data is dependent on the entity type.
+          description: |
+            The data containing the main content of the entity. The format of the data is dependent on the entity type.
         highlightedFields:
           type: object
           description: |
             A map from fieldId to highlighted element.
         distance:
           type: integer
-          description: >
-            The distance in meters between the entity and the query's location
-            bias.
+          description: |
+            The distance in meters between the entity and the query's location bias.
         distanceFromFilter:
           type: integer
-          description: >
-            The distance in meters between the entity and the filter applied to
-            the query.
+          description: |
+            The distance in meters between the entity and the filter applied to the query.
     Results:
       type: array
-      description: >
-        The individual entity results that contain metadata about the entity as
-        well as the fully rendered profiles.
+      description: |
+        The individual entity results that contain metadata about the entity as well as the fully rendered profiles.
       items:
         $ref: '#/components/schemas/Entity'
     filter:
@@ -1247,9 +1070,7 @@ components:
         c_exampleFieldId: { $eq": "Search" }
     AppliedQueryFilters:
       type: array
-      description: >-
-        A list of the filters that were inferred from the user's query and
-        applied at search time.
+      description: A list of the filters that were inferred from the user's query and applied at search time.
       items:
         type: object
         properties:
@@ -1269,15 +1090,11 @@ components:
               - INTENT
           details:
             type: object
-            description: >
-              Object containing additional details relevant to the filter such
-              as additional details about the place for `PLACE` type filters.
-              The format of the data is dependent on the filter type.
+            description: |
+              Object containing additional details relevant to the filter such as additional details about the place for `PLACE` type filters. The format of the data is dependent on the filter type.
     Module:
       type: object
-      description: >-
-        The results and metadata pertaining to a single vertical relevant to the
-        user's query.
+      description: The results and metadata pertaining to a single vertical relevant to the user's query.
       properties:
         verticalConfigId:
           $ref: '#/components/schemas/verticalConfigId'
@@ -1292,9 +1109,7 @@ components:
           $ref: '#/components/schemas/AppliedQueryFilters'
     Modules:
       type: array
-      description: >-
-        List of results for each vertical that was relevant to the query,
-        returned in the order of relevance.
+      description: List of results for each vertical that was relevant to the query, returned in the order of relevance.
       items:
         $ref: '#/components/schemas/Module'
     FailedVertical:
@@ -1316,9 +1131,8 @@ components:
           properties:
             responseCode:
               type: integer
-              description: >
-                An HTTP response status code indicating the completion status of
-                the request.
+              description: |
+                An HTTP response status code indicating the completion status of the request.
             description:
               type: string
               description: Message explaining the error.
@@ -1328,47 +1142,38 @@ components:
             A measure of query duration, recorded in milliseconds.
     FailedVerticals:
       type: array
-      description: >
-        Contains error information when one or more verticals fail to return
-        results.
+      description: |
+        Contains error information when one or more verticals fail to return results.
       items:
         $ref: '#/components/schemas/FailedVertical'
     DirectAnswer:
       type: object
-      description: >
-        Information that is estimated to directly answer the question of the
-        query.
+      description: |
+        Information that is estimated to directly answer the question of the query.
       properties:
         type:
           type: string
-          description: >
-            Type of the direct answer, such as `FIELD_VALUE` or
-            `FEATURED_SNIPPET`.
+          description: |
+            Type of the direct answer, such as `FIELD_VALUE` or `FEATURED_SNIPPET`.
         answer:
           type: object
-          description: >
-            The data containing the main content of the direct answer. The
-            format of the data is dependent on the direct answer type.
+          description: |
+            The data containing the main content of the direct answer. The format of the data is dependent on the direct answer type.
         relatedItem:
           type: object
-          description: >
-            An optional item that is related to the direct answer. For Knowledge
-            Manager verticals, related items will typically be entities.
+          description: |
+            An optional item that is related to the direct answer. For Knowledge Manager verticals, related items will typically be entities.
           properties:
             verticalConfigId:
               $ref: '#/components/schemas/verticalConfigId'
             data:
               type: object
-              description: >
-                The data of the related item, which should be in the same shape
-                (with possibly extra fields) as an item that appears in a
-                section of results from the same vertical in universal search.
+              description: |
+                The data of the related item, which should be in the same shape (with possibly extra fields) as an item that appears in a section of results from the same vertical in universal search.
     HighlightedValue:
       type: object
-      description: >
-        Highlighting instructions for a field value, containing the original
-        value of the field and all sections of the value that should be
-        highlighted.
+      description: |
+        Highlighting instructions for a field value, containing the original value of the field and all sections of the value that should be highlighted.
       properties:
         value:
           type: string
@@ -1385,9 +1190,8 @@ components:
             properties:
               offsets:
                 type: integer
-                description: >
-                  The zero indexed offset from the start of the value where the
-                  highlight starts.
+                description: |
+                  The zero indexed offset from the start of the value where the highlight starts.
               length:
                 type: integer
                 description: |
@@ -1403,22 +1207,14 @@ components:
           $ref: '#/components/schemas/HighlightedValue'
         type:
           type: string
-          description: >
+          description: |
             The type of SpellCheck suggestion.
-
             <br><br>
-
             `SUGGEST` is often used for "Did you mean..."
-
             <br>
-
-            `AUTOCORRECT` is often used for "Showing results for ... instead of
-            ..."
-
+            `AUTOCORRECT` is often used for "Showing results for ... instead of ..."
             <br>
-
             `COMBINE` is often used for "Including results for ..."
-
             <br><br>
           enum:
             - SUGGEST
@@ -1442,18 +1238,12 @@ components:
           example: Countryside, Illinois, United States
         accuracy:
           type: string
-          description: >
+          description: |
             The accuracy of the location bias used for the search.
-
             <br><br>
-
-            `DEVICE` is based on the user's device (passed in via the request
-            param)
-
+            `DEVICE` is based on the user's device (passed in via the request param)
             <br>
-
             `IP` is based on the request's IP
-
             <br>
           enum:
             - IP
@@ -1478,21 +1268,16 @@ components:
                 description: The display name for the Facet option.
               count:
                 type: integer
-                description: >-
-                  The number of entities within the vertical that are relevant
-                  to this Facet option.
+                description: The number of entities within the vertical that are relevant to this Facet option.
               isSelected:
                 type: boolean
-                description: >-
-                  A boolean indicator of whether this Facet option was used to
-                  filter results in the response.
+                description: A boolean indicator of whether this Facet option was used to filter results in the response.
               filter:
                 $ref: '#/components/schemas/filter'
     SearchIntents:
       type: array
-      description: >
-        Items in array each represent a particular intent expressed in the
-        user's query. Example: `NEAR_ME`
+      description: |
+        Items in array each represent a particular intent expressed in the user's query. Example: `NEAR_ME`
       items:
         type: string
 security:
