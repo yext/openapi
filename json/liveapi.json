@@ -240,7 +240,7 @@
                                 "minLength": 0,
                                 "maxLength": 5000,
                                 "type": "string",
-                                "description": "\n\n\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                                "description": "\n\n\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                               },
                               "address": {
                                 "additionalProperties": false,
@@ -1419,6 +1419,9 @@
                                     "APN",
                                     "APRN",
                                     "ARNP",
+                                    "AUD",
+                                    "BSW",
+                                    "CCCA",
                                     "CNM",
                                     "CNP",
                                     "CNS",
@@ -1431,15 +1434,18 @@
                                     "DNP",
                                     "DO",
                                     "DPM",
+                                    "DSW",
                                     "DVM",
                                     "FNP",
                                     "GNP",
                                     "LAC",
+                                    "LCSW",
                                     "LPN",
                                     "MBA",
                                     "MBBS",
                                     "MD",
                                     "MPH",
+                                    "MSW",
                                     "ND",
                                     "NNP",
                                     "NP",
@@ -1450,6 +1456,8 @@
                                     "PHD",
                                     "PNP",
                                     "PSYD",
+                                    "RD",
+                                    "RSW",
                                     "VMD",
                                     "WHNP"
                                   ],
@@ -2284,7 +2292,7 @@
                               "facebookPageUrl": {
                                 "minLength": 0,
                                 "type": "string",
-                                "description": "URL for the entity's Facebook Page.\n\nValid formats:\n\n- facebook.com/profile.php?id=[numId]\n- facebook.com/group.php?gid=[numId]\n- facebook.com/groups/[numId]\n- facebook.com/[Name]\n- facebook.com/pages/[Name]/[numId]\n\nwhere [Name] is a String and [numId] is an Integer\n\nIf you submit a URL that is not in one of the valid formats, it will be ignored. The success response will contain a warning message explaining why the URL wasn't stored in the system.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+                                "description": "URL for the entity's Facebook Page.\n\nValid formats:\n\n- facebook.com/profile.php?id=[numId]\n- facebook.com/group.php?gid=[numId]\n- facebook.com/groups/[numId]\n- facebook.com/[Name]\n- facebook.com/pages/[Name]/[numId]\n- facebook.com/people/[Name]/[numId]\n\nwhere [Name] is a String and [numId] is an Integer\nThe success response will contain a warning message explaining why the URL wasn't stored in the system.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
                               },
                               "facebookProfilePhoto": {
                                 "required": [
@@ -3215,7 +3223,7 @@
                                 "description": "The ISO 3166-2 region code for the entity\n\nYext will determine the entity's code and update **`isoRegionCode`** with that value. If Yext is unable to determine the code for the entity, the entity'ss ISO 3166-1 alpha-2 country code will be used.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
                               },
                               "keywords": {
-                                "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```",
+                                "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * card\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```",
                                 "uniqueItems": true,
                                 "type": "array",
                                 "items": {
@@ -3552,13 +3560,13 @@
                                   "minLength": 0,
                                   "type": "string"
                                 },
-                                "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API.\n\nFiltering Type: `opaque`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                                "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API.\n\nFiltering Type: `opaque`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                               },
                               "landingPageUrl": {
                                 "minLength": 0,
                                 "format": "uri",
                                 "type": "string",
-                                "description": "The URL of this entity's Landing Page that was created with Yext Pages\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                                "description": "The URL of this entity's Landing Page that was created with Yext Pages\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * card\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                               },
                               "languages": {
                                 "description": "The langauges in which consumers can commicate with this entity or its staff members\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
@@ -5726,7 +5734,7 @@
                               "timezone": {
                                 "minLength": 0,
                                 "type": "string",
-                                "description": "The timezone of the entity, in the standard `IANA time zone database` format (tz database). e.g. `\"America/New_York\"`\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                                "description": "The timezone of the entity, in the standard `IANA time zone database` format (tz database). e.g. `\"America/New_York\"`\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                               },
                               "tollFreePhone": {
                                 "minLength": 0,
@@ -6344,7 +6352,7 @@
                           "minLength": 0,
                           "maxLength": 5000,
                           "type": "string",
-                          "description": "\n\n\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                          "description": "\n\n\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                         },
                         "address": {
                           "additionalProperties": false,
@@ -7523,6 +7531,9 @@
                               "APN",
                               "APRN",
                               "ARNP",
+                              "AUD",
+                              "BSW",
+                              "CCCA",
                               "CNM",
                               "CNP",
                               "CNS",
@@ -7535,15 +7546,18 @@
                               "DNP",
                               "DO",
                               "DPM",
+                              "DSW",
                               "DVM",
                               "FNP",
                               "GNP",
                               "LAC",
+                              "LCSW",
                               "LPN",
                               "MBA",
                               "MBBS",
                               "MD",
                               "MPH",
+                              "MSW",
                               "ND",
                               "NNP",
                               "NP",
@@ -7554,6 +7568,8 @@
                               "PHD",
                               "PNP",
                               "PSYD",
+                              "RD",
+                              "RSW",
                               "VMD",
                               "WHNP"
                             ],
@@ -8388,7 +8404,7 @@
                         "facebookPageUrl": {
                           "minLength": 0,
                           "type": "string",
-                          "description": "URL for the entity's Facebook Page.\n\nValid formats:\n\n- facebook.com/profile.php?id=[numId]\n- facebook.com/group.php?gid=[numId]\n- facebook.com/groups/[numId]\n- facebook.com/[Name]\n- facebook.com/pages/[Name]/[numId]\n\nwhere [Name] is a String and [numId] is an Integer\n\nIf you submit a URL that is not in one of the valid formats, it will be ignored. The success response will contain a warning message explaining why the URL wasn't stored in the system.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+                          "description": "URL for the entity's Facebook Page.\n\nValid formats:\n\n- facebook.com/profile.php?id=[numId]\n- facebook.com/group.php?gid=[numId]\n- facebook.com/groups/[numId]\n- facebook.com/[Name]\n- facebook.com/pages/[Name]/[numId]\n- facebook.com/people/[Name]/[numId]\n\nwhere [Name] is a String and [numId] is an Integer\nThe success response will contain a warning message explaining why the URL wasn't stored in the system.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
                         },
                         "facebookProfilePhoto": {
                           "required": [
@@ -9319,7 +9335,7 @@
                           "description": "The ISO 3166-2 region code for the entity\n\nYext will determine the entity's code and update **`isoRegionCode`** with that value. If Yext is unable to determine the code for the entity, the entity'ss ISO 3166-1 alpha-2 country code will be used.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
                         },
                         "keywords": {
-                          "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```",
+                          "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * card\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```",
                           "uniqueItems": true,
                           "type": "array",
                           "items": {
@@ -9656,13 +9672,13 @@
                             "minLength": 0,
                             "type": "string"
                           },
-                          "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API.\n\nFiltering Type: `opaque`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                          "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API.\n\nFiltering Type: `opaque`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                         },
                         "landingPageUrl": {
                           "minLength": 0,
                           "format": "uri",
                           "type": "string",
-                          "description": "The URL of this entity's Landing Page that was created with Yext Pages\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                          "description": "The URL of this entity's Landing Page that was created with Yext Pages\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * card\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                         },
                         "languages": {
                           "description": "The langauges in which consumers can commicate with this entity or its staff members\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
@@ -11830,7 +11846,7 @@
                         "timezone": {
                           "minLength": 0,
                           "type": "string",
-                          "description": "The timezone of the entity, in the standard `IANA time zone database` format (tz database). e.g. `\"America/New_York\"`\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                          "description": "The timezone of the entity, in the standard `IANA time zone database` format (tz database). e.g. `\"America/New_York\"`\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                         },
                         "tollFreePhone": {
                           "minLength": 0,
@@ -12580,7 +12596,7 @@
                                 "minLength": 0,
                                 "maxLength": 5000,
                                 "type": "string",
-                                "description": "\n\n\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                                "description": "\n\n\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                               },
                               "address": {
                                 "additionalProperties": false,
@@ -13759,6 +13775,9 @@
                                     "APN",
                                     "APRN",
                                     "ARNP",
+                                    "AUD",
+                                    "BSW",
+                                    "CCCA",
                                     "CNM",
                                     "CNP",
                                     "CNS",
@@ -13771,15 +13790,18 @@
                                     "DNP",
                                     "DO",
                                     "DPM",
+                                    "DSW",
                                     "DVM",
                                     "FNP",
                                     "GNP",
                                     "LAC",
+                                    "LCSW",
                                     "LPN",
                                     "MBA",
                                     "MBBS",
                                     "MD",
                                     "MPH",
+                                    "MSW",
                                     "ND",
                                     "NNP",
                                     "NP",
@@ -13790,6 +13812,8 @@
                                     "PHD",
                                     "PNP",
                                     "PSYD",
+                                    "RD",
+                                    "RSW",
                                     "VMD",
                                     "WHNP"
                                   ],
@@ -14624,7 +14648,7 @@
                               "facebookPageUrl": {
                                 "minLength": 0,
                                 "type": "string",
-                                "description": "URL for the entity's Facebook Page.\n\nValid formats:\n\n- facebook.com/profile.php?id=[numId]\n- facebook.com/group.php?gid=[numId]\n- facebook.com/groups/[numId]\n- facebook.com/[Name]\n- facebook.com/pages/[Name]/[numId]\n\nwhere [Name] is a String and [numId] is an Integer\n\nIf you submit a URL that is not in one of the valid formats, it will be ignored. The success response will contain a warning message explaining why the URL wasn't stored in the system.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+                                "description": "URL for the entity's Facebook Page.\n\nValid formats:\n\n- facebook.com/profile.php?id=[numId]\n- facebook.com/group.php?gid=[numId]\n- facebook.com/groups/[numId]\n- facebook.com/[Name]\n- facebook.com/pages/[Name]/[numId]\n- facebook.com/people/[Name]/[numId]\n\nwhere [Name] is a String and [numId] is an Integer\nThe success response will contain a warning message explaining why the URL wasn't stored in the system.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
                               },
                               "facebookProfilePhoto": {
                                 "required": [
@@ -15555,7 +15579,7 @@
                                 "description": "The ISO 3166-2 region code for the entity\n\nYext will determine the entity's code and update **`isoRegionCode`** with that value. If Yext is unable to determine the code for the entity, the entity'ss ISO 3166-1 alpha-2 country code will be used.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
                               },
                               "keywords": {
-                                "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```",
+                                "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * card\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```",
                                 "uniqueItems": true,
                                 "type": "array",
                                 "items": {
@@ -15892,13 +15916,13 @@
                                   "minLength": 0,
                                   "type": "string"
                                 },
-                                "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API.\n\nFiltering Type: `opaque`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                                "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API.\n\nFiltering Type: `opaque`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                               },
                               "landingPageUrl": {
                                 "minLength": 0,
                                 "format": "uri",
                                 "type": "string",
-                                "description": "The URL of this entity's Landing Page that was created with Yext Pages\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                                "description": "The URL of this entity's Landing Page that was created with Yext Pages\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * card\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                               },
                               "languages": {
                                 "description": "The langauges in which consumers can commicate with this entity or its staff members\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
@@ -18066,7 +18090,7 @@
                               "timezone": {
                                 "minLength": 0,
                                 "type": "string",
-                                "description": "The timezone of the entity, in the standard `IANA time zone database` format (tz database). e.g. `\"America/New_York\"`\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                                "description": "The timezone of the entity, in the standard `IANA time zone database` format (tz database). e.g. `\"America/New_York\"`\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                               },
                               "tollFreePhone": {
                                 "minLength": 0,
@@ -18574,7 +18598,7 @@
                       }
                     }
                   },
-                  "description": "Filtering Type: `object`\n\n```\nEligible For: \n   * helpArticle\n```"
+                  "description": "Filtering Type: `object`\n\n```\nEligible For: \n   * card\n   * helpArticle\n```"
                 }
               }
             }
@@ -18825,7 +18849,7 @@
                           "minLength": 0,
                           "maxLength": 5000,
                           "type": "string",
-                          "description": "\n\n\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                          "description": "\n\n\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                         },
                         "address": {
                           "additionalProperties": false,
@@ -20004,6 +20028,9 @@
                               "APN",
                               "APRN",
                               "ARNP",
+                              "AUD",
+                              "BSW",
+                              "CCCA",
                               "CNM",
                               "CNP",
                               "CNS",
@@ -20016,15 +20043,18 @@
                               "DNP",
                               "DO",
                               "DPM",
+                              "DSW",
                               "DVM",
                               "FNP",
                               "GNP",
                               "LAC",
+                              "LCSW",
                               "LPN",
                               "MBA",
                               "MBBS",
                               "MD",
                               "MPH",
+                              "MSW",
                               "ND",
                               "NNP",
                               "NP",
@@ -20035,6 +20065,8 @@
                               "PHD",
                               "PNP",
                               "PSYD",
+                              "RD",
+                              "RSW",
                               "VMD",
                               "WHNP"
                             ],
@@ -20869,7 +20901,7 @@
                         "facebookPageUrl": {
                           "minLength": 0,
                           "type": "string",
-                          "description": "URL for the entity's Facebook Page.\n\nValid formats:\n\n- facebook.com/profile.php?id=[numId]\n- facebook.com/group.php?gid=[numId]\n- facebook.com/groups/[numId]\n- facebook.com/[Name]\n- facebook.com/pages/[Name]/[numId]\n\nwhere [Name] is a String and [numId] is an Integer\n\nIf you submit a URL that is not in one of the valid formats, it will be ignored. The success response will contain a warning message explaining why the URL wasn't stored in the system.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+                          "description": "URL for the entity's Facebook Page.\n\nValid formats:\n\n- facebook.com/profile.php?id=[numId]\n- facebook.com/group.php?gid=[numId]\n- facebook.com/groups/[numId]\n- facebook.com/[Name]\n- facebook.com/pages/[Name]/[numId]\n- facebook.com/people/[Name]/[numId]\n\nwhere [Name] is a String and [numId] is an Integer\nThe success response will contain a warning message explaining why the URL wasn't stored in the system.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
                         },
                         "facebookProfilePhoto": {
                           "required": [
@@ -21800,7 +21832,7 @@
                           "description": "The ISO 3166-2 region code for the entity\n\nYext will determine the entity's code and update **`isoRegionCode`** with that value. If Yext is unable to determine the code for the entity, the entity'ss ISO 3166-1 alpha-2 country code will be used.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
                         },
                         "keywords": {
-                          "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```",
+                          "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * card\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```",
                           "uniqueItems": true,
                           "type": "array",
                           "items": {
@@ -22137,13 +22169,13 @@
                             "minLength": 0,
                             "type": "string"
                           },
-                          "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API.\n\nFiltering Type: `opaque`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                          "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API.\n\nFiltering Type: `opaque`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                         },
                         "landingPageUrl": {
                           "minLength": 0,
                           "format": "uri",
                           "type": "string",
-                          "description": "The URL of this entity's Landing Page that was created with Yext Pages\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                          "description": "The URL of this entity's Landing Page that was created with Yext Pages\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * card\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                         },
                         "languages": {
                           "description": "The langauges in which consumers can commicate with this entity or its staff members\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
@@ -24311,7 +24343,7 @@
                         "timezone": {
                           "minLength": 0,
                           "type": "string",
-                          "description": "The timezone of the entity, in the standard `IANA time zone database` format (tz database). e.g. `\"America/New_York\"`\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                          "description": "The timezone of the entity, in the standard `IANA time zone database` format (tz database). e.g. `\"America/New_York\"`\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                         },
                         "tollFreePhone": {
                           "minLength": 0,
@@ -24948,7 +24980,7 @@
                                 "minLength": 0,
                                 "maxLength": 5000,
                                 "type": "string",
-                                "description": "\n\n\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                                "description": "\n\n\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                               },
                               "address": {
                                 "additionalProperties": false,
@@ -26127,6 +26159,9 @@
                                     "APN",
                                     "APRN",
                                     "ARNP",
+                                    "AUD",
+                                    "BSW",
+                                    "CCCA",
                                     "CNM",
                                     "CNP",
                                     "CNS",
@@ -26139,15 +26174,18 @@
                                     "DNP",
                                     "DO",
                                     "DPM",
+                                    "DSW",
                                     "DVM",
                                     "FNP",
                                     "GNP",
                                     "LAC",
+                                    "LCSW",
                                     "LPN",
                                     "MBA",
                                     "MBBS",
                                     "MD",
                                     "MPH",
+                                    "MSW",
                                     "ND",
                                     "NNP",
                                     "NP",
@@ -26158,6 +26196,8 @@
                                     "PHD",
                                     "PNP",
                                     "PSYD",
+                                    "RD",
+                                    "RSW",
                                     "VMD",
                                     "WHNP"
                                   ],
@@ -26992,7 +27032,7 @@
                               "facebookPageUrl": {
                                 "minLength": 0,
                                 "type": "string",
-                                "description": "URL for the entity's Facebook Page.\n\nValid formats:\n\n- facebook.com/profile.php?id=[numId]\n- facebook.com/group.php?gid=[numId]\n- facebook.com/groups/[numId]\n- facebook.com/[Name]\n- facebook.com/pages/[Name]/[numId]\n\nwhere [Name] is a String and [numId] is an Integer\n\nIf you submit a URL that is not in one of the valid formats, it will be ignored. The success response will contain a warning message explaining why the URL wasn't stored in the system.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+                                "description": "URL for the entity's Facebook Page.\n\nValid formats:\n\n- facebook.com/profile.php?id=[numId]\n- facebook.com/group.php?gid=[numId]\n- facebook.com/groups/[numId]\n- facebook.com/[Name]\n- facebook.com/pages/[Name]/[numId]\n- facebook.com/people/[Name]/[numId]\n\nwhere [Name] is a String and [numId] is an Integer\nThe success response will contain a warning message explaining why the URL wasn't stored in the system.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
                               },
                               "facebookProfilePhoto": {
                                 "required": [
@@ -27923,7 +27963,7 @@
                                 "description": "The ISO 3166-2 region code for the entity\n\nYext will determine the entity's code and update **`isoRegionCode`** with that value. If Yext is unable to determine the code for the entity, the entity'ss ISO 3166-1 alpha-2 country code will be used.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
                               },
                               "keywords": {
-                                "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```",
+                                "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * card\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```",
                                 "uniqueItems": true,
                                 "type": "array",
                                 "items": {
@@ -28260,13 +28300,13 @@
                                   "minLength": 0,
                                   "type": "string"
                                 },
-                                "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API.\n\nFiltering Type: `opaque`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                                "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API.\n\nFiltering Type: `opaque`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                               },
                               "landingPageUrl": {
                                 "minLength": 0,
                                 "format": "uri",
                                 "type": "string",
-                                "description": "The URL of this entity's Landing Page that was created with Yext Pages\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                                "description": "The URL of this entity's Landing Page that was created with Yext Pages\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * card\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                               },
                               "languages": {
                                 "description": "The langauges in which consumers can commicate with this entity or its staff members\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
@@ -30434,7 +30474,7 @@
                               "timezone": {
                                 "minLength": 0,
                                 "type": "string",
-                                "description": "The timezone of the entity, in the standard `IANA time zone database` format (tz database). e.g. `\"America/New_York\"`\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                                "description": "The timezone of the entity, in the standard `IANA time zone database` format (tz database). e.g. `\"America/New_York\"`\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                               },
                               "tollFreePhone": {
                                 "minLength": 0,
@@ -31134,7 +31174,7 @@
                                       "minLength": 0,
                                       "maxLength": 5000,
                                       "type": "string",
-                                      "description": "\n\n\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                                      "description": "\n\n\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                                     },
                                     "address": {
                                       "additionalProperties": false,
@@ -32313,6 +32353,9 @@
                                           "APN",
                                           "APRN",
                                           "ARNP",
+                                          "AUD",
+                                          "BSW",
+                                          "CCCA",
                                           "CNM",
                                           "CNP",
                                           "CNS",
@@ -32325,15 +32368,18 @@
                                           "DNP",
                                           "DO",
                                           "DPM",
+                                          "DSW",
                                           "DVM",
                                           "FNP",
                                           "GNP",
                                           "LAC",
+                                          "LCSW",
                                           "LPN",
                                           "MBA",
                                           "MBBS",
                                           "MD",
                                           "MPH",
+                                          "MSW",
                                           "ND",
                                           "NNP",
                                           "NP",
@@ -32344,6 +32390,8 @@
                                           "PHD",
                                           "PNP",
                                           "PSYD",
+                                          "RD",
+                                          "RSW",
                                           "VMD",
                                           "WHNP"
                                         ],
@@ -33178,7 +33226,7 @@
                                     "facebookPageUrl": {
                                       "minLength": 0,
                                       "type": "string",
-                                      "description": "URL for the entity's Facebook Page.\n\nValid formats:\n\n- facebook.com/profile.php?id=[numId]\n- facebook.com/group.php?gid=[numId]\n- facebook.com/groups/[numId]\n- facebook.com/[Name]\n- facebook.com/pages/[Name]/[numId]\n\nwhere [Name] is a String and [numId] is an Integer\n\nIf you submit a URL that is not in one of the valid formats, it will be ignored. The success response will contain a warning message explaining why the URL wasn't stored in the system.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+                                      "description": "URL for the entity's Facebook Page.\n\nValid formats:\n\n- facebook.com/profile.php?id=[numId]\n- facebook.com/group.php?gid=[numId]\n- facebook.com/groups/[numId]\n- facebook.com/[Name]\n- facebook.com/pages/[Name]/[numId]\n- facebook.com/people/[Name]/[numId]\n\nwhere [Name] is a String and [numId] is an Integer\nThe success response will contain a warning message explaining why the URL wasn't stored in the system.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
                                     },
                                     "facebookProfilePhoto": {
                                       "required": [
@@ -34109,7 +34157,7 @@
                                       "description": "The ISO 3166-2 region code for the entity\n\nYext will determine the entity's code and update **`isoRegionCode`** with that value. If Yext is unable to determine the code for the entity, the entity'ss ISO 3166-1 alpha-2 country code will be used.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
                                     },
                                     "keywords": {
-                                      "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```",
+                                      "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * card\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```",
                                       "uniqueItems": true,
                                       "type": "array",
                                       "items": {
@@ -34446,13 +34494,13 @@
                                         "minLength": 0,
                                         "type": "string"
                                       },
-                                      "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API.\n\nFiltering Type: `opaque`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                                      "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API.\n\nFiltering Type: `opaque`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                                     },
                                     "landingPageUrl": {
                                       "minLength": 0,
                                       "format": "uri",
                                       "type": "string",
-                                      "description": "The URL of this entity's Landing Page that was created with Yext Pages\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                                      "description": "The URL of this entity's Landing Page that was created with Yext Pages\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * card\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                                     },
                                     "languages": {
                                       "description": "The langauges in which consumers can commicate with this entity or its staff members\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
@@ -36620,7 +36668,7 @@
                                     "timezone": {
                                       "minLength": 0,
                                       "type": "string",
-                                      "description": "The timezone of the entity, in the standard `IANA time zone database` format (tz database). e.g. `\"America/New_York\"`\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+                                      "description": "The timezone of the entity, in the standard `IANA time zone database` format (tz database). e.g. `\"America/New_York\"`\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
                                     },
                                     "tollFreePhone": {
                                       "minLength": 0,

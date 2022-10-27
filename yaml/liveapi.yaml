@@ -1231,6 +1231,8 @@ paths:
                                 ```
                                 Eligible For: 
                                    * atm
+                                   * board
+                                   * card
                                    * contactCard
                                    * event
                                    * faq
@@ -3274,6 +3276,9 @@ paths:
                                   - APN
                                   - APRN
                                   - ARNP
+                                  - AUD
+                                  - BSW
+                                  - CCCA
                                   - CNM
                                   - CNP
                                   - CNS
@@ -3286,15 +3291,18 @@ paths:
                                   - DNP
                                   - DO
                                   - DPM
+                                  - DSW
                                   - DVM
                                   - FNP
                                   - GNP
                                   - LAC
+                                  - LCSW
                                   - LPN
                                   - MBA
                                   - MBBS
                                   - MD
                                   - MPH
+                                  - MSW
                                   - ND
                                   - NNP
                                   - NP
@@ -3305,6 +3313,8 @@ paths:
                                   - PHD
                                   - PNP
                                   - PSYD
+                                  - RD
+                                  - RSW
                                   - VMD
                                   - WHNP
                                 type: string
@@ -4502,10 +4512,10 @@ paths:
                                 - facebook.com/groups/[numId]
                                 - facebook.com/[Name]
                                 - facebook.com/pages/[Name]/[numId]
+                                - facebook.com/people/[Name]/[numId]
 
                                 where [Name] is a String and [numId] is an Integer
-
-                                If you submit a URL that is not in one of the valid formats, it will be ignored. The success response will contain a warning message explaining why the URL wasn't stored in the system.
+                                The success response will contain a warning message explaining why the URL wasn't stored in the system.
 
                                 Filtering Type: `text`
 
@@ -6047,6 +6057,7 @@ paths:
                                 ```
                                 Eligible For: 
                                    * atm
+                                   * card
                                    * event
                                    * faq
                                    * financialProfessional
@@ -6492,6 +6503,8 @@ paths:
                                 ```
                                 Eligible For: 
                                    * atm
+                                   * board
+                                   * card
                                    * contactCard
                                    * event
                                    * faq
@@ -6517,6 +6530,7 @@ paths:
                                 ```
                                 Eligible For: 
                                    * atm
+                                   * card
                                    * event
                                    * faq
                                    * financialProfessional
@@ -9894,6 +9908,8 @@ paths:
                                 ```
                                 Eligible For: 
                                    * atm
+                                   * board
+                                   * card
                                    * contactCard
                                    * event
                                    * faq
@@ -10834,6 +10850,8 @@ paths:
                           ```
                           Eligible For: 
                              * atm
+                             * board
+                             * card
                              * contactCard
                              * event
                              * faq
@@ -12877,6 +12895,9 @@ paths:
                             - APN
                             - APRN
                             - ARNP
+                            - AUD
+                            - BSW
+                            - CCCA
                             - CNM
                             - CNP
                             - CNS
@@ -12889,15 +12910,18 @@ paths:
                             - DNP
                             - DO
                             - DPM
+                            - DSW
                             - DVM
                             - FNP
                             - GNP
                             - LAC
+                            - LCSW
                             - LPN
                             - MBA
                             - MBBS
                             - MD
                             - MPH
+                            - MSW
                             - ND
                             - NNP
                             - NP
@@ -12908,6 +12932,8 @@ paths:
                             - PHD
                             - PNP
                             - PSYD
+                            - RD
+                            - RSW
                             - VMD
                             - WHNP
                           type: string
@@ -14105,10 +14131,10 @@ paths:
                           - facebook.com/groups/[numId]
                           - facebook.com/[Name]
                           - facebook.com/pages/[Name]/[numId]
+                          - facebook.com/people/[Name]/[numId]
 
                           where [Name] is a String and [numId] is an Integer
-
-                          If you submit a URL that is not in one of the valid formats, it will be ignored. The success response will contain a warning message explaining why the URL wasn't stored in the system.
+                          The success response will contain a warning message explaining why the URL wasn't stored in the system.
 
                           Filtering Type: `text`
 
@@ -15650,6 +15676,7 @@ paths:
                           ```
                           Eligible For: 
                              * atm
+                             * card
                              * event
                              * faq
                              * financialProfessional
@@ -16095,6 +16122,8 @@ paths:
                           ```
                           Eligible For: 
                              * atm
+                             * board
+                             * card
                              * contactCard
                              * event
                              * faq
@@ -16120,6 +16149,7 @@ paths:
                           ```
                           Eligible For: 
                              * atm
+                             * card
                              * event
                              * faq
                              * financialProfessional
@@ -19497,6 +19527,8 @@ paths:
                           ```
                           Eligible For: 
                              * atm
+                             * board
+                             * card
                              * contactCard
                              * event
                              * faq
@@ -21541,6 +21573,8 @@ paths:
                                 ```
                                 Eligible For: 
                                    * atm
+                                   * board
+                                   * card
                                    * contactCard
                                    * event
                                    * faq
@@ -23584,6 +23618,9 @@ paths:
                                   - APN
                                   - APRN
                                   - ARNP
+                                  - AUD
+                                  - BSW
+                                  - CCCA
                                   - CNM
                                   - CNP
                                   - CNS
@@ -23596,15 +23633,18 @@ paths:
                                   - DNP
                                   - DO
                                   - DPM
+                                  - DSW
                                   - DVM
                                   - FNP
                                   - GNP
                                   - LAC
+                                  - LCSW
                                   - LPN
                                   - MBA
                                   - MBBS
                                   - MD
                                   - MPH
+                                  - MSW
                                   - ND
                                   - NNP
                                   - NP
@@ -23615,6 +23655,8 @@ paths:
                                   - PHD
                                   - PNP
                                   - PSYD
+                                  - RD
+                                  - RSW
                                   - VMD
                                   - WHNP
                                 type: string
@@ -24812,10 +24854,10 @@ paths:
                                 - facebook.com/groups/[numId]
                                 - facebook.com/[Name]
                                 - facebook.com/pages/[Name]/[numId]
+                                - facebook.com/people/[Name]/[numId]
 
                                 where [Name] is a String and [numId] is an Integer
-
-                                If you submit a URL that is not in one of the valid formats, it will be ignored. The success response will contain a warning message explaining why the URL wasn't stored in the system.
+                                The success response will contain a warning message explaining why the URL wasn't stored in the system.
 
                                 Filtering Type: `text`
 
@@ -26357,6 +26399,7 @@ paths:
                                 ```
                                 Eligible For: 
                                    * atm
+                                   * card
                                    * event
                                    * faq
                                    * financialProfessional
@@ -26802,6 +26845,8 @@ paths:
                                 ```
                                 Eligible For: 
                                    * atm
+                                   * board
+                                   * card
                                    * contactCard
                                    * event
                                    * faq
@@ -26827,6 +26872,7 @@ paths:
                                 ```
                                 Eligible For: 
                                    * atm
+                                   * card
                                    * event
                                    * faq
                                    * financialProfessional
@@ -30204,6 +30250,8 @@ paths:
                                 ```
                                 Eligible For: 
                                    * atm
+                                   * board
+                                   * card
                                    * contactCard
                                    * event
                                    * faq
@@ -31015,6 +31063,7 @@ paths:
 
                   ```
                   Eligible For: 
+                     * card
                      * helpArticle
                   ```
         '400':
@@ -31254,6 +31303,8 @@ paths:
                           ```
                           Eligible For: 
                              * atm
+                             * board
+                             * card
                              * contactCard
                              * event
                              * faq
@@ -33297,6 +33348,9 @@ paths:
                             - APN
                             - APRN
                             - ARNP
+                            - AUD
+                            - BSW
+                            - CCCA
                             - CNM
                             - CNP
                             - CNS
@@ -33309,15 +33363,18 @@ paths:
                             - DNP
                             - DO
                             - DPM
+                            - DSW
                             - DVM
                             - FNP
                             - GNP
                             - LAC
+                            - LCSW
                             - LPN
                             - MBA
                             - MBBS
                             - MD
                             - MPH
+                            - MSW
                             - ND
                             - NNP
                             - NP
@@ -33328,6 +33385,8 @@ paths:
                             - PHD
                             - PNP
                             - PSYD
+                            - RD
+                            - RSW
                             - VMD
                             - WHNP
                           type: string
@@ -34525,10 +34584,10 @@ paths:
                           - facebook.com/groups/[numId]
                           - facebook.com/[Name]
                           - facebook.com/pages/[Name]/[numId]
+                          - facebook.com/people/[Name]/[numId]
 
                           where [Name] is a String and [numId] is an Integer
-
-                          If you submit a URL that is not in one of the valid formats, it will be ignored. The success response will contain a warning message explaining why the URL wasn't stored in the system.
+                          The success response will contain a warning message explaining why the URL wasn't stored in the system.
 
                           Filtering Type: `text`
 
@@ -36070,6 +36129,7 @@ paths:
                           ```
                           Eligible For: 
                              * atm
+                             * card
                              * event
                              * faq
                              * financialProfessional
@@ -36515,6 +36575,8 @@ paths:
                           ```
                           Eligible For: 
                              * atm
+                             * board
+                             * card
                              * contactCard
                              * event
                              * faq
@@ -36540,6 +36602,7 @@ paths:
                           ```
                           Eligible For: 
                              * atm
+                             * card
                              * event
                              * faq
                              * financialProfessional
@@ -39917,6 +39980,8 @@ paths:
                           ```
                           Eligible For: 
                              * atm
+                             * board
+                             * card
                              * contactCard
                              * event
                              * faq
@@ -40893,6 +40958,8 @@ paths:
                                 ```
                                 Eligible For: 
                                    * atm
+                                   * board
+                                   * card
                                    * contactCard
                                    * event
                                    * faq
@@ -42936,6 +43003,9 @@ paths:
                                   - APN
                                   - APRN
                                   - ARNP
+                                  - AUD
+                                  - BSW
+                                  - CCCA
                                   - CNM
                                   - CNP
                                   - CNS
@@ -42948,15 +43018,18 @@ paths:
                                   - DNP
                                   - DO
                                   - DPM
+                                  - DSW
                                   - DVM
                                   - FNP
                                   - GNP
                                   - LAC
+                                  - LCSW
                                   - LPN
                                   - MBA
                                   - MBBS
                                   - MD
                                   - MPH
+                                  - MSW
                                   - ND
                                   - NNP
                                   - NP
@@ -42967,6 +43040,8 @@ paths:
                                   - PHD
                                   - PNP
                                   - PSYD
+                                  - RD
+                                  - RSW
                                   - VMD
                                   - WHNP
                                 type: string
@@ -44164,10 +44239,10 @@ paths:
                                 - facebook.com/groups/[numId]
                                 - facebook.com/[Name]
                                 - facebook.com/pages/[Name]/[numId]
+                                - facebook.com/people/[Name]/[numId]
 
                                 where [Name] is a String and [numId] is an Integer
-
-                                If you submit a URL that is not in one of the valid formats, it will be ignored. The success response will contain a warning message explaining why the URL wasn't stored in the system.
+                                The success response will contain a warning message explaining why the URL wasn't stored in the system.
 
                                 Filtering Type: `text`
 
@@ -45709,6 +45784,7 @@ paths:
                                 ```
                                 Eligible For: 
                                    * atm
+                                   * card
                                    * event
                                    * faq
                                    * financialProfessional
@@ -46154,6 +46230,8 @@ paths:
                                 ```
                                 Eligible For: 
                                    * atm
+                                   * board
+                                   * card
                                    * contactCard
                                    * event
                                    * faq
@@ -46179,6 +46257,7 @@ paths:
                                 ```
                                 Eligible For: 
                                    * atm
+                                   * card
                                    * event
                                    * faq
                                    * financialProfessional
@@ -49556,6 +49635,8 @@ paths:
                                 ```
                                 Eligible For: 
                                    * atm
+                                   * board
+                                   * card
                                    * contactCard
                                    * event
                                    * faq
@@ -51551,6 +51632,8 @@ paths:
                                       ```
                                       Eligible For: 
                                          * atm
+                                         * board
+                                         * card
                                          * contactCard
                                          * event
                                          * faq
@@ -53594,6 +53677,9 @@ paths:
                                         - APN
                                         - APRN
                                         - ARNP
+                                        - AUD
+                                        - BSW
+                                        - CCCA
                                         - CNM
                                         - CNP
                                         - CNS
@@ -53606,15 +53692,18 @@ paths:
                                         - DNP
                                         - DO
                                         - DPM
+                                        - DSW
                                         - DVM
                                         - FNP
                                         - GNP
                                         - LAC
+                                        - LCSW
                                         - LPN
                                         - MBA
                                         - MBBS
                                         - MD
                                         - MPH
+                                        - MSW
                                         - ND
                                         - NNP
                                         - NP
@@ -53625,6 +53714,8 @@ paths:
                                         - PHD
                                         - PNP
                                         - PSYD
+                                        - RD
+                                        - RSW
                                         - VMD
                                         - WHNP
                                       type: string
@@ -54822,10 +54913,10 @@ paths:
                                       - facebook.com/groups/[numId]
                                       - facebook.com/[Name]
                                       - facebook.com/pages/[Name]/[numId]
+                                      - facebook.com/people/[Name]/[numId]
 
                                       where [Name] is a String and [numId] is an Integer
-
-                                      If you submit a URL that is not in one of the valid formats, it will be ignored. The success response will contain a warning message explaining why the URL wasn't stored in the system.
+                                      The success response will contain a warning message explaining why the URL wasn't stored in the system.
 
                                       Filtering Type: `text`
 
@@ -56367,6 +56458,7 @@ paths:
                                       ```
                                       Eligible For: 
                                          * atm
+                                         * card
                                          * event
                                          * faq
                                          * financialProfessional
@@ -56812,6 +56904,8 @@ paths:
                                       ```
                                       Eligible For: 
                                          * atm
+                                         * board
+                                         * card
                                          * contactCard
                                          * event
                                          * faq
@@ -56837,6 +56931,7 @@ paths:
                                       ```
                                       Eligible For: 
                                          * atm
+                                         * card
                                          * event
                                          * faq
                                          * financialProfessional
@@ -60214,6 +60309,8 @@ paths:
                                       ```
                                       Eligible For: 
                                          * atm
+                                         * board
+                                         * card
                                          * contactCard
                                          * event
                                          * faq
