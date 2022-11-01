@@ -705,7 +705,7 @@ components:
 
         Filter search uses the user's input string to find a set of existing filters that match the user's input query for the fields provided in the parameters.
 
-        The parameters are made up of a list of `FilterField` objects that have the following properties:
+        The JSON object must have a `fields` property made up of a list of `FilterField` objects that have the following properties:
 
         <table style="width:100%">
           <tr>
@@ -713,7 +713,7 @@ components:
             <th>Details</th>
           </tr>
           <tr>
-            <th>field</th>
+            <th>fieldId</th>
             <th>The api name of the field.</th>
           </tr>
           <tr>
@@ -728,7 +728,7 @@ components:
 
         </br>
 
-        Additionally, there is an optional parameter `sectioned`.  If set to true, the matching filters will be returned in a separate section per field.  By default, they are all returned in the same section.
+        Additionally, there is an optional boolean property `sectioned`.  If set to true, the matching filters will be returned in a separate section per field.  By default, they are all returned in the same section.
   responses:
     AutocompleteResponse:
       description: Autocomplete Request Response
