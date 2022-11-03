@@ -10,7 +10,7 @@
     }
   ],
   "paths": {
-    "/accounts/{accountId}/answers/config": {
+    "/accounts/{accountId}/config/resourcenames/answers/config": {
       "parameters": [
         {
           "$ref": "#/components/parameters/accountId"
@@ -55,7 +55,7 @@
         }
       }
     },
-    "/accounts/{accountId}/answers/config/{resourceId}": {
+    "/accounts/{accountId}/config/resources/answers/config/{resourceId}": {
       "parameters": [
         {
           "$ref": "#/components/parameters/accountId"

@@ -5,7 +5,7 @@ info:
 servers:
   - url: https://api.yext.com/v2
 paths:
-  /accounts/{accountId}/answers/config:
+  /accounts/{accountId}/config/resourcenames/answers/config:
     parameters:
       - $ref: '#/components/parameters/accountId'
       - $ref: '#/components/parameters/v'
@@ -32,7 +32,7 @@ paths:
           $ref: '#/components/responses/EmptyResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  /accounts/{accountId}/answers/config/{resourceId}:
+  /accounts/{accountId}/config/resources/answers/config/{resourceId}:
     parameters:
       - $ref: '#/components/parameters/accountId'
       - $ref: '#/components/parameters/v'
