@@ -5,23 +5,41 @@ info:
 servers:
   - url: https://api.yext.com/v2
 paths:
-  /accounts/{accountId}/config/resourcenames/answers/config:
+  /accounts/{accountId}/config/resourcenames/{resourceGroup}/{resourceSubType}:
     parameters:
       - $ref: '#/components/parameters/accountId'
       - $ref: '#/components/parameters/v'
+      - $ref: '#/components/parameters/resourceGroup'
+      - $ref: '#/components/parameters/resourceSubType'
     get:
-      operationId: getAnswersConfigResources
-      summary: 'Answers Configs: Get'
-      description: Get a list of existing Answers Config resources for an account
+      operationId: getResourceConfigNames
+      summary: 'Resource Config Names: Get'
+      description: Get a list of Resource Config names for an account
       responses:
         '200':
           $ref: '#/components/responses/ResourceNamesList'
         default:
           $ref: '#/components/responses/ErrorResponse'
-    post:
-      operationId: postAnswersConfigResource
-      summary: 'Answers Configs: Post'
-      description: Create new Answers Config for an account
+  /accounts/{accountId}/config/resources/{resourceGroup}/{resourceSubType}/{resourceId}:
+    parameters:
+      - $ref: '#/components/parameters/accountId'
+      - $ref: '#/components/parameters/v'
+      - $ref: '#/components/parameters/resourceId'
+      - $ref: '#/components/parameters/resourceGroup'
+      - $ref: '#/components/parameters/resourceSubType'
+    get:
+      operationId: getResourceConfig
+      summary: 'Resource Config: Get'
+      description: Get a Resource Config with the given $id for an account.
+      responses:
+        '200':
+          $ref: '#/components/responses/Resource'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    put:
+      operationId: putResourceConfig
+      summary: 'Resource Config: Update'
+      description: Update an existing Resource Config with the given $id for an account.
       requestBody:
         content:
           application/json:
@@ -32,24 +50,16 @@ paths:
           $ref: '#/components/responses/EmptyResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  /accounts/{accountId}/config/resources/answers/config/{resourceId}:
+  /accounts/{accountId}/config/resources/{resourceGroup}/{resourceSubType}:
     parameters:
       - $ref: '#/components/parameters/accountId'
       - $ref: '#/components/parameters/v'
-      - $ref: '#/components/parameters/ResourceId'
-    get:
-      operationId: getAnswersConfigResource
-      summary: 'Answers Config: Get'
-      description: Get an existing Answers Config resource with the given $id for an account.
-      responses:
-        '200':
-          $ref: '#/components/responses/Resource'
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-    put:
-      operationId: putAnswersConfigResource
-      summary: 'Answers Config: Put'
-      description: Updated an existing Answers Config with the given $id for an account.
+      - $ref: '#/components/parameters/resourceGroup'
+      - $ref: '#/components/parameters/resourceSubType'
+    post:
+      operationId: postResourceConfig
+      summary: 'Resource Config: Create'
+      description: Create new Resource Config for an account
       requestBody:
         content:
           application/json:
@@ -84,7 +94,21 @@ components:
       schema:
         type: string
       description: A date in `YYYYMMDD` format.
-    ResourceId:
+    resourceGroup:
+      name: resourceGroup
+      description: group of the resource
+      in: path
+      required: true
+      schema:
+        type: string
+    resourceSubType:
+      name: resourceSubType
+      description: sub type of the resource
+      in: path
+      required: true
+      schema:
+        type: string
+    resourceId:
       name: resourceId
       description: $id (name) of the resource
       in: path
@@ -156,18 +180,6 @@ components:
                 type: array
                 items:
                   type: string
-    EmptyResponse:
-      description: Empty Response.
-      content:
-        application/json:
-          schema:
-            title: EmptyResponse
-            type: object
-            properties:
-              meta:
-                $ref: '#/components/schemas/ResponseMeta'
-              response:
-                type: object
     Resource:
       description: List of resource names
       content:
@@ -180,6 +192,18 @@ components:
                 $ref: '#/components/schemas/ResponseMeta'
               response:
                 $ref: '#/components/schemas/Resource'
+    EmptyResponse:
+      description: Empty Response.
+      content:
+        application/json:
+          schema:
+            title: EmptyResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/ResponseMeta'
+              response:
+                type: object
 security:
   - api_key: []
   - api-key: []
