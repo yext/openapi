@@ -39867,6 +39867,10 @@
             "description": "If provided, the date you received the review from the customer. Defaults to the date the\nreview was uploaded to Yext.\n\n(`YYYY-MM-DD` format)\n"
           }
         }
+      },
+      "NextPageToken": {
+        "type": "string",
+        "description": "This field is only included if there is an additional page of data to display. To retrieve the next page of data, pass this field's value as the **``pageToken``** parameter in a subsequent request. \n"
       }
     },
     "responses": {
@@ -40230,9 +40234,8 @@
                         "type": "object"
                       }
                     },
-                    "pageToken": {
-                      "type": "string",
-                      "description": "If the response of a request contains the last page of data, a **`pageToken`** value will not be returned."
+                    "nextPageToken": {
+                      "$ref": "#/components/schemas/NextPageToken"
                     }
                   }
                 }

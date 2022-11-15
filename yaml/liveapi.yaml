@@ -64090,6 +64090,10 @@ components:
             review was uploaded to Yext.
 
             (`YYYY-MM-DD` format)
+    NextPageToken:
+      type: string
+      description: |
+        This field is only included if there is an additional page of data to display. To retrieve the next page of data, pass this field's value as the **``pageToken``** parameter in a subsequent request. 
   responses:
     ErrorResponse:
       description: Error Response
@@ -64335,9 +64339,8 @@ components:
                     description: Documents containing the data for the relevant Streams Endpoint and request.
                     items:
                       type: object
-                  pageToken:
-                    type: string
-                    description: If the response of a request contains the last page of data, a **`pageToken`** value will not be returned.
+                  nextPageToken:
+                    $ref: '#/components/schemas/NextPageToken'
   requestBodies:
     createQuestionRequest:
       content:
