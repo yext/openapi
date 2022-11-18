@@ -419,19 +419,19 @@ webhooks:
                         - AGREEMENTS_ADD_REQUEST_UPDATED
                 addRequest:
                   $ref: '#/components/schemas/AddRequest'
-  streamsWebhook:
+  contentWebhook:
     post:
-      operationId: streamsWebhook
+      operationId: contentWebhook
       tags:
-        - Streams
-      summary: 'Streams: Webhook'
+        - Content
+      summary: 'Content: Webhook'
       description: |
-        Sends an updated record to your server whenever the data in the selected Streams Endpoint is updated, or the record is no longer included in the Streams Endpoint.
+        Sends an updated record to your server whenever the data in the selected Content Endpoint is updated, or the record is no longer included in the Content Endpoint.
 
-        **NOTE:** Streams Webhook Events are slightly different than other Yext Webhooks. Each message will contain one of the following meta.eventType values:
+        **NOTE:** Content Webhook Events are slightly different than other Yext Webhooks. Each message will contain one of the following meta.eventType values:
 
-        - *RECORD* - This eventType indicates that a record has been added or updated which is included in the Streams Endpoint configuration.
-        - *TOMBSTONE* - This eventType indicates that a record no longer is part of the data included in the Streams Endpoint. Tombstones will be sent when a record no longer matches the filter criteria for the configured Streams Endpoint, or the record has been deleted.
+        - *RECORD* - This eventType indicates that a record has been added or updated which is included in the Content Endpoint configuration.
+        - *TOMBSTONE* - This eventType indicates that a record no longer is part of the data included in the Content Endpoint. Tombstones will be sent when a record no longer matches the filter criteria for the configured Content Endpoint, or the record has been deleted.
       requestBody:
         description: The updated record.
         required: true
@@ -459,7 +459,7 @@ webhooks:
                   type: array
                   items:
                     type: object
-                    description: Document containing the data configured for your Streams Endpoint. This will be empty if the eventType is TOMBSTONE.
+                    description: Document containing the data configured for your Content Endpoint. This will be empty if the eventType is TOMBSTONE.
                     additionalProperties: true
                     example:
                       uid: '10000000'

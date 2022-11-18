@@ -61374,16 +61374,16 @@ paths:
     get:
       servers:
         - url: https://streams.yext.com/v2
-      operationId: streamsGet
+      operationId: contentGet
       parameters:
         - $ref: '#/components/parameters/accountId'
         - $ref: '#/components/parameters/endpoint'
-        - $ref: '#/components/parameters/streamsDocIds'
+        - $ref: '#/components/parameters/contentDocIds'
         - $ref: '#/components/parameters/v'
       tags:
-        - Streams API
-      summary: 'Streams: Get'
-      description: Retrieve records by ID from a Streams Endpoint
+        - Content API
+      summary: 'Content: Get'
+      description: Retrieve records by ID from a Content Endpoint
       responses:
         '200':
           $ref: '#/components/responses/StreamsResponse'
@@ -61393,7 +61393,7 @@ paths:
     get:
       servers:
         - url: https://streams.yext.com/v2
-      operationId: streamsList
+      operationId: contentList
       parameters:
         - $ref: '#/components/parameters/accountId'
         - $ref: '#/components/parameters/endpoint'
@@ -61401,12 +61401,12 @@ paths:
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/pageToken'
       tags:
-        - Streams API
-      summary: 'Streams: List'
+        - Content API
+      summary: 'Content: List'
       description: |
-        List records from a Streams Endpoint
+        List records from a Content Endpoint
 
-        Streams API provides the ability for a user to filter and sort records
+        Content API provides the ability for a user to filter and sort records
         by the contents of an indexed field. The filters and sorting parameters can
         be provided as query parameters, in addition to the query parameters
         documented here. If no filters are provided, the API returns all the records
@@ -61503,7 +61503,7 @@ paths:
 
         ### Sorting
 
-        Streams Endpoints support sorting by an indexed field. This can be enabled
+        Content Endpoints support sorting by an indexed field. This can be enabled
         by adding the `$sortBy` query parameter with field name as the value.
         Optionally, the modifiers `asc` and `desc` can be added to indicate
         sorting by ascending and descending orders respectively. If no modifier is
@@ -61522,7 +61522,7 @@ paths:
 
         #### String
 
-        Streams Endpoints support indexing UTF-8 strings with a maximum length of
+        Content Endpoints support indexing UTF-8 strings with a maximum length of
         256 characters.
 
         #### Date and DateTime
@@ -62169,8 +62169,8 @@ components:
       required: true
       schema:
         type: string
-      description: The ID of the Streams Endpoint to query.
-    streamsDocIds:
+      description: The ID of the Content Endpoint to query.
+    contentDocIds:
       name: ids
       in: path
       required: true
@@ -62180,7 +62180,7 @@ components:
           type: string
       style: simple
       description: |
-        The Streams records to get. Multiple record IDs can be provided separated by commas.
+        The Content records to get. Multiple record IDs can be provided separated by commas.
     pageToken:
       name: pageToken
       in: query
@@ -64315,11 +64315,11 @@ components:
                       * A UUID generated at the time the Review Creation request is accepted.
                       * The invitationUid, if the review is associated with an invitation.
     StreamsResponse:
-      description: Streams Response
+      description: Content Response
       content:
         application/json:
           schema:
-            title: EntitiesResponse
+            title: ContentResponse
             type: object
             properties:
               meta:
@@ -64336,7 +64336,7 @@ components:
                       Total number of documents that meet the filter criteria.
                   docs:
                     type: array
-                    description: Documents containing the data for the relevant Streams Endpoint and request.
+                    description: Documents containing the data for the relevant Content Endpoint and request.
                     items:
                       type: object
                   nextPageToken:
@@ -64352,4 +64352,4 @@ security:
   - api-key: []
 tags:
   - name: Live API
-  - name: Streams API
+  - name: Content API

@@ -37653,7 +37653,7 @@
             "url": "https://streams.yext.com/v2"
           }
         ],
-        "operationId": "streamsGet",
+        "operationId": "contentGet",
         "parameters": [
           {
             "$ref": "#/components/parameters/accountId"
@@ -37662,17 +37662,17 @@
             "$ref": "#/components/parameters/endpoint"
           },
           {
-            "$ref": "#/components/parameters/streamsDocIds"
+            "$ref": "#/components/parameters/contentDocIds"
           },
           {
             "$ref": "#/components/parameters/v"
           }
         ],
         "tags": [
-          "Streams API"
+          "Content API"
         ],
-        "summary": "Streams: Get",
-        "description": "Retrieve records by ID from a Streams Endpoint",
+        "summary": "Content: Get",
+        "description": "Retrieve records by ID from a Content Endpoint",
         "responses": {
           "200": {
             "$ref": "#/components/responses/StreamsResponse"
@@ -37690,7 +37690,7 @@
             "url": "https://streams.yext.com/v2"
           }
         ],
-        "operationId": "streamsList",
+        "operationId": "contentList",
         "parameters": [
           {
             "$ref": "#/components/parameters/accountId"
@@ -37709,10 +37709,10 @@
           }
         ],
         "tags": [
-          "Streams API"
+          "Content API"
         ],
-        "summary": "Streams: List",
-        "description": "List records from a Streams Endpoint\n\nStreams API provides the ability for a user to filter and sort records\nby the contents of an indexed field. The filters and sorting parameters can\nbe provided as query parameters, in addition to the query parameters\ndocumented here. If no filters are provided, the API returns all the records\n(with pagination).\n\nFor example, with the parameter **`name=Alice`**, only records where the\nfield **`name`** has value **`Alice`** will be returned.\n\nSimilarly, adding the parameters **`name__in=Alice`** and **`name__in=Bob`**\nwill result in records with **`name`** equal to **`Alice`** OR **`name`**\nequal to **`Bob`** being returned.\n\n### Filters\n\nFilters are supported on Text, Numeric, Date and DateTime fields, although\nnot all filters are supported by all fields. It is also possible to filter\non an array of strings, or a string field nested in an array of objects. In\nthis case, the record will be present in the response if one of the field\nvalues in the array matches the filter.\n\nMultiple filters on different fields and different filter types can be\ncombined in the same query. An indexed field with an object can be filtered\nby using the dot notation, for example, **`address.city=Brooklyn`**.\n\nA number of different types of filters are supported.\n\n#### Equals\n\nThis can be specified as simple query parameter.\n\nSupported Types: Text, Numeric, Date, DateTime, Fields within Arrays.\n\n*Example:*\nAdding **`&name=Alice`** as a query parameter will return records where the\nname field matches Alice.\n\n\n#### Not Equals\n\nThis can be specified with the **`neq`** modifier to the query parameter\nkey.\n\nSupported Types: Text, Numeric, Date, DateTime, Fields within Arrays.\n\n*Example:*\nAdding **`&name__neq=Alice`** as a query parameter will return records where\nthe name field does not match Alice.\n\n#### Equals Any Of\n\nThis is basically an `OR` clause for Equals on a given field. This can be\nspecified with the **`in`** modifier to the query parameter key.\n\nSupported Types: Text, Numeric, Date, DateTime, Fields within Arrays.\n\n*Example:*\nAdding **`&name__in=Alice&name__in=Bob`** as a query parameter will return\nrecords where the name field matches either Alice or Bob.\n\n#### Comparison\n\nThe following comparison filters are supported:\n* Greater Than with the modifier `gt`\n* Greater Than Or Equals with the modifier `gte`\n* Less Than with the modifier `lt`\n* Less Than Or Equals with the modifier `lte`\n\nSupported Types: Numeric, Date, DateTime.\n\n*Example:*\nAdding **`&createdDate__gt=2020-11-11&rating__gte=4`** as a query parameter\nwill return records where the `createdDate` is after `2020-11-11` and the\n`rating` field has a value greater than or equal to `4`.\n\n#### GeoSearch\n\nSupports filtering to records for which the specified field is within the supplied radius to the supplied latitude and longitude. \n\nSupported Types: Coordinates (ex: `yextDisplayCoordinate`, `displayCoordinate`, etc.).\n\nGeoSearch queries are constructed by appending a `__geo` comparator to a coordinate field in the request. The details of the GeoSearch must then be included, comma separated, as part of the query value, optionally surrounded by parantheses. \n\nThe following parameters are supported:\n* The latitude of the point to geosearch from, specified as `lat`\n* The longitude of the point to geosearch from, specified as `lon`\n* The numeric radius from the point which results will be filtered to, specifed as `radius`\n* The unit of measurement for the radius, specified as `unit`. One of `km`, `mi`, `m`, `ft`. Defaults to `mi`\n\n*Example:*\nAdding **`&yextDisplayCoordinate__geo=(lat:40.740,lon:-73.987565,radius:50,unit:km)`** as a query parameter\nwill return records where the `yextDisplayCoordinate` field on the entities is within 50 km of the provided latitude and longitude.\n\nLike all other filters, the field which is being geosearched upon must be specified in the `fieldIndexes` of the endpoint definition. \n\n### Sorting\n\nStreams Endpoints support sorting by an indexed field. This can be enabled\nby adding the `$sortBy` query parameter with field name as the value.\nOptionally, the modifiers `asc` and `desc` can be added to indicate\nsorting by ascending and descending orders respectively. If no modifier is\nspecified, the results will be returned in descending order.\n\nCurrently, sorting is only supported on a single field per request.\n\n*Example:*\nAdding **`&$sortBy__desc=createdDate`** as a query parameter will return\nrecords with the most recent `createdDate` first.\n\n### Additional Notes on Supported Types\n\nIndexes are supported on String, Numeric, Date and DateTime types. The set\nof supported filters for each type is documented in the previous section.\n\n#### String\n\nStreams Endpoints support indexing UTF-8 strings with a maximum length of\n256 characters.\n\n#### Date and DateTime\n\n* The timezone information on a DateTime, if present, will be stripped away\nduring indexing, without converting the time to another timezone.\n* For indexing, the system expects to get [RFC3339 DateTime\nformat](https://datatracker.ietf.org/doc/html/rfc3339) for DateTimes and\n`YYYY-MM-DD` for Dates.\n* For querying, API accepts the following formats: `YYYY-MM-DD`,\n`YYYY-MM-DDTHH`, `YYYY-MM-DDTHH:MM` and `YYYY-MM-DDTHH:MM:SS`.\n",
+        "summary": "Content: List",
+        "description": "List records from a Content Endpoint\n\nContent API provides the ability for a user to filter and sort records\nby the contents of an indexed field. The filters and sorting parameters can\nbe provided as query parameters, in addition to the query parameters\ndocumented here. If no filters are provided, the API returns all the records\n(with pagination).\n\nFor example, with the parameter **`name=Alice`**, only records where the\nfield **`name`** has value **`Alice`** will be returned.\n\nSimilarly, adding the parameters **`name__in=Alice`** and **`name__in=Bob`**\nwill result in records with **`name`** equal to **`Alice`** OR **`name`**\nequal to **`Bob`** being returned.\n\n### Filters\n\nFilters are supported on Text, Numeric, Date and DateTime fields, although\nnot all filters are supported by all fields. It is also possible to filter\non an array of strings, or a string field nested in an array of objects. In\nthis case, the record will be present in the response if one of the field\nvalues in the array matches the filter.\n\nMultiple filters on different fields and different filter types can be\ncombined in the same query. An indexed field with an object can be filtered\nby using the dot notation, for example, **`address.city=Brooklyn`**.\n\nA number of different types of filters are supported.\n\n#### Equals\n\nThis can be specified as simple query parameter.\n\nSupported Types: Text, Numeric, Date, DateTime, Fields within Arrays.\n\n*Example:*\nAdding **`&name=Alice`** as a query parameter will return records where the\nname field matches Alice.\n\n\n#### Not Equals\n\nThis can be specified with the **`neq`** modifier to the query parameter\nkey.\n\nSupported Types: Text, Numeric, Date, DateTime, Fields within Arrays.\n\n*Example:*\nAdding **`&name__neq=Alice`** as a query parameter will return records where\nthe name field does not match Alice.\n\n#### Equals Any Of\n\nThis is basically an `OR` clause for Equals on a given field. This can be\nspecified with the **`in`** modifier to the query parameter key.\n\nSupported Types: Text, Numeric, Date, DateTime, Fields within Arrays.\n\n*Example:*\nAdding **`&name__in=Alice&name__in=Bob`** as a query parameter will return\nrecords where the name field matches either Alice or Bob.\n\n#### Comparison\n\nThe following comparison filters are supported:\n* Greater Than with the modifier `gt`\n* Greater Than Or Equals with the modifier `gte`\n* Less Than with the modifier `lt`\n* Less Than Or Equals with the modifier `lte`\n\nSupported Types: Numeric, Date, DateTime.\n\n*Example:*\nAdding **`&createdDate__gt=2020-11-11&rating__gte=4`** as a query parameter\nwill return records where the `createdDate` is after `2020-11-11` and the\n`rating` field has a value greater than or equal to `4`.\n\n#### GeoSearch\n\nSupports filtering to records for which the specified field is within the supplied radius to the supplied latitude and longitude. \n\nSupported Types: Coordinates (ex: `yextDisplayCoordinate`, `displayCoordinate`, etc.).\n\nGeoSearch queries are constructed by appending a `__geo` comparator to a coordinate field in the request. The details of the GeoSearch must then be included, comma separated, as part of the query value, optionally surrounded by parantheses. \n\nThe following parameters are supported:\n* The latitude of the point to geosearch from, specified as `lat`\n* The longitude of the point to geosearch from, specified as `lon`\n* The numeric radius from the point which results will be filtered to, specifed as `radius`\n* The unit of measurement for the radius, specified as `unit`. One of `km`, `mi`, `m`, `ft`. Defaults to `mi`\n\n*Example:*\nAdding **`&yextDisplayCoordinate__geo=(lat:40.740,lon:-73.987565,radius:50,unit:km)`** as a query parameter\nwill return records where the `yextDisplayCoordinate` field on the entities is within 50 km of the provided latitude and longitude.\n\nLike all other filters, the field which is being geosearched upon must be specified in the `fieldIndexes` of the endpoint definition. \n\n### Sorting\n\nContent Endpoints support sorting by an indexed field. This can be enabled\nby adding the `$sortBy` query parameter with field name as the value.\nOptionally, the modifiers `asc` and `desc` can be added to indicate\nsorting by ascending and descending orders respectively. If no modifier is\nspecified, the results will be returned in descending order.\n\nCurrently, sorting is only supported on a single field per request.\n\n*Example:*\nAdding **`&$sortBy__desc=createdDate`** as a query parameter will return\nrecords with the most recent `createdDate` first.\n\n### Additional Notes on Supported Types\n\nIndexes are supported on String, Numeric, Date and DateTime types. The set\nof supported filters for each type is documented in the previous section.\n\n#### String\n\nContent Endpoints support indexing UTF-8 strings with a maximum length of\n256 characters.\n\n#### Date and DateTime\n\n* The timezone information on a DateTime, if present, will be stripped away\nduring indexing, without converting the time to another timezone.\n* For indexing, the system expects to get [RFC3339 DateTime\nformat](https://datatracker.ietf.org/doc/html/rfc3339) for DateTimes and\n`YYYY-MM-DD` for Dates.\n* For querying, API accepts the following formats: `YYYY-MM-DD`,\n`YYYY-MM-DDTHH`, `YYYY-MM-DDTHH:MM` and `YYYY-MM-DDTHH:MM:SS`.\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/StreamsResponse"
@@ -37913,9 +37913,9 @@
         "schema": {
           "type": "string"
         },
-        "description": "The ID of the Streams Endpoint to query."
+        "description": "The ID of the Content Endpoint to query."
       },
-      "streamsDocIds": {
+      "contentDocIds": {
         "name": "ids",
         "in": "path",
         "required": true,
@@ -37926,7 +37926,7 @@
           }
         },
         "style": "simple",
-        "description": "The Streams records to get. Multiple record IDs can be provided separated by commas.\n"
+        "description": "The Content records to get. Multiple record IDs can be provided separated by commas.\n"
       },
       "pageToken": {
         "name": "pageToken",
@@ -40207,11 +40207,11 @@
         }
       },
       "StreamsResponse": {
-        "description": "Streams Response",
+        "description": "Content Response",
         "content": {
           "application/json": {
             "schema": {
-              "title": "EntitiesResponse",
+              "title": "ContentResponse",
               "type": "object",
               "properties": {
                 "meta": {
@@ -40229,7 +40229,7 @@
                     },
                     "docs": {
                       "type": "array",
-                      "description": "Documents containing the data for the relevant Streams Endpoint and request.",
+                      "description": "Documents containing the data for the relevant Content Endpoint and request.",
                       "items": {
                         "type": "object"
                       }
@@ -40270,7 +40270,7 @@
       "name": "Live API"
     },
     {
-      "name": "Streams API"
+      "name": "Content API"
     }
   ]
 }
