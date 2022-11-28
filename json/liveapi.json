@@ -39809,6 +39809,18 @@
           "invitationUid": {
             "type": "string",
             "description": "The ID of the invitation which should be associated with this review."
+          },
+          "url": {
+            "type": "string",
+            "description": "The URL of the review, or the URL of the listing where the review can be found if there is no\nspecific URL for the review.\n"
+          },
+          "publisherId": {
+            "type": "string",
+            "description": "The ID of the publisher associated with the review. Defaults to `FIRSTPARTY`.\n"
+          },
+          "externalId": {
+            "type": "string",
+            "description": "The External ID of the review, typically assigned by the Publisher. Created External IDs must\nbe unique per account and publisher pair.\n"
           }
         }
       },
@@ -39865,6 +39877,14 @@
             "type": "string",
             "format": "date",
             "description": "If provided, the date you received the review from the customer. Defaults to the date the\nreview was uploaded to Yext.\n\n(`YYYY-MM-DD` format)\n"
+          },
+          "url": {
+            "type": "string",
+            "description": "The URL of the review, or the URL of the listing where the review can be found if there is no\nspecific URL for the review.\n"
+          },
+          "externalId": {
+            "type": "string",
+            "description": "The External ID of the review, typically assigned by the Publisher. Created External IDs must\nbe unique per account and publisher pair.\n"
           }
         }
       },

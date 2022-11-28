@@ -64040,6 +64040,20 @@ components:
         invitationUid:
           type: string
           description: The ID of the invitation which should be associated with this review.
+        url:
+          type: string
+          description: |
+            The URL of the review, or the URL of the listing where the review can be found if there is no
+            specific URL for the review.
+        publisherId:
+          type: string
+          description: |
+            The ID of the publisher associated with the review. Defaults to `FIRSTPARTY`.
+        externalId:
+          type: string
+          description: |
+            The External ID of the review, typically assigned by the Publisher. Created External IDs must
+            be unique per account and publisher pair.
     UpdateReview:
       type: object
       properties:
@@ -64090,6 +64104,16 @@ components:
             review was uploaded to Yext.
 
             (`YYYY-MM-DD` format)
+        url:
+          type: string
+          description: |
+            The URL of the review, or the URL of the listing where the review can be found if there is no
+            specific URL for the review.
+        externalId:
+          type: string
+          description: |
+            The External ID of the review, typically assigned by the Publisher. Created External IDs must
+            be unique per account and publisher pair.
     NextPageToken:
       type: string
       description: |
