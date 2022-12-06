@@ -634,8 +634,10 @@ components:
                * healthcareProfessional
                * helpArticle
                * hotel
+               * hotelRoomType
                * job
                * location
+               * organization
                * product
                * restaurant
             ```
@@ -1340,6 +1342,7 @@ components:
                * healthcareProfessional
                * hotel
                * location
+               * organization
                * restaurant
             ```
           uniqueItems: true
@@ -1398,6 +1401,7 @@ components:
                * healthcareProfessional
                * hotel
                * location
+               * organization
                * restaurant
             ```
           uniqueItems: true
@@ -1679,6 +1683,7 @@ components:
                * healthcareProfessional
                * hotel
                * location
+               * organization
                * restaurant
             ```
         boutiqueStores:
@@ -2218,11 +2223,10 @@ components:
             Eligible For: 
                * atm
                * event
-               * faq
+               * financialProfessional
                * healthcareFacility
                * healthcareProfessional
                * hotel
-               * job
                * location
                * restaurant
             ```
@@ -2626,6 +2630,7 @@ components:
                * healthcareProfessional
                * hotel
                * location
+               * organization
                * restaurant
             ```
           uniqueItems: true
@@ -3095,6 +3100,7 @@ components:
                * hotel
                * job
                * location
+               * organization
                * restaurant
             ```
         displayCoordinate:
@@ -3660,6 +3666,7 @@ components:
                * healthcareProfessional
                * hotel
                * location
+               * organization
                * restaurant
             ```
           uniqueItems: true
@@ -3920,6 +3927,7 @@ components:
                * healthcareProfessional
                * hotel
                * location
+               * organization
                * restaurant
             ```
         facebookProfilePhoto:
@@ -4302,12 +4310,10 @@ components:
             ```
             Eligible For: 
                * atm
-               * event
-               * faq
+               * financialProfessional
                * healthcareFacility
                * healthcareProfessional
                * hotel
-               * job
                * location
                * restaurant
             ```
@@ -5336,6 +5342,7 @@ components:
                * healthcareProfessional
                * hotel
                * location
+               * organization
                * restaurant
             ```
         insuranceAccepted:
@@ -5906,8 +5913,10 @@ components:
                * healthcareProfessional
                * helpArticle
                * hotel
+               * hotelRoomType
                * job
                * location
+               * organization
                * product
                * restaurant
             ```
@@ -6177,6 +6186,7 @@ components:
                * hotel
                * job
                * location
+               * organization
                * restaurant
             ```
           properties:
@@ -6238,6 +6248,7 @@ components:
                * healthcareProfessional
                * hotel
                * location
+               * organization
                * restaurant
             ```
         massage:
@@ -6497,6 +6508,7 @@ components:
                * hotel
                * job
                * location
+               * organization
                * product
                * restaurant
             ```
@@ -7177,7 +7189,9 @@ components:
                * healthcareFacility
                * healthcareProfessional
                * hotel
+               * hotelRoomType
                * location
+               * organization
                * product
                * restaurant
             ```
@@ -7683,6 +7697,7 @@ components:
                * hotel
                * job
                * location
+               * organization
                * product
                * restaurant
             ```
@@ -7810,6 +7825,7 @@ components:
                * healthcareProfessional
                * hotel
                * location
+               * organization
                * restaurant
             ```
         rankTrackingCompetitors:
@@ -7832,6 +7848,7 @@ components:
                * healthcareProfessional
                * hotel
                * location
+               * organization
                * restaurant
             ```
           uniqueItems: true
@@ -7884,6 +7901,7 @@ components:
                * healthcareProfessional
                * hotel
                * location
+               * organization
                * restaurant
             ```
         rankTrackingFrequency:
@@ -7905,6 +7923,7 @@ components:
                * healthcareProfessional
                * hotel
                * location
+               * organization
                * restaurant
             ```
         rankTrackingQueryTemplates:
@@ -7927,6 +7946,7 @@ components:
                * healthcareProfessional
                * hotel
                * location
+               * organization
                * restaurant
             ```
           uniqueItems: true
@@ -7967,6 +7987,7 @@ components:
                * healthcareProfessional
                * hotel
                * location
+               * organization
                * restaurant
             ```
         reservationUrl:
@@ -9311,8 +9332,10 @@ components:
                * healthcareProfessional
                * helpArticle
                * hotel
+               * hotelRoomType
                * job
                * location
+               * organization
                * product
                * restaurant
             ```
@@ -9404,6 +9427,7 @@ components:
                * healthcareProfessional
                * hotel
                * location
+               * organization
                * restaurant
             ```
         uberLink:
@@ -9572,7 +9596,9 @@ components:
                * healthcareFacility
                * healthcareProfessional
                * hotel
+               * hotelRoomType
                * location
+               * organization
                * product
                * restaurant
             ```
@@ -9787,6 +9813,7 @@ components:
                * healthcareProfessional
                * hotel
                * location
+               * organization
                * restaurant
             ```
         weightMachine:

@@ -2832,11 +2832,16 @@
             "atm": "#/components/schemas/AtmWrite",
             "event": "#/components/schemas/EventWrite",
             "faq": "#/components/schemas/FaqWrite",
+            "financialProfessional": "#/components/schemas/FinancialProfessionalWrite",
             "healthcareFacility": "#/components/schemas/HealthcareFacilityWrite",
             "healthcareProfessional": "#/components/schemas/HealthcareProfessionalWrite",
+            "helpArticle": "#/components/schemas/HelpArticleWrite",
             "hotel": "#/components/schemas/HotelWrite",
+            "hotelRoomType": "#/components/schemas/HotelRoomTypeWrite",
             "job": "#/components/schemas/JobWrite",
             "location": "#/components/schemas/LocationWrite",
+            "organization": "#/components/schemas/OrganizationWrite",
+            "product": "#/components/schemas/ProductWrite",
             "restaurant": "#/components/schemas/RestaurantWrite"
           }
         },
@@ -3065,12 +3070,6 @@
                 ],
                 "type": "string",
                 "description": "Information on whether the event will take place as scheduled"
-              },
-              "googleAttributes": {
-                "additionalProperties": false,
-                "type": "object",
-                "properties": {},
-                "description": "The unique IDs of the entity's Google Business Profile keywords, as well as the unique IDs of any values selected for each keyword.\n\nValid keywords (e.g., `has_drive_through`, `has_fitting_room`, `kitchen_in_room`) are determined by the entity's primary category. A full list of keywords can be retrieved with the Google Fields: List endpoint.\n\nKeyword values provide more details on how the keyword applies to the entity (e.g., if the keyword is `has_drive_through`, its values may be `true` or `false`).\n\n* If the **`v`** parameter is before `20181204`: **`googleAttributes`** is formatted as a map of key-value pairs (e.g., `[{ \"id\": \"has_wheelchair_accessible_entrance\", \"values\": [ \"true\" ] }]`)\n* If the **`v`** parameter is on or after `20181204`: the contents are formatted as a list of objects (e.g., `{ \"has_wheelchair_accessible_entrance\": [ \"true\" ]}`)\n\n**NOTE:** The latest Google Attributes are available via the Google Fields: List endpoint. Google Attributes are managed by Google and are subject to change without notice. To prevent errors, make sure your API implementation is not dependent on the presence of specific attributes."
               },
               "isFreeEvent": {
                 "type": "boolean",
@@ -3385,21 +3384,6 @@
                 "type": "string",
                 "format": "rich-text"
               },
-              "categoryIds": {
-                "uniqueItems": false,
-                "type": "array",
-                "items": {
-                  "minLength": 0,
-                  "type": "string"
-                },
-                "description": "Yext Category IDs.\n\nIDs must be valid and selectable (i.e., cannot be parent categories).\n\nNOTE: The list of category IDs that you send us must be comprehensive. For example, if you send us a list of IDs that does not include IDs that you sent in your last update, Yext considers the missing categories to be deleted, and we remove them from your listings.\n"
-              },
-              "googleAttributes": {
-                "additionalProperties": false,
-                "type": "object",
-                "properties": {},
-                "description": "The unique IDs of the entity's Google Business Profile keywords, as well as the unique IDs of any values selected for each keyword.\n\nValid keywords (e.g., `has_drive_through`, `has_fitting_room`, `kitchen_in_room`) are determined by the entity's primary category. A full list of keywords can be retrieved with the Google Fields: List endpoint.\n\nKeyword values provide more details on how the keyword applies to the entity (e.g., if the keyword is `has_drive_through`, its values may be `true` or `false`).\n\n* If the **`v`** parameter is before `20181204`: **`googleAttributes`** is formatted as a map of key-value pairs (e.g., `[{ \"id\": \"has_wheelchair_accessible_entrance\", \"values\": [ \"true\" ] }]`)\n* If the **`v`** parameter is on or after `20181204`: the contents are formatted as a list of objects (e.g., `{ \"has_wheelchair_accessible_entrance\": [ \"true\" ]}`)\n\n**NOTE:** The latest Google Attributes are available via the Google Fields: List endpoint. Google Attributes are managed by Google and are subject to change without notice. To prevent errors, make sure your API implementation is not dependent on the presence of specific attributes."
-              },
               "keywords": {
                 "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
@@ -3481,6 +3465,1731 @@
                 "minLength": 0,
                 "type": "string",
                 "description": "The timezone of the entity, in the standard `IANA time zone database` format (tz database). e.g. `\"America/New_York\"`"
+              }
+            }
+          }
+        ]
+      },
+      "FinancialProfessionalWrite": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityWrite"
+          },
+          {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "name": {
+                "minLength": 0,
+                "maxLength": 5000,
+                "type": "string",
+                "description": "\n\n\nCannot Include:\n* HTML markup"
+              },
+              "address": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "city": {
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "type": "string",
+                    "description": "The city the entity (or the entity's location) is in\n\n\nCannot Include:\n* a URL or domain name\n* a digit"
+                  },
+                  "countryCode": {
+                    "minLength": 0,
+                    "pattern": "^[a-zA-Z]{2}$",
+                    "type": "string"
+                  },
+                  "extraDescription": {
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "type": "string",
+                    "description": "Provides additional information to help consumers get to the entity. This string appears along with the entity's address (e.g., `In Menlo Mall, 3rd Floor`).\nIt may also be used in conjunction with a hidden address (i.e., when **`addressHidden`** is `true`) to give consumers information about where the entity can be found (e.g., `Servicing the New York area`)."
+                  },
+                  "line1": {
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "type": "string",
+                    "description": "\nCannot Include:\n* a URL or domain name"
+                  },
+                  "line2": {
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "type": "string",
+                    "description": "\nCannot Include:\n* a URL or domain name"
+                  },
+                  "line3": {
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "type": "string",
+                    "description": "\nCannot Include:\n* a URL or domain name"
+                  },
+                  "postalCode": {
+                    "minLength": 0,
+                    "maxLength": 10,
+                    "type": "string",
+                    "description": "The entity's postal code. The postal code must be valid for the entity's country. Cannot include a URL or domain name.\n\n\nCannot Include:\n* a URL or domain name"
+                  },
+                  "region": {
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "type": "string",
+                    "description": "The name of the entity's region or state.\n\n\nCannot Include:\n* a URL or domain name"
+                  },
+                  "sublocality": {
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "type": "string",
+                    "description": "The name of the entity's sublocality\n\n\nCannot Include:\n* a URL or domain name"
+                  }
+                },
+                "description": "Contains the address of the entity (or where the entity is located)\n\nMust be a valid address\nCannot be a P.O. Box\n\nIf the entity is an `event`, either an **`address`** value or a **`linkedLocation`** value can be provided."
+              },
+              "additionalHoursText": {
+                "minLength": 0,
+                "maxLength": 255,
+                "type": "string",
+                "description": "Additional information about hours that does not fit in **`hours`** (e.g., `\"Closed during the winter\"`)"
+              },
+              "addressHidden": {
+                "type": "boolean",
+                "description": "If `true`, the entity's street address will not be shown on listings. Defaults to `false`."
+              },
+              "alternateNames": {
+                "description": "Other names for your business that you would like us to use when tracking your search performance\n\n\nArray must be ordered.\n\nArray may have a maximum of 3 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "maxLength": 100,
+                  "type": "string",
+                  "description": "\nCannot Include:\n* HTML markup"
+                }
+              },
+              "alternatePhone": {
+                "minLength": 0,
+                "type": "string",
+                "description": "Must be a valid phone number.\n\nIf the phone number's calling code is for a country other than the one given in the entity's **`countryCode`**, the phone number provided must contain the calling code (e.g., `+44` in `+442038083831`). Otherwise, the calling code is optional."
+              },
+              "alternateWebsites": {
+                "description": "Other websites for your business that we should search for when tracking your search performance\n\n\nArray must be ordered.\n\nArray may have a maximum of 3 elements.\n\nArray item description:\n\n>Cannot Include:\n>* common domain names, e.g., google.com, youtube.com, etc.",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "maxLength": 255,
+                  "format": "uri",
+                  "type": "string",
+                  "description": "\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                }
+              },
+              "androidAppUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "The URL where consumers can download the entity's Android app"
+              },
+              "associations": {
+                "description": "Association memberships relevant to the entity (e.g., `\"New York Doctors Association\"`)\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "maxLength": 100,
+                  "type": "string",
+                  "description": "\nCannot Include:\n* HTML markup"
+                }
+              },
+              "bios": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "ids": {
+                    "description": "IDs of the Bio Lists associated with this entity\n\n\nArray must be ordered.\n\nArray may have a maximum of 40 elements.\n",
+                    "uniqueItems": true,
+                    "type": "array",
+                    "items": {
+                      "minLength": 0,
+                      "type": "string"
+                    }
+                  },
+                  "label": {
+                    "minLength": 0,
+                    "maxLength": 30,
+                    "type": "string",
+                    "description": "Label to be used for this entity's Bio Lists. This label will appear on your entity's listings."
+                  }
+                },
+                "description": "Information about the Bio Content Lists associated with this entity"
+              },
+              "brands": {
+                "description": "Brands sold by this entity\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "maxLength": 100,
+                  "type": "string",
+                  "description": "\nCannot Include:\n* HTML markup"
+                }
+              },
+              "calendars": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "ids": {
+                    "description": "IDs of the Calendars associated with this entity\n\n\nArray must be ordered.\n\nArray may have a maximum of 40 elements.\n",
+                    "uniqueItems": true,
+                    "type": "array",
+                    "items": {
+                      "minLength": 0,
+                      "type": "string"
+                    }
+                  },
+                  "label": {
+                    "minLength": 0,
+                    "maxLength": 30,
+                    "type": "string",
+                    "description": "Label to be used for this entity's Calendars. This label will appear on your entity's listings."
+                  }
+                },
+                "description": "Information about the events Content Lists (Calendars) associated with this entity"
+              },
+              "categoryIds": {
+                "uniqueItems": false,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "type": "string"
+                },
+                "description": "Yext Category IDs.\n\nIDs must be valid and selectable (i.e., cannot be parent categories).\n\nNOTE: The list of category IDs that you send us must be comprehensive. For example, if you send us a list of IDs that does not include IDs that you sent in your last update, Yext considers the missing categories to be deleted, and we remove them from your listings.\n"
+              },
+              "certifications": {
+                "description": "A list of the certifications held by the healthcare professional\n**NOTE:** This field is only available to locations whose **`entityType`** is `healthcareProfessional`.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "maxLength": 100,
+                  "type": "string",
+                  "description": "\nCannot Include:\n* HTML markup"
+                }
+              },
+              "closed": {
+                "type": "boolean",
+                "description": "Indicates whether the entity is closed"
+              },
+              "customKeywords": {
+                "description": "Additional keywords you would like us to use when tracking your search performance\n\n\nArray must be ordered.\n\nArray may have a maximum of 5 elements.\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "maxLength": 100,
+                  "type": "string"
+                }
+              },
+              "description": {
+                "minLength": 10,
+                "maxLength": 15000,
+                "type": "string",
+                "description": "A description of the entity\n\n\nCannot Include:\n* HTML markup"
+              },
+              "displayCoordinate": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "minimum": -90,
+                    "maximum": 90,
+                    "type": "number"
+                  },
+                  "longitude": {
+                    "minimum": -180,
+                    "maximum": 180,
+                    "type": "number"
+                  }
+                },
+                "description": "Coordinates where the map pin for the entity should be displayed, as provided by you"
+              },
+              "dropoffCoordinate": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "minimum": -90,
+                    "maximum": 90,
+                    "type": "number"
+                  },
+                  "longitude": {
+                    "minimum": -180,
+                    "maximum": 180,
+                    "type": "number"
+                  }
+                },
+                "description": "Coordinates of the drop-off area for the entity, as provided by you"
+              },
+              "emails": {
+                "description": "Emails addresses for this entity's point of contact\n\nMust be valid email addresses\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 5 elements.\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "format": "email",
+                  "type": "string"
+                }
+              },
+              "facebookCallToAction": {
+                "required": [
+                  "type"
+                ],
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "enum": [
+                      "NONE",
+                      "BOOK_NOW",
+                      "CALL_NOW",
+                      "CONTACT_US",
+                      "SEND_MESSAGE",
+                      "USE_APP",
+                      "PLAY_GAME",
+                      "SHOP_NOW",
+                      "SIGN_UP",
+                      "WATCH_VIDEO",
+                      "SEND_EMAIL",
+                      "LEARN_MORE",
+                      "PURCHASE_GIFT_CARDS",
+                      "ORDER_NOW",
+                      "FOLLOW_PAGE"
+                    ],
+                    "type": "string",
+                    "description": "The action the consumer is being prompted to take by the button's text"
+                  },
+                  "value": {
+                    "minLength": 0,
+                    "type": "string",
+                    "description": "Indicates where consumers will be directed to upon clicking the Call-to-Action button (e.g., a URL). It can be a free-form string or an embedded value, depending on what the user specifies.\n\nFor example, if the user sets the Facebook Call-to-Action as \" 'Sign Up' using 'Website URL' \" in the Yext platform, **`type`** will be `SIGN_UP` and **`value`** will be `[[websiteUrl]]`.\n\nThe Call-to-Action will have the same behavior if the user sets the value to \"Custom Value\" in the platform and embeds a field."
+                  }
+                },
+                "description": "Designates the Facebook Call-to-Action button text and value\n\nValid contents of **`value`** depends on the Call-to-Action's **`type`**:\n* `NONE`: (optional)\n* `BOOK_NOW`: URL\n* `CALL_NOW`: Phone number\n* `CONTACT_US`: URL\n* `SEND_MESSAGE`: Any string\n* `USE_APP`: URL\n* `PLAY_GAME`: URL\n* `SHOP_NOW`: URL\n* `SIGN_UP`: URL\n* `WATCH_VIDEO`: URL\n* `SEND_EMAIL`: Email address\n* `LEARN_MORE`: URL\n* `PURCHASE_GIFT_CARDS`: URL\n* `ORDER_NOW`: URL\n* `FOLLOW_PAGE`: Any string"
+              },
+              "facebookCoverPhoto": {
+                "required": [
+                  "url"
+                ],
+                "additionalProperties": false,
+                "type": "object",
+                "description": "The cover photo for the entity's Facebook profile\n\nDisplayed as a 851 x 315 pixel image\n\nYou may need a cover photo in order for your listing to appear on Facebook. Please check your listings tab to learn more.\n\n\nImage must be at least 400 x 150 pixels\n\nImage area (width x height) may be no more than 41000000 pixels\n\nImage may be no more than 30000 x 30000 pixels\n\nSupported Aspect Ratios:\n* 1 x 1\n* 4 x 3\n* 3 x 2\n* 5 x 3\n* 16 x 9\n* 3 x 1\n* 2 x 3\n* 5 x 7\n* 4 x 5\n* 4 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n",
+                "properties": {
+                  "alternateText": {
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "url": {
+                    "minLength": 0,
+                    "format": "uri",
+                    "type": "string"
+                  }
+                }
+              },
+              "facebookDescriptor": {
+                "minLength": 3,
+                "maxLength": 75,
+                "type": "string",
+                "description": "Location Descriptors are used for Enterprise businesses that sync Facebook listings using brand page location structure. The Location Descriptor is typically an additional geographic description (e.g. geomodifier) that will appear in parentheses after the name on the Facebook listing.\n\n\nCannot Include:\n* HTML markup"
+              },
+              "facebookName": {
+                "minLength": 0,
+                "type": "string",
+                "description": "The name for this entity's Facebook profile.  A separate name may be specified to send only to Facebook in order to comply with any specific Facebook rules or naming conventions."
+              },
+              "facebookOverrideCity": {
+                "minLength": 0,
+                "type": "string",
+                "description": "The city to be displayed on this entity's Facebook profile"
+              },
+              "facebookPageUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for the entity's Facebook Page.\n\nValid formats:\n\n- facebook.com/profile.php?id=[numId]\n- facebook.com/group.php?gid=[numId]\n- facebook.com/groups/[numId]\n- facebook.com/[Name]\n- facebook.com/pages/[Name]/[numId]\n- facebook.com/people/[Name]/[numId]\n\nwhere [Name] is a String and [numId] is an Integer\nThe success response will contain a warning message explaining why the URL wasn't stored in the system."
+              },
+              "facebookProfilePhoto": {
+                "required": [
+                  "url"
+                ],
+                "additionalProperties": false,
+                "type": "object",
+                "description": "The profile picture for the entity's Facebook profile\n\nYou must have a profile picture in order for your listing to appear on Facebook.\n\n\nImage must be at least 180 x 180 pixels\n\nImage area (width x height) may be no more than 41000000 pixels\n\nImage may be no more than 30000 x 30000 pixels\n\nSupported Aspect Ratios:\n* 1 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n",
+                "properties": {
+                  "alternateText": {
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "url": {
+                    "minLength": 0,
+                    "format": "uri",
+                    "type": "string"
+                  }
+                }
+              },
+              "facebookVanityUrl": {
+                "minLength": 0,
+                "maxLength": 50,
+                "type": "string",
+                "description": "The username that appear's in the Facebook listing URL to help customers find and remember a brand’s Facebook page.  The username is also be used for tagging the Facebook page in other users’ posts, and searching for the Facebook page."
+              },
+              "fax": {
+                "minLength": 0,
+                "type": "string",
+                "description": "Must be a valid fax number.\n\nIf the fax number's calling code is for a country other than the one given in the entity's **`countryCode`**, the fax number provided must contain the calling code (e.g., `+44` in `+442038083831`). Otherwise, the calling code is optional."
+              },
+              "featuredMessage": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "minLength": 0,
+                    "maxLength": 50,
+                    "type": "string",
+                    "description": "The text of Featured Message. Default: `Call today!`\n\nCannot include:\n\n- inappropriate language\n- HTML markup\n- a URL or domain name\n- a phone number\n- control characters ([\\x00-\\x1F\\x7F])\n- insufficient spacing\n\nIf you submit a Featured Message that contains profanity or more than 50 characters, it will be ignored. The success response will contain a warning message explaining why your Featured Message wasn't stored in the system.\n\n\nCannot Include:\n* HTML markup"
+                  },
+                  "url": {
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "format": "uri",
+                    "type": "string",
+                    "description": "Valid URL linked to the Featured Message text"
+                  }
+                },
+                "description": "Information about the entity's Featured Message"
+              },
+              "firstPartyReviewPage": {
+                "minLength": 0,
+                "type": "string",
+                "description": "Link to the review-collection page, where consumers can leave first-party reviews"
+              },
+              "frequentlyAskedQuestions": {
+                "description": "A list of questions that are frequently asked about this entity\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "required": [
+                    "question"
+                  ],
+                  "additionalProperties": false,
+                  "type": "object",
+                  "properties": {
+                    "answer": {
+                      "minLength": 1,
+                      "maxLength": 4096,
+                      "type": "string"
+                    },
+                    "question": {
+                      "minLength": 1,
+                      "maxLength": 4096,
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "geomodifier": {
+                "minLength": 0,
+                "type": "string",
+                "description": "Provides additional information on where the entity can be found (e.g., `Times Square`, `Global Center Mall`)"
+              },
+              "googleAttributes": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {},
+                "description": "The unique IDs of the entity's Google Business Profile keywords, as well as the unique IDs of any values selected for each keyword.\n\nValid keywords (e.g., `has_drive_through`, `has_fitting_room`, `kitchen_in_room`) are determined by the entity's primary category. A full list of keywords can be retrieved with the Google Fields: List endpoint.\n\nKeyword values provide more details on how the keyword applies to the entity (e.g., if the keyword is `has_drive_through`, its values may be `true` or `false`).\n\n* If the **`v`** parameter is before `20181204`: **`googleAttributes`** is formatted as a map of key-value pairs (e.g., `[{ \"id\": \"has_wheelchair_accessible_entrance\", \"values\": [ \"true\" ] }]`)\n* If the **`v`** parameter is on or after `20181204`: the contents are formatted as a list of objects (e.g., `{ \"has_wheelchair_accessible_entrance\": [ \"true\" ]}`)\n\n**NOTE:** The latest Google Attributes are available via the Google Fields: List endpoint. Google Attributes are managed by Google and are subject to change without notice. To prevent errors, make sure your API implementation is not dependent on the presence of specific attributes."
+              },
+              "googleCoverPhoto": {
+                "required": [
+                  "url"
+                ],
+                "additionalProperties": false,
+                "type": "object",
+                "description": "The cover photo for the entity's Google profile\n\n\nImage must be at least 250 x 250 pixels\n",
+                "properties": {
+                  "alternateText": {
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "url": {
+                    "minLength": 0,
+                    "format": "uri",
+                    "type": "string"
+                  }
+                }
+              },
+              "googleMyBusinessLabels": {
+                "description": "Google Business Profile Labels help users organize their locations into groups within GBP.\n\n\nArray must be ordered.\n\nArray may have a maximum of 10 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "maxLength": 50,
+                  "type": "string",
+                  "description": "\nCannot Include:\n* HTML markup"
+                }
+              },
+              "googlePlaceId": {
+                "minLength": 0,
+                "type": "string",
+                "description": "The unique identifier of this entity on Google Maps."
+              },
+              "googleProfilePhoto": {
+                "required": [
+                  "url"
+                ],
+                "additionalProperties": false,
+                "type": "object",
+                "description": "The profile photo for the entity's Google profile\n\n\nImage must be at least 250 x 250 pixels\n\nImage may be no more than 500 x 500 pixels\n\nSupported Aspect Ratios:\n* 1 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n",
+                "properties": {
+                  "alternateText": {
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "url": {
+                    "minLength": 0,
+                    "format": "uri",
+                    "type": "string"
+                  }
+                }
+              },
+              "googleWebsiteOverride": {
+                "minLength": 0,
+                "format": "uri",
+                "type": "string",
+                "description": "The URL you would like to submit to Google Business Profile in place of the one given in **`websiteUrl`** (if applicable).\n\nFor example, if you want to analyze the traffic driven by your Google listings separately from other traffic, enter the alternate URL that you will use for tracking in this field."
+              },
+              "headshot": {
+                "required": [
+                  "url"
+                ],
+                "additionalProperties": false,
+                "type": "object",
+                "description": "A portrait of the healthcare professional",
+                "properties": {
+                  "alternateText": {
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "url": {
+                    "minLength": 0,
+                    "format": "uri",
+                    "type": "string"
+                  }
+                }
+              },
+              "holidayHoursConversationEnabled": {
+                "type": "boolean",
+                "description": "Indicates whether holiday-hour confirmation alerts are enabled for the Yext Knowledge Assistant for this entity"
+              },
+              "hours": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "friday": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                      "isClosed": {
+                        "type": "boolean",
+                        "description": "Indicates if the hours of operation are \"closed\" on Friday."
+                      },
+                      "openIntervals": {
+                        "uniqueItems": false,
+                        "type": "array",
+                        "items": {
+                          "additionalProperties": false,
+                          "type": "object",
+                          "properties": {
+                            "end": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The end time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            },
+                            "start": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The start time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            }
+                          }
+                        },
+                        "description": "Contains the time intervals for which the Entity is open on Friday. Note that if isClosed is set to true, \"openIntervals\" cannot be provided in an update."
+                      }
+                    }
+                  },
+                  "holidayHours": {
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "uniqueItems": true,
+                    "type": "array",
+                    "items": {
+                      "required": [
+                        "date"
+                      ],
+                      "additionalProperties": false,
+                      "type": "object",
+                      "properties": {
+                        "date": {
+                          "format": "date",
+                          "type": "string",
+                          "description": "Date on which the holiday hours will be in effect. Cannot be in the past.\n\n\nDate must be on or after 1970-01-01\nDate must be before or on 2038-01-01"
+                        },
+                        "isClosed": {
+                          "type": "boolean",
+                          "description": "Indicates if the hours of operation are \"closed\" on on the given date."
+                        },
+                        "isRegularHours": {
+                          "type": "boolean",
+                          "description": "Indicates whether the holiday hours are the same as the regular business hours for the given date. If set to true, we will update the holiday hours if the regular business hours change for the date's day of the week."
+                        },
+                        "openIntervals": {
+                          "uniqueItems": false,
+                          "type": "array",
+                          "items": {
+                            "additionalProperties": false,
+                            "type": "object",
+                            "properties": {
+                              "end": {
+                                "format": "time",
+                                "type": "string",
+                                "description": "The end time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                              },
+                              "start": {
+                                "format": "time",
+                                "type": "string",
+                                "description": "The start time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                              }
+                            }
+                          },
+                          "description": "Contains the time intervals for which the Entity is open on the specified date."
+                        }
+                      }
+                    }
+                  },
+                  "monday": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                      "isClosed": {
+                        "type": "boolean",
+                        "description": "Indicates if the hours of operation are \"closed\" on Monday."
+                      },
+                      "openIntervals": {
+                        "uniqueItems": false,
+                        "type": "array",
+                        "items": {
+                          "additionalProperties": false,
+                          "type": "object",
+                          "properties": {
+                            "end": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The end time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            },
+                            "start": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The start time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            }
+                          }
+                        },
+                        "description": "Contains the time intervals for which the Entity is open on Monday. Note that if isClosed is set to true, \"openIntervals\" cannot be provided in an update."
+                      }
+                    }
+                  },
+                  "reopenDate": {
+                    "format": "date",
+                    "type": "string",
+                    "description": "\nDate must be on or after 1970-01-01\nDate must be before or on 2038-01-01"
+                  },
+                  "saturday": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                      "isClosed": {
+                        "type": "boolean",
+                        "description": "Indicates if the hours of operation are \"closed\" on Saturday."
+                      },
+                      "openIntervals": {
+                        "uniqueItems": false,
+                        "type": "array",
+                        "items": {
+                          "additionalProperties": false,
+                          "type": "object",
+                          "properties": {
+                            "end": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The end time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            },
+                            "start": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The start time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            }
+                          }
+                        },
+                        "description": "Contains the time intervals for which the Entity is open on Saturday. Note that if isClosed is set to true, \"openIntervals\" cannot be provided in an update."
+                      }
+                    }
+                  },
+                  "sunday": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                      "isClosed": {
+                        "type": "boolean",
+                        "description": "Indicates if the hours of operation are \"closed\" on Sunday."
+                      },
+                      "openIntervals": {
+                        "uniqueItems": false,
+                        "type": "array",
+                        "items": {
+                          "additionalProperties": false,
+                          "type": "object",
+                          "properties": {
+                            "end": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The end time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            },
+                            "start": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The start time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            }
+                          }
+                        },
+                        "description": "Contains the time intervals for which the Entity is open on Sunday. Note that if isClosed is set to true, \"openIntervals\" cannot be provided in an update."
+                      }
+                    }
+                  },
+                  "thursday": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                      "isClosed": {
+                        "type": "boolean",
+                        "description": "Indicates if the hours of operation are \"closed\" on Thursday."
+                      },
+                      "openIntervals": {
+                        "uniqueItems": false,
+                        "type": "array",
+                        "items": {
+                          "additionalProperties": false,
+                          "type": "object",
+                          "properties": {
+                            "end": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The end time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            },
+                            "start": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The start time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            }
+                          }
+                        },
+                        "description": "Contains the time intervals for which the Entity is open on Thursday. Note that if isClosed is set to true, \"openIntervals\" cannot be provided in an update."
+                      }
+                    }
+                  },
+                  "tuesday": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                      "isClosed": {
+                        "type": "boolean",
+                        "description": "Indicates if the hours of operation are \"closed\" on Tuesday."
+                      },
+                      "openIntervals": {
+                        "uniqueItems": false,
+                        "type": "array",
+                        "items": {
+                          "additionalProperties": false,
+                          "type": "object",
+                          "properties": {
+                            "end": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The end time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            },
+                            "start": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The start time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            }
+                          }
+                        },
+                        "description": "Contains the time intervals for which the Entity is open on Tuesday. Note that if isClosed is set to true, \"openIntervals\" cannot be provided in an update."
+                      }
+                    }
+                  },
+                  "wednesday": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                      "isClosed": {
+                        "type": "boolean",
+                        "description": "Indicates if the hours of operation are \"closed\" on Wednesday."
+                      },
+                      "openIntervals": {
+                        "uniqueItems": false,
+                        "type": "array",
+                        "items": {
+                          "additionalProperties": false,
+                          "type": "object",
+                          "properties": {
+                            "end": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The end time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            },
+                            "start": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The start time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            }
+                          }
+                        },
+                        "description": "Contains the time intervals for which the Entity is open on Wednesday. Note that if isClosed is set to true, \"openIntervals\" cannot be provided in an update."
+                      }
+                    }
+                  }
+                },
+                "description": "Contains the daily hours, holiday hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `hours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day."
+              },
+              "impressum": {
+                "minLength": 0,
+                "maxLength": 2000,
+                "type": "string",
+                "description": "A statement of the ownership and authorship of a document. Individuals or organizations based in many German-speaking countries are required by law to include an Impressum in published media."
+              },
+              "instagramHandle": {
+                "minLength": 0,
+                "maxLength": 30,
+                "type": "string",
+                "description": "Valid Instagram username for the entity without the leading \"@\" (e.g., `NewCityAuto`)"
+              },
+              "iosAppUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "The URL where consumers can download the entity's app to their iPhone or iPad"
+              },
+              "isoRegionCode": {
+                "minLength": 0,
+                "type": "string",
+                "description": "The ISO 3166-2 region code for the entity\n\nYext will determine the entity's code and update **`isoRegionCode`** with that value. If Yext is unable to determine the code for the entity, the entity'ss ISO 3166-1 alpha-2 country code will be used."
+              },
+              "keywords": {
+                "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "maxLength": 100,
+                  "type": "string",
+                  "description": "\nCannot Include:\n* HTML markup"
+                }
+              },
+              "labels": {
+                "uniqueItems": false,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "type": "string"
+                },
+                "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API."
+              },
+              "landingPageUrl": {
+                "minLength": 0,
+                "format": "uri",
+                "type": "string",
+                "description": "The URL of this entity's Landing Page that was created with Yext Pages"
+              },
+              "languages": {
+                "description": "The langauges in which consumers can commicate with this entity or its staff members\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "maxLength": 100,
+                  "type": "string",
+                  "description": "\nCannot Include:\n* HTML markup"
+                }
+              },
+              "localPhone": {
+                "minLength": 0,
+                "type": "string",
+                "description": "Must be a valid, non-toll-free phone number, based on the country specified in **`address.region`**. Phone numbers for US entities must contain 10 digits."
+              },
+              "logo": {
+                "required": [
+                  "image"
+                ],
+                "additionalProperties": false,
+                "type": "object",
+                "description": "An image of the entity's logo\n\n\nSupported Aspect Ratios:\n* 1 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n",
+                "properties": {
+                  "clickthroughUrl": {
+                    "minLength": 0,
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "description": {
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "details": {
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "image": {
+                    "required": [
+                      "url"
+                    ],
+                    "additionalProperties": false,
+                    "type": "object",
+                    "description": "\nSupported Aspect Ratios:\n* 1 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n",
+                    "properties": {
+                      "alternateText": {
+                        "minLength": 0,
+                        "type": "string"
+                      },
+                      "url": {
+                        "minLength": 0,
+                        "format": "uri",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "mainPhone": {
+                "minLength": 0,
+                "type": "string",
+                "description": "The main phone number of the entity's point of contact\n\nMust be a valid phone number.\n\nIf the phone number's calling code is for a country other than the one given in the entity's **`countryCode`**, the phone number provided must contain the calling code (e.g., `+44` in `+442038083831`). Otherwise, the calling code is optional."
+              },
+              "menuUrl": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "displayUrl": {
+                    "minLength": 0,
+                    "maxLength": 2000,
+                    "format": "uri",
+                    "type": "string",
+                    "description": "The URL that is shown on your listings in place of **`menuUrl.url`**. You can use **`menuUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`menuUrl.url`**."
+                  },
+                  "preferDisplayUrl": {
+                    "type": "boolean",
+                    "description": "If set to true, only the display URL will be sent to those publishers who do not support separate display and tracking URLs for this field."
+                  },
+                  "url": {
+                    "minLength": 0,
+                    "maxLength": 2000,
+                    "format": "uri",
+                    "type": "string",
+                    "description": "A valid URL where consumers can view the entity's menu"
+                  }
+                },
+                "description": "Information about the URL where consumers can view the entity's menu"
+              },
+              "mobilePhone": {
+                "minLength": 0,
+                "type": "string",
+                "description": "Must be a valid phone number.\n\nIf the phone number's calling code is for a country other than the one given in the entity's **`countryCode`**, the phone number provided must contain the calling code (e.g., `+44` in `+442038083831`). Otherwise, the calling code is optional."
+              },
+              "nudgeEnabled": {
+                "type": "boolean",
+                "description": "Indicates whether Knowledge Nudge is enabled for the Yext Knowledge Assistant for this entity"
+              },
+              "onlineServiceHours": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "friday": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                      "isClosed": {
+                        "type": "boolean",
+                        "description": "Indicates if the online service hours are \"closed\" on Friday."
+                      },
+                      "openIntervals": {
+                        "uniqueItems": false,
+                        "type": "array",
+                        "items": {
+                          "additionalProperties": false,
+                          "type": "object",
+                          "properties": {
+                            "end": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The end time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            },
+                            "start": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The start time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            }
+                          }
+                        },
+                        "description": "Contains the time intervals for the Entity's online service hours on Friday. Note that if isClosed is set to true, \"openIntervals\" cannot be provided in an update."
+                      }
+                    }
+                  },
+                  "holidayHours": {
+                    "description": "\n**NOTE:** The list of Holiday Hours that you send us must be comprehensive. For example, if you send us a list of Holiday Hours that does not include Holiday Hours that you sent in your last update, Yext considers the missing Holiday Hours to be deleted, and we remove them.\n\n\n\nArray must be ordered.\n",
+                    "uniqueItems": true,
+                    "type": "array",
+                    "items": {
+                      "required": [
+                        "date"
+                      ],
+                      "additionalProperties": false,
+                      "type": "object",
+                      "properties": {
+                        "date": {
+                          "format": "date",
+                          "type": "string",
+                          "description": "Date on which the holiday hours will be in effect. Cannot be in the past.\n\n\nDate must be on or after 1970-01-01\nDate must be before or on 2038-01-01"
+                        },
+                        "isClosed": {
+                          "type": "boolean",
+                          "description": "Indicates if the online service hours are \"closed\" on on the given date."
+                        },
+                        "isRegularHours": {
+                          "type": "boolean",
+                          "description": "Indicates whether the holiday hours are the same as the regular business hours for the given date. If set to true, we will update the holiday hours if the regular business hours change for the date's day of the week."
+                        },
+                        "openIntervals": {
+                          "uniqueItems": false,
+                          "type": "array",
+                          "items": {
+                            "additionalProperties": false,
+                            "type": "object",
+                            "properties": {
+                              "end": {
+                                "format": "time",
+                                "type": "string",
+                                "description": "The end time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                              },
+                              "start": {
+                                "format": "time",
+                                "type": "string",
+                                "description": "The start time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                              }
+                            }
+                          },
+                          "description": "Contains the time intervals for the Entity's online service hours on the specified date."
+                        }
+                      }
+                    }
+                  },
+                  "monday": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                      "isClosed": {
+                        "type": "boolean",
+                        "description": "Indicates if the online service hours are \"closed\" on Monday."
+                      },
+                      "openIntervals": {
+                        "uniqueItems": false,
+                        "type": "array",
+                        "items": {
+                          "additionalProperties": false,
+                          "type": "object",
+                          "properties": {
+                            "end": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The end time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            },
+                            "start": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The start time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            }
+                          }
+                        },
+                        "description": "Contains the time intervals for the Entity's online service hours on Monday. Note that if isClosed is set to true, \"openIntervals\" cannot be provided in an update."
+                      }
+                    }
+                  },
+                  "reopenDate": {
+                    "format": "date",
+                    "type": "string",
+                    "description": "\nDate must be on or after 1970-01-01\nDate must be before or on 2038-01-01"
+                  },
+                  "saturday": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                      "isClosed": {
+                        "type": "boolean",
+                        "description": "Indicates if the online service hours are \"closed\" on Saturday."
+                      },
+                      "openIntervals": {
+                        "uniqueItems": false,
+                        "type": "array",
+                        "items": {
+                          "additionalProperties": false,
+                          "type": "object",
+                          "properties": {
+                            "end": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The end time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            },
+                            "start": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The start time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            }
+                          }
+                        },
+                        "description": "Contains the time intervals for the Entity's online service hours on Saturday. Note that if isClosed is set to true, \"openIntervals\" cannot be provided in an update."
+                      }
+                    }
+                  },
+                  "sunday": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                      "isClosed": {
+                        "type": "boolean",
+                        "description": "Indicates if the online service hours are \"closed\" on Sunday."
+                      },
+                      "openIntervals": {
+                        "uniqueItems": false,
+                        "type": "array",
+                        "items": {
+                          "additionalProperties": false,
+                          "type": "object",
+                          "properties": {
+                            "end": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The end time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            },
+                            "start": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The start time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            }
+                          }
+                        },
+                        "description": "Contains the time intervals for the Entity's online service hours on Sunday. Note that if isClosed is set to true, \"openIntervals\" cannot be provided in an update."
+                      }
+                    }
+                  },
+                  "thursday": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                      "isClosed": {
+                        "type": "boolean",
+                        "description": "Indicates if the online service hours are \"closed\" on Thursday."
+                      },
+                      "openIntervals": {
+                        "uniqueItems": false,
+                        "type": "array",
+                        "items": {
+                          "additionalProperties": false,
+                          "type": "object",
+                          "properties": {
+                            "end": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The end time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            },
+                            "start": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The start time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            }
+                          }
+                        },
+                        "description": "Contains the time intervals for the Entity's online service hours on Thursday. Note that if isClosed is set to true, \"openIntervals\" cannot be provided in an update."
+                      }
+                    }
+                  },
+                  "tuesday": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                      "isClosed": {
+                        "type": "boolean",
+                        "description": "Indicates if the online service hours are \"closed\" on Tuesday."
+                      },
+                      "openIntervals": {
+                        "uniqueItems": false,
+                        "type": "array",
+                        "items": {
+                          "additionalProperties": false,
+                          "type": "object",
+                          "properties": {
+                            "end": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The end time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            },
+                            "start": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The start time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            }
+                          }
+                        },
+                        "description": "Contains the time intervals for the Entity's online service hours on Tuesday. Note that if isClosed is set to true, \"openIntervals\" cannot be provided in an update."
+                      }
+                    }
+                  },
+                  "wednesday": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                      "isClosed": {
+                        "type": "boolean",
+                        "description": "Indicates if the online service hours are \"closed\" on Wednesday."
+                      },
+                      "openIntervals": {
+                        "uniqueItems": false,
+                        "type": "array",
+                        "items": {
+                          "additionalProperties": false,
+                          "type": "object",
+                          "properties": {
+                            "end": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The end time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            },
+                            "start": {
+                              "format": "time",
+                              "type": "string",
+                              "description": "The start time of the interval in `hh:mm` format (e.g., `\"06:30\"`, `\"17:00\"`)."
+                            }
+                          }
+                        },
+                        "description": "Contains the time intervals for the Entity's online service hours on Wednesday. Note that if isClosed is set to true, \"openIntervals\" cannot be provided in an update."
+                      }
+                    }
+                  }
+                },
+                "description": "Contains the daily online service hours, holiday online service hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `onlineServiceHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday online service hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day."
+              },
+              "orderUrl": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "displayUrl": {
+                    "minLength": 0,
+                    "maxLength": 2000,
+                    "format": "uri",
+                    "type": "string",
+                    "description": "The URL that is shown on your listings in place of **`orderUrl.url`**. You can use **`orderUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`orderUrl.url`**."
+                  },
+                  "preferDisplayUrl": {
+                    "type": "boolean",
+                    "description": "If set to true, only the display URL will be sent to those publishers who do not support separate display and tracking URLs for this field."
+                  },
+                  "url": {
+                    "minLength": 0,
+                    "maxLength": 2000,
+                    "format": "uri",
+                    "type": "string",
+                    "description": "A valid URL used to place an order at this entity"
+                  }
+                },
+                "description": "Information about the URL used to place orders that will be fulfilled by the entity"
+              },
+              "paymentOptions": {
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "ALIPAY",
+                    "AMERICANEXPRESS",
+                    "ANDROIDPAY",
+                    "APPLEPAY",
+                    "ATM",
+                    "ATMQUICK",
+                    "BACS",
+                    "BANCONTACT",
+                    "BANKDEPOSIT",
+                    "BANKPAY",
+                    "BGO",
+                    "BITCOIN",
+                    "Bar",
+                    "CARTASI",
+                    "CASH",
+                    "CCS",
+                    "CHECK",
+                    "CONB",
+                    "CVVV",
+                    "DEBITNOTE",
+                    "DINERSCLUB",
+                    "DIRECTDEBIT",
+                    "DISCOVER",
+                    "ECKARTE",
+                    "ECOCHEQUE",
+                    "EKENA",
+                    "EMV",
+                    "FINANCING",
+                    "GOPAY",
+                    "HAYAKAKEN",
+                    "HEBAG",
+                    "IBOD",
+                    "ICCARDS",
+                    "ICOCA",
+                    "ID",
+                    "IDEAL",
+                    "INCA",
+                    "INVOICE",
+                    "JCB",
+                    "JCoinPay",
+                    "JKOPAY",
+                    "KITACA",
+                    "KLA",
+                    "KLARNA",
+                    "LINEPAY",
+                    "MAESTRO",
+                    "MANACA",
+                    "MASTERCARD",
+                    "MIPAY",
+                    "MONIZZE",
+                    "MPAY",
+                    "Manuelle Lastsch",
+                    "Merpay",
+                    "NANACO",
+                    "NEXI",
+                    "NIMOCA",
+                    "OREM",
+                    "PASMO",
+                    "PAYBACKPAY",
+                    "PAYBOX",
+                    "PAYCONIQ",
+                    "PAYPAL",
+                    "PAYPAY",
+                    "PAYSEC",
+                    "PIN",
+                    "POSTEPAY",
+                    "QRCODE",
+                    "QUICPAY",
+                    "RAKUTENEDY",
+                    "RAKUTENPAY",
+                    "SAMSUNGPAY",
+                    "SODEXO",
+                    "SUGOCA",
+                    "SUICA",
+                    "SWISH",
+                    "TICKETRESTAURANT",
+                    "TOICA",
+                    "TRAVELERSCHECK",
+                    "TSCUBIC",
+                    "TWINT",
+                    "UNIONPAY",
+                    "VEV",
+                    "VISA",
+                    "VISAELECTRON",
+                    "VOB",
+                    "VOUCHER",
+                    "VPAY",
+                    "WAON",
+                    "WECHATPAY",
+                    "WIRETRANSFER",
+                    "Yucho Pay",
+                    "ZELLE",
+                    "auPay",
+                    "dBarai",
+                    "Überweisung"
+                  ],
+                  "type": "string"
+                },
+                "description": "The payment methods accepted by this entity\n\nValid elements depend on the entity's country.\n"
+              },
+              "photoGallery": {
+                "description": "\n**NOTE:** The list of photos that you send us must be comprehensive. For example, if you send us a list of photos that does not include photos that you sent in your last update, Yext considers the missing photos to be deleted, and we remove them from your listings.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 500 elements.\n\nArray item description:\n\n>Supported Aspect Ratios:\n>* 1 x 1\n>* 4 x 3\n>* 3 x 2\n>* 5 x 3\n>* 16 x 9\n>* 3 x 1\n>* 2 x 3\n>* 5 x 7\n>* 4 x 5\n>* 4 x 1\n>\n>**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n>",
+                "uniqueItems": false,
+                "type": "array",
+                "items": {
+                  "required": [
+                    "image"
+                  ],
+                  "additionalProperties": false,
+                  "type": "object",
+                  "description": "\nSupported Aspect Ratios:\n* 1 x 1\n* 4 x 3\n* 3 x 2\n* 5 x 3\n* 16 x 9\n* 3 x 1\n* 2 x 3\n* 5 x 7\n* 4 x 5\n* 4 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n",
+                  "properties": {
+                    "clickthroughUrl": {
+                      "minLength": 0,
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "description": {
+                      "minLength": 0,
+                      "type": "string"
+                    },
+                    "details": {
+                      "minLength": 0,
+                      "type": "string"
+                    },
+                    "image": {
+                      "required": [
+                        "url"
+                      ],
+                      "additionalProperties": false,
+                      "type": "object",
+                      "description": "\nSupported Aspect Ratios:\n* 1 x 1\n* 4 x 3\n* 3 x 2\n* 5 x 3\n* 16 x 9\n* 3 x 1\n* 2 x 3\n* 5 x 7\n* 4 x 5\n* 4 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n",
+                      "properties": {
+                        "alternateText": {
+                          "minLength": 0,
+                          "type": "string"
+                        },
+                        "url": {
+                          "minLength": 0,
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "pickupCoordinate": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "minimum": -90,
+                    "maximum": 90,
+                    "type": "number"
+                  },
+                  "longitude": {
+                    "minimum": -180,
+                    "maximum": 180,
+                    "type": "number"
+                  }
+                },
+                "description": "Coordinates of where consumers can be picked up at the entity, as provided by you"
+              },
+              "primaryConversationContact": {
+                "minLength": 0,
+                "type": "string",
+                "description": "ID of the user who is the primary Knowledge Assistant contact for the entity"
+              },
+              "productLists": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "ids": {
+                    "description": "IDs of the Products & Services Lists associated with this entity\n\n\nArray must be ordered.\n\nArray may have a maximum of 40 elements.\n",
+                    "uniqueItems": true,
+                    "type": "array",
+                    "items": {
+                      "minLength": 0,
+                      "type": "string"
+                    }
+                  },
+                  "label": {
+                    "minLength": 0,
+                    "maxLength": 30,
+                    "type": "string",
+                    "description": "Label to be used for this entity's Products & Services Lists. This label will appear on your entity's listings."
+                  }
+                },
+                "description": "Information about the Products & Services Content Lists associated with this entity"
+              },
+              "products": {
+                "description": "Products sold by this entity\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "maxLength": 100,
+                  "type": "string",
+                  "description": "\nCannot Include:\n* HTML markup"
+                }
+              },
+              "questionsAndAnswers": {
+                "type": "boolean",
+                "description": "Indicates whether Yext Knowledge Assistant question-and-answer conversations are enabled for this entity"
+              },
+              "rankTrackingCompetitors": {
+                "description": "Information about the competitors whose search performance you would like to compare to your own\n\n\nArray must be ordered.\n\nArray may have a maximum of 5 elements.\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "required": [
+                    "name",
+                    "website"
+                  ],
+                  "additionalProperties": false,
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "minLength": 0,
+                      "maxLength": 100,
+                      "type": "string",
+                      "description": "A name of a competitor\n\n\nCannot Include:\n* HTML markup"
+                    },
+                    "website": {
+                      "minLength": 0,
+                      "maxLength": 255,
+                      "format": "uri",
+                      "type": "string",
+                      "description": "The business website of a competitor\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    }
+                  }
+                }
+              },
+              "rankTrackingEnabled": {
+                "type": "boolean",
+                "description": "Indicates whether Rank Tracking is enabled"
+              },
+              "rankTrackingFrequency": {
+                "enum": [
+                  "WEEKLY",
+                  "MONTHLY",
+                  "QUARTERLY"
+                ],
+                "type": "string",
+                "description": "How often we send search queries to track your search performance"
+              },
+              "rankTrackingQueryTemplates": {
+                "description": "The ways in which your keywords will be arranged in the search queries we use to track your performance\n\n\nArray must have a minimum of 2 elements.\n\nArray may have a maximum of 4 elements.\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "KEYWORD",
+                    "KEYWORD_ZIP",
+                    "KEYWORD_CITY",
+                    "KEYWORD_IN_CITY",
+                    "KEYWORD_NEAR_ME",
+                    "KEYWORD_CITY_STATE"
+                  ],
+                  "type": "string"
+                }
+              },
+              "rankTrackingSites": {
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "GOOGLE_DESKTOP",
+                    "GOOGLE_MOBILE",
+                    "BING_DESKTOP",
+                    "BING_MOBILE",
+                    "YAHOO_DESKTOP",
+                    "YAHOO_MOBILE"
+                  ],
+                  "type": "string"
+                },
+                "description": "The search engines that we will use to track your performance"
+              },
+              "reservationUrl": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "displayUrl": {
+                    "minLength": 0,
+                    "maxLength": 2000,
+                    "format": "uri",
+                    "type": "string",
+                    "description": "The URL that is shown on your listings in place of **`reservationUrl.url`**. You can use **`reservationUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`reservationUrl.url`**.\n\nMust be a valid URL and be specified along with **`reservationUrl.url`**."
+                  },
+                  "preferDisplayUrl": {
+                    "type": "boolean",
+                    "description": "If set to true, only the display URL will be sent to those publishers who do not support separate display and tracking URLs for this field."
+                  },
+                  "url": {
+                    "minLength": 0,
+                    "maxLength": 2000,
+                    "format": "uri",
+                    "type": "string",
+                    "description": "A valid URL used to make reservations at this entity"
+                  }
+                },
+                "description": "Information about the URL consumers can visit to make reservations at this entity"
+              },
+              "reviewGenerationUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "The URL given Review Invitation emails where consumers can leave a review about the entity"
+              },
+              "reviewResponseConversationEnabled": {
+                "type": "boolean",
+                "description": "Indicates whether Yext Knowledge Assistant review-response conversations are enabled for this entity"
+              },
+              "routableCoordinate": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "minimum": -90,
+                    "maximum": 90,
+                    "type": "number"
+                  },
+                  "longitude": {
+                    "minimum": -180,
+                    "maximum": 180,
+                    "type": "number"
+                  }
+                },
+                "description": "Destination coordinates to use for driving directions to the entity, as provided by you"
+              },
+              "serviceAreaPlaces": {
+                "description": "Information about the area that is served by this entity. It is specified as a list of service area names and their associated types.\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\n\nArray may have a maximum of 200 elements.\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "additionalProperties": false,
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "minLength": 0,
+                      "maxLength": 100,
+                      "type": "string"
+                    },
+                    "type": {
+                      "enum": [
+                        "POSTAL_CODE",
+                        "REGION",
+                        "COUNTY",
+                        "CITY",
+                        "SUBLOCALITY"
+                      ],
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "services": {
+                "description": "Services offered by this entity\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "maxLength": 100,
+                  "type": "string",
+                  "description": "\nCannot Include:\n* HTML markup"
+                }
+              },
+              "specialities": {
+                "description": "Up to 100 of this entity's specialities (e.g., for food and dining: `Chicago style`)\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "maxLength": 100,
+                  "type": "string",
+                  "description": "\nCannot Include:\n* HTML markup"
+                }
+              },
+              "timezone": {
+                "minLength": 0,
+                "type": "string",
+                "description": "The timezone of the entity, in the standard `IANA time zone database` format (tz database). e.g. `\"America/New_York\"`"
+              },
+              "tollFreePhone": {
+                "minLength": 0,
+                "type": "string",
+                "description": "Must be a valid phone number.\n\nIf the phone number's calling code is for a country other than the one given in the entity's **`countryCode`**, the phone number provided must contain the calling code (e.g., `+44` in `+442038083831`). Otherwise, the calling code is optional."
+              },
+              "ttyPhone": {
+                "minLength": 0,
+                "type": "string",
+                "description": "Must be a valid phone number.\n\nIf the phone number's calling code is for a country other than the one given in the entity's **`countryCode`**, the phone number provided must contain the calling code (e.g., `+44` in `+442038083831`). Otherwise, the calling code is optional."
+              },
+              "twitterHandle": {
+                "minLength": 0,
+                "maxLength": 15,
+                "type": "string",
+                "description": "Valid Twitter handle for the entity without the leading \"@\" (e.g., `JohnSmith`)\n\nIf you submit an invalid Twitter handle, it will be ignored. The success response will contain a warning message explaining why your Twitter handle wasn't stored in the system."
+              },
+              "videos": {
+                "description": "Valid YouTube URLs for embedding a video on some publisher sites\n\n**NOTE:** Currently, only the first URL in the Array appears in your listings.\n\n\n\nArray must be ordered.\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "required": [
+                    "video"
+                  ],
+                  "additionalProperties": false,
+                  "type": "object",
+                  "properties": {
+                    "description": {
+                      "minLength": 0,
+                      "maxLength": 140,
+                      "type": "string",
+                      "description": "\nCannot Include:\n* HTML markup"
+                    },
+                    "video": {
+                      "required": [
+                        "url"
+                      ],
+                      "additionalProperties": false,
+                      "type": "object",
+                      "properties": {
+                        "url": {
+                          "minLength": 0,
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "walkableCoordinate": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "minimum": -90,
+                    "maximum": 90,
+                    "type": "number"
+                  },
+                  "longitude": {
+                    "minimum": -180,
+                    "maximum": 180,
+                    "type": "number"
+                  }
+                },
+                "description": "Destination coordinates to use for walking directions to the entity, as provided by you"
+              },
+              "websiteUrl": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "displayUrl": {
+                    "minLength": 0,
+                    "maxLength": 2000,
+                    "format": "uri",
+                    "type": "string",
+                    "description": "The URL that is shown on your listings in place of **`websiteUrl.url`**. You can use **`websiteUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`websiteUrl.url`**.\n\nMust be a valid URL and be specified along with **`websiteUrl.url`**."
+                  },
+                  "preferDisplayUrl": {
+                    "type": "boolean",
+                    "description": "If set to true, only the display URL will be sent to those publishers who do not support separate display and tracking URLs for this field."
+                  },
+                  "url": {
+                    "minLength": 0,
+                    "maxLength": 2000,
+                    "format": "uri",
+                    "type": "string",
+                    "description": "A valid URL for this entity's website"
+                  }
+                },
+                "description": "Information about the website for this entity"
               }
             }
           }
@@ -7937,6 +9646,65 @@
           }
         ]
       },
+      "HelpArticleWrite": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityWrite"
+          },
+          {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "name": {
+                "minLength": 0,
+                "maxLength": 5000,
+                "type": "string",
+                "description": "\n\n\nCannot Include:\n* HTML markup"
+              },
+              "keywords": {
+                "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "maxLength": 100,
+                  "type": "string",
+                  "description": "\nCannot Include:\n* HTML markup"
+                }
+              },
+              "labels": {
+                "uniqueItems": false,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "type": "string"
+                },
+                "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API."
+              },
+              "landingPageUrl": {
+                "minLength": 0,
+                "format": "uri",
+                "type": "string",
+                "description": "The URL of this entity's Landing Page that was created with Yext Pages"
+              },
+              "nudgeEnabled": {
+                "type": "boolean",
+                "description": "Indicates whether Knowledge Nudge is enabled for the Yext Knowledge Assistant for this entity"
+              },
+              "primaryConversationContact": {
+                "minLength": 0,
+                "type": "string",
+                "description": "ID of the user who is the primary Knowledge Assistant contact for the entity"
+              },
+              "timezone": {
+                "minLength": 0,
+                "type": "string",
+                "description": "The timezone of the entity, in the standard `IANA time zone database` format (tz database). e.g. `\"America/New_York\"`"
+              }
+            }
+          }
+        ]
+      },
       "HotelWrite": {
         "allOf": [
           {
@@ -11321,6 +13089,120 @@
           }
         ]
       },
+      "HotelRoomTypeWrite": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityWrite"
+          },
+          {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "name": {
+                "minLength": 0,
+                "maxLength": 5000,
+                "type": "string",
+                "description": "\n\n\nCannot Include:\n* HTML markup"
+              },
+              "labels": {
+                "uniqueItems": false,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "type": "string"
+                },
+                "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API."
+              },
+              "photoGallery": {
+                "description": "\n**NOTE:** The list of photos that you send us must be comprehensive. For example, if you send us a list of photos that does not include photos that you sent in your last update, Yext considers the missing photos to be deleted, and we remove them from your listings.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 500 elements.\n\nArray item description:\n\n>Supported Aspect Ratios:\n>* 1 x 1\n>* 4 x 3\n>* 3 x 2\n>* 5 x 3\n>* 16 x 9\n>* 3 x 1\n>* 2 x 3\n>* 5 x 7\n>* 4 x 5\n>* 4 x 1\n>\n>**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n>",
+                "uniqueItems": false,
+                "type": "array",
+                "items": {
+                  "required": [
+                    "image"
+                  ],
+                  "additionalProperties": false,
+                  "type": "object",
+                  "description": "\nSupported Aspect Ratios:\n* 1 x 1\n* 4 x 3\n* 3 x 2\n* 5 x 3\n* 16 x 9\n* 3 x 1\n* 2 x 3\n* 5 x 7\n* 4 x 5\n* 4 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n",
+                  "properties": {
+                    "clickthroughUrl": {
+                      "minLength": 0,
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "description": {
+                      "minLength": 0,
+                      "type": "string"
+                    },
+                    "details": {
+                      "minLength": 0,
+                      "type": "string"
+                    },
+                    "image": {
+                      "required": [
+                        "url"
+                      ],
+                      "additionalProperties": false,
+                      "type": "object",
+                      "description": "\nSupported Aspect Ratios:\n* 1 x 1\n* 4 x 3\n* 3 x 2\n* 5 x 3\n* 16 x 9\n* 3 x 1\n* 2 x 3\n* 5 x 7\n* 4 x 5\n* 4 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n",
+                      "properties": {
+                        "alternateText": {
+                          "minLength": 0,
+                          "type": "string"
+                        },
+                        "url": {
+                          "minLength": 0,
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "timezone": {
+                "minLength": 0,
+                "type": "string",
+                "description": "The timezone of the entity, in the standard `IANA time zone database` format (tz database). e.g. `\"America/New_York\"`"
+              },
+              "videos": {
+                "description": "Valid YouTube URLs for embedding a video on some publisher sites\n\n**NOTE:** Currently, only the first URL in the Array appears in your listings.\n\n\n\nArray must be ordered.\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "required": [
+                    "video"
+                  ],
+                  "additionalProperties": false,
+                  "type": "object",
+                  "properties": {
+                    "description": {
+                      "minLength": 0,
+                      "maxLength": 140,
+                      "type": "string",
+                      "description": "\nCannot Include:\n* HTML markup"
+                    },
+                    "video": {
+                      "required": [
+                        "url"
+                      ],
+                      "additionalProperties": false,
+                      "type": "object",
+                      "properties": {
+                        "url": {
+                          "minLength": 0,
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
       "JobWrite": {
         "allOf": [
           {
@@ -11378,15 +13260,6 @@
                 "type": "string",
                 "description": "The application URL"
               },
-              "categoryIds": {
-                "uniqueItems": false,
-                "type": "array",
-                "items": {
-                  "minLength": 0,
-                  "type": "string"
-                },
-                "description": "Yext Category IDs.\n\nIDs must be valid and selectable (i.e., cannot be parent categories).\n\nNOTE: The list of category IDs that you send us must be comprehensive. For example, if you send us a list of IDs that does not include IDs that you sent in your last update, Yext considers the missing categories to be deleted, and we remove them from your listings.\n"
-              },
               "datePosted": {
                 "format": "date",
                 "type": "string",
@@ -11428,12 +13301,6 @@
                 ],
                 "type": "string",
                 "description": "The employment type for the open job. Indicates whether the job is full-time, part-time, temporary, etc."
-              },
-              "googleAttributes": {
-                "additionalProperties": false,
-                "type": "object",
-                "properties": {},
-                "description": "The unique IDs of the entity's Google Business Profile keywords, as well as the unique IDs of any values selected for each keyword.\n\nValid keywords (e.g., `has_drive_through`, `has_fitting_room`, `kitchen_in_room`) are determined by the entity's primary category. A full list of keywords can be retrieved with the Google Fields: List endpoint.\n\nKeyword values provide more details on how the keyword applies to the entity (e.g., if the keyword is `has_drive_through`, its values may be `true` or `false`).\n\n* If the **`v`** parameter is before `20181204`: **`googleAttributes`** is formatted as a map of key-value pairs (e.g., `[{ \"id\": \"has_wheelchair_accessible_entrance\", \"values\": [ \"true\" ] }]`)\n* If the **`v`** parameter is on or after `20181204`: the contents are formatted as a list of objects (e.g., `{ \"has_wheelchair_accessible_entrance\": [ \"true\" ]}`)\n\n**NOTE:** The latest Google Attributes are available via the Google Fields: List endpoint. Google Attributes are managed by Google and are subject to change without notice. To prevent errors, make sure your API implementation is not dependent on the presence of specific attributes."
               },
               "hiringOrganization": {
                 "minLength": 0,
@@ -15977,6 +17844,506 @@
                 "maximum": 2028,
                 "type": "number",
                 "description": "The year the entity was established."
+              }
+            }
+          }
+        ]
+      },
+      "OrganizationWrite": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityWrite"
+          },
+          {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "name": {
+                "minLength": 0,
+                "maxLength": 5000,
+                "type": "string",
+                "description": "\n\n\nCannot Include:\n* HTML markup"
+              },
+              "alternateNames": {
+                "description": "Other names for your business that you would like us to use when tracking your search performance\n\n\nArray must be ordered.\n\nArray may have a maximum of 3 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "maxLength": 100,
+                  "type": "string",
+                  "description": "\nCannot Include:\n* HTML markup"
+                }
+              },
+              "alternateWebsites": {
+                "description": "Other websites for your business that we should search for when tracking your search performance\n\n\nArray must be ordered.\n\nArray may have a maximum of 3 elements.\n\nArray item description:\n\n>Cannot Include:\n>* common domain names, e.g., google.com, youtube.com, etc.",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "maxLength": 255,
+                  "format": "uri",
+                  "type": "string",
+                  "description": "\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                }
+              },
+              "bios": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "ids": {
+                    "description": "IDs of the Bio Lists associated with this entity\n\n\nArray must be ordered.\n\nArray may have a maximum of 40 elements.\n",
+                    "uniqueItems": true,
+                    "type": "array",
+                    "items": {
+                      "minLength": 0,
+                      "type": "string"
+                    }
+                  },
+                  "label": {
+                    "minLength": 0,
+                    "maxLength": 30,
+                    "type": "string",
+                    "description": "Label to be used for this entity's Bio Lists. This label will appear on your entity's listings."
+                  }
+                },
+                "description": "Information about the Bio Content Lists associated with this entity"
+              },
+              "customKeywords": {
+                "description": "Additional keywords you would like us to use when tracking your search performance\n\n\nArray must be ordered.\n\nArray may have a maximum of 5 elements.\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "maxLength": 100,
+                  "type": "string"
+                }
+              },
+              "description": {
+                "minLength": 10,
+                "maxLength": 15000,
+                "type": "string",
+                "description": "A description of the entity\n\n\nCannot Include:\n* HTML markup"
+              },
+              "emails": {
+                "description": "Emails addresses for this entity's point of contact\n\nMust be valid email addresses\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 5 elements.\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "format": "email",
+                  "type": "string"
+                }
+              },
+              "facebookPageUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for the entity's Facebook Page.\n\nValid formats:\n\n- facebook.com/profile.php?id=[numId]\n- facebook.com/group.php?gid=[numId]\n- facebook.com/groups/[numId]\n- facebook.com/[Name]\n- facebook.com/pages/[Name]/[numId]\n- facebook.com/people/[Name]/[numId]\n\nwhere [Name] is a String and [numId] is an Integer\nThe success response will contain a warning message explaining why the URL wasn't stored in the system."
+              },
+              "instagramHandle": {
+                "minLength": 0,
+                "maxLength": 30,
+                "type": "string",
+                "description": "Valid Instagram username for the entity without the leading \"@\" (e.g., `NewCityAuto`)"
+              },
+              "labels": {
+                "uniqueItems": false,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "type": "string"
+                },
+                "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API."
+              },
+              "logo": {
+                "required": [
+                  "image"
+                ],
+                "additionalProperties": false,
+                "type": "object",
+                "description": "An image of the entity's logo\n\n\nSupported Aspect Ratios:\n* 1 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n",
+                "properties": {
+                  "clickthroughUrl": {
+                    "minLength": 0,
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "description": {
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "details": {
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "image": {
+                    "required": [
+                      "url"
+                    ],
+                    "additionalProperties": false,
+                    "type": "object",
+                    "description": "\nSupported Aspect Ratios:\n* 1 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n",
+                    "properties": {
+                      "alternateText": {
+                        "minLength": 0,
+                        "type": "string"
+                      },
+                      "url": {
+                        "minLength": 0,
+                        "format": "uri",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "mainPhone": {
+                "minLength": 0,
+                "type": "string",
+                "description": "The main phone number of the entity's point of contact\n\nMust be a valid phone number.\n\nIf the phone number's calling code is for a country other than the one given in the entity's **`countryCode`**, the phone number provided must contain the calling code (e.g., `+44` in `+442038083831`). Otherwise, the calling code is optional."
+              },
+              "nudgeEnabled": {
+                "type": "boolean",
+                "description": "Indicates whether Knowledge Nudge is enabled for the Yext Knowledge Assistant for this entity"
+              },
+              "photoGallery": {
+                "description": "\n**NOTE:** The list of photos that you send us must be comprehensive. For example, if you send us a list of photos that does not include photos that you sent in your last update, Yext considers the missing photos to be deleted, and we remove them from your listings.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 500 elements.\n\nArray item description:\n\n>Supported Aspect Ratios:\n>* 1 x 1\n>* 4 x 3\n>* 3 x 2\n>* 5 x 3\n>* 16 x 9\n>* 3 x 1\n>* 2 x 3\n>* 5 x 7\n>* 4 x 5\n>* 4 x 1\n>\n>**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n>",
+                "uniqueItems": false,
+                "type": "array",
+                "items": {
+                  "required": [
+                    "image"
+                  ],
+                  "additionalProperties": false,
+                  "type": "object",
+                  "description": "\nSupported Aspect Ratios:\n* 1 x 1\n* 4 x 3\n* 3 x 2\n* 5 x 3\n* 16 x 9\n* 3 x 1\n* 2 x 3\n* 5 x 7\n* 4 x 5\n* 4 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n",
+                  "properties": {
+                    "clickthroughUrl": {
+                      "minLength": 0,
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "description": {
+                      "minLength": 0,
+                      "type": "string"
+                    },
+                    "details": {
+                      "minLength": 0,
+                      "type": "string"
+                    },
+                    "image": {
+                      "required": [
+                        "url"
+                      ],
+                      "additionalProperties": false,
+                      "type": "object",
+                      "description": "\nSupported Aspect Ratios:\n* 1 x 1\n* 4 x 3\n* 3 x 2\n* 5 x 3\n* 16 x 9\n* 3 x 1\n* 2 x 3\n* 5 x 7\n* 4 x 5\n* 4 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n",
+                      "properties": {
+                        "alternateText": {
+                          "minLength": 0,
+                          "type": "string"
+                        },
+                        "url": {
+                          "minLength": 0,
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "primaryConversationContact": {
+                "minLength": 0,
+                "type": "string",
+                "description": "ID of the user who is the primary Knowledge Assistant contact for the entity"
+              },
+              "questionsAndAnswers": {
+                "type": "boolean",
+                "description": "Indicates whether Yext Knowledge Assistant question-and-answer conversations are enabled for this entity"
+              },
+              "rankTrackingCompetitors": {
+                "description": "Information about the competitors whose search performance you would like to compare to your own\n\n\nArray must be ordered.\n\nArray may have a maximum of 5 elements.\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "required": [
+                    "name",
+                    "website"
+                  ],
+                  "additionalProperties": false,
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "minLength": 0,
+                      "maxLength": 100,
+                      "type": "string",
+                      "description": "A name of a competitor\n\n\nCannot Include:\n* HTML markup"
+                    },
+                    "website": {
+                      "minLength": 0,
+                      "maxLength": 255,
+                      "format": "uri",
+                      "type": "string",
+                      "description": "The business website of a competitor\n\n\nCannot Include:\n* common domain names, e.g., google.com, youtube.com, etc."
+                    }
+                  }
+                }
+              },
+              "rankTrackingEnabled": {
+                "type": "boolean",
+                "description": "Indicates whether Rank Tracking is enabled"
+              },
+              "rankTrackingFrequency": {
+                "enum": [
+                  "WEEKLY",
+                  "MONTHLY",
+                  "QUARTERLY"
+                ],
+                "type": "string",
+                "description": "How often we send search queries to track your search performance"
+              },
+              "rankTrackingQueryTemplates": {
+                "description": "The ways in which your keywords will be arranged in the search queries we use to track your performance\n\n\nArray must have a minimum of 2 elements.\n\nArray may have a maximum of 4 elements.\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "KEYWORD",
+                    "KEYWORD_ZIP",
+                    "KEYWORD_CITY",
+                    "KEYWORD_IN_CITY",
+                    "KEYWORD_NEAR_ME",
+                    "KEYWORD_CITY_STATE"
+                  ],
+                  "type": "string"
+                }
+              },
+              "rankTrackingSites": {
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "GOOGLE_DESKTOP",
+                    "GOOGLE_MOBILE",
+                    "BING_DESKTOP",
+                    "BING_MOBILE",
+                    "YAHOO_DESKTOP",
+                    "YAHOO_MOBILE"
+                  ],
+                  "type": "string"
+                },
+                "description": "The search engines that we will use to track your performance"
+              },
+              "timezone": {
+                "minLength": 0,
+                "type": "string",
+                "description": "The timezone of the entity, in the standard `IANA time zone database` format (tz database). e.g. `\"America/New_York\"`"
+              },
+              "twitterHandle": {
+                "minLength": 0,
+                "maxLength": 15,
+                "type": "string",
+                "description": "Valid Twitter handle for the entity without the leading \"@\" (e.g., `JohnSmith`)\n\nIf you submit an invalid Twitter handle, it will be ignored. The success response will contain a warning message explaining why your Twitter handle wasn't stored in the system."
+              },
+              "videos": {
+                "description": "Valid YouTube URLs for embedding a video on some publisher sites\n\n**NOTE:** Currently, only the first URL in the Array appears in your listings.\n\n\n\nArray must be ordered.\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "required": [
+                    "video"
+                  ],
+                  "additionalProperties": false,
+                  "type": "object",
+                  "properties": {
+                    "description": {
+                      "minLength": 0,
+                      "maxLength": 140,
+                      "type": "string",
+                      "description": "\nCannot Include:\n* HTML markup"
+                    },
+                    "video": {
+                      "required": [
+                        "url"
+                      ],
+                      "additionalProperties": false,
+                      "type": "object",
+                      "properties": {
+                        "url": {
+                          "minLength": 0,
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "websiteUrl": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "displayUrl": {
+                    "minLength": 0,
+                    "maxLength": 2000,
+                    "format": "uri",
+                    "type": "string",
+                    "description": "The URL that is shown on your listings in place of **`websiteUrl.url`**. You can use **`websiteUrl.displayUrl`** to display a short, memorable web address that redirects consumers to the URL given in **`websiteUrl.url`**.\n\nMust be a valid URL and be specified along with **`websiteUrl.url`**."
+                  },
+                  "preferDisplayUrl": {
+                    "type": "boolean",
+                    "description": "If set to true, only the display URL will be sent to those publishers who do not support separate display and tracking URLs for this field."
+                  },
+                  "url": {
+                    "minLength": 0,
+                    "maxLength": 2000,
+                    "format": "uri",
+                    "type": "string",
+                    "description": "A valid URL for this entity's website"
+                  }
+                },
+                "description": "Information about the website for this entity"
+              }
+            }
+          }
+        ]
+      },
+      "ProductWrite": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityWrite"
+          },
+          {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "name": {
+                "minLength": 0,
+                "maxLength": 5000,
+                "type": "string",
+                "description": "\n\n\nCannot Include:\n* HTML markup"
+              },
+              "keywords": {
+                "description": "Keywords that describe the entity.\n\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "maxLength": 100,
+                  "type": "string",
+                  "description": "\nCannot Include:\n* HTML markup"
+                }
+              },
+              "labels": {
+                "uniqueItems": false,
+                "type": "array",
+                "items": {
+                  "minLength": 0,
+                  "type": "string"
+                },
+                "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API."
+              },
+              "landingPageUrl": {
+                "minLength": 0,
+                "format": "uri",
+                "type": "string",
+                "description": "The URL of this entity's Landing Page that was created with Yext Pages"
+              },
+              "nudgeEnabled": {
+                "type": "boolean",
+                "description": "Indicates whether Knowledge Nudge is enabled for the Yext Knowledge Assistant for this entity"
+              },
+              "photoGallery": {
+                "description": "\n**NOTE:** The list of photos that you send us must be comprehensive. For example, if you send us a list of photos that does not include photos that you sent in your last update, Yext considers the missing photos to be deleted, and we remove them from your listings.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 500 elements.\n\nArray item description:\n\n>Supported Aspect Ratios:\n>* 1 x 1\n>* 4 x 3\n>* 3 x 2\n>* 5 x 3\n>* 16 x 9\n>* 3 x 1\n>* 2 x 3\n>* 5 x 7\n>* 4 x 5\n>* 4 x 1\n>\n>**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n>",
+                "uniqueItems": false,
+                "type": "array",
+                "items": {
+                  "required": [
+                    "image"
+                  ],
+                  "additionalProperties": false,
+                  "type": "object",
+                  "description": "\nSupported Aspect Ratios:\n* 1 x 1\n* 4 x 3\n* 3 x 2\n* 5 x 3\n* 16 x 9\n* 3 x 1\n* 2 x 3\n* 5 x 7\n* 4 x 5\n* 4 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n",
+                  "properties": {
+                    "clickthroughUrl": {
+                      "minLength": 0,
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "description": {
+                      "minLength": 0,
+                      "type": "string"
+                    },
+                    "details": {
+                      "minLength": 0,
+                      "type": "string"
+                    },
+                    "image": {
+                      "required": [
+                        "url"
+                      ],
+                      "additionalProperties": false,
+                      "type": "object",
+                      "description": "\nSupported Aspect Ratios:\n* 1 x 1\n* 4 x 3\n* 3 x 2\n* 5 x 3\n* 16 x 9\n* 3 x 1\n* 2 x 3\n* 5 x 7\n* 4 x 5\n* 4 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n",
+                      "properties": {
+                        "alternateText": {
+                          "minLength": 0,
+                          "type": "string"
+                        },
+                        "url": {
+                          "minLength": 0,
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "primaryConversationContact": {
+                "minLength": 0,
+                "type": "string",
+                "description": "ID of the user who is the primary Knowledge Assistant contact for the entity"
+              },
+              "timezone": {
+                "minLength": 0,
+                "type": "string",
+                "description": "The timezone of the entity, in the standard `IANA time zone database` format (tz database). e.g. `\"America/New_York\"`"
+              },
+              "videos": {
+                "description": "Valid YouTube URLs for embedding a video on some publisher sites\n\n**NOTE:** Currently, only the first URL in the Array appears in your listings.\n\n\n\nArray must be ordered.\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "required": [
+                    "video"
+                  ],
+                  "additionalProperties": false,
+                  "type": "object",
+                  "properties": {
+                    "description": {
+                      "minLength": 0,
+                      "maxLength": 140,
+                      "type": "string",
+                      "description": "\nCannot Include:\n* HTML markup"
+                    },
+                    "video": {
+                      "required": [
+                        "url"
+                      ],
+                      "additionalProperties": false,
+                      "type": "object",
+                      "properties": {
+                        "url": {
+                          "minLength": 0,
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -21541,7 +23908,7 @@
             "minLength": 0,
             "maxLength": 5000,
             "type": "string",
-            "description": "\n\n\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+            "description": "\n\n\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * hotelRoomType\n   * job\n   * location\n   * organization\n   * product\n   * restaurant\n```"
           },
           "address": {
             "additionalProperties": false,
@@ -21989,7 +24356,7 @@
             "description": "Indicates whether the entity offers all-inclusive rates.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
           },
           "alternateNames": {
-            "description": "Other names for your business that you would like us to use when tracking your search performance\n\n\nArray must be ordered.\n\nArray may have a maximum of 3 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
+            "description": "Other names for your business that you would like us to use when tracking your search performance\n\n\nArray must be ordered.\n\nArray may have a maximum of 3 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```",
             "uniqueItems": true,
             "type": "array",
             "items": {
@@ -22005,7 +24372,7 @@
             "description": "Must be a valid phone number.\n\nIf the phone number's calling code is for a country other than the one given in the entity's **`countryCode`**, the phone number provided must contain the calling code (e.g., `+44` in `+442038083831`). Otherwise, the calling code is optional.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
           },
           "alternateWebsites": {
-            "description": "Other websites for your business that we should search for when tracking your search performance\n\n\nArray must be ordered.\n\nArray may have a maximum of 3 elements.\n\nArray item description:\n\n>Cannot Include:\n>* common domain names, e.g., google.com, youtube.com, etc.\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
+            "description": "Other websites for your business that we should search for when tracking your search performance\n\n\nArray must be ordered.\n\nArray may have a maximum of 3 elements.\n\nArray item description:\n\n>Cannot Include:\n>* common domain names, e.g., google.com, youtube.com, etc.\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```",
             "uniqueItems": true,
             "type": "array",
             "items": {
@@ -22153,7 +24520,7 @@
                 "description": "Label to be used for this entity's Bio Lists. This label will appear on your entity's listings.\n\nFiltering Type: `text`"
               }
             },
-            "description": "Information about the Bio Content Lists associated with this entity\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+            "description": "Information about the Bio Content Lists associated with this entity\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```"
           },
           "boutiqueStores": {
             "enum": [
@@ -22535,7 +24902,7 @@
               "type": "string",
               "description": "Filtering Type: `text`"
             },
-            "description": "Yext Category IDs.\n\nIDs must be valid and selectable (i.e., cannot be parent categories).\n\nNOTE: The list of category IDs that you send us must be comprehensive. For example, if you send us a list of IDs that does not include IDs that you sent in your last update, Yext considers the missing categories to be deleted, and we remove them from your listings.\n\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * event\n   * faq\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * job\n   * location\n   * restaurant\n```"
+            "description": "Yext Category IDs.\n\nIDs must be valid and selectable (i.e., cannot be parent categories).\n\nNOTE: The list of category IDs that you send us must be comprehensive. For example, if you send us a list of IDs that does not include IDs that you sent in your last update, Yext considers the missing categories to be deleted, and we remove them from your listings.\n\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * event\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
           },
           "catsAllowed": {
             "enum": [
@@ -22695,7 +25062,7 @@
             "description": "Indicates whether the entity offers currency exchange services.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
           },
           "customKeywords": {
-            "description": "Additional keywords you would like us to use when tracking your search performance\n\n\nArray must be ordered.\n\nArray may have a maximum of 5 elements.\n\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
+            "description": "Additional keywords you would like us to use when tracking your search performance\n\n\nArray must be ordered.\n\nArray may have a maximum of 5 elements.\n\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```",
             "uniqueItems": true,
             "type": "array",
             "items": {
@@ -23063,7 +25430,7 @@
             "minLength": 10,
             "maxLength": 15000,
             "type": "string",
-            "description": "A description of the entity\n\n\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * job\n   * location\n   * restaurant\n```"
+            "description": "A description of the entity\n\n\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * job\n   * location\n   * organization\n   * restaurant\n```"
           },
           "displayCoordinate": {
             "additionalProperties": false,
@@ -23482,7 +25849,7 @@
             "description": "Indicates whether the entity has an elliptical machine.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
           },
           "emails": {
-            "description": "Emails addresses for this entity's point of contact\n\nMust be valid email addresses\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 5 elements.\n\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * contactCard\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
+            "description": "Emails addresses for this entity's point of contact\n\nMust be valid email addresses\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 5 elements.\n\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * contactCard\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```",
             "uniqueItems": true,
             "type": "array",
             "items": {
@@ -23593,7 +25960,7 @@
           "facebookPageUrl": {
             "minLength": 0,
             "type": "string",
-            "description": "URL for the entity's Facebook Page.\n\nValid formats:\n\n- facebook.com/profile.php?id=[numId]\n- facebook.com/group.php?gid=[numId]\n- facebook.com/groups/[numId]\n- facebook.com/[Name]\n- facebook.com/pages/[Name]/[numId]\n- facebook.com/people/[Name]/[numId]\n\nwhere [Name] is a String and [numId] is an Integer\nThe success response will contain a warning message explaining why the URL wasn't stored in the system.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+            "description": "URL for the entity's Facebook Page.\n\nValid formats:\n\n- facebook.com/profile.php?id=[numId]\n- facebook.com/group.php?gid=[numId]\n- facebook.com/groups/[numId]\n- facebook.com/[Name]\n- facebook.com/pages/[Name]/[numId]\n- facebook.com/people/[Name]/[numId]\n\nwhere [Name] is a String and [numId] is an Integer\nThe success response will contain a warning message explaining why the URL wasn't stored in the system.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```"
           },
           "facebookProfilePhoto": {
             "required": [
@@ -23767,7 +26134,7 @@
             "additionalProperties": false,
             "type": "object",
             "properties": {},
-            "description": "The unique IDs of the entity's Google Business Profile keywords, as well as the unique IDs of any values selected for each keyword.\n\nValid keywords (e.g., `has_drive_through`, `has_fitting_room`, `kitchen_in_room`) are determined by the entity's primary category. A full list of keywords can be retrieved with the Google Fields: List endpoint.\n\nKeyword values provide more details on how the keyword applies to the entity (e.g., if the keyword is `has_drive_through`, its values may be `true` or `false`).\n\n* If the **`v`** parameter is before `20181204`: **`googleAttributes`** is formatted as a map of key-value pairs (e.g., `[{ \"id\": \"has_wheelchair_accessible_entrance\", \"values\": [ \"true\" ] }]`)\n* If the **`v`** parameter is on or after `20181204`: the contents are formatted as a list of objects (e.g., `{ \"has_wheelchair_accessible_entrance\": [ \"true\" ]}`)\n\n**NOTE:** The latest Google Attributes are available via the Google Fields: List endpoint. Google Attributes are managed by Google and are subject to change without notice. To prevent errors, make sure your API implementation is not dependent on the presence of specific attributes.\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * event\n   * faq\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * job\n   * location\n   * restaurant\n```"
+            "description": "The unique IDs of the entity's Google Business Profile keywords, as well as the unique IDs of any values selected for each keyword.\n\nValid keywords (e.g., `has_drive_through`, `has_fitting_room`, `kitchen_in_room`) are determined by the entity's primary category. A full list of keywords can be retrieved with the Google Fields: List endpoint.\n\nKeyword values provide more details on how the keyword applies to the entity (e.g., if the keyword is `has_drive_through`, its values may be `true` or `false`).\n\n* If the **`v`** parameter is before `20181204`: **`googleAttributes`** is formatted as a map of key-value pairs (e.g., `[{ \"id\": \"has_wheelchair_accessible_entrance\", \"values\": [ \"true\" ] }]`)\n* If the **`v`** parameter is on or after `20181204`: the contents are formatted as a list of objects (e.g., `{ \"has_wheelchair_accessible_entrance\": [ \"true\" ]}`)\n\n**NOTE:** The latest Google Attributes are available via the Google Fields: List endpoint. Google Attributes are managed by Google and are subject to change without notice. To prevent errors, make sure your API implementation is not dependent on the presence of specific attributes.\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
           },
           "googleCoverPhoto": {
             "required": [
@@ -24492,7 +26859,7 @@
             "minLength": 0,
             "maxLength": 30,
             "type": "string",
-            "description": "Valid Instagram username for the entity without the leading \"@\" (e.g., `NewCityAuto`)\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+            "description": "Valid Instagram username for the entity without the leading \"@\" (e.g., `NewCityAuto`)\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```"
           },
           "insuranceAccepted": {
             "description": "A list of insurance policies accepted by the healthcare provider\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * healthcareFacility\n   * healthcareProfessional\n```",
@@ -24861,7 +27228,7 @@
               "minLength": 0,
               "type": "string"
             },
-            "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API.\n\nFiltering Type: `opaque`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+            "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API.\n\nFiltering Type: `opaque`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * hotelRoomType\n   * job\n   * location\n   * organization\n   * product\n   * restaurant\n```"
           },
           "landingPageUrl": {
             "minLength": 0,
@@ -24970,7 +27337,7 @@
             ],
             "additionalProperties": false,
             "type": "object",
-            "description": "An image of the entity's logo\n\n\nSupported Aspect Ratios:\n* 1 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * job\n   * location\n   * restaurant\n```",
+            "description": "An image of the entity's logo\n\n\nSupported Aspect Ratios:\n* 1 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * job\n   * location\n   * organization\n   * restaurant\n```",
             "properties": {
               "clickthroughUrl": {
                 "minLength": 0,
@@ -25014,7 +27381,7 @@
           "mainPhone": {
             "minLength": 0,
             "type": "string",
-            "description": "The main phone number of the entity's point of contact\n\nMust be a valid phone number.\n\nIf the phone number's calling code is for a country other than the one given in the entity's **`countryCode`**, the phone number provided must contain the calling code (e.g., `+44` in `+442038083831`). Otherwise, the calling code is optional.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+            "description": "The main phone number of the entity's point of contact\n\nMust be a valid phone number.\n\nIf the phone number's calling code is for a country other than the one given in the entity's **`countryCode`**, the phone number provided must contain the calling code (e.g., `+44` in `+442038083831`). Otherwise, the calling code is optional.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```"
           },
           "massage": {
             "enum": [
@@ -25144,7 +27511,7 @@
           },
           "nudgeEnabled": {
             "type": "boolean",
-            "description": "Indicates whether Knowledge Nudge is enabled for the Yext Knowledge Assistant for this entity\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * atm\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+            "description": "Indicates whether Knowledge Nudge is enabled for the Yext Knowledge Assistant for this entity\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * atm\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * organization\n   * product\n   * restaurant\n```"
           },
           "officeName": {
             "minLength": 0,
@@ -25628,7 +27995,7 @@
             "description": "Indicates if the entity is pet friendly.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
           },
           "photoGallery": {
-            "description": "\n**NOTE:** The list of photos that you send us must be comprehensive. For example, if you send us a list of photos that does not include photos that you sent in your last update, Yext considers the missing photos to be deleted, and we remove them from your listings.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 500 elements.\n\nArray item description:\n\n>Supported Aspect Ratios:\n>* 1 x 1\n>* 4 x 3\n>* 3 x 2\n>* 5 x 3\n>* 16 x 9\n>* 3 x 1\n>* 2 x 3\n>* 5 x 7\n>* 4 x 5\n>* 4 x 1\n>\n>**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n>\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * atm\n   * event\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * product\n   * restaurant\n```",
+            "description": "\n**NOTE:** The list of photos that you send us must be comprehensive. For example, if you send us a list of photos that does not include photos that you sent in your last update, Yext considers the missing photos to be deleted, and we remove them from your listings.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 500 elements.\n\nArray item description:\n\n>Supported Aspect Ratios:\n>* 1 x 1\n>* 4 x 3\n>* 3 x 2\n>* 5 x 3\n>* 16 x 9\n>* 3 x 1\n>* 2 x 3\n>* 5 x 7\n>* 4 x 5\n>* 4 x 1\n>\n>**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n>\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * atm\n   * event\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * hotelRoomType\n   * location\n   * organization\n   * product\n   * restaurant\n```",
             "uniqueItems": false,
             "type": "array",
             "items": {
@@ -26005,7 +28372,7 @@
           "primaryConversationContact": {
             "minLength": 0,
             "type": "string",
-            "description": "ID of the user who is the primary Knowledge Assistant contact for the entity\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * atm\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+            "description": "ID of the user who is the primary Knowledge Assistant contact for the entity\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * atm\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * organization\n   * product\n   * restaurant\n```"
           },
           "privateBeach": {
             "enum": [
@@ -26061,10 +28428,10 @@
           },
           "questionsAndAnswers": {
             "type": "boolean",
-            "description": "Indicates whether Yext Knowledge Assistant question-and-answer conversations are enabled for this entity\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+            "description": "Indicates whether Yext Knowledge Assistant question-and-answer conversations are enabled for this entity\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```"
           },
           "rankTrackingCompetitors": {
-            "description": "Information about the competitors whose search performance you would like to compare to your own\n\n\nArray must be ordered.\n\nArray may have a maximum of 5 elements.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
+            "description": "Information about the competitors whose search performance you would like to compare to your own\n\n\nArray must be ordered.\n\nArray may have a maximum of 5 elements.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```",
             "uniqueItems": true,
             "type": "array",
             "items": {
@@ -26094,7 +28461,7 @@
           },
           "rankTrackingEnabled": {
             "type": "boolean",
-            "description": "Indicates whether Rank Tracking is enabled\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+            "description": "Indicates whether Rank Tracking is enabled\n\nFiltering Type: `boolean`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```"
           },
           "rankTrackingFrequency": {
             "enum": [
@@ -26103,10 +28470,10 @@
               "QUARTERLY"
             ],
             "type": "string",
-            "description": "How often we send search queries to track your search performance\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+            "description": "How often we send search queries to track your search performance\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```"
           },
           "rankTrackingQueryTemplates": {
-            "description": "The ways in which your keywords will be arranged in the search queries we use to track your performance\n\n\nArray must have a minimum of 2 elements.\n\nArray may have a maximum of 4 elements.\n\n\nFiltering Type: `list of option`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
+            "description": "The ways in which your keywords will be arranged in the search queries we use to track your performance\n\n\nArray must have a minimum of 2 elements.\n\nArray may have a maximum of 4 elements.\n\n\nFiltering Type: `list of option`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```",
             "uniqueItems": true,
             "type": "array",
             "items": {
@@ -26137,7 +28504,7 @@
               "type": "string",
               "description": "Filtering Type: `option`"
             },
-            "description": "The search engines that we will use to track your performance\n\nFiltering Type: `list of option`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+            "description": "The search engines that we will use to track your performance\n\nFiltering Type: `list of option`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```"
           },
           "reservationUrl": {
             "additionalProperties": false,
@@ -27035,7 +29402,7 @@
           "timezone": {
             "minLength": 0,
             "type": "string",
-            "description": "The timezone of the entity, in the standard `IANA time zone database` format (tz database). e.g. `\"America/New_York\"`\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * job\n   * location\n   * product\n   * restaurant\n```"
+            "description": "The timezone of the entity, in the standard `IANA time zone database` format (tz database). e.g. `\"America/New_York\"`\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * hotelRoomType\n   * job\n   * location\n   * organization\n   * product\n   * restaurant\n```"
           },
           "tollFreePhone": {
             "minLength": 0,
@@ -27069,7 +29436,7 @@
             "minLength": 0,
             "maxLength": 15,
             "type": "string",
-            "description": "Valid Twitter handle for the entity without the leading \"@\" (e.g., `JohnSmith`)\n\nIf you submit an invalid Twitter handle, it will be ignored. The success response will contain a warning message explaining why your Twitter handle wasn't stored in the system.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+            "description": "Valid Twitter handle for the entity without the leading \"@\" (e.g., `JohnSmith`)\n\nIf you submit an invalid Twitter handle, it will be ignored. The success response will contain a warning message explaining why your Twitter handle wasn't stored in the system.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```"
           },
           "uberLink": {
             "required": [
@@ -27154,7 +29521,7 @@
             "description": "Name of the venue where the event is being held\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * event\n```"
           },
           "videos": {
-            "description": "Valid YouTube URLs for embedding a video on some publisher sites\n\n**NOTE:** Currently, only the first URL in the Array appears in your listings.\n\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * product\n   * restaurant\n```",
+            "description": "Valid YouTube URLs for embedding a video on some publisher sites\n\n**NOTE:** Currently, only the first URL in the Array appears in your listings.\n\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * hotelRoomType\n   * location\n   * organization\n   * product\n   * restaurant\n```",
             "uniqueItems": true,
             "type": "array",
             "items": {
@@ -27295,7 +29662,7 @@
                 "description": "A valid URL for this entity's website\n\nFiltering Type: `text`"
               }
             },
-            "description": "Information about the website for this entity\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+            "description": "Information about the website for this entity\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * contactCard\n   * event\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```"
           },
           "weightMachine": {
             "enum": [
