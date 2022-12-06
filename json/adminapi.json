@@ -23899,7 +23899,7 @@
               "uid": {
                 "minLength": 0,
                 "type": "string",
-                "description": "A static globally unique ID for the Entity. Note that this value cannot be used in place of **`id`** in API calls to retrieve or edit Entity information."
+                "description": "The internal ID of the entity. This UID is a static, globally unique ID. Note that this value cannot be used in place of id in API calls to retrieve or edit Entity information.\n\nIf the v param is before `20221206`, the returned value will be a hashed version of the entity UID (aka internal ID of the entity).\n"
               }
             },
             "description": "Contains the metadata about the entity.\n\n```\nEligible For: \n   * atm\n   * event\n   * faq\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * job\n   * location\n   * restaurant\n```"
