@@ -1199,7 +1199,10 @@ paths:
                                 uid:
                                   minLength: 0
                                   type: string
-                                  description: A static globally unique ID for the Entity. Note that this value cannot be used in place of **`id`** in API calls to retrieve or edit Entity information.
+                                  description: |
+                                    The internal ID of the entity. This UID is a static, globally unique ID. Note that this value cannot be used in place of id in API calls to retrieve or edit Entity information.
+
+                                    If the v param is before `20221206`, the returned value will be a hashed version of the entity UID (aka internal ID of the entity).
                               description: |-
                                 Contains the metadata about the entity.
 
@@ -10845,7 +10848,10 @@ paths:
                           uid:
                             minLength: 0
                             type: string
-                            description: A static globally unique ID for the Entity. Note that this value cannot be used in place of **`id`** in API calls to retrieve or edit Entity information.
+                            description: |
+                              The internal ID of the entity. This UID is a static, globally unique ID. Note that this value cannot be used in place of id in API calls to retrieve or edit Entity information.
+
+                              If the v param is before `20221206`, the returned value will be a hashed version of the entity UID (aka internal ID of the entity).
                         description: |-
                           Contains the metadata about the entity.
 
@@ -21595,7 +21601,10 @@ paths:
                                 uid:
                                   minLength: 0
                                   type: string
-                                  description: A static globally unique ID for the Entity. Note that this value cannot be used in place of **`id`** in API calls to retrieve or edit Entity information.
+                                  description: |
+                                    The internal ID of the entity. This UID is a static, globally unique ID. Note that this value cannot be used in place of id in API calls to retrieve or edit Entity information.
+
+                                    If the v param is before `20221206`, the returned value will be a hashed version of the entity UID (aka internal ID of the entity).
                               description: |-
                                 Contains the metadata about the entity.
 
@@ -31352,7 +31361,10 @@ paths:
                           uid:
                             minLength: 0
                             type: string
-                            description: A static globally unique ID for the Entity. Note that this value cannot be used in place of **`id`** in API calls to retrieve or edit Entity information.
+                            description: |
+                              The internal ID of the entity. This UID is a static, globally unique ID. Note that this value cannot be used in place of id in API calls to retrieve or edit Entity information.
+
+                              If the v param is before `20221206`, the returned value will be a hashed version of the entity UID (aka internal ID of the entity).
                         description: |-
                           Contains the metadata about the entity.
 
@@ -41034,7 +41046,10 @@ paths:
                                 uid:
                                   minLength: 0
                                   type: string
-                                  description: A static globally unique ID for the Entity. Note that this value cannot be used in place of **`id`** in API calls to retrieve or edit Entity information.
+                                  description: |
+                                    The internal ID of the entity. This UID is a static, globally unique ID. Note that this value cannot be used in place of id in API calls to retrieve or edit Entity information.
+
+                                    If the v param is before `20221206`, the returned value will be a hashed version of the entity UID (aka internal ID of the entity).
                               description: |-
                                 Contains the metadata about the entity.
 
@@ -51735,7 +51750,10 @@ paths:
                                       uid:
                                         minLength: 0
                                         type: string
-                                        description: A static globally unique ID for the Entity. Note that this value cannot be used in place of **`id`** in API calls to retrieve or edit Entity information.
+                                        description: |
+                                          The internal ID of the entity. This UID is a static, globally unique ID. Note that this value cannot be used in place of id in API calls to retrieve or edit Entity information.
+
+                                          If the v param is before `20221206`, the returned value will be a hashed version of the entity UID (aka internal ID of the entity).
                                     description: |-
                                       Contains the metadata about the entity.
 
