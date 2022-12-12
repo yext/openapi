@@ -1302,16 +1302,6 @@ paths:
                                     * a URL or domain name
 
                                     Filtering Type: `text`
-                                line3:
-                                  minLength: 0
-                                  maxLength: 255
-                                  type: string
-                                  description: |-
-
-                                    Cannot Include:
-                                    * a URL or domain name
-
-                                    Filtering Type: `text`
                                 postalCode:
                                   minLength: 0
                                   maxLength: 10
@@ -10942,16 +10932,6 @@ paths:
 
                               Filtering Type: `text`
                           line2:
-                            minLength: 0
-                            maxLength: 255
-                            type: string
-                            description: |-
-
-                              Cannot Include:
-                              * a URL or domain name
-
-                              Filtering Type: `text`
-                          line3:
                             minLength: 0
                             maxLength: 255
                             type: string
@@ -21704,16 +21684,6 @@ paths:
                                     * a URL or domain name
 
                                     Filtering Type: `text`
-                                line3:
-                                  minLength: 0
-                                  maxLength: 255
-                                  type: string
-                                  description: |-
-
-                                    Cannot Include:
-                                    * a URL or domain name
-
-                                    Filtering Type: `text`
                                 postalCode:
                                   minLength: 0
                                   maxLength: 10
@@ -31464,16 +31434,6 @@ paths:
                               * a URL or domain name
 
                               Filtering Type: `text`
-                          line3:
-                            minLength: 0
-                            maxLength: 255
-                            type: string
-                            description: |-
-
-                              Cannot Include:
-                              * a URL or domain name
-
-                              Filtering Type: `text`
                           postalCode:
                             minLength: 0
                             maxLength: 10
@@ -41140,16 +41100,6 @@ paths:
 
                                     Filtering Type: `text`
                                 line2:
-                                  minLength: 0
-                                  maxLength: 255
-                                  type: string
-                                  description: |-
-
-                                    Cannot Include:
-                                    * a URL or domain name
-
-                                    Filtering Type: `text`
-                                line3:
                                   minLength: 0
                                   maxLength: 255
                                   type: string
@@ -51844,16 +51794,6 @@ paths:
 
                                           Filtering Type: `text`
                                       line2:
-                                        minLength: 0
-                                        maxLength: 255
-                                        type: string
-                                        description: |-
-
-                                          Cannot Include:
-                                          * a URL or domain name
-
-                                          Filtering Type: `text`
-                                      line3:
                                         minLength: 0
                                         maxLength: 255
                                         type: string

@@ -955,14 +955,6 @@ components:
 
                     Cannot Include:
                     * a URL or domain name
-                line3:
-                  minLength: 0
-                  maxLength: 255
-                  type: string
-                  description: |-
-
-                    Cannot Include:
-                    * a URL or domain name
                 postalCode:
                   minLength: 0
                   maxLength: 10
@@ -2647,14 +2639,6 @@ components:
 
                     Cannot Include:
                     * a URL or domain name
-                line3:
-                  minLength: 0
-                  maxLength: 255
-                  type: string
-                  description: |-
-
-                    Cannot Include:
-                    * a URL or domain name
                 postalCode:
                   minLength: 0
                   maxLength: 10
@@ -3285,14 +3269,6 @@ components:
                     Cannot Include:
                     * a URL or domain name
                 line2:
-                  minLength: 0
-                  maxLength: 255
-                  type: string
-                  description: |-
-
-                    Cannot Include:
-                    * a URL or domain name
-                line3:
                   minLength: 0
                   maxLength: 255
                   type: string
@@ -5238,14 +5214,6 @@ components:
                     Cannot Include:
                     * a URL or domain name
                 line2:
-                  minLength: 0
-                  maxLength: 255
-                  type: string
-                  description: |-
-
-                    Cannot Include:
-                    * a URL or domain name
-                line3:
                   minLength: 0
                   maxLength: 255
                   type: string
@@ -7784,14 +7752,6 @@ components:
 
                     Cannot Include:
                     * a URL or domain name
-                line3:
-                  minLength: 0
-                  maxLength: 255
-                  type: string
-                  description: |-
-
-                    Cannot Include:
-                    * a URL or domain name
                 postalCode:
                   minLength: 0
                   maxLength: 10
@@ -10040,14 +10000,6 @@ components:
                     Cannot Include:
                     * a URL or domain name
                 line2:
-                  minLength: 0
-                  maxLength: 255
-                  type: string
-                  description: |-
-
-                    Cannot Include:
-                    * a URL or domain name
-                line3:
                   minLength: 0
                   maxLength: 255
                   type: string
@@ -13651,14 +13603,6 @@ components:
                     Cannot Include:
                     * a URL or domain name
                 line2:
-                  minLength: 0
-                  maxLength: 255
-                  type: string
-                  description: |-
-
-                    Cannot Include:
-                    * a URL or domain name
-                line3:
                   minLength: 0
                   maxLength: 255
                   type: string
@@ -18473,14 +18417,6 @@ components:
                     Cannot Include:
                     * a URL or domain name
                 line2:
-                  minLength: 0
-                  maxLength: 255
-                  type: string
-                  description: |-
-
-                    Cannot Include:
-                    * a URL or domain name
-                line3:
                   minLength: 0
                   maxLength: 255
                   type: string
@@ -24017,16 +23953,6 @@ components:
 
                 Filtering Type: `text`
             line2:
-              minLength: 0
-              maxLength: 255
-              type: string
-              description: |-
-
-                Cannot Include:
-                * a URL or domain name
-
-                Filtering Type: `text`
-            line3:
               minLength: 0
               maxLength: 255
               type: string

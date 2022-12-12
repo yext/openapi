@@ -904,12 +904,6 @@
                 "type": "string",
                 "description": "\nCannot Include:\n* a URL or domain name\n\nFiltering Type: `text`"
               },
-              "line3": {
-                "minLength": 0,
-                "maxLength": 255,
-                "type": "string",
-                "description": "\nCannot Include:\n* a URL or domain name\n\nFiltering Type: `text`"
-              },
               "postalCode": {
                 "minLength": 0,
                 "maxLength": 10,

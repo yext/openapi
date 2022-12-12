@@ -695,16 +695,6 @@ components:
                 * a URL or domain name
 
                 Filtering Type: `text`
-            line3:
-              minLength: 0
-              maxLength: 255
-              type: string
-              description: |-
-
-                Cannot Include:
-                * a URL or domain name
-
-                Filtering Type: `text`
             postalCode:
               minLength: 0
               maxLength: 10
