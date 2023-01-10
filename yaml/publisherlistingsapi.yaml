@@ -84,7 +84,7 @@ info:
     | Website URLs                  | <p><ul><li>The capitalization in the URLs provided by Yext should be reflected in your listings.</li><li>You should be able to accommodate URLs of unlimited length.</li><li>You should be able display an unlimited number of websites in your listings.</li><li>The first URL that we pass you should be displayed as the "main" URL on the listing and appear at the top of the page.</li><li>If a `displayURL` is provided for a website, that URL should appear in the listing, but the link should redirect the consumer to the site specified by that URL's `url`.</li><li>When displaying links to websites, you should show each website's type followed by its clickable URL. For example:<ul><li>`Website: www.location.example.com`</li><li>`Reservation: www.location.example.com/reserve`</li><li>`Menu: www.location.example.com/menu`</li><li>`Order: www.location.example.com/order`</li></ul></li><li>You should be able to show more than one URL for each type of website.</li></ul></p>  |
     | Description                   | <p><ul><li>You should be able to accommodate at least 5,000 characters.</li><li>You should be able to support newline characters (i.e., separate text into paragraphs).</li><li>You should be able to support non-Latin characters.</li></ul></p>     |
     | Email addresses               | <p><ul><li>All email addresses should be clickable.</li><li>You should be able to display an unlimited number of email addresses in your listings.</li></ul></p>      |
-    | Email addresses               | <p><ul><li>It is your choice whether to include the `:00` at the end of hours.</li><li>Hours should be shown with the day they apply to (e.g., `Friday: 8:00am - 5:00pm`).</li><li>You should be able to accommodate the following types of hours:<ul><li>Split hours (e.g., `Thursday: 8:00am - 1:30pm, 4:00pm - 9:30pm`)</li><li>Closed (e.g., `Monday: Closed`. If a business is closed on a certain day, do not omit that day from the listing.)</li><li>Open 24 hours (e.g., `Tuesday: Open 24 hours`. If is business is open all day on a certain day, do not list the day without any hours.)</li></ul></li><li>You should be able to support and display some indicator for “temporarily closed” businesses</li></ul></p>       |
+    | Hours                         | <p><ul><li>It is your choice whether to include the `:00` at the end of hours.</li><li>Hours should be shown with the day they apply to (e.g., `Friday: 8:00am - 5:00pm`).</li><li>You should be able to accommodate the following types of hours:<ul><li>Split hours (e.g., `Thursday: 8:00am - 1:30pm, 4:00pm - 9:30pm`)</li><li>Closed (e.g., `Monday: Closed`. If a business is closed on a certain day, do not omit that day from the listing.)</li><li>Open 24 hours (e.g., `Tuesday: Open 24 hours`. If is business is open all day on a certain day, do not list the day without any hours.)</li></ul></li><li>You should be able to support and display some indicator for “temporarily closed” businesses</li></ul></p>       |
     | Business hours text           | <p><ul><li>It is your choice whether to include the :00 at the end of hours.</li><li>Hours should be shown with the day they apply to (e.g., `Friday: 8:00am - 5:00pm`).</li><li>You should be able to accommodate the following types of hours:<ul><li>Split hours (e.g., `Thursday: 8:00am - 1:30pm, 4:00pm - 9:30pm`)</li><li>Closed (e.g., `Monday: Closed`. If a business is closed on a certain day, do not omit that day from the listing.)</li><li>Open 24 hours (e.g., `Tuesday: Open 24 hours`. If is business is open all day on a certain day, do not list the day without any hours.)</li></ul></li><li>You should be able to support and display some indicator for “temporarily closed” businesses</li></ul></p>        |
     | Logo                          | <p>If you have any special placement for a business's logo in the listing or on the SERP, apply it to the image that has `type` set to `logo`.</p>       |
     | Photos                        | <p><ul><li>The order of the photos in the listing should match the order given by Yext.</li><li>You should be able to support an up to 50 photos on your listings.</li><li>You must be able to remove outdated photos (i.e., those not included in the most recent update).</li></ul></p>       |
@@ -883,6 +883,13 @@ components:
                 end:
                   type: string
                   description: The ending time of the interval on the 24-hour clock (e.g., 14:00:00)
+    ClosedStatus:
+      type: string
+      description: The closed status of the listing
+      enum:
+        - OPEN
+        - TEMPORARILY_CLOSED
+        - PERMANENTLY_CLOSED
     Details:
       type: object
       description: Base fields for any type of listing
@@ -985,6 +992,8 @@ components:
           description: The URL of the business's Facebook Page
         type:
           $ref: '#/components/schemas/LocationType'
+        closedStatus:
+          $ref: '#/components/schemas/ClosedStatus'
     HealthcareProfessional:
       type: object
       description: The following additional fields are available if `type` is `HealthcareProfessional`.
