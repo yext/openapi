@@ -12117,6 +12117,14 @@ components:
           type: string
           description: |
             If present, the ID associated with the invitation that resulted in this review.
+        apiIdentifier:
+          type: string
+          description: |
+            The unique identifier which will need to be included in any further requests to update or delete this review via the Review Submission API. Only supported for reviews created via Yext invitations or the Review Submission API.
+
+            One of:
+            * A UUID generated at the time the Review Creation request is accepted.
+            * The invitationUid, if the review is associated with an invitation.
     CreatedReviewInvitation:
       type: object
       properties:
