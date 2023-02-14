@@ -61684,7 +61684,7 @@ components:
       required: true
       description: |
 
-        The external ID of the requested Entity
+        The external ID of the requested Entity.
     languageCode:
       name: languageCode
       in: path

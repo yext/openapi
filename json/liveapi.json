@@ -37717,7 +37717,7 @@
           "type": "string"
         },
         "required": true,
-        "description": "\nThe external ID of the requested Entity\n"
+        "description": "\nThe external ID of the requested Entity.\n"
       },
       "languageCode": {
         "name": "languageCode",
