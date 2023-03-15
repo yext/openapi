@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "https://api.yext.com/v2"
+      "url": "https://api.yextapis.com/v2"
     }
   ],
   "paths": {

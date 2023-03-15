@@ -3,7 +3,7 @@ info:
   title: Webhooks
   version: '2.0'
 servers:
-  - url: https://api.yext.com/v2
+  - url: https://api.yextapis.com/v2
 webhooks:
   entitiesWebhook:
     post:

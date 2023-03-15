@@ -3,7 +3,7 @@ info:
   title: Yext Admin API
   version: '2.0'
 servers:
-  - url: https://api.yext.com/v2
+  - url: https://api.yextapis.com/v2
 paths:
   /accounts/{accountId}/availableservices:
     parameters:

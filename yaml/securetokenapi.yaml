@@ -3,7 +3,7 @@ info:
   title: Secure Token API
   version: '2.0'
 servers:
-  - url: https://liveapi.yext.com/v2
+  - url: https://cdn.yextapis.com/v2
 paths:
   /tokens:
     post:
