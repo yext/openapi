@@ -639,7 +639,7 @@
         "schema": {
           "type": "string"
         },
-        "description": "An ISO-8601 date-time that filters results to those reviews posted before this time (exclusive). If not specified, no filter should be applied. \nNOTE: This parameter is used to page through results. For example, Yext may fetch the newest 10 reviews and make a subsequent request with before set to the last review's timestamp in order to fetch the second page.\n"
+        "description": "An ISO-8601 date-time that filters results to those reviews posted before this time (exclusive). If not specified, no filter should be applied.\nNOTE: This parameter is used to page through results. For example, Yext may fetch the newest 10 reviews and make a subsequent request with before set to the last review's timestamp in order to fetch the second page.\n"
       },
       "reviewId": {
         "name": "reviewId",
@@ -666,7 +666,7 @@
         "schema": {
           "type": "string"
         },
-        "description": "The unique identifier of a suggestion on your site is known as the suggestionId.    \n"
+        "description": "The unique identifier of a suggestion on your site is known as the suggestionId.\n"
       }
     },
     "schemas": {
