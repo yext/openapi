@@ -42,7 +42,7 @@ paths:
         - $ref: '#/components/parameters/queryId'
         - $ref: '#/components/parameters/jsLibVersion'
       summary: 'Universal Search: Query'
-      description: Search for entities across all verticals within a Search experience.  Modules are returned for all verticals with relevant entities. Further fine tuning and filtering of the results can then be done using the vertical query endpoint.
+      description: Search for entities across all verticals within a Search experience.  Modules are returned for all verticals with relevant entities. Further fine tuning and filtering of the results can then be done using the vertical query endpoint. A maximum of 50 verticals can be queried with this endpoint.
       responses:
         '200':
           $ref: '#/components/responses/UniversalQueryResponse'
