@@ -69,8 +69,28 @@
               "type": "string",
               "default": "markdown"
             },
-            "description": "Present if and only if at least one field is of type \"**Rich Text**.\"\n\nValid values:\n  * `markdown`\n  * `html`\n  * `none`\n",
+            "description": "Present if and only if at least one field is of type \"**Legacy Rich Text**.\"\n\nValid values:\n  * `markdown`\n  * `html`\n  * `none`\n",
             "name": "format",
+            "in": "query",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            },
+            "description": "Optional parameter to return fields of type **Rich Text** as HTML.\n  - `false`: **Rich Text** fields will be returned as JSON\n  - `true`: **Rich Text** fields will be returned as HTML\n",
+            "name": "convertRichTextToHTML",
+            "in": "query",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            },
+            "description": "Optional parameter to return fields of type **Markdown** as HTML.\n  - `false`: **Markdown** fields will be returned as JSON\n  - `true`: **Markdown** fields will be returned as HTML\n",
+            "name": "convertMarkdownToHTML",
             "in": "query",
             "required": false
           },
@@ -6250,8 +6270,28 @@
               "type": "string",
               "default": "markdown"
             },
-            "description": "Present if and only if at least one field is of type \"**Rich Text**.\"\n\nValid values:\n  * `markdown`\n  * `html`\n  * `none`\n",
+            "description": "Present if and only if at least one field is of type \"**Legacy Rich Text**.\"\n\nValid values:\n  * `markdown`\n  * `html`\n  * `none`\n",
             "name": "format",
+            "in": "query",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            },
+            "description": "Optional parameter to return fields of type **Rich Text** as HTML.\n  - `false`: **Rich Text** fields will be returned as JSON\n  - `true`: **Rich Text** fields will be returned as HTML\n",
+            "name": "convertRichTextToHTML",
+            "in": "query",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            },
+            "description": "Optional parameter to return fields of type **Markdown** as HTML.\n  - `false`: **Markdown** fields will be returned as JSON\n  - `true`: **Markdown** fields will be returned as HTML\n",
+            "name": "convertMarkdownToHTML",
             "in": "query",
             "required": false
           }
@@ -18735,8 +18775,28 @@
               "type": "string",
               "default": "markdown"
             },
-            "description": "Present if and only if at least one field is of type \"**Rich Text**.\"\n\nValid values:\n  * `markdown`\n  * `html`\n  * `none`\n",
+            "description": "Present if and only if at least one field is of type \"**Legacy Rich Text**.\"\n\nValid values:\n  * `markdown`\n  * `html`\n  * `none`\n",
             "name": "format",
+            "in": "query",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            },
+            "description": "Optional parameter to return fields of type **Rich Text** as HTML.\n  - `false`: **Rich Text** fields will be returned as JSON\n  - `true`: **Rich Text** fields will be returned as HTML\n",
+            "name": "convertRichTextToHTML",
+            "in": "query",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            },
+            "description": "Optional parameter to return fields of type **Markdown** as HTML.\n  - `false`: **Markdown** fields will be returned as JSON\n  - `true`: **Markdown** fields will be returned as HTML\n",
+            "name": "convertMarkdownToHTML",
             "in": "query",
             "required": false
           }
@@ -24843,8 +24903,28 @@
               "type": "string",
               "default": "markdown"
             },
-            "description": "Present if and only if at least one field is of type \"**Rich Text**.\"\n\nValid values:\n  * `markdown`\n  * `html`\n  * `none`\n",
+            "description": "Present if and only if at least one field is of type \"**Legacy Rich Text**.\"\n\nValid values:\n  * `markdown`\n  * `html`\n  * `none`\n",
             "name": "format",
+            "in": "query",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            },
+            "description": "Optional parameter to return fields of type **Rich Text** as HTML.\n  - `false`: **Rich Text** fields will be returned as JSON\n  - `true`: **Rich Text** fields will be returned as HTML\n",
+            "name": "convertRichTextToHTML",
+            "in": "query",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            },
+            "description": "Optional parameter to return fields of type **Markdown** as HTML.\n  - `false`: **Markdown** fields will be returned as JSON\n  - `true`: **Markdown** fields will be returned as HTML\n",
+            "name": "convertMarkdownToHTML",
             "in": "query",
             "required": false
           },
@@ -30971,8 +31051,28 @@
               "type": "string",
               "default": "markdown"
             },
-            "description": "Present if and only if at least one field is of type \"**Rich Text**.\"\n\nValid values:\n  * `markdown`\n  * `html`\n  * `none`\n",
+            "description": "Present if and only if at least one field is of type \"**Legacy Rich Text**.\"\n\nValid values:\n  * `markdown`\n  * `html`\n  * `none`\n",
             "name": "format",
+            "in": "query",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            },
+            "description": "Optional parameter to return fields of type **Rich Text** as HTML.\n  - `false`: **Rich Text** fields will be returned as JSON\n  - `true`: **Rich Text** fields will be returned as HTML\n",
+            "name": "convertRichTextToHTML",
+            "in": "query",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            },
+            "description": "Optional parameter to return fields of type **Markdown** as HTML.\n  - `false`: **Markdown** fields will be returned as JSON\n  - `true`: **Markdown** fields will be returned as HTML\n",
+            "name": "convertMarkdownToHTML",
             "in": "query",
             "required": false
           },

@@ -1029,13 +1029,33 @@ paths:
             type: string
             default: markdown
           description: |
-            Present if and only if at least one field is of type "**Rich Text**."
+            Present if and only if at least one field is of type "**Legacy Rich Text**."
 
             Valid values:
               * `markdown`
               * `html`
               * `none`
           name: format
+          in: query
+          required: false
+        - schema:
+            type: boolean
+            default: 'false'
+          description: |
+            Optional parameter to return fields of type **Rich Text** as HTML.
+              - `false`: **Rich Text** fields will be returned as JSON
+              - `true`: **Rich Text** fields will be returned as HTML
+          name: convertRichTextToHTML
+          in: query
+          required: false
+        - schema:
+            type: boolean
+            default: 'false'
+          description: |
+            Optional parameter to return fields of type **Markdown** as HTML.
+              - `false`: **Markdown** fields will be returned as JSON
+              - `true`: **Markdown** fields will be returned as HTML
+          name: convertMarkdownToHTML
           in: query
           required: false
         - schema:
@@ -10737,13 +10757,33 @@ paths:
             type: string
             default: markdown
           description: |
-            Present if and only if at least one field is of type "**Rich Text**."
+            Present if and only if at least one field is of type "**Legacy Rich Text**."
 
             Valid values:
               * `markdown`
               * `html`
               * `none`
           name: format
+          in: query
+          required: false
+        - schema:
+            type: boolean
+            default: 'false'
+          description: |
+            Optional parameter to return fields of type **Rich Text** as HTML.
+              - `false`: **Rich Text** fields will be returned as JSON
+              - `true`: **Rich Text** fields will be returned as HTML
+          name: convertRichTextToHTML
+          in: query
+          required: false
+        - schema:
+            type: boolean
+            default: 'false'
+          description: |
+            Optional parameter to return fields of type **Markdown** as HTML.
+              - `false`: **Markdown** fields will be returned as JSON
+              - `true`: **Markdown** fields will be returned as HTML
+          name: convertMarkdownToHTML
           in: query
           required: false
       tags:
@@ -31226,13 +31266,33 @@ paths:
             type: string
             default: markdown
           description: |
-            Present if and only if at least one field is of type "**Rich Text**."
+            Present if and only if at least one field is of type "**Legacy Rich Text**."
 
             Valid values:
               * `markdown`
               * `html`
               * `none`
           name: format
+          in: query
+          required: false
+        - schema:
+            type: boolean
+            default: 'false'
+          description: |
+            Optional parameter to return fields of type **Rich Text** as HTML.
+              - `false`: **Rich Text** fields will be returned as JSON
+              - `true`: **Rich Text** fields will be returned as HTML
+          name: convertRichTextToHTML
+          in: query
+          required: false
+        - schema:
+            type: boolean
+            default: 'false'
+          description: |
+            Optional parameter to return fields of type **Markdown** as HTML.
+              - `false`: **Markdown** fields will be returned as JSON
+              - `true`: **Markdown** fields will be returned as HTML
+          name: convertMarkdownToHTML
           in: query
           required: false
       tags:
@@ -40887,13 +40947,33 @@ paths:
             type: string
             default: markdown
           description: |
-            Present if and only if at least one field is of type "**Rich Text**."
+            Present if and only if at least one field is of type "**Legacy Rich Text**."
 
             Valid values:
               * `markdown`
               * `html`
               * `none`
           name: format
+          in: query
+          required: false
+        - schema:
+            type: boolean
+            default: 'false'
+          description: |
+            Optional parameter to return fields of type **Rich Text** as HTML.
+              - `false`: **Rich Text** fields will be returned as JSON
+              - `true`: **Rich Text** fields will be returned as HTML
+          name: convertRichTextToHTML
+          in: query
+          required: false
+        - schema:
+            type: boolean
+            default: 'false'
+          description: |
+            Optional parameter to return fields of type **Markdown** as HTML.
+              - `false`: **Markdown** fields will be returned as JSON
+              - `true`: **Markdown** fields will be returned as HTML
+          name: convertMarkdownToHTML
           in: query
           required: false
         - schema:
@@ -51525,13 +51605,33 @@ paths:
             type: string
             default: markdown
           description: |
-            Present if and only if at least one field is of type "**Rich Text**."
+            Present if and only if at least one field is of type "**Legacy Rich Text**."
 
             Valid values:
               * `markdown`
               * `html`
               * `none`
           name: format
+          in: query
+          required: false
+        - schema:
+            type: boolean
+            default: 'false'
+          description: |
+            Optional parameter to return fields of type **Rich Text** as HTML.
+              - `false`: **Rich Text** fields will be returned as JSON
+              - `true`: **Rich Text** fields will be returned as HTML
+          name: convertRichTextToHTML
+          in: query
+          required: false
+        - schema:
+            type: boolean
+            default: 'false'
+          description: |
+            Optional parameter to return fields of type **Markdown** as HTML.
+              - `false`: **Markdown** fields will be returned as JSON
+              - `true`: **Markdown** fields will be returned as HTML
+          name: convertMarkdownToHTML
           in: query
           required: false
         - schema:
