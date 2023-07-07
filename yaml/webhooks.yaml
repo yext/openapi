@@ -344,6 +344,7 @@ webhooks:
                         - REVIEW_CREATED
                         - REVIEW_UPDATED
                         - REVIEW_COMMENT_UPDATED
+                        - REVIEW_DELETED
                 review:
                   $ref: '#/components/schemas/WebhookReview'
   reviewInvitesWebhook:

@@ -531,7 +531,8 @@
                         "enum": [
                           "REVIEW_CREATED",
                           "REVIEW_UPDATED",
-                          "REVIEW_COMMENT_UPDATED"
+                          "REVIEW_COMMENT_UPDATED",
+                          "REVIEW_DELETED"
                         ]
                       }
                     }
