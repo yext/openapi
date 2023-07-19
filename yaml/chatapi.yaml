@@ -134,7 +134,7 @@ components:
           description: |
             The index of the step within the instructions of `currentGoal` that the chatbot is currently performing.
             If the step is nested under a conditional `IF` step, it is represented with an array with multiple values.
-            E.g., if the `IF` step is the this step in the goal, and the bot is on the second step within the `IF` step, the value would be `[2, 1]`.
+            E.g., if the `IF` step is the third step in the goal, and the bot is on the second step within the `IF` step, the value would be `[2, 1]`.
         collectedData:
           type: object
           description: The data that the chatbot has collected from the user so far.

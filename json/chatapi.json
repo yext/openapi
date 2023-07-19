@@ -196,7 +196,7 @@
             "items": {
               "type": "integer"
             },
-            "description": "The index of the step within the instructions of `currentGoal` that the chatbot is currently performing.\nIf the step is nested under a conditional `IF` step, it is represented with an array with multiple values.\nE.g., if the `IF` step is the this step in the goal, and the bot is on the second step within the `IF` step, the value would be `[2, 1]`.\n"
+            "description": "The index of the step within the instructions of `currentGoal` that the chatbot is currently performing.\nIf the step is nested under a conditional `IF` step, it is represented with an array with multiple values.\nE.g., if the `IF` step is the third step in the goal, and the bot is on the second step within the `IF` step, the value would be `[2, 1]`.\n"
           },
           "collectedData": {
             "type": "object",
