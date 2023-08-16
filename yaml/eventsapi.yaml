@@ -198,7 +198,7 @@ components:
           oneOf:
             - type: string
               title: Standard
-              description: 'The action which caused the event. `caseSensitive: false`'
+              description: '`caseSensitive: false` <br>The action which caused the event. For a full list of supported standard actions, see our documentation on Hitchhikers [here](https://hitchhikers.yext.com/docs/analytics/standard-actions/).<br> **Note:** If the action is `CHAT_RESPONSE`, the `responseId` must be present in the `chat` domain object.'
               enum:
                 - ADD_TO_CART
                 - ALL_TAB_NAVIGATION
@@ -255,7 +255,7 @@ components:
               description: 'Specifies a custom action for the event, which must start with "`C_`". `caseSensitive: false`, `pattern: "^[Cc]_[a-zA-Z0-9_-]{1,30}$"`'
         authorization:
           type: string
-          description: An alternative to using the Authorization HTTP header. If a value is provided, it will override any Authorization header. Api keys should be formatted like "KEY <apiKey>", access tokens should be formatted like "Bearer <bearerToken>"
+          description: An alternative to using the Authorization HTTP header. If a value is provided, it will override any Authorization header. Api keys should be formatted like "KEY \<apiKey\>", access tokens should be formatted like "Bearer \<bearerToken\>"
           minLength: 1
           maxLength: 8192
           pattern: ^(KEY|Bearer)\s.+$
@@ -273,7 +273,7 @@ components:
         browserAgent:
           type: object
           additionalProperties: false
-          description: Information about the visitors device and browser.
+          description: Information about the visitor's device and browser.
           default:
             browser: $auto
             browserVersion: $auto
@@ -433,7 +433,7 @@ components:
           description: When one record summarizes multiple events, this is the number of events the record represents. The event is treated as if it is duplicated this many times.
         customTags:
           type: object
-          description: 'Up to 10 pairs matching custom string keys to string values to associate with the event. Keys are case-insensitive; values are case-sensitive. Property Name`pattern: "^[a-zA-Z][a-zA-Z0-9_]{0,31}$"`'
+          description: 'Up to 10 pairs matching custom string keys to string values to associate with the event. Keys are case-insensitive; values are case-sensitive. Property Name `pattern: "^[a-zA-Z][a-zA-Z0-9_]{0,31}$"`'
           maxProperties: 10
           properties:
             ^[a-zA-Z][a-zA-Z0-9_]{0,31}$:
@@ -563,10 +563,6 @@ components:
             - type: 'null'
               title: 'null'
               description: Specifies that no location information should be stored with the event.
-        nonce:
-          type: string
-          pattern: ^[\x20-\x7E]{1,36}$
-          description: 'Deduplication ID for the event. Events from the same app for the same business with the same nonce will get de-duplicated. `pattern: "^[\x20-\x7E]{1,36}$"`'
         pageUrl:
           description: The URL of the page the event occurred on.
           default: $auto
