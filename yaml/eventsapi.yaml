@@ -417,14 +417,6 @@ components:
           required:
             - botId
           additionalProperties: false
-        clientSdk:
-          type: object
-          description: For the Yext client SDKs involved in the event, this is an object mapping the names of those SDKs to the version labels of those SDKs.
-          maxProperties: 10
-          properties:
-            ^[a-zA-Z][a-zA-Z0-9_]{0,31}$:
-              type: string
-              maxLength: 32
         count:
           type: integer
           minimum: 1
