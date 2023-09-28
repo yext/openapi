@@ -11463,6 +11463,54 @@ components:
             featuredItem:
               type: boolean
               description: Indicates whether the item is a featured item on the menu.
+            spiciness:
+              type: string
+              description: |
+                The spiciness level of a food item. Valid elements are:
+                * Mild
+                * Medium
+                * Hot
+            dietaryRestrictions:
+              type: array
+              items:
+                type: string
+              description: |
+                Dietary information of a food item. Valid elements are:
+                * Halal
+                * Kosher
+                * Organic
+                * Vegan
+                * Vegetarian
+            preparationMethods:
+              type: array
+              items:
+                type: string
+              description: |
+                Methods on how the food dish option is prepared. Valid elements are:
+                * Baked
+                * Barbecued
+                * Basted
+                * Blanched
+                * Boiled
+                * Braised
+                * Coddled
+                * Fermented
+                * Fried
+                * Grilled
+                * Kneaded
+                * Marinated
+                * Pan Fried
+                * Pickled
+                * Pressure Cooked
+                * Roasted
+                * Sauteed
+                * Seared
+                * Simmered
+                * Smoked
+                * Steamed
+                * Steeped
+                * Stir Fried
+                * Other Method
     Section:
       allOf:
         - $ref: '#/components/schemas/BaseEclSection'

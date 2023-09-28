@@ -7977,6 +7977,24 @@
               "featuredItem": {
                 "type": "boolean",
                 "description": "Indicates whether the item is a featured item on the menu."
+              },
+              "spiciness": {
+                "type": "string",
+                "description": "The spiciness level of a food item. Valid elements are:\n* Mild\n* Medium\n* Hot\n"
+              },
+              "dietaryRestrictions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Dietary information of a food item. Valid elements are:\n* Halal\n* Kosher\n* Organic\n* Vegan\n* Vegetarian\n"
+              },
+              "preparationMethods": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Methods on how the food dish option is prepared. Valid elements are:\n* Baked\n* Barbecued\n* Basted\n* Blanched\n* Boiled\n* Braised\n* Coddled\n* Fermented\n* Fried\n* Grilled\n* Kneaded\n* Marinated\n* Pan Fried\n* Pickled\n* Pressure Cooked\n* Roasted\n* Sauteed\n* Seared\n* Simmered\n* Smoked\n* Steamed\n* Steeped\n* Stir Fried\n* Other Method\n"
               }
             }
           }
