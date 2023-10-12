@@ -105,11 +105,11 @@ paths:
         - $ref: '#/components/parameters/accountId'
         - $ref: '#/components/parameters/v'
         - $ref: '#/components/parameters/experienceKey'
-        - $ref: '#/components/parameters/locale'
         - $ref: '#/components/parameters/filterSearchVerticalKey'
-        - $ref: '#/components/parameters/excluded'
-        - $ref: '#/components/parameters/SearchParameters'
+        - $ref: '#/components/parameters/locale'
         - $ref: '#/components/parameters/requiredInput'
+        - $ref: '#/components/parameters/SearchParameters'
+        - $ref: '#/components/parameters/excluded'
       summary: 'Vertical Search: Filter Search'
       description: Retrieve a list of potential filters that match the user's input up to that point.  This differs from query suggest by only returning the names of filters that can be searched rather than the broader corpus of suggested queries.
       responses:
@@ -683,17 +683,10 @@ components:
     filterSearchVerticalKey:
       name: verticalKey
       in: query
-      required: false
+      required: true
       schema:
         type: string
       description: String key that uniquely identifies the vertical to scope the filter search request to.
-    excluded:
-      name: excluded
-      in: query
-      required: false
-      schema:
-        type: string
-      description: JSON array containing the IDs of all filters that should be excluded from filter search results (if it has already been returned and selected). This parameter should be provided as a URL-encoded string containing a JSON array.
     SearchParameters:
       name: search_parameters
       in: query
@@ -729,6 +722,28 @@ components:
         </br>
 
         Additionally, there is an optional boolean property `sectioned`.  If set to true, the matching filters will be returned in a separate section per field.  By default, they are all returned in the same section.
+    excluded:
+      name: excluded
+      in: query
+      required: false
+      schema:
+        type: string
+      description: |
+        This parameter represents any values which should not be returned. This parameter should be provided as a URL-encoded string containing a JSON array, where each entry of the array is a JSON object representing a field and an excluded value for that field. For example:
+        ```
+        [
+          {
+            "name": {
+              "$eq": "John"
+            }
+          },
+          {
+            "c_jobCategory": {
+              "$eq": "Engineering"
+            }
+          }
+        ]
+        ```
   responses:
     AutocompleteResponse:
       description: Autocomplete Request Response

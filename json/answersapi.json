@@ -239,19 +239,19 @@
             "$ref": "#/components/parameters/experienceKey"
           },
           {
-            "$ref": "#/components/parameters/locale"
-          },
-          {
             "$ref": "#/components/parameters/filterSearchVerticalKey"
           },
           {
-            "$ref": "#/components/parameters/excluded"
+            "$ref": "#/components/parameters/locale"
+          },
+          {
+            "$ref": "#/components/parameters/requiredInput"
           },
           {
             "$ref": "#/components/parameters/SearchParameters"
           },
           {
-            "$ref": "#/components/parameters/requiredInput"
+            "$ref": "#/components/parameters/excluded"
           }
         ],
         "summary": "Vertical Search: Filter Search",
@@ -530,20 +530,11 @@
       "filterSearchVerticalKey": {
         "name": "verticalKey",
         "in": "query",
-        "required": false,
+        "required": true,
         "schema": {
           "type": "string"
         },
         "description": "String key that uniquely identifies the vertical to scope the filter search request to."
-      },
-      "excluded": {
-        "name": "excluded",
-        "in": "query",
-        "required": false,
-        "schema": {
-          "type": "string"
-        },
-        "description": "JSON array containing the IDs of all filters that should be excluded from filter search results (if it has already been returned and selected). This parameter should be provided as a URL-encoded string containing a JSON array."
       },
       "SearchParameters": {
         "name": "search_parameters",
@@ -553,6 +544,15 @@
           "type": "string"
         },
         "description": "This parameter represents the parameters that should be used for filter search. This parameter should be provided as a URL-encoded string containing a JSON object.\n\nFilter search uses the user's input string to find a set of existing filters that match the user's input query for the fields provided in the parameters.\n\nThe JSON object must have a `fields` property made up of a list of `FilterField` objects that have the following properties:\n\n<table style=\"width:100%\">\n  <tr>\n    <th>Property</th>\n    <th>Details</th>\n  </tr>\n  <tr>\n    <th>fieldId</th>\n    <th>The api name of the field.</th>\n  </tr>\n  <tr>\n    <th>entityTypeId</th>\n    <th>The api name for the entity type the filter belongs to.</th>\n  </tr>\n  <tr>\n    <th>shouldFetchEntities</th>\n    <th>Optional boolean.  If true, entities matching each filter will be returned inline with the filter.</th>\n  </tr>\n</table>\n\n</br>\n\nAdditionally, there is an optional boolean property `sectioned`.  If set to true, the matching filters will be returned in a separate section per field.  By default, they are all returned in the same section.\n"
+      },
+      "excluded": {
+        "name": "excluded",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "description": "This parameter represents any values which should not be returned. This parameter should be provided as a URL-encoded string containing a JSON array, where each entry of the array is a JSON object representing a field and an excluded value for that field. For example:\n```\n[\n  {\n    \"name\": {\n      \"$eq\": \"John\"\n    }\n  },\n  {\n    \"c_jobCategory\": {\n      \"$eq\": \"Engineering\"\n    }\n  }\n]\n```\n"
       }
     },
     "responses": {
