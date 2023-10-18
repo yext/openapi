@@ -64252,7 +64252,6 @@ components:
         - authorName
         - authorEmail
         - rating
-        - content
       properties:
         entity:
           type: object

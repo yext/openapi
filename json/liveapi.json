@@ -39823,8 +39823,7 @@
           "entity",
           "authorName",
           "authorEmail",
-          "rating",
-          "content"
+          "rating"
         ],
         "properties": {
           "entity": {
