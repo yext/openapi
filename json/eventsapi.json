@@ -426,6 +426,7 @@
                 "type": "string",
                 "minLength": 48,
                 "maxLength": 48,
+                "example": "MDFIQjlKWkM5SlhaU0dEUjJNRFBCUFdLWTHeIqvURTeRr2EC",
                 "description": "The ID of a conversation an event was tied to. Not all events are tied to a specific conversation. For example, both impressions are registered before the conversation begins. Must be 48 chars long"
               },
               "responseId": {
