@@ -104,10 +104,11 @@
                   "version": {
                     "type": "string",
                     "enum": [
+                      "LATEST",
                       "STAGING",
                       "PRODUCTION"
                     ],
-                    "description": "The version of chatbot. Defaults to `STAGING`."
+                    "description": "The version of chatbot. Defaults to `LATEST`."
                   }
                 }
               }
