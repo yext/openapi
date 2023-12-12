@@ -4782,6 +4782,10 @@ components:
                   maximum: 180
                   type: number
               description: Coordinates of where consumers can be picked up at the entity, as provided by you
+            pinterestUrl:
+              minLength: 0
+              type: string
+              description: URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername
             primaryConversationContact:
               minLength: 0
               type: string
@@ -5038,6 +5042,10 @@ components:
 
                   Cannot Include:
                   * HTML markup
+            tikTokUrl:
+              minLength: 0
+              type: string
+              description: URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername
             timezone:
               minLength: 0
               type: string
@@ -5135,6 +5143,10 @@ components:
                   type: string
                   description: A valid URL for this entity's website
               description: Information about the website for this entity
+            youTubeChannelUrl:
+              minLength: 0
+              type: string
+              description: URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername
     HealthcareFacilityWrite:
       allOf:
         - $ref: '#/components/schemas/EntityWrite'
@@ -7266,6 +7278,10 @@ components:
                 * To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.
                 * To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.
                 * If you are providing `openIntervals`, you may not set `isClosed` to true for that day.
+            pinterestUrl:
+              minLength: 0
+              type: string
+              description: URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername
             priceRange:
               enum:
                 - UNSPECIFIED
@@ -7504,6 +7520,10 @@ components:
 
                   Cannot Include:
                   * HTML markup
+            tikTokUrl:
+              minLength: 0
+              type: string
+              description: URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername
             timezone:
               minLength: 0
               type: string
@@ -7666,6 +7686,10 @@ components:
               maximum: 2028
               type: number
               description: The year the entity was established.
+            youTubeChannelUrl:
+              minLength: 0
+              type: string
+              description: URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername
     HealthcareProfessionalWrite:
       allOf:
         - $ref: '#/components/schemas/EntityWrite'
@@ -9453,6 +9477,10 @@ components:
                   maximum: 180
                   type: number
               description: Coordinates of where consumers can be picked up at the entity, as provided by you
+            pinterestUrl:
+              minLength: 0
+              type: string
+              description: URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername
             priceRange:
               enum:
                 - UNSPECIFIED
@@ -9691,6 +9719,10 @@ components:
 
                   Cannot Include:
                   * HTML markup
+            tikTokUrl:
+              minLength: 0
+              type: string
+              description: URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername
             timezone:
               minLength: 0
               type: string
@@ -9853,6 +9885,10 @@ components:
               maximum: 2028
               type: number
               description: The year the entity was established.
+            youTubeChannelUrl:
+              minLength: 0
+              type: string
+              description: URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername
     HelpArticleWrite:
       allOf:
         - $ref: '#/components/schemas/EntityWrite'
@@ -16778,6 +16814,10 @@ components:
                 * To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.
                 * To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.
                 * If you are providing `openIntervals`, you may not set `isClosed` to true for that day.
+            pinterestUrl:
+              minLength: 0
+              type: string
+              description: URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername
             priceRange:
               enum:
                 - UNSPECIFIED
@@ -17526,6 +17566,10 @@ components:
                 * To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.
                 * To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.
                 * If you are providing `openIntervals`, you may not set `isClosed` to true for that day.
+            tikTokUrl:
+              minLength: 0
+              type: string
+              description: URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername
             timezone:
               minLength: 0
               type: string
@@ -17688,6 +17732,10 @@ components:
               maximum: 2028
               type: number
               description: The year the entity was established.
+            youTubeChannelUrl:
+              minLength: 0
+              type: string
+              description: URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername
     OrganizationWrite:
       allOf:
         - $ref: '#/components/schemas/EntityWrite'
@@ -17990,6 +18038,10 @@ components:
                         minLength: 0
                         format: uri
                         type: string
+            pinterestUrl:
+              minLength: 0
+              type: string
+              description: URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername
             primaryConversationContact:
               minLength: 0
               type: string
@@ -18077,6 +18129,10 @@ components:
                   - YAHOO_MOBILE
                 type: string
               description: The search engines that we will use to track your performance
+            tikTokUrl:
+              minLength: 0
+              type: string
+              description: URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername
             timezone:
               minLength: 0
               type: string
@@ -18147,6 +18203,10 @@ components:
                   type: string
                   description: A valid URL for this entity's website
               description: Information about the website for this entity
+            youTubeChannelUrl:
+              minLength: 0
+              type: string
+              description: URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername
     ProductWrite:
       allOf:
         - $ref: '#/components/schemas/EntityWrite'
@@ -21554,6 +21614,10 @@ components:
                 * To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.
                 * To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.
                 * If you are providing `openIntervals`, you may not set `isClosed` to true for that day.
+            pinterestUrl:
+              minLength: 0
+              type: string
+              description: URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername
             priceRange:
               enum:
                 - UNSPECIFIED
@@ -22276,6 +22340,10 @@ components:
                 * To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.
                 * To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.
                 * If you are providing `openIntervals`, you may not set `isClosed` to true for that day.
+            tikTokUrl:
+              minLength: 0
+              type: string
+              description: URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername
             timezone:
               minLength: 0
               type: string
@@ -22438,6 +22506,10 @@ components:
               maximum: 2028
               type: number
               description: The year the entity was established.
+            youTubeChannelUrl:
+              minLength: 0
+              type: string
+              description: URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername
     NewLocationAddRequestATM:
       allOf:
         - $ref: '#/components/schemas/NewLocationAddRequest'
@@ -30917,6 +30989,10 @@ components:
                * location
                * restaurant
             ```
+        pinterestUrl:
+          minLength: 0
+          type: string
+          description: URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername
         priceRange:
           enum:
             - UNSPECIFIED
@@ -32571,6 +32647,10 @@ components:
                * location
                * restaurant
             ```
+        tikTokUrl:
+          minLength: 0
+          type: string
+          description: URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername
         timezone:
           minLength: 0
           type: string
@@ -33315,6 +33395,10 @@ components:
                * location
                * restaurant
             ```
+        youTubeChannelUrl:
+          minLength: 0
+          type: string
+          description: URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername
     AddRequest:
       title: Location Add Request Response
       type: object

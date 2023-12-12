@@ -4862,6 +4862,11 @@
                 },
                 "description": "Coordinates of where consumers can be picked up at the entity, as provided by you"
               },
+              "pinterestUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername"
+              },
               "primaryConversationContact": {
                 "minLength": 0,
                 "type": "string",
@@ -5076,6 +5081,11 @@
                   "description": "\nCannot Include:\n* HTML markup"
                 }
               },
+              "tikTokUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername"
+              },
               "timezone": {
                 "minLength": 0,
                 "type": "string",
@@ -5172,6 +5182,11 @@
                   }
                 },
                 "description": "Information about the website for this entity"
+              },
+              "youTubeChannelUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername"
               }
             }
           }
@@ -7257,6 +7272,11 @@
                 },
                 "description": "Contains the daily pickup hours, holiday pickup hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `pickupHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday pickup hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day."
               },
+              "pinterestUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername"
+              },
               "priceRange": {
                 "enum": [
                   "UNSPECIFIED",
@@ -7477,6 +7497,11 @@
                   "description": "\nCannot Include:\n* HTML markup"
                 }
               },
+              "tikTokUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername"
+              },
               "timezone": {
                 "minLength": 0,
                 "type": "string",
@@ -7634,6 +7659,11 @@
                 "maximum": 2028,
                 "type": "number",
                 "description": "The year the entity was established."
+              },
+              "youTubeChannelUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername"
               }
             }
           }
@@ -9234,6 +9264,11 @@
                 },
                 "description": "Coordinates of where consumers can be picked up at the entity, as provided by you"
               },
+              "pinterestUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername"
+              },
               "priceRange": {
                 "enum": [
                   "UNSPECIFIED",
@@ -9454,6 +9489,11 @@
                   "description": "\nCannot Include:\n* HTML markup"
                 }
               },
+              "tikTokUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername"
+              },
               "timezone": {
                 "minLength": 0,
                 "type": "string",
@@ -9611,6 +9651,11 @@
                 "maximum": 2028,
                 "type": "number",
                 "description": "The year the entity was established."
+              },
+              "youTubeChannelUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername"
               }
             }
           }
@@ -16849,6 +16894,11 @@
                 },
                 "description": "Contains the daily pickup hours, holiday pickup hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `pickupHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday pickup hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day."
               },
+              "pinterestUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername"
+              },
               "priceRange": {
                 "enum": [
                   "UNSPECIFIED",
@@ -17645,6 +17695,11 @@
                 },
                 "description": "Contains the daily takeout hours, holiday takeout hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `takeoutHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday takeout hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day."
               },
+              "tikTokUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername"
+              },
               "timezone": {
                 "minLength": 0,
                 "type": "string",
@@ -17802,6 +17857,11 @@
                 "maximum": 2028,
                 "type": "number",
                 "description": "The year the entity was established."
+              },
+              "youTubeChannelUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername"
               }
             }
           }
@@ -18011,6 +18071,11 @@
                   }
                 }
               },
+              "pinterestUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername"
+              },
               "primaryConversationContact": {
                 "minLength": 0,
                 "type": "string",
@@ -18093,6 +18158,11 @@
                 },
                 "description": "The search engines that we will use to track your performance"
               },
+              "tikTokUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername"
+              },
               "timezone": {
                 "minLength": 0,
                 "type": "string",
@@ -18162,6 +18232,11 @@
                   }
                 },
                 "description": "Information about the website for this entity"
+              },
+              "youTubeChannelUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername"
               }
             }
           }
@@ -21724,6 +21799,11 @@
                 },
                 "description": "Contains the daily pickup hours, holiday pickup hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `pickupHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday pickup hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day."
               },
+              "pinterestUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername"
+              },
               "priceRange": {
                 "enum": [
                   "UNSPECIFIED",
@@ -22509,6 +22589,11 @@
                 },
                 "description": "Contains the daily takeout hours, holiday takeout hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `takeoutHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday takeout hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day."
               },
+              "tikTokUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername"
+              },
               "timezone": {
                 "minLength": 0,
                 "type": "string",
@@ -22666,6 +22751,11 @@
                 "maximum": 2028,
                 "type": "number",
                 "description": "The year the entity was established."
+              },
+              "youTubeChannelUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername"
               }
             }
           }
@@ -28304,6 +28394,11 @@
             },
             "description": "Contains the daily pickup hours, holiday pickup hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `pickupHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday pickup hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day.\n\nFiltering Type: `hours`\n\n```\nEligible For: \n   * healthcareFacility\n   * location\n   * restaurant\n```"
           },
+          "pinterestUrl": {
+            "minLength": 0,
+            "type": "string",
+            "description": "URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername"
+          },
           "priceRange": {
             "enum": [
               "UNSPECIFIED",
@@ -29345,6 +29440,11 @@
             "type": "string",
             "description": "Represents the time zone offset of the entity from UTC, in `±hh:mm` format.\n\nFor example, if the entity is 4 hours ahead of UTC time, the offset will be `+04:00`.\n\nIf the entity is 15.5 hours behind UTC time, the offset will be `-15:30`.\n\nIf the entity is in UTC time, the offset will be `+00:00`.\n\n\n```\nEligible For: \n   * atm\n   * event\n   * faq\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * job\n   * location\n   * restaurant\n```"
           },
+          "tikTokUrl": {
+            "minLength": 0,
+            "type": "string",
+            "description": "URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername"
+          },
           "timezone": {
             "minLength": 0,
             "type": "string",
@@ -29749,6 +29849,11 @@
               }
             },
             "description": "Destination coordinates to use for walking directions to the entity, as calculated by Yext\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * event\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+          },
+          "youTubeChannelUrl": {
+            "minLength": 0,
+            "type": "string",
+            "description": "URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername"
           }
         }
       },

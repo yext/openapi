@@ -8277,6 +8277,10 @@ paths:
                                    * location
                                    * restaurant
                                 ```
+                            pinterestUrl:
+                              minLength: 0
+                              type: string
+                              description: URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername
                             priceRange:
                               enum:
                                 - UNSPECIFIED
@@ -9873,6 +9877,10 @@ paths:
                                 Eligible For: 
                                    * event
                                 ```
+                            tikTokUrl:
+                              minLength: 0
+                              type: string
+                              description: URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername
                             time:
                               additionalProperties: false
                               type: object
@@ -10675,6 +10683,10 @@ paths:
                                    * location
                                    * restaurant
                                 ```
+                            youTubeChannelUrl:
+                              minLength: 0
+                              type: string
+                              description: URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername
                       pageToken:
                         minLength: 0
                         type: string
@@ -17936,6 +17948,10 @@ paths:
                              * location
                              * restaurant
                           ```
+                      pinterestUrl:
+                        minLength: 0
+                        type: string
+                        description: URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername
                       priceRange:
                         enum:
                           - UNSPECIFIED
@@ -19532,6 +19548,10 @@ paths:
                           Eligible For: 
                              * event
                           ```
+                      tikTokUrl:
+                        minLength: 0
+                        type: string
+                        description: URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername
                       time:
                         additionalProperties: false
                         type: object
@@ -20334,6 +20354,10 @@ paths:
                              * location
                              * restaurant
                           ```
+                      youTubeChannelUrl:
+                        minLength: 0
+                        type: string
+                        description: URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername
         '400':
           description: Error Response
           content:
@@ -38449,6 +38473,10 @@ paths:
                              * location
                              * restaurant
                           ```
+                      pinterestUrl:
+                        minLength: 0
+                        type: string
+                        description: URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername
                       priceRange:
                         enum:
                           - UNSPECIFIED
@@ -40045,6 +40073,10 @@ paths:
                           Eligible For: 
                              * event
                           ```
+                      tikTokUrl:
+                        minLength: 0
+                        type: string
+                        description: URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername
                       time:
                         additionalProperties: false
                         type: object
@@ -40847,6 +40879,10 @@ paths:
                              * location
                              * restaurant
                           ```
+                      youTubeChannelUrl:
+                        minLength: 0
+                        type: string
+                        description: URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername
         '400':
           description: Error Response
           content:
@@ -48144,6 +48180,10 @@ paths:
                                    * location
                                    * restaurant
                                 ```
+                            pinterestUrl:
+                              minLength: 0
+                              type: string
+                              description: URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername
                             priceRange:
                               enum:
                                 - UNSPECIFIED
@@ -49740,6 +49780,10 @@ paths:
                                 Eligible For: 
                                    * event
                                 ```
+                            tikTokUrl:
+                              minLength: 0
+                              type: string
+                              description: URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername
                             time:
                               additionalProperties: false
                               type: object
@@ -50542,6 +50586,10 @@ paths:
                                    * location
                                    * restaurant
                                 ```
+                            youTubeChannelUrl:
+                              minLength: 0
+                              type: string
+                              description: URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername
         '400':
           description: Error Response
           content:
@@ -58858,6 +58906,10 @@ paths:
                                          * location
                                          * restaurant
                                       ```
+                                  pinterestUrl:
+                                    minLength: 0
+                                    type: string
+                                    description: URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername
                                   priceRange:
                                     enum:
                                       - UNSPECIFIED
@@ -60454,6 +60506,10 @@ paths:
                                       Eligible For: 
                                          * event
                                       ```
+                                  tikTokUrl:
+                                    minLength: 0
+                                    type: string
+                                    description: URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername
                                   time:
                                     additionalProperties: false
                                     type: object
@@ -61256,6 +61312,10 @@ paths:
                                          * location
                                          * restaurant
                                       ```
+                                  youTubeChannelUrl:
+                                    minLength: 0
+                                    type: string
+                                    description: URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername
         '400':
           description: Error Response
           content:
