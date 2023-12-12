@@ -37599,7 +37599,7 @@
         ],
         "description": "Create a new Question.",
         "responses": {
-          "201": {
+          "200": {
             "$ref": "#/components/responses/EmptyResponse"
           },
           "default": {

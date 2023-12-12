@@ -61525,7 +61525,7 @@ paths:
         - $ref: '#/components/parameters/v'
       description: Create a new Question.
       responses:
-        '201':
+        '200':
           $ref: '#/components/responses/EmptyResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
