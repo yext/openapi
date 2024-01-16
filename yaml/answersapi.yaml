@@ -42,7 +42,10 @@ paths:
         - $ref: '#/components/parameters/queryId'
         - $ref: '#/components/parameters/jsLibVersion'
       summary: 'Universal Search: Query'
-      description: Search for entities across all verticals within a Search experience.  Modules are returned for all verticals with relevant entities. Further fine tuning and filtering of the results can then be done using the vertical query endpoint. A maximum of 50 verticals can be queried with this endpoint.
+      description: |
+        Search for entities across all verticals within a Search experience.  Modules are returned for all verticals with relevant entities. Further fine tuning and filtering of the results can then be done using the vertical query endpoint. A maximum of 50 verticals can be queried with this endpoint.
+
+        In order prevent bot traffic from using Search API Capacity, you must integrate with the Search API from the front end of your application.  The Search API's Bot Detection feature requires the API to be called directly from the end-user's web browser.  If you must integrate with the Search API via another mechanism, all traffic will be charged against your search capacity and some features of Search Analytics, such as Search Terms and Search Term Clustering may not work.
       responses:
         '200':
           $ref: '#/components/responses/UniversalQueryResponse'
@@ -92,7 +95,10 @@ paths:
         - $ref: '#/components/parameters/queryId'
         - $ref: '#/components/parameters/jsLibVersion'
       summary: 'Vertical Search: Query'
-      description: Search for entities within the selected vertical.  Vertical query allows for fine tuning of the search using filters, facets and sorts passed in through the API.
+      description: |
+        Search for entities within the selected vertical.  Vertical query allows for fine tuning of the search using filters, facets and sorts passed in through the API.
+
+        In order prevent bot traffic from using Search API Capacity, you must integrate with the Search API from the front end of your application.  The Search API's Bot Detection feature requires the API to be called directly from the end-user's web browser.  If you must integrate with the Search API via another mechanism, all traffic will be charged against your search capacity and some features of Search Analytics, such as Search Terms and Search Term Clustering may not work.
       responses:
         '200':
           $ref: '#/components/responses/VerticalQueryResponse'
