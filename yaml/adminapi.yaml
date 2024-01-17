@@ -4241,6 +4241,10 @@ components:
 
                   Cannot Include:
                   * HTML markup
+            linkedInUrl:
+              minLength: 0
+              type: string
+              description: URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername
             localPhone:
               minLength: 0
               type: string
@@ -6494,6 +6498,10 @@ components:
 
                   Cannot Include:
                   * HTML markup
+            linkedInUrl:
+              minLength: 0
+              type: string
+              description: URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername
             localPhone:
               minLength: 0
               type: string
@@ -8907,6 +8915,10 @@ components:
                 Cannot Include:
                 * a URL or domain name
                 * HTML markup
+            linkedInUrl:
+              minLength: 0
+              type: string
+              description: URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername
             localPhone:
               minLength: 0
               type: string
@@ -16011,6 +16023,10 @@ components:
 
                   Cannot Include:
                   * HTML markup
+            linkedInUrl:
+              minLength: 0
+              type: string
+              description: URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername
             localPhone:
               minLength: 0
               type: string
@@ -17895,6 +17911,10 @@ components:
                 The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.
 
                 **NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API.
+            linkedInUrl:
+              minLength: 0
+              type: string
+              description: URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername
             logo:
               required:
                 - image
@@ -20798,6 +20818,10 @@ components:
 
                   Cannot Include:
                   * HTML markup
+            linkedInUrl:
+              minLength: 0
+              type: string
+              description: URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername
             localPhone:
               minLength: 0
               type: string
@@ -29379,6 +29403,10 @@ components:
             Eligible For: 
                * hotel
             ```
+        linkedInUrl:
+          minLength: 0
+          type: string
+          description: URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername
         linkedLocation:
           type: string
           description: |-

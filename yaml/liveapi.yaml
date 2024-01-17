@@ -6667,6 +6667,10 @@ paths:
                                 Eligible For: 
                                    * hotel
                                 ```
+                            linkedInUrl:
+                              minLength: 0
+                              type: string
+                              description: URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername
                             linkedLocation:
                               type: string
                               description: |-
@@ -16338,6 +16342,10 @@ paths:
                           Eligible For: 
                              * hotel
                           ```
+                      linkedInUrl:
+                        minLength: 0
+                        type: string
+                        description: URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername
                       linkedLocation:
                         type: string
                         description: |-
@@ -36863,6 +36871,10 @@ paths:
                           Eligible For: 
                              * hotel
                           ```
+                      linkedInUrl:
+                        minLength: 0
+                        type: string
+                        description: URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername
                       linkedLocation:
                         type: string
                         description: |-
@@ -46570,6 +46582,10 @@ paths:
                                 Eligible For: 
                                    * hotel
                                 ```
+                            linkedInUrl:
+                              minLength: 0
+                              type: string
+                              description: URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername
                             linkedLocation:
                               type: string
                               description: |-
@@ -57296,6 +57312,10 @@ paths:
                                       Eligible For: 
                                          * hotel
                                       ```
+                                  linkedInUrl:
+                                    minLength: 0
+                                    type: string
+                                    description: URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername
                                   linkedLocation:
                                     type: string
                                     description: |-

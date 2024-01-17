@@ -4305,6 +4305,11 @@
                   "description": "\nCannot Include:\n* HTML markup"
                 }
               },
+              "linkedInUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername"
+              },
               "localPhone": {
                 "minLength": 0,
                 "type": "string",
@@ -6420,6 +6425,11 @@
                   "type": "string",
                   "description": "\nCannot Include:\n* HTML markup"
                 }
+              },
+              "linkedInUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername"
               },
               "localPhone": {
                 "minLength": 0,
@@ -8678,6 +8688,11 @@
                 "maxLength": 35,
                 "type": "string",
                 "description": "The last name of the healthcare professional\n\n\nCannot Include:\n* a URL or domain name\n* HTML markup"
+              },
+              "linkedInUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername"
               },
               "localPhone": {
                 "minLength": 0,
@@ -16026,6 +16041,11 @@
                   "description": "\nCannot Include:\n* HTML markup"
                 }
               },
+              "linkedInUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername"
+              },
               "localPhone": {
                 "minLength": 0,
                 "type": "string",
@@ -17972,6 +17992,11 @@
                   "type": "string"
                 },
                 "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API."
+              },
+              "linkedInUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername"
               },
               "logo": {
                 "required": [
@@ -20914,6 +20939,11 @@
                   "type": "string",
                   "description": "\nCannot Include:\n* HTML markup"
                 }
+              },
+              "linkedInUrl": {
+                "minLength": 0,
+                "type": "string",
+                "description": "URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername"
               },
               "localPhone": {
                 "minLength": 0,
@@ -27315,6 +27345,11 @@
             ],
             "type": "string",
             "description": "Indicates if the property has a lifeguard on duty\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
+          },
+          "linkedInUrl": {
+            "minLength": 0,
+            "type": "string",
+            "description": "URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername"
           },
           "linkedLocation": {
             "type": "string",

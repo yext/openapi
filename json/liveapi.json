@@ -3626,6 +3626,11 @@
                                 "type": "string",
                                 "description": "Indicates if the property has a lifeguard on duty\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
                               },
+                              "linkedInUrl": {
+                                "minLength": 0,
+                                "type": "string",
+                                "description": "URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername"
+                              },
                               "linkedLocation": {
                                 "type": "string",
                                 "description": "location ID of the event location, if the event is held at a location managed in the Yext Knowledge Manager\n\nFiltering Type: `entityId`\n\n```\nEligible For: \n   * contactCard\n   * event\n```"
@@ -9766,6 +9771,11 @@
                           ],
                           "type": "string",
                           "description": "Indicates if the property has a lifeguard on duty\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
+                        },
+                        "linkedInUrl": {
+                          "minLength": 0,
+                          "type": "string",
+                          "description": "URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername"
                         },
                         "linkedLocation": {
                           "type": "string",
@@ -22287,6 +22297,11 @@
                           "type": "string",
                           "description": "Indicates if the property has a lifeguard on duty\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
                         },
+                        "linkedInUrl": {
+                          "minLength": 0,
+                          "type": "string",
+                          "description": "URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername"
+                        },
                         "linkedLocation": {
                           "type": "string",
                           "description": "location ID of the event location, if the event is held at a location managed in the Yext Knowledge Manager\n\nFiltering Type: `entityId`\n\n```\nEligible For: \n   * contactCard\n   * event\n```"
@@ -28446,6 +28461,11 @@
                                 ],
                                 "type": "string",
                                 "description": "Indicates if the property has a lifeguard on duty\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
+                              },
+                              "linkedInUrl": {
+                                "minLength": 0,
+                                "type": "string",
+                                "description": "URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername"
                               },
                               "linkedLocation": {
                                 "type": "string",
@@ -34669,6 +34689,11 @@
                                       ],
                                       "type": "string",
                                       "description": "Indicates if the property has a lifeguard on duty\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
+                                    },
+                                    "linkedInUrl": {
+                                      "minLength": 0,
+                                      "type": "string",
+                                      "description": "URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername"
                                     },
                                     "linkedLocation": {
                                       "type": "string",
