@@ -1280,6 +1280,23 @@ components:
 
                   Cannot Include:
                   * common domain names, e.g., google.com, youtube.com, etc.
+            categories:
+              type: object
+              additionalProperties:
+                uniqueItems: false
+                type: array
+                items:
+                  minLength: 0
+                  type: string
+                  description: 'Filtering Type: `text`'
+              description: |
+                Yext Categories. (Supported for versions > 20240220)
+
+                A map of category list external IDs (i.e. "yext") to a list of category IDs.
+
+                IDs must be valid and selectable (i.e., cannot be parent categories).
+
+                Partial updates are accepted, meaning sending only the "yext" property will have no effect on any category list except the "yext" category list.
             categoryIds:
               uniqueItems: false
               type: array
@@ -1287,7 +1304,7 @@ components:
                 minLength: 0
                 type: string
               description: |
-                Yext Category IDs.
+                Yext Category IDs. (Deprecated: For versions > 20240220)
 
                 IDs must be valid and selectable (i.e., cannot be parent categories).
 
@@ -2718,6 +2735,23 @@ components:
               description: |-
                 Indicates whether the event is online, offline, or a mix.
                 A `virtualLocationUrl` must be specified for online and mixed events.
+            categories:
+              type: object
+              additionalProperties:
+                uniqueItems: false
+                type: array
+                items:
+                  minLength: 0
+                  type: string
+                  description: 'Filtering Type: `text`'
+              description: |
+                Yext Categories. (Supported for versions > 20240220)
+
+                A map of category list external IDs (i.e. "yext") to a list of category IDs.
+
+                IDs must be valid and selectable (i.e., cannot be parent categories).
+
+                Partial updates are accepted, meaning sending only the "yext" property will have no effect on any category list except the "yext" category list.
             categoryIds:
               uniqueItems: false
               type: array
@@ -2725,7 +2759,7 @@ components:
                 minLength: 0
                 type: string
               description: |
-                Yext Category IDs.
+                Yext Category IDs. (Deprecated: For versions > 20240220)
 
                 IDs must be valid and selectable (i.e., cannot be parent categories).
 
@@ -3475,6 +3509,23 @@ components:
                   type: string
                   description: Label to be used for this entity's Calendars. This label will appear on your entity's listings.
               description: Information about the events Content Lists (Calendars) associated with this entity
+            categories:
+              type: object
+              additionalProperties:
+                uniqueItems: false
+                type: array
+                items:
+                  minLength: 0
+                  type: string
+                  description: 'Filtering Type: `text`'
+              description: |
+                Yext Categories. (Supported for versions > 20240220)
+
+                A map of category list external IDs (i.e. "yext") to a list of category IDs.
+
+                IDs must be valid and selectable (i.e., cannot be parent categories).
+
+                Partial updates are accepted, meaning sending only the "yext" property will have no effect on any category list except the "yext" category list.
             categoryIds:
               uniqueItems: false
               type: array
@@ -3482,7 +3533,7 @@ components:
                 minLength: 0
                 type: string
               description: |
-                Yext Category IDs.
+                Yext Category IDs. (Deprecated: For versions > 20240220)
 
                 IDs must be valid and selectable (i.e., cannot be parent categories).
 
@@ -5664,6 +5715,23 @@ components:
                   type: string
                   description: Label to be used for this entity's Calendars. This label will appear on your entity's listings.
               description: Information about the events Content Lists (Calendars) associated with this entity
+            categories:
+              type: object
+              additionalProperties:
+                uniqueItems: false
+                type: array
+                items:
+                  minLength: 0
+                  type: string
+                  description: 'Filtering Type: `text`'
+              description: |
+                Yext Categories. (Supported for versions > 20240220)
+
+                A map of category list external IDs (i.e. "yext") to a list of category IDs.
+
+                IDs must be valid and selectable (i.e., cannot be parent categories).
+
+                Partial updates are accepted, meaning sending only the "yext" property will have no effect on any category list except the "yext" category list.
             categoryIds:
               uniqueItems: false
               type: array
@@ -5671,7 +5739,7 @@ components:
                 minLength: 0
                 type: string
               description: |
-                Yext Category IDs.
+                Yext Category IDs. (Deprecated: For versions > 20240220)
 
                 IDs must be valid and selectable (i.e., cannot be parent categories).
 
@@ -7982,6 +8050,23 @@ components:
 
                   Cannot Include:
                   * HTML markup
+            categories:
+              type: object
+              additionalProperties:
+                uniqueItems: false
+                type: array
+                items:
+                  minLength: 0
+                  type: string
+                  description: 'Filtering Type: `text`'
+              description: |
+                Yext Categories. (Supported for versions > 20240220)
+
+                A map of category list external IDs (i.e. "yext") to a list of category IDs.
+
+                IDs must be valid and selectable (i.e., cannot be parent categories).
+
+                Partial updates are accepted, meaning sending only the "yext" property will have no effect on any category list except the "yext" category list.
             categoryIds:
               uniqueItems: false
               type: array
@@ -7989,7 +8074,7 @@ components:
                 minLength: 0
                 type: string
               description: |
-                Yext Category IDs.
+                Yext Category IDs. (Deprecated: For versions > 20240220)
 
                 IDs must be valid and selectable (i.e., cannot be parent categories).
 
@@ -10817,6 +10902,23 @@ components:
                 - NOT_APPLICABLE
               type: string
               description: Indicates whether the entity has a casino on premise or nearby.
+            categories:
+              type: object
+              additionalProperties:
+                uniqueItems: false
+                type: array
+                items:
+                  minLength: 0
+                  type: string
+                  description: 'Filtering Type: `text`'
+              description: |
+                Yext Categories. (Supported for versions > 20240220)
+
+                A map of category list external IDs (i.e. "yext") to a list of category IDs.
+
+                IDs must be valid and selectable (i.e., cannot be parent categories).
+
+                Partial updates are accepted, meaning sending only the "yext" property will have no effect on any category list except the "yext" category list.
             categoryIds:
               uniqueItems: false
               type: array
@@ -10824,7 +10926,7 @@ components:
                 minLength: 0
                 type: string
               description: |
-                Yext Category IDs.
+                Yext Category IDs. (Deprecated: For versions > 20240220)
 
                 IDs must be valid and selectable (i.e., cannot be parent categories).
 
@@ -14315,6 +14417,23 @@ components:
                   type: string
                   description: Label to be used for this entity's Calendars. This label will appear on your entity's listings.
               description: Information about the events Content Lists (Calendars) associated with this entity
+            categories:
+              type: object
+              additionalProperties:
+                uniqueItems: false
+                type: array
+                items:
+                  minLength: 0
+                  type: string
+                  description: 'Filtering Type: `text`'
+              description: |
+                Yext Categories. (Supported for versions > 20240220)
+
+                A map of category list external IDs (i.e. "yext") to a list of category IDs.
+
+                IDs must be valid and selectable (i.e., cannot be parent categories).
+
+                Partial updates are accepted, meaning sending only the "yext" property will have no effect on any category list except the "yext" category list.
             categoryIds:
               uniqueItems: false
               type: array
@@ -14322,7 +14441,7 @@ components:
                 minLength: 0
                 type: string
               description: |
-                Yext Category IDs.
+                Yext Category IDs. (Deprecated: For versions > 20240220)
 
                 IDs must be valid and selectable (i.e., cannot be parent categories).
 
@@ -19172,6 +19291,23 @@ components:
                   type: string
                   description: Label to be used for this entity's Calendars. This label will appear on your entity's listings.
               description: Information about the events Content Lists (Calendars) associated with this entity
+            categories:
+              type: object
+              additionalProperties:
+                uniqueItems: false
+                type: array
+                items:
+                  minLength: 0
+                  type: string
+                  description: 'Filtering Type: `text`'
+              description: |
+                Yext Categories. (Supported for versions > 20240220)
+
+                A map of category list external IDs (i.e. "yext") to a list of category IDs.
+
+                IDs must be valid and selectable (i.e., cannot be parent categories).
+
+                Partial updates are accepted, meaning sending only the "yext" property will have no effect on any category list except the "yext" category list.
             categoryIds:
               uniqueItems: false
               type: array
@@ -19179,7 +19315,7 @@ components:
                 minLength: 0
                 type: string
               description: |
-                Yext Category IDs.
+                Yext Category IDs. (Deprecated: For versions > 20240220)
 
                 IDs must be valid and selectable (i.e., cannot be parent categories).
 
@@ -25558,6 +25694,38 @@ components:
             Eligible For: 
                * hotel
             ```
+        categories:
+          type: object
+          additionalProperties:
+            uniqueItems: false
+            type: array
+            items:
+              minLength: 0
+              type: string
+              description: 'Filtering Type: `text`'
+          description: |-
+            Yext Categories. (Supported for versions > 20240220) 
+
+            A map of category list external IDs (i.e. "yext") to a list of category IDs. 
+
+            IDs must be valid and selectable (i.e., cannot be parent categories).
+
+            Partial updates are accepted, meaning sending only the "yext"  property will have no effect on any category list except the "yext" category list.
+
+
+            Filtering Type: `object`
+
+            ```
+            Eligible For: 
+               * atm
+               * event
+             * financialProfessional
+             * healthcareFacility
+               * healthcareProfessional
+               * hotel
+               * location
+               * restaurant
+            ```
         categoryIds:
           uniqueItems: false
           type: array
@@ -25566,7 +25734,7 @@ components:
             type: string
             description: 'Filtering Type: `text`'
           description: |-
-            Yext Category IDs.
+            Yext Category IDs. (Deprecated: For versions > 20240220) 
 
             IDs must be valid and selectable (i.e., cannot be parent categories).
 

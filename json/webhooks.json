@@ -1849,6 +1849,19 @@
             "type": "string",
             "description": "Indicates whether the entity has a casino on premise or nearby.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
           },
+          "categories": {
+            "type": "object",
+            "additionalProperties": {
+              "uniqueItems": false,
+              "type": "array",
+              "items": {
+                "minLength": 0,
+                "type": "string",
+                "description": "Filtering Type: `text`"
+              }
+            },
+            "description": "Yext Categories. (Supported for versions > 20240220) \n\nA map of category list external IDs (i.e. \"yext\") to a list of category IDs. \n\nIDs must be valid and selectable (i.e., cannot be parent categories).\n\nPartial updates are accepted, meaning sending only the \"yext\"  property will have no effect on any category list except the \"yext\" category list.\n\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * event\n * financialProfessional\n * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+          },
           "categoryIds": {
             "uniqueItems": false,
             "type": "array",
@@ -1857,7 +1870,7 @@
               "type": "string",
               "description": "Filtering Type: `text`"
             },
-            "description": "Yext Category IDs.\n\nIDs must be valid and selectable (i.e., cannot be parent categories).\n\nNOTE: The list of category IDs that you send us must be comprehensive. For example, if you send us a list of IDs that does not include IDs that you sent in your last update, Yext considers the missing categories to be deleted, and we remove them from your listings.\n\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * event\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+            "description": "Yext Category IDs. (Deprecated: For versions > 20240220) \n\nIDs must be valid and selectable (i.e., cannot be parent categories).\n\nNOTE: The list of category IDs that you send us must be comprehensive. For example, if you send us a list of IDs that does not include IDs that you sent in your last update, Yext considers the missing categories to be deleted, and we remove them from your listings.\n\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * event\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
           },
           "catsAllowed": {
             "enum": [
