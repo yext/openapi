@@ -40,6 +40,7 @@ paths:
         - $ref: '#/components/parameters/restrictVerticals'
         - $ref: '#/components/parameters/ignoreQueryRules'
         - $ref: '#/components/parameters/queryId'
+        - $ref: '#/components/parameters/source'
         - $ref: '#/components/parameters/jsLibVersion'
       summary: 'Universal Search: Query'
       description: |
@@ -93,6 +94,7 @@ paths:
         - $ref: '#/components/parameters/SortBys'
         - $ref: '#/components/parameters/ignoreQueryRules'
         - $ref: '#/components/parameters/queryId'
+        - $ref: '#/components/parameters/source'
         - $ref: '#/components/parameters/jsLibVersion'
       summary: 'Vertical Search: Query'
       description: |
@@ -256,6 +258,13 @@ components:
       schema:
         type: string
       description: UUID of the query; recommended when moving through results, to associate multiple requests to the same query.
+    source:
+      name: source
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Indicates where the query is coming from (e.g. `"HOME_HEADER"` or `"TICKET_FORM"`). Can be used in Analytics reports via the `Integration Source` dimension. Defaults to `"STANDARD"`.
     jsLibVersion:
       name: jsLibVersion
       in: query
