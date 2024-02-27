@@ -11746,6 +11746,9 @@ components:
         actionable:
           type: boolean
           description: Indicates whether the customer can take action to resolve the issue
+        unavailableReasonType:
+          type: string
+          description: The type of unavailable reason
     Listing:
       type: object
       properties:
