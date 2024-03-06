@@ -132,8 +132,8 @@
         "tags": [
           "Administrative API"
         ],
-        "summary": "Add Requests: Create (Existing Sub-Account)",
-        "description": "Request that one or more available services be added (or increased in quantity) to an existing sub-account.",
+        "summary": "Add Requests: Create (Existing Account)",
+        "description": "Request that one or more available services be added (or increased in quantity) to an existing account.",
         "responses": {
           "200": {
             "$ref": "#/components/responses/ExistingSubAccountAddRequestsResponse"
@@ -216,8 +216,8 @@
         "tags": [
           "Administrative API"
         ],
-        "summary": "Services: Cancel (Sub-Account)",
-        "description": "Cancel (or decrease the quantity of) one or more active services provisioned on the sub-account.\n\n**NOTE:** If you have added services to a sub-account, use this endpoint on your *main account* to cancel them.\n",
+        "summary": "Services: Cancel (Account)",
+        "description": "Cancel (or decrease the quantity of) one or more active services provisioned on the account.\n\n**NOTE:** If you have added services to a sub-account, use this endpoint on your *main account* to cancel them.\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/CancelSubAccountServicesResponse"
@@ -258,8 +258,8 @@
         "tags": [
           "Administrative API"
         ],
-        "summary": "Services: Cancel All (Sub-Account)",
-        "description": "Cancel all active services (all quantities) provisioned on the sub-account.\n\n**NOTE:** If you have added services to a sub-account, use this endpoint on your *main account* to cancel all of them.\n",
+        "summary": "Services: Cancel All (Account)",
+        "description": "Cancel all active services (all quantities) provisioned on the account.\n\n**NOTE:** If you have added services to a sub-account, use this endpoint on your *main account* to cancel all of them.\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/CancelAllSubAccountServicesResponse"
@@ -577,7 +577,7 @@
           "schema": {
             "type": "integer"
           },
-          "description": "addRequestId returned from a previous call to **Add Requests: Create (Existing Sub-Account)** or retrieved from **Add Requests: List (Sub-Account)**\n",
+          "description": "addRequestId returned from a previous call to **Add Requests: Create (Existing Account)** or retrieved from **Add Requests: List (Sub-Account)**\n",
           "required": true
         },
         {
@@ -30174,12 +30174,12 @@
         "properties": {
           "subAccountId": {
             "type": "string",
-            "description": "The existing sub-account ID to add service to.\n",
+            "description": "The existing account ID to add service to.\n",
             "example": "B093879"
           },
           "skuAdditions": {
             "type": "array",
-            "description": "List of objects representing the SKUs to be added (or increased in quantity) to the sub-account, from among those listed in the **Available Services: List** response with Sub-Account recipientType. If the sub-account already has an active service for a SKU, the service quantity will be increased. The added quantity will default to 1 for any SKU without a specified quantity.\n",
+            "description": "List of objects representing the SKUs to be added (or increased in quantity) to the\naccount, from among those listed in the **Available Services: List** response with Sub-Account recipientType. If the sub-account already has an active service for a SKU, the service quantity will be increased. The added quantity will default to 1 for any SKU without a specified quantity.\n",
             "items": {
               "$ref": "#/components/schemas/SkuQuantity"
             },
@@ -30361,7 +30361,7 @@
           },
           "skuRemovals": {
             "type": "array",
-            "description": "List of objects representing the SKUs to be removed (or decreased in quantity) from the sub-account. The sub-account must have active services for at least one of the provided SKUs. If the decrease in quantity would result in 0 service quantity, the service will be STOPPED. The removed quantity will default to 1 for any SKU without a specified quantity. To cancel all active services provisioned on the sub-account, use the **Services: Cancel All (Sub-Account)** endpoint.\n",
+            "description": "List of objects representing the SKUs to be removed (or decreased in quantity) from the sub-account. The sub-account must have active services for at least one of the provided SKUs. If the decrease in quantity would result in 0 service quantity, the service will be STOPPED. The removed quantity will default to 1 for any SKU without a specified quantity. To cancel all active services provisioned on the account, use the **Services: Cancel All (Account)** endpoint.\n",
             "items": {
               "$ref": "#/components/schemas/SkuQuantity"
             },
