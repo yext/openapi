@@ -64376,10 +64376,15 @@ components:
           type: string
           format: date
           description: |
-            If provided, the date you received the review from the customer. Defaults to the date the
-            review was uploaded to Yext.
+            If the v parameter is before 20240515: (YYYY-MM-DD format) If provided, the date you
+            received the review from the customer. Defaults to the date the review was uploaded to
+            Yext. Time defaults to midnight ET.
 
-            (`YYYY-MM-DD` format)
+            If the v parameter is 20240515 or later: ISO-8601 format (YYYY-MM-DDThh:mm:ssTZD) if
+            provided, the date you received the review from the customer. Date defaults to the date
+            the review was uploaded to Yext. Time defaults to midnight and timezone defaults to UTC.
+
+            Examples: 2024-05-15, 2024-05-15T04:44:50, 2024-05-15T04:44:50-05:00
         invitationUid:
           type: string
           description: The ID of the invitation which should be associated with this review.

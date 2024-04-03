@@ -8779,6 +8779,15 @@
               "PRIVATE"
             ],
             "description": "Defaults to `PUBLIC` when creating a comment"
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "description": "If the v parameter is before 20240515: (YYYY-MM-DD format) If provided, the date the\ncomment was posted. Date defaults to the date the comment was uploaded to Yext. Time\ndefaults to midnight ET.\n\nIf the v parameter is 20240515 or later: ISO-8601 format (YYYY-MM-DDThh:mm:ssTZD) if\nprovided, the date the comment was posted. Date defaults to the date the comment was\nuploaded to Yext. Time defaults to midnight and timezone defaults to UTC.\n\nExamples: 2024-05-15, 2024-05-15T04:44:50, 2024-05-15T04:44:50-05:00\n"
+          },
+          "suppressReviewerContact": {
+            "type": "boolean",
+            "description": "Indicates whether or not the reviewer receives an email notification when a comment is posted. Defaults to `false`.\n"
           }
         }
       },
