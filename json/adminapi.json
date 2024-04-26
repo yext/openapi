@@ -24037,6 +24037,11 @@
                 "type": "string",
                 "description": "Country code of this Entity's Language Profile (defaults to the country of the account)\n\nFiltering Type: `text`"
               },
+              "createdTimestamp": {
+                "minLength": 0,
+                "type": "string",
+                "description": "The timestamp of when the entity record was created.\n"
+              },
               "entityType": {
                 "minLength": 0,
                 "type": "string",

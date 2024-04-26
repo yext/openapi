@@ -1170,6 +1170,11 @@ paths:
                                     Country code of this Entity's Language Profile (defaults to the country of the account)
 
                                     Filtering Type: `text`
+                                createdTimestamp:
+                                  minLength: 0
+                                  type: string
+                                  description: |
+                                    The timestamp of when the entity record was created.
                                 entityType:
                                   minLength: 0
                                   type: string
@@ -10845,6 +10850,11 @@ paths:
                               Country code of this Entity's Language Profile (defaults to the country of the account)
 
                               Filtering Type: `text`
+                          createdTimestamp:
+                            minLength: 0
+                            type: string
+                            description: |
+                              The timestamp of when the entity record was created.
                           entityType:
                             minLength: 0
                             type: string
@@ -21604,6 +21614,11 @@ paths:
                                     Country code of this Entity's Language Profile (defaults to the country of the account)
 
                                     Filtering Type: `text`
+                                createdTimestamp:
+                                  minLength: 0
+                                  type: string
+                                  description: |
+                                    The timestamp of when the entity record was created.
                                 entityType:
                                   minLength: 0
                                   type: string
@@ -31374,6 +31389,11 @@ paths:
                               Country code of this Entity's Language Profile (defaults to the country of the account)
 
                               Filtering Type: `text`
+                          createdTimestamp:
+                            minLength: 0
+                            type: string
+                            description: |
+                              The timestamp of when the entity record was created.
                           entityType:
                             minLength: 0
                             type: string
@@ -41085,6 +41105,11 @@ paths:
                                     Country code of this Entity's Language Profile (defaults to the country of the account)
 
                                     Filtering Type: `text`
+                                createdTimestamp:
+                                  minLength: 0
+                                  type: string
+                                  description: |
+                                    The timestamp of when the entity record was created.
                                 entityType:
                                   minLength: 0
                                   type: string
@@ -51815,6 +51840,11 @@ paths:
                                           Country code of this Entity's Language Profile (defaults to the country of the account)
 
                                           Filtering Type: `text`
+                                      createdTimestamp:
+                                        minLength: 0
+                                        type: string
+                                        description: |
+                                          The timestamp of when the entity record was created.
                                       entityType:
                                         minLength: 0
                                         type: string
