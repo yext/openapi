@@ -810,12 +810,12 @@ components:
           description: |
             The ISO 3166-1 alpha-2 code of the area of the result listing
         latitude:
-          type: string
-          example: '40.741959'
+          type: number
+          example: 40.741959
           description: The latidude of the result listing
         longitude:
-          type: string
-          example: '-74.004855'
+          type: number
+          example: -74.004855
           description: The longitude of the result listing
         phone:
           type: string
@@ -834,11 +834,11 @@ components:
           description: |
             The business's website URL on the listing
         reviewCount:
-          type: string
+          type: integer
           description: |
             The number of reviews posted on the listing
-        averageReviewRating:
-          type: string
+        averageReviewScore:
+          type: number
           description: |
             The average of the ratings (e.g., 4.3 for an average of 4.3 stars) posted on the listing
         listingCreationDate:
