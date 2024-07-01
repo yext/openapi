@@ -14,6 +14,7 @@ paths:
         - $ref: '#/components/parameters/experienceKey'
         - $ref: '#/components/parameters/locale'
         - $ref: '#/components/parameters/autocompleteInput'
+        - $ref: '#/components/parameters/version'
       summary: 'Universal Search: Autocomplete'
       description: Retrieve a list of suggested queries across all verticals in the experience based on the characters already typed by the user. This API is meant to be hit after each keystroke.
       responses:
@@ -30,6 +31,7 @@ paths:
         - $ref: '#/components/parameters/experienceKey'
         - $ref: '#/components/parameters/queryLocale'
         - $ref: '#/components/parameters/requiredInput'
+        - $ref: '#/components/parameters/version'
         - $ref: '#/components/parameters/location'
         - $ref: '#/components/parameters/session_id'
         - $ref: '#/components/parameters/universalLimit'
@@ -62,6 +64,7 @@ paths:
         - $ref: '#/components/parameters/verticalKey'
         - $ref: '#/components/parameters/locale'
         - $ref: '#/components/parameters/autocompleteInput'
+        - $ref: '#/components/parameters/version'
       summary: 'Vertical Search: Autocomplete'
       description: Retrieve a list of suggested queries for the selected vertical based on the characters already typed by the user or the most popular queries when no user input is given.
       responses:
@@ -79,6 +82,7 @@ paths:
         - $ref: '#/components/parameters/verticalKey'
         - $ref: '#/components/parameters/queryLocale'
         - $ref: '#/components/parameters/verticalInput'
+        - $ref: '#/components/parameters/version'
         - $ref: '#/components/parameters/location'
         - $ref: '#/components/parameters/locationRadius'
         - $ref: '#/components/parameters/session_id'
@@ -117,6 +121,7 @@ paths:
         - $ref: '#/components/parameters/locale'
         - $ref: '#/components/parameters/requiredInput'
         - $ref: '#/components/parameters/SearchParameters'
+        - $ref: '#/components/parameters/version'
         - $ref: '#/components/parameters/excluded'
       summary: 'Vertical Search: Filter Search'
       description: Retrieve a list of potential filters that match the user's input up to that point.  This differs from query suggest by only returning the names of filters that can be searched rather than the broader corpus of suggested queries.
@@ -170,6 +175,13 @@ components:
       schema:
         type: string
       description: The partial search term from the user.
+    version:
+      name: version
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The label or version number of the experience configuration to use. If omitted the PRODUCTION label will be used.
     queryLocale:
       name: locale
       in: query

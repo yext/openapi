@@ -28,6 +28,9 @@
           },
           {
             "$ref": "#/components/parameters/autocompleteInput"
+          },
+          {
+            "$ref": "#/components/parameters/version"
           }
         ],
         "summary": "Universal Search: Autocomplete",
@@ -60,6 +63,9 @@
           },
           {
             "$ref": "#/components/parameters/requiredInput"
+          },
+          {
+            "$ref": "#/components/parameters/version"
           },
           {
             "$ref": "#/components/parameters/location"
@@ -131,6 +137,9 @@
           },
           {
             "$ref": "#/components/parameters/autocompleteInput"
+          },
+          {
+            "$ref": "#/components/parameters/version"
           }
         ],
         "summary": "Vertical Search: Autocomplete",
@@ -166,6 +175,9 @@
           },
           {
             "$ref": "#/components/parameters/verticalInput"
+          },
+          {
+            "$ref": "#/components/parameters/version"
           },
           {
             "$ref": "#/components/parameters/location"
@@ -257,6 +269,9 @@
             "$ref": "#/components/parameters/SearchParameters"
           },
           {
+            "$ref": "#/components/parameters/version"
+          },
+          {
             "$ref": "#/components/parameters/excluded"
           }
         ],
@@ -330,6 +345,15 @@
           "type": "string"
         },
         "description": "The partial search term from the user."
+      },
+      "version": {
+        "name": "version",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "description": "The label or version number of the experience configuration to use. If omitted the PRODUCTION label will be used."
       },
       "queryLocale": {
         "name": "locale",
