@@ -5289,7 +5289,7 @@
                                 "description": "Information about the area that is served by this entity. It is specified as a list of cities and/or postal codes.\n\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
                               },
                               "serviceAreaPlaces": {
-                                "description": "Information about the area that is served by this entity. It is specified as a list of service area names and their associated types.\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\n\nArray may have a maximum of 200 elements.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
+                                "description": "Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\n\nArray may have a maximum of 200 elements.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
                                 "uniqueItems": true,
                                 "type": "array",
                                 "items": {
@@ -5312,6 +5312,12 @@
                                       ],
                                       "type": "string",
                                       "description": "Filtering Type: `option`"
+                                    },
+                                    "googlePlaceId": {
+                                      "minLength": 0,
+                                      "maxLength": 100,
+                                      "type": "string",
+                                      "description": "Filtering Type: `text`"
                                     }
                                   },
                                   "description": "Filtering Type: `object`"
@@ -11440,7 +11446,7 @@
                           "description": "Information about the area that is served by this entity. It is specified as a list of cities and/or postal codes.\n\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
                         },
                         "serviceAreaPlaces": {
-                          "description": "Information about the area that is served by this entity. It is specified as a list of service area names and their associated types.\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\n\nArray may have a maximum of 200 elements.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
+                          "description": "Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\n\nArray may have a maximum of 200 elements.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
                           "uniqueItems": true,
                           "type": "array",
                           "items": {
@@ -11463,6 +11469,12 @@
                                 ],
                                 "type": "string",
                                 "description": "Filtering Type: `option`"
+                              },
+                              "googlePlaceId": {
+                                "minLength": 0,
+                                "maxLength": 100,
+                                "type": "string",
+                                "description": "Filtering Type: `text`"
                               }
                             },
                             "description": "Filtering Type: `object`"
@@ -17693,7 +17705,7 @@
                                 "description": "Information about the area that is served by this entity. It is specified as a list of cities and/or postal codes.\n\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
                               },
                               "serviceAreaPlaces": {
-                                "description": "Information about the area that is served by this entity. It is specified as a list of service area names and their associated types.\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\n\nArray may have a maximum of 200 elements.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
+                                "description": "Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\n\nArray may have a maximum of 200 elements.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
                                 "uniqueItems": true,
                                 "type": "array",
                                 "items": {
@@ -17716,6 +17728,12 @@
                                       ],
                                       "type": "string",
                                       "description": "Filtering Type: `option`"
+                                    },
+                                    "googlePlaceId": {
+                                      "minLength": 0,
+                                      "maxLength": 100,
+                                      "type": "string",
+                                      "description": "Filtering Type: `text`"
                                     }
                                   },
                                   "description": "Filtering Type: `object`"
@@ -23975,7 +23993,7 @@
                           "description": "Information about the area that is served by this entity. It is specified as a list of cities and/or postal codes.\n\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
                         },
                         "serviceAreaPlaces": {
-                          "description": "Information about the area that is served by this entity. It is specified as a list of service area names and their associated types.\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\n\nArray may have a maximum of 200 elements.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
+                          "description": "Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\n\nArray may have a maximum of 200 elements.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
                           "uniqueItems": true,
                           "type": "array",
                           "items": {
@@ -23998,6 +24016,12 @@
                                 ],
                                 "type": "string",
                                 "description": "Filtering Type: `option`"
+                              },
+                              "googlePlaceId": {
+                                "minLength": 0,
+                                "maxLength": 100,
+                                "type": "string",
+                                "description": "Filtering Type: `text`"
                               }
                             },
                             "description": "Filtering Type: `object`"
@@ -30145,7 +30169,7 @@
                                 "description": "Information about the area that is served by this entity. It is specified as a list of cities and/or postal codes.\n\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
                               },
                               "serviceAreaPlaces": {
-                                "description": "Information about the area that is served by this entity. It is specified as a list of service area names and their associated types.\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\n\nArray may have a maximum of 200 elements.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
+                                "description": "Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\n\nArray may have a maximum of 200 elements.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
                                 "uniqueItems": true,
                                 "type": "array",
                                 "items": {
@@ -30168,6 +30192,12 @@
                                       ],
                                       "type": "string",
                                       "description": "Filtering Type: `option`"
+                                    },
+                                    "googlePlaceId": {
+                                      "minLength": 0,
+                                      "maxLength": 100,
+                                      "type": "string",
+                                      "description": "Filtering Type: `text`"
                                     }
                                   },
                                   "description": "Filtering Type: `object`"
@@ -36378,7 +36408,7 @@
                                       "description": "Information about the area that is served by this entity. It is specified as a list of cities and/or postal codes.\n\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
                                     },
                                     "serviceAreaPlaces": {
-                                      "description": "Information about the area that is served by this entity. It is specified as a list of service area names and their associated types.\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\n\nArray may have a maximum of 200 elements.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
+                                      "description": "Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\n\nArray may have a maximum of 200 elements.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
                                       "uniqueItems": true,
                                       "type": "array",
                                       "items": {
@@ -36401,6 +36431,12 @@
                                             ],
                                             "type": "string",
                                             "description": "Filtering Type: `option`"
+                                          },
+                                          "googlePlaceId": {
+                                            "minLength": 0,
+                                            "maxLength": 100,
+                                            "type": "string",
+                                            "description": "Filtering Type: `text`"
                                           }
                                         },
                                         "description": "Filtering Type: `object`"

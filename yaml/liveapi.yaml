@@ -9231,7 +9231,7 @@ paths:
                                 ```
                             serviceAreaPlaces:
                               description: |-
-                                Information about the area that is served by this entity. It is specified as a list of service area names and their associated types.
+                                Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.
                                 **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
 
 
@@ -9269,6 +9269,11 @@ paths:
                                       - SUBLOCALITY
                                     type: string
                                     description: 'Filtering Type: `option`'
+                                  googlePlaceId:
+                                    minLength: 0
+                                    maxLength: 100
+                                    type: string
+                                    description: 'Filtering Type: `text`'
                                 description: 'Filtering Type: `object`'
                             services:
                               description: |-
@@ -18911,7 +18916,7 @@ paths:
                           ```
                       serviceAreaPlaces:
                         description: |-
-                          Information about the area that is served by this entity. It is specified as a list of service area names and their associated types.
+                          Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.
                           **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
 
 
@@ -18949,6 +18954,11 @@ paths:
                                 - SUBLOCALITY
                               type: string
                               description: 'Filtering Type: `option`'
+                            googlePlaceId:
+                              minLength: 0
+                              maxLength: 100
+                              type: string
+                              description: 'Filtering Type: `text`'
                           description: 'Filtering Type: `object`'
                       services:
                         description: |-
@@ -29667,7 +29677,7 @@ paths:
                                 ```
                             serviceAreaPlaces:
                               description: |-
-                                Information about the area that is served by this entity. It is specified as a list of service area names and their associated types.
+                                Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.
                                 **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
 
 
@@ -29705,6 +29715,11 @@ paths:
                                       - SUBLOCALITY
                                     type: string
                                     description: 'Filtering Type: `option`'
+                                  googlePlaceId:
+                                    minLength: 0
+                                    maxLength: 100
+                                    type: string
+                                    description: 'Filtering Type: `text`'
                                 description: 'Filtering Type: `object`'
                             services:
                               description: |-
@@ -39450,7 +39465,7 @@ paths:
                           ```
                       serviceAreaPlaces:
                         description: |-
-                          Information about the area that is served by this entity. It is specified as a list of service area names and their associated types.
+                          Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.
                           **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
 
 
@@ -39488,6 +39503,11 @@ paths:
                                 - SUBLOCALITY
                               type: string
                               description: 'Filtering Type: `option`'
+                            googlePlaceId:
+                              minLength: 0
+                              maxLength: 100
+                              type: string
+                              description: 'Filtering Type: `text`'
                           description: 'Filtering Type: `object`'
                       services:
                         description: |-
@@ -49166,7 +49186,7 @@ paths:
                                 ```
                             serviceAreaPlaces:
                               description: |-
-                                Information about the area that is served by this entity. It is specified as a list of service area names and their associated types.
+                                Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.
                                 **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
 
 
@@ -49204,6 +49224,11 @@ paths:
                                       - SUBLOCALITY
                                     type: string
                                     description: 'Filtering Type: `option`'
+                                  googlePlaceId:
+                                    minLength: 0
+                                    maxLength: 100
+                                    type: string
+                                    description: 'Filtering Type: `text`'
                                 description: 'Filtering Type: `object`'
                             services:
                               description: |-
@@ -59901,7 +59926,7 @@ paths:
                                       ```
                                   serviceAreaPlaces:
                                     description: |-
-                                      Information about the area that is served by this entity. It is specified as a list of service area names and their associated types.
+                                      Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.
                                       **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
 
 
@@ -59939,6 +59964,11 @@ paths:
                                             - SUBLOCALITY
                                           type: string
                                           description: 'Filtering Type: `option`'
+                                        googlePlaceId:
+                                          minLength: 0
+                                          maxLength: 100
+                                          type: string
+                                          description: 'Filtering Type: `text`'
                                       description: 'Filtering Type: `object`'
                                   services:
                                     description: |-

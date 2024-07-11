@@ -5022,7 +5022,7 @@ components:
               description: Destination coordinates to use for driving directions to the entity, as provided by you
             serviceAreaPlaces:
               description: |
-                Information about the area that is served by this entity. It is specified as a list of service area names and their associated types.
+                Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.
                 **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
 
 
@@ -5044,6 +5044,10 @@ components:
                       - COUNTY
                       - CITY
                       - SUBLOCALITY
+                    type: string
+                  googlePlaceId:
+                    minLength: 0
+                    maxLength: 100
                     type: string
             services:
               description: |-
@@ -7547,7 +7551,7 @@ components:
                 **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
             serviceAreaPlaces:
               description: |
-                Information about the area that is served by this entity. It is specified as a list of service area names and their associated types.
+                Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.
                 **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
 
 
@@ -7569,6 +7573,10 @@ components:
                       - COUNTY
                       - CITY
                       - SUBLOCALITY
+                    type: string
+                  googlePlaceId:
+                    minLength: 0
+                    maxLength: 100
                     type: string
             services:
               description: |-
@@ -9767,7 +9775,7 @@ components:
                 **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
             serviceAreaPlaces:
               description: |
-                Information about the area that is served by this entity. It is specified as a list of service area names and their associated types.
+                Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.
                 **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
 
 
@@ -9789,6 +9797,10 @@ components:
                       - COUNTY
                       - CITY
                       - SUBLOCALITY
+                    type: string
+                  googlePlaceId:
+                    minLength: 0
+                    maxLength: 100
                     type: string
             services:
               description: |-
@@ -12944,7 +12956,7 @@ components:
                 **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
             serviceAreaPlaces:
               description: |
-                Information about the area that is served by this entity. It is specified as a list of service area names and their associated types.
+                Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.
                 **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
 
 
@@ -12966,6 +12978,10 @@ components:
                       - COUNTY
                       - CITY
                       - SUBLOCALITY
+                    type: string
+                  googlePlaceId:
+                    minLength: 0
+                    maxLength: 100
                     type: string
             services:
               description: |-
@@ -17397,7 +17413,7 @@ components:
                 **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
             serviceAreaPlaces:
               description: |
-                Information about the area that is served by this entity. It is specified as a list of service area names and their associated types.
+                Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.
                 **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
 
 
@@ -17419,6 +17435,10 @@ components:
                       - COUNTY
                       - CITY
                       - SUBLOCALITY
+                    type: string
+                  googlePlaceId:
+                    minLength: 0
+                    maxLength: 100
                     type: string
             services:
               description: |-
@@ -22196,7 +22216,7 @@ components:
                 **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
             serviceAreaPlaces:
               description: |
-                Information about the area that is served by this entity. It is specified as a list of service area names and their associated types.
+                Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.
                 **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
 
 
@@ -22218,6 +22238,10 @@ components:
                       - COUNTY
                       - CITY
                       - SUBLOCALITY
+                    type: string
+                  googlePlaceId:
+                    minLength: 0
+                    maxLength: 100
                     type: string
             services:
               description: |-
@@ -32135,8 +32159,8 @@ components:
             ```
         serviceAreaPlaces:
           description: |-
-            Information about the area that is served by this entity. It is specified as a list of service area names and their associated types.
-            **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
+            Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.
+             **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
 
 
             Array may have a maximum of 200 elements.
@@ -32173,6 +32197,11 @@ components:
                   - SUBLOCALITY
                 type: string
                 description: 'Filtering Type: `option`'
+              googlePlaceId:
+                minLength: 0
+                maxLength: 100
+                type: string
+                description: 'Filtering Type: `text`'
             description: 'Filtering Type: `object`'
         services:
           description: |-
