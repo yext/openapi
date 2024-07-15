@@ -547,8 +547,7 @@ components:
             createdTimestamp:
               minLength: 0
               type: string
-              description: |
-                The timestamp of when the entity record was created.
+              description: The timestamp of when the entity record was created.
             entityType:
               minLength: 0
               type: string
@@ -634,6 +633,7 @@ components:
             Eligible For: 
                * atm
                * board
+               * brand
                * card
                * contactCard
                * event
@@ -799,6 +799,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -868,6 +871,9 @@ components:
                     uniqueItems: false
                     type: array
                     items:
+                      required:
+                        - start
+                        - end
                       additionalProperties: false
                       type: object
                       properties:
@@ -905,6 +911,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -951,6 +960,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -988,6 +1000,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -1025,6 +1040,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -1062,6 +1080,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -1099,6 +1120,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -1455,6 +1479,213 @@ components:
             ```
           type: string
           format: rich-text
+        appleActionLinks:
+          description: |-
+            Use this field to add action links to your Apple Listings.
+
+            The call to action category will be displayed on the action link button.
+
+            The App Store URL should contain a valid link to the landing page of an App in the Apple App Store.
+
+            The Quick Link URL is where a user is taken when an action link is clicked by a user.
+
+            The App Name sub-field is not displayed on Apple Listings and is only used to distinguish the call-to-action type when utilizing action links in Apple posts.
+
+
+            Array must be ordered.
+
+
+            Filtering Type: `list of object`
+
+            ```
+            Eligible For: 
+               * atm
+               * financialProfessional
+               * healthcareFacility
+               * healthcareProfessional
+               * hotel
+               * location
+               * restaurant
+            ```
+          uniqueItems: true
+          type: array
+          items:
+            required:
+              - category
+              - appStoreUrl
+              - quickLinkUrl
+              - appName
+            additionalProperties: false
+            type: object
+            properties:
+              appName:
+                minLength: 0
+                maxLength: 18
+                type: string
+                description: 'Filtering Type: `text`'
+              appStoreUrl:
+                minLength: 0
+                maxLength: 2000
+                format: uri
+                type: string
+                description: 'Filtering Type: `text`'
+              category:
+                enum:
+                  - BOOK_TRAVEL
+                  - CHECK_IN
+                  - FEES_POLICIES
+                  - FLIGHT_STATUS
+                  - TICKETS
+                  - TICKETING
+                  - AMENITIES
+                  - FRONT_DESK
+                  - PARKING
+                  - GIFT_CARD
+                  - WAITLIST
+                  - DELIVERY
+                  - ORDER
+                  - TAKEOUT
+                  - PICKUP
+                  - RESERVE
+                  - MENU
+                  - APPOINTMENT
+                  - PORTFOLIO
+                  - QUOTE
+                  - SERVICES
+                  - STORE_ORDERS
+                  - STORE_SHOP
+                  - STORE_SUPPORT
+                  - SCHEDULE
+                  - SHOWTIMES
+                  - AVAILABILITY
+                  - PRICING
+                  - ACTIVITIES
+                  - BOOK
+                  - BOOK_(HOTEL)
+                  - BOOK_(RIDE)
+                  - BOOK_(TOUR)
+                  - CAREERS
+                  - CHARGE
+                  - COUPONS
+                  - DELIVERY_(RETAIL)
+                  - DONATE
+                  - EVENTS
+                  - ORDER_(RETAIL)
+                  - OTHER_MENU
+                  - PICKUP_(RETAIL)
+                  - RESERVE_(PARKING)
+                  - SHOWS
+                  - SPORTS
+                  - SUPPORT
+                  - TEE_TIME
+                  - GIFT_CARD_(RESTAURANT)
+                type: string
+                description: 'Filtering Type: `option`'
+              quickLinkUrl:
+                minLength: 0
+                maxLength: 2000
+                format: uri
+                type: string
+                description: 'Filtering Type: `text`'
+            description: 'Filtering Type: `object`'
+        appleBusinessDescription:
+          minLength: 0
+          maxLength: 500
+          type: string
+          description: |-
+            The business description to be sent to Apple
+
+            Filtering Type: `text`
+
+            ```
+            Eligible For: 
+               * atm
+               * financialProfessional
+               * healthcareFacility
+               * healthcareProfessional
+               * hotel
+               * location
+               * restaurant
+            ```
+        appleBusinessId:
+          minLength: 0
+          pattern: ^\d*\.?\d*$
+          type: string
+          description: |-
+            The ID associated with an individual Business Folder in your Apple account
+
+            Filtering Type: `text`
+
+            ```
+            Eligible For: 
+               * atm
+               * financialProfessional
+               * healthcareFacility
+               * healthcareProfessional
+               * hotel
+               * location
+               * restaurant
+            ```
+        appleCompanyId:
+          minLength: 0
+          pattern: ^\d*\.?\d*$
+          type: string
+          description: |-
+            The ID associated with your Apple account. Numerical values only
+
+            Filtering Type: `text`
+
+            ```
+            Eligible For: 
+               * atm
+               * financialProfessional
+               * healthcareFacility
+               * healthcareProfessional
+               * hotel
+               * location
+               * restaurant
+            ```
+        appleCoverPhoto:
+          required:
+            - url
+          additionalProperties: false
+          type: object
+          description: |-
+            The cover photo for the entity''s Apple profile
+
+
+            Image must be at least 1600 x 1040 pixels
+
+            Image may be no more than 4864 x 3163 pixels
+
+            Supported Aspect Ratios:
+            * 154 x 100
+
+            **NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.
+
+
+            Filtering Type: `object`
+
+            ```
+            Eligible For: 
+               * atm
+               * financialProfessional
+               * healthcareFacility
+               * healthcareProfessional
+               * hotel
+               * location
+               * restaurant
+            ```
+          properties:
+            alternateText:
+              minLength: 0
+              type: string
+              description: 'Filtering Type: `text`'
+            url:
+              minLength: 0
+              format: uri
+              type: string
+              description: 'Filtering Type: `text`'
         applicationUrl:
           minLength: 0
           format: uri
@@ -1772,6 +2003,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -1841,6 +2075,9 @@ components:
                     uniqueItems: false
                     type: array
                     items:
+                      required:
+                        - start
+                        - end
                       additionalProperties: false
                       type: object
                       properties:
@@ -1878,6 +2115,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -1924,6 +2164,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -1961,6 +2204,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -1998,6 +2244,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -2035,6 +2284,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -2072,6 +2324,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -2202,23 +2457,17 @@ components:
                * hotel
             ```
         categories:
+          additionalProperties: false
           type: object
-          additionalProperties:
-            uniqueItems: false
-            type: array
-            items:
-              minLength: 0
-              type: string
-              description: 'Filtering Type: `text`'
+          properties: {}
           description: |-
-            Yext Categories. (Supported for versions > 20240220) 
+            Yext Categories. (Supported for versions > 20240220)
 
-            A map of category list external IDs (i.e. "yext") to a list of category IDs. 
+            A map of category list external IDs (i.e. "yext") to a list of category IDs.
 
             IDs must be valid and selectable (i.e., cannot be parent categories).
 
-            Partial updates are accepted, meaning sending only the "yext"  property will have no effect on any category list except the "yext" category list.
-
+            Partial updates are accepted, meaning sending only the "yext" property will have no effect on any category list except the "yext" category. 
 
             Filtering Type: `object`
 
@@ -2226,8 +2475,8 @@ components:
             Eligible For: 
                * atm
                * event
-             * financialProfessional
-             * healthcareFacility
+               * financialProfessional
+               * healthcareFacility
                * healthcareProfessional
                * hotel
                * location
@@ -2241,7 +2490,7 @@ components:
             type: string
             description: 'Filtering Type: `text`'
           description: |-
-            Yext Category IDs. (Deprecated: For versions > 20240220) 
+            Yext Category IDs. (Deprecated: For versions > 20240220)
 
             IDs must be valid and selectable (i.e., cannot be parent categories).
 
@@ -2303,7 +2552,7 @@ components:
           type: array
           items:
             minLength: 0
-            maxLength: 100
+            maxLength: 200
             type: string
             description: |-
 
@@ -2720,6 +2969,7 @@ components:
               - DNP
               - DO
               - DPM
+              - DPT
               - DSW
               - DVM
               - FNP
@@ -2730,6 +2980,7 @@ components:
               - MBA
               - MBBS
               - MD
+              - MPAS
               - MPH
               - MSW
               - ND
@@ -2766,6 +3017,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -2835,6 +3089,9 @@ components:
                     uniqueItems: false
                     type: array
                     items:
+                      required:
+                        - start
+                        - end
                       additionalProperties: false
                       type: object
                       properties:
@@ -2872,6 +3129,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -2918,6 +3178,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -2955,6 +3218,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -2992,6 +3258,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -3029,6 +3298,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -3066,6 +3338,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -3213,6 +3488,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -3282,6 +3560,9 @@ components:
                     uniqueItems: false
                     type: array
                     items:
+                      required:
+                        - start
+                        - end
                       additionalProperties: false
                       type: object
                       properties:
@@ -3319,6 +3600,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -3365,6 +3649,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -3402,6 +3689,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -3439,6 +3729,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -3476,6 +3769,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -3513,6 +3809,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -3744,6 +4043,25 @@ components:
             Eligible For: 
                * event
             ```
+        facebookAbout:
+          minLength: 0
+          maxLength: 255
+          type: string
+          description: |-
+            A description of the entity to be used in the "About You" section on Facebook
+
+            Filtering Type: `text`
+
+            ```
+            Eligible For: 
+               * atm
+               * financialProfessional
+               * healthcareFacility
+               * healthcareProfessional
+               * hotel
+               * location
+               * restaurant
+            ```
         facebookCallToAction:
           required:
             - type
@@ -3961,6 +4279,26 @@ components:
                * organization
                * restaurant
             ```
+        facebookParentPageId:
+          minLength: 0
+          maxLength: 65
+          type: string
+          description: |-
+            The Facebook Page ID of this entity's brand page if in a brand page location structure
+
+            Filtering Type: `text`
+
+            ```
+            Eligible For: 
+               * atm
+               * brand
+               * financialProfessional
+               * healthcareFacility
+               * healthcareProfessional
+               * hotel
+               * location
+               * restaurant
+            ```
         facebookProfilePhoto:
           required:
             - url
@@ -3980,6 +4318,15 @@ components:
 
             Supported Aspect Ratios:
             * 1 x 1
+            * 4 x 3
+            * 3 x 2
+            * 5 x 3
+            * 16 x 9
+            * 3 x 1
+            * 2 x 3
+            * 5 x 7
+            * 4 x 5
+            * 4 x 1
 
             **NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.
 
@@ -4006,12 +4353,49 @@ components:
               format: uri
               type: string
               description: 'Filtering Type: `text`'
+        facebookStoreId:
+          minLength: 0
+          type: string
+          description: |-
+            The Store ID used for this entity in a brand page location structure
+
+            Filtering Type: `text`
+
+            ```
+            Eligible For: 
+               * atm
+               * financialProfessional
+               * healthcareFacility
+               * healthcareProfessional
+               * hotel
+               * location
+               * restaurant
+            ```
         facebookVanityUrl:
           minLength: 0
           maxLength: 50
           type: string
           description: |-
             The username that appear's in the Facebook listing URL to help customers find and remember a brand’s Facebook page.  The username is also be used for tagging the Facebook page in other users’ posts, and searching for the Facebook page.
+
+            Filtering Type: `text`
+
+            ```
+            Eligible For: 
+               * atm
+               * financialProfessional
+               * healthcareFacility
+               * healthcareProfessional
+               * hotel
+               * location
+               * restaurant
+            ```
+        facebookWebsiteOverride:
+          minLength: 0
+          format: uri
+          type: string
+          description: |-
+            The URL you would like to submit to Facebook in place of the one given in **`websiteUrl`** (if applicable).
 
             Filtering Type: `text`
 
@@ -4187,6 +4571,7 @@ components:
             ```
             Eligible For: 
                * atm
+               * event
                * financialProfessional
                * healthcareFacility
                * healthcareProfessional
@@ -4262,6 +4647,11 @@ components:
             - UNSPECIFIED
             - FEMALE
             - MALE
+            - NONBINARY
+            - TRANSGENDER_FEMALE
+            - TRANSGENDER_MALE
+            - OTHER
+            - PREFER_NOT_TO_DISCLOSE
           type: string
           description: |-
             The gender of the healthcare professional
@@ -4449,7 +4839,7 @@ components:
 
             Image must be at least 250 x 250 pixels
 
-            Image may be no more than 500 x 500 pixels
+            Image may be no more than 5000 x 5000 pixels
 
             Supported Aspect Ratios:
             * 1 x 1
@@ -4518,6 +4908,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -4587,6 +4980,9 @@ components:
                     uniqueItems: false
                     type: array
                     items:
+                      required:
+                        - start
+                        - end
                       additionalProperties: false
                       type: object
                       properties:
@@ -4624,6 +5020,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -4670,6 +5069,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -4707,6 +5109,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -4744,6 +5149,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -4781,6 +5189,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -4818,6 +5229,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -4963,6 +5377,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -5032,6 +5449,9 @@ components:
                     uniqueItems: false
                     type: array
                     items:
+                      required:
+                        - start
+                        - end
                       additionalProperties: false
                       type: object
                       properties:
@@ -5069,6 +5489,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -5115,6 +5538,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -5152,6 +5578,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -5189,6 +5618,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -5226,6 +5658,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -5263,6 +5698,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -5576,6 +6014,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -5645,6 +6086,9 @@ components:
                     uniqueItems: false
                     type: array
                     items:
+                      required:
+                        - start
+                        - end
                       additionalProperties: false
                       type: object
                       properties:
@@ -5682,6 +6126,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -5728,6 +6175,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -5765,6 +6215,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -5802,6 +6255,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -5839,6 +6295,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -5876,6 +6335,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -5935,6 +6397,7 @@ components:
             Eligible For: 
                * atm
                * board
+               * brand
                * card
                * contactCard
                * event
@@ -6080,8 +6543,24 @@ components:
             ```
         linkedInUrl:
           minLength: 0
+          format: uri
           type: string
-          description: URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername
+          description: |-
+            URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername
+
+            Filtering Type: `text`
+
+            ```
+            Eligible For: 
+               * contactCard
+               * financialProfessional
+               * healthcareFacility
+               * healthcareProfessional
+               * hotel
+               * location
+               * organization
+               * restaurant
+            ```
         linkedLocation:
           type: string
           description: |-
@@ -6577,6 +7056,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -6646,6 +7128,9 @@ components:
                     uniqueItems: false
                     type: array
                     items:
+                      required:
+                        - start
+                        - end
                       additionalProperties: false
                       type: object
                       properties:
@@ -6683,6 +7168,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -6729,6 +7217,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -6766,6 +7257,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -6803,6 +7297,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -6840,6 +7337,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -6877,6 +7377,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -6920,6 +7423,257 @@ components:
                * healthcareProfessional
                * location
                * restaurant
+            ```
+        operatingCountries:
+          uniqueItems: true
+          type: array
+          items:
+            enum:
+              - AD
+              - AE
+              - AF
+              - AG
+              - AI
+              - AL
+              - AM
+              - AO
+              - AR
+              - AS
+              - AT
+              - AU
+              - AW
+              - AX
+              - AZ
+              - BA
+              - BB
+              - BD
+              - BE
+              - BF
+              - BG
+              - BH
+              - BI
+              - BJ
+              - BL
+              - BM
+              - BN
+              - BO
+              - BQ
+              - BR
+              - BS
+              - BT
+              - BW
+              - BY
+              - BZ
+              - CA
+              - CD
+              - CF
+              - CG
+              - CH
+              - CI
+              - CK
+              - CL
+              - CM
+              - CN
+              - CO
+              - CR
+              - CU
+              - CV
+              - CW
+              - CY
+              - CZ
+              - DE
+              - DJ
+              - DK
+              - DM
+              - DO
+              - DZ
+              - EC
+              - EE
+              - EG
+              - EH
+              - ER
+              - ES
+              - ET
+              - FI
+              - FJ
+              - FK
+              - FM
+              - FO
+              - FR
+              - GA
+              - GB
+              - GD
+              - GE
+              - GF
+              - GG
+              - GH
+              - GI
+              - GM
+              - GN
+              - GP
+              - GQ
+              - GR
+              - GT
+              - GU
+              - GW
+              - GY
+              - HK
+              - HN
+              - HR
+              - HT
+              - HU
+              - ID
+              - IE
+              - IL
+              - IM
+              - IN
+              - IQ
+              - IR
+              - IS
+              - IT
+              - JE
+              - JM
+              - JO
+              - JP
+              - KE
+              - KG
+              - KH
+              - KI
+              - KM
+              - KN
+              - KR
+              - KW
+              - KY
+              - KZ
+              - LA
+              - LB
+              - LC
+              - LI
+              - LK
+              - LR
+              - LS
+              - LT
+              - LU
+              - LV
+              - LY
+              - MA
+              - MC
+              - MD
+              - ME
+              - MF
+              - MG
+              - MH
+              - MK
+              - ML
+              - MM
+              - MN
+              - MO
+              - MP
+              - MQ
+              - MR
+              - MS
+              - MT
+              - MU
+              - MV
+              - MW
+              - MX
+              - MY
+              - MZ
+              - NA
+              - NC
+              - NE
+              - NG
+              - NI
+              - NL
+              - 'NO'
+              - NP
+              - NR
+              - NZ
+              - OM
+              - PA
+              - PE
+              - PF
+              - PG
+              - PH
+              - PK
+              - PL
+              - PM
+              - PR
+              - PS
+              - PT
+              - PW
+              - PY
+              - QA
+              - RE
+              - RO
+              - RS
+              - RU
+              - RW
+              - SA
+              - SB
+              - SC
+              - SD
+              - SE
+              - SG
+              - SH
+              - SI
+              - SJ
+              - SK
+              - SL
+              - SM
+              - SN
+              - SO
+              - SR
+              - SS
+              - ST
+              - SV
+              - SX
+              - SY
+              - SZ
+              - TC
+              - TD
+              - TG
+              - TH
+              - TJ
+              - TL
+              - TM
+              - TN
+              - TO
+              - TR
+              - TT
+              - TV
+              - TW
+              - TZ
+              - UA
+              - UG
+              - US
+              - UY
+              - UZ
+              - VA
+              - VC
+              - VE
+              - VG
+              - VI
+              - VN
+              - VU
+              - WF
+              - WS
+              - XK
+              - YE
+              - YT
+              - ZA
+              - ZM
+              - ZW
+            type: string
+            description: 'Filtering Type: `option`'
+          description: |-
+            The list of countries the business operates in
+
+            Filtering Type: `list of option`
+
+            ```
+            Eligible For: 
+               * organization
             ```
         orderUrl:
           additionalProperties: false
@@ -7033,6 +7787,7 @@ components:
           type: array
           items:
             enum:
+              - AFTERPAY
               - ALIPAY
               - AMERICANEXPRESS
               - ANDROIDPAY
@@ -7051,6 +7806,7 @@ components:
               - CCS
               - CHECK
               - CONB
+              - CONTACTLESSPAYME
               - CVVV
               - DEBITNOTE
               - DINERSCLUB
@@ -7350,6 +8106,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -7419,6 +8178,9 @@ components:
                     uniqueItems: false
                     type: array
                     items:
+                      required:
+                        - start
+                        - end
                       additionalProperties: false
                       type: object
                       properties:
@@ -7456,6 +8218,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -7502,6 +8267,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -7539,6 +8307,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -7576,6 +8347,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -7613,6 +8387,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -7650,6 +8427,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -7694,8 +8474,24 @@ components:
             ```
         pinterestUrl:
           minLength: 0
+          format: uri
           type: string
-          description: URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername
+          description: |-
+            URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername
+
+            Filtering Type: `text`
+
+            ```
+            Eligible For: 
+               * contactCard
+               * financialProfessional
+               * healthcareFacility
+               * healthcareProfessional
+               * hotel
+               * location
+               * organization
+               * restaurant
+            ```
         priceRange:
           enum:
             - UNSPECIFIED
@@ -8254,6 +9050,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -8323,6 +9122,9 @@ components:
                     uniqueItems: false
                     type: array
                     items:
+                      required:
+                        - start
+                        - end
                       additionalProperties: false
                       type: object
                       properties:
@@ -8360,6 +9162,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -8406,6 +9211,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -8443,6 +9251,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -8480,6 +9291,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -8517,6 +9331,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -8554,6 +9371,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -8638,7 +9458,7 @@ components:
         serviceAreaPlaces:
           description: |-
             Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.
-             **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
+            **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.
 
 
             Array may have a maximum of 200 elements.
@@ -8666,6 +9486,10 @@ components:
                 maxLength: 100
                 type: string
                 description: 'Filtering Type: `text`'
+              googlePlaceId:
+                minLength: 0
+                type: string
+                description: 'Filtering Type: `text`'
               type:
                 enum:
                   - POSTAL_CODE
@@ -8675,11 +9499,6 @@ components:
                   - SUBLOCALITY
                 type: string
                 description: 'Filtering Type: `option`'
-              googlePlaceId:
-                minLength: 0
-                maxLength: 100
-                type: string
-                description: 'Filtering Type: `text`'
             description: 'Filtering Type: `object`'
         services:
           description: |-
@@ -8851,6 +9670,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -8920,6 +9742,9 @@ components:
                     uniqueItems: false
                     type: array
                     items:
+                      required:
+                        - start
+                        - end
                       additionalProperties: false
                       type: object
                       properties:
@@ -8957,6 +9782,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -9003,6 +9831,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -9040,6 +9871,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -9077,6 +9911,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -9114,6 +9951,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -9151,6 +9991,9 @@ components:
                   uniqueItems: false
                   type: array
                   items:
+                    required:
+                      - start
+                      - end
                     additionalProperties: false
                     type: object
                     properties:
@@ -9297,6 +10140,26 @@ components:
             Eligible For: 
                * event
             ```
+        tikTokUrl:
+          minLength: 0
+          format: uri
+          type: string
+          description: |-
+            URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername
+
+            Filtering Type: `text`
+
+            ```
+            Eligible For: 
+               * contactCard
+               * financialProfessional
+               * healthcareFacility
+               * healthcareProfessional
+               * hotel
+               * location
+               * organization
+               * restaurant
+            ```
         time:
           additionalProperties: false
           type: object
@@ -9355,10 +10218,6 @@ components:
                * location
                * restaurant
             ```
-        tikTokUrl:
-          minLength: 0
-          type: string
-          description: URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername
         timezone:
           minLength: 0
           type: string
@@ -10105,8 +10964,24 @@ components:
             ```
         youTubeChannelUrl:
           minLength: 0
+          format: uri
           type: string
-          description: URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername
+          description: |-
+            URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername
+
+            Filtering Type: `text`
+
+            ```
+            Eligible For: 
+               * contactCard
+               * financialProfessional
+               * healthcareFacility
+               * healthcareProfessional
+               * hotel
+               * location
+               * organization
+               * restaurant
+            ```
     ChangedFields:
       type: object
       properties:

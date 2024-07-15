@@ -825,7 +825,7 @@
               "createdTimestamp": {
                 "minLength": 0,
                 "type": "string",
-                "description": "The timestamp of when the entity record was created.\n"
+                "description": "The timestamp of when the entity record was created."
               },
               "entityType": {
                 "minLength": 0,
@@ -874,7 +874,7 @@
             "minLength": 0,
             "maxLength": 5000,
             "type": "string",
-            "description": "\n\n\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * hotelRoomType\n   * job\n   * location\n   * organization\n   * product\n   * restaurant\n```"
+            "description": "\n\n\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * board\n   * brand\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * hotelRoomType\n   * job\n   * location\n   * organization\n   * product\n   * restaurant\n```"
           },
           "address": {
             "additionalProperties": false,
@@ -955,6 +955,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -1004,6 +1008,10 @@
                       "uniqueItems": false,
                       "type": "array",
                       "items": {
+                        "required": [
+                          "start",
+                          "end"
+                        ],
                         "additionalProperties": false,
                         "type": "object",
                         "properties": {
@@ -1038,6 +1046,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -1076,6 +1088,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -1109,6 +1125,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -1142,6 +1162,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -1175,6 +1199,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -1208,6 +1236,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -1352,6 +1384,137 @@
             "description": "The answer to the frequently asked question represented by this entity\n\n\nCharacter limit: 0 .. 15000\n\nSupported formats include:\n* BOLD\n* ITALICS\n* UNDERLINE\n* BULLETED_LIST\n* NUMBERED_LIST\n* HYPERLINK\n* IMAGE\n* CODE_SPAN\n* HEADINGS\n\n```\nEligible For: \n   * faq\n```",
             "type": "string",
             "format": "rich-text"
+          },
+          "appleActionLinks": {
+            "description": "Use this field to add action links to your Apple Listings.\n\nThe call to action category will be displayed on the action link button.\n\nThe App Store URL should contain a valid link to the landing page of an App in the Apple App Store.\n\nThe Quick Link URL is where a user is taken when an action link is clicked by a user.\n\nThe App Name sub-field is not displayed on Apple Listings and is only used to distinguish the call-to-action type when utilizing action links in Apple posts.\n\n\nArray must be ordered.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "required": [
+                "category",
+                "appStoreUrl",
+                "quickLinkUrl",
+                "appName"
+              ],
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "appName": {
+                  "minLength": 0,
+                  "maxLength": 18,
+                  "type": "string",
+                  "description": "Filtering Type: `text`"
+                },
+                "appStoreUrl": {
+                  "minLength": 0,
+                  "maxLength": 2000,
+                  "format": "uri",
+                  "type": "string",
+                  "description": "Filtering Type: `text`"
+                },
+                "category": {
+                  "enum": [
+                    "BOOK_TRAVEL",
+                    "CHECK_IN",
+                    "FEES_POLICIES",
+                    "FLIGHT_STATUS",
+                    "TICKETS",
+                    "TICKETING",
+                    "AMENITIES",
+                    "FRONT_DESK",
+                    "PARKING",
+                    "GIFT_CARD",
+                    "WAITLIST",
+                    "DELIVERY",
+                    "ORDER",
+                    "TAKEOUT",
+                    "PICKUP",
+                    "RESERVE",
+                    "MENU",
+                    "APPOINTMENT",
+                    "PORTFOLIO",
+                    "QUOTE",
+                    "SERVICES",
+                    "STORE_ORDERS",
+                    "STORE_SHOP",
+                    "STORE_SUPPORT",
+                    "SCHEDULE",
+                    "SHOWTIMES",
+                    "AVAILABILITY",
+                    "PRICING",
+                    "ACTIVITIES",
+                    "BOOK",
+                    "BOOK_(HOTEL)",
+                    "BOOK_(RIDE)",
+                    "BOOK_(TOUR)",
+                    "CAREERS",
+                    "CHARGE",
+                    "COUPONS",
+                    "DELIVERY_(RETAIL)",
+                    "DONATE",
+                    "EVENTS",
+                    "ORDER_(RETAIL)",
+                    "OTHER_MENU",
+                    "PICKUP_(RETAIL)",
+                    "RESERVE_(PARKING)",
+                    "SHOWS",
+                    "SPORTS",
+                    "SUPPORT",
+                    "TEE_TIME",
+                    "GIFT_CARD_(RESTAURANT)"
+                  ],
+                  "type": "string",
+                  "description": "Filtering Type: `option`"
+                },
+                "quickLinkUrl": {
+                  "minLength": 0,
+                  "maxLength": 2000,
+                  "format": "uri",
+                  "type": "string",
+                  "description": "Filtering Type: `text`"
+                }
+              },
+              "description": "Filtering Type: `object`"
+            }
+          },
+          "appleBusinessDescription": {
+            "minLength": 0,
+            "maxLength": 500,
+            "type": "string",
+            "description": "The business description to be sent to Apple\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+          },
+          "appleBusinessId": {
+            "minLength": 0,
+            "pattern": "^\\d*\\.?\\d*$",
+            "type": "string",
+            "description": "The ID associated with an individual Business Folder in your Apple account\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+          },
+          "appleCompanyId": {
+            "minLength": 0,
+            "pattern": "^\\d*\\.?\\d*$",
+            "type": "string",
+            "description": "The ID associated with your Apple account. Numerical values only\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+          },
+          "appleCoverPhoto": {
+            "required": [
+              "url"
+            ],
+            "additionalProperties": false,
+            "type": "object",
+            "description": "The cover photo for the entity''s Apple profile\n\n\nImage must be at least 1600 x 1040 pixels\n\nImage may be no more than 4864 x 3163 pixels\n\nSupported Aspect Ratios:\n* 154 x 100\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
+            "properties": {
+              "alternateText": {
+                "minLength": 0,
+                "type": "string",
+                "description": "Filtering Type: `text`"
+              },
+              "url": {
+                "minLength": 0,
+                "format": "uri",
+                "type": "string",
+                "description": "Filtering Type: `text`"
+              }
+            }
           },
           "applicationUrl": {
             "minLength": 0,
@@ -1527,6 +1690,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -1576,6 +1743,10 @@
                       "uniqueItems": false,
                       "type": "array",
                       "items": {
+                        "required": [
+                          "start",
+                          "end"
+                        ],
                         "additionalProperties": false,
                         "type": "object",
                         "properties": {
@@ -1610,6 +1781,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -1648,6 +1823,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -1681,6 +1860,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -1714,6 +1897,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -1747,6 +1934,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -1780,6 +1971,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -1855,17 +2050,10 @@
             "description": "Indicates whether the entity has a casino on premise or nearby.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
           },
           "categories": {
+            "additionalProperties": false,
             "type": "object",
-            "additionalProperties": {
-              "uniqueItems": false,
-              "type": "array",
-              "items": {
-                "minLength": 0,
-                "type": "string",
-                "description": "Filtering Type: `text`"
-              }
-            },
-            "description": "Yext Categories. (Supported for versions > 20240220) \n\nA map of category list external IDs (i.e. \"yext\") to a list of category IDs. \n\nIDs must be valid and selectable (i.e., cannot be parent categories).\n\nPartial updates are accepted, meaning sending only the \"yext\"  property will have no effect on any category list except the \"yext\" category list.\n\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * event\n * financialProfessional\n * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+            "properties": {},
+            "description": "Yext Categories. (Supported for versions > 20240220)\n\nA map of category list external IDs (i.e. \"yext\") to a list of category IDs.\n\nIDs must be valid and selectable (i.e., cannot be parent categories).\n\nPartial updates are accepted, meaning sending only the \"yext\" property will have no effect on any category list except the \"yext\" category. \n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * event\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
           },
           "categoryIds": {
             "uniqueItems": false,
@@ -1875,7 +2063,7 @@
               "type": "string",
               "description": "Filtering Type: `text`"
             },
-            "description": "Yext Category IDs. (Deprecated: For versions > 20240220) \n\nIDs must be valid and selectable (i.e., cannot be parent categories).\n\nNOTE: The list of category IDs that you send us must be comprehensive. For example, if you send us a list of IDs that does not include IDs that you sent in your last update, Yext considers the missing categories to be deleted, and we remove them from your listings.\n\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * event\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+            "description": "Yext Category IDs. (Deprecated: For versions > 20240220)\n\nIDs must be valid and selectable (i.e., cannot be parent categories).\n\nNOTE: The list of category IDs that you send us must be comprehensive. For example, if you send us a list of IDs that does not include IDs that you sent in your last update, Yext considers the missing categories to be deleted, and we remove them from your listings.\n\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * event\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
           },
           "catsAllowed": {
             "enum": [
@@ -1892,7 +2080,7 @@
             "type": "array",
             "items": {
               "minLength": 0,
-              "maxLength": 100,
+              "maxLength": 200,
               "type": "string",
               "description": "\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`"
             }
@@ -2075,6 +2263,7 @@
                 "DNP",
                 "DO",
                 "DPM",
+                "DPT",
                 "DSW",
                 "DVM",
                 "FNP",
@@ -2085,6 +2274,7 @@
                 "MBA",
                 "MBBS",
                 "MD",
+                "MPAS",
                 "MPH",
                 "MSW",
                 "ND",
@@ -2122,6 +2312,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -2171,6 +2365,10 @@
                       "uniqueItems": false,
                       "type": "array",
                       "items": {
+                        "required": [
+                          "start",
+                          "end"
+                        ],
                         "additionalProperties": false,
                         "type": "object",
                         "properties": {
@@ -2205,6 +2403,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -2243,6 +2445,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -2276,6 +2482,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -2309,6 +2519,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -2342,6 +2556,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -2375,6 +2593,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -2458,6 +2680,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -2507,6 +2733,10 @@
                       "uniqueItems": false,
                       "type": "array",
                       "items": {
+                        "required": [
+                          "start",
+                          "end"
+                        ],
                         "additionalProperties": false,
                         "type": "object",
                         "properties": {
@@ -2541,6 +2771,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -2579,6 +2813,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -2612,6 +2850,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -2645,6 +2887,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -2678,6 +2924,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -2711,6 +2961,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -2857,6 +3111,12 @@
             "type": "string",
             "description": "Information on whether the event will take place as scheduled\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * event\n```"
           },
+          "facebookAbout": {
+            "minLength": 0,
+            "maxLength": 255,
+            "type": "string",
+            "description": "A description of the entity to be used in the \"About You\" section on Facebook\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+          },
           "facebookCallToAction": {
             "required": [
               "type"
@@ -2935,13 +3195,19 @@
             "type": "string",
             "description": "URL for the entity's Facebook Page.\n\nValid formats:\n\n- facebook.com/profile.php?id=[numId]\n- facebook.com/group.php?gid=[numId]\n- facebook.com/groups/[numId]\n- facebook.com/[Name]\n- facebook.com/pages/[Name]/[numId]\n- facebook.com/people/[Name]/[numId]\n\nwhere [Name] is a String and [numId] is an Integer\nThe success response will contain a warning message explaining why the URL wasn't stored in the system.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```"
           },
+          "facebookParentPageId": {
+            "minLength": 0,
+            "maxLength": 65,
+            "type": "string",
+            "description": "The Facebook Page ID of this entity's brand page if in a brand page location structure\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * brand\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+          },
           "facebookProfilePhoto": {
             "required": [
               "url"
             ],
             "additionalProperties": false,
             "type": "object",
-            "description": "The profile picture for the entity's Facebook profile\n\nYou must have a profile picture in order for your listing to appear on Facebook.\n\n\nImage must be at least 180 x 180 pixels\n\nImage area (width x height) may be no more than 41000000 pixels\n\nImage may be no more than 30000 x 30000 pixels\n\nSupported Aspect Ratios:\n* 1 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
+            "description": "The profile picture for the entity's Facebook profile\n\nYou must have a profile picture in order for your listing to appear on Facebook.\n\n\nImage must be at least 180 x 180 pixels\n\nImage area (width x height) may be no more than 41000000 pixels\n\nImage may be no more than 30000 x 30000 pixels\n\nSupported Aspect Ratios:\n* 1 x 1\n* 4 x 3\n* 3 x 2\n* 5 x 3\n* 16 x 9\n* 3 x 1\n* 2 x 3\n* 5 x 7\n* 4 x 5\n* 4 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
             "properties": {
               "alternateText": {
                 "minLength": 0,
@@ -2956,11 +3222,22 @@
               }
             }
           },
+          "facebookStoreId": {
+            "minLength": 0,
+            "type": "string",
+            "description": "The Store ID used for this entity in a brand page location structure\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+          },
           "facebookVanityUrl": {
             "minLength": 0,
             "maxLength": 50,
             "type": "string",
             "description": "The username that appear's in the Facebook listing URL to help customers find and remember a brand’s Facebook page.  The username is also be used for tagging the Facebook page in other users’ posts, and searching for the Facebook page.\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+          },
+          "facebookWebsiteOverride": {
+            "minLength": 0,
+            "format": "uri",
+            "type": "string",
+            "description": "The URL you would like to submit to Facebook in place of the one given in **`websiteUrl`** (if applicable).\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
           },
           "fax": {
             "minLength": 0,
@@ -3023,7 +3300,7 @@
             "description": "Indicates whether the entity has free weights.\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * hotel\n```"
           },
           "frequentlyAskedQuestions": {
-            "description": "A list of questions that are frequently asked about this entity\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
+            "description": "A list of questions that are frequently asked about this entity\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * atm\n   * event\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
             "uniqueItems": true,
             "type": "array",
             "items": {
@@ -3075,7 +3352,12 @@
             "enum": [
               "UNSPECIFIED",
               "FEMALE",
-              "MALE"
+              "MALE",
+              "NONBINARY",
+              "TRANSGENDER_FEMALE",
+              "TRANSGENDER_MALE",
+              "OTHER",
+              "PREFER_NOT_TO_DISCLOSE"
             ],
             "type": "string",
             "description": "The gender of the healthcare professional\n\nFiltering Type: `option`\n\n```\nEligible For: \n   * healthcareProfessional\n```"
@@ -3152,7 +3434,7 @@
             ],
             "additionalProperties": false,
             "type": "object",
-            "description": "The profile photo for the entity's Google profile\n\n\nImage must be at least 250 x 250 pixels\n\nImage may be no more than 500 x 500 pixels\n\nSupported Aspect Ratios:\n* 1 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
+            "description": "The profile photo for the entity's Google profile\n\n\nImage must be at least 250 x 250 pixels\n\nImage may be no more than 5000 x 5000 pixels\n\nSupported Aspect Ratios:\n* 1 x 1\n\n**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
             "properties": {
               "alternateText": {
                 "minLength": 0,
@@ -3189,6 +3471,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -3238,6 +3524,10 @@
                       "uniqueItems": false,
                       "type": "array",
                       "items": {
+                        "required": [
+                          "start",
+                          "end"
+                        ],
                         "additionalProperties": false,
                         "type": "object",
                         "properties": {
@@ -3272,6 +3562,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -3310,6 +3604,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -3343,6 +3641,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -3376,6 +3678,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -3409,6 +3715,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -3442,6 +3752,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -3530,6 +3844,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -3579,6 +3897,10 @@
                       "uniqueItems": false,
                       "type": "array",
                       "items": {
+                        "required": [
+                          "start",
+                          "end"
+                        ],
                         "additionalProperties": false,
                         "type": "object",
                         "properties": {
@@ -3613,6 +3935,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -3651,6 +3977,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -3684,6 +4014,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -3717,6 +4051,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -3750,6 +4088,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -3783,6 +4125,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -3917,6 +4263,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -3966,6 +4316,10 @@
                       "uniqueItems": false,
                       "type": "array",
                       "items": {
+                        "required": [
+                          "start",
+                          "end"
+                        ],
                         "additionalProperties": false,
                         "type": "object",
                         "properties": {
@@ -4000,6 +4354,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -4038,6 +4396,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -4071,6 +4433,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -4104,6 +4470,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -4137,6 +4507,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -4170,6 +4544,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -4201,7 +4579,7 @@
               "minLength": 0,
               "type": "string"
             },
-            "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API.\n\nFiltering Type: `opaque`\n\n```\nEligible For: \n   * atm\n   * board\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * hotelRoomType\n   * job\n   * location\n   * organization\n   * product\n   * restaurant\n```"
+            "description": "The IDs of the entity labels that have been added to this entity. Entity labels help you identify entities that share a certain characteristic; they do not appear on your entity's listings.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API.\n\nFiltering Type: `opaque`\n\n```\nEligible For: \n   * atm\n   * board\n   * brand\n   * card\n   * contactCard\n   * event\n   * faq\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * helpArticle\n   * hotel\n   * hotelRoomType\n   * job\n   * location\n   * organization\n   * product\n   * restaurant\n```"
           },
           "landingPageUrl": {
             "minLength": 0,
@@ -4255,8 +4633,9 @@
           },
           "linkedInUrl": {
             "minLength": 0,
+            "format": "uri",
             "type": "string",
-            "description": "URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername"
+            "description": "URL for your LinkedIn account, format should be https://www.linkedin.com/in/yourUsername\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * contactCard\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```"
           },
           "linkedLocation": {
             "type": "string",
@@ -4512,6 +4891,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -4561,6 +4944,10 @@
                       "uniqueItems": false,
                       "type": "array",
                       "items": {
+                        "required": [
+                          "start",
+                          "end"
+                        ],
                         "additionalProperties": false,
                         "type": "object",
                         "properties": {
@@ -4595,6 +4982,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -4633,6 +5024,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -4666,6 +5061,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -4699,6 +5098,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -4732,6 +5135,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -4765,6 +5172,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -4788,6 +5199,252 @@
               }
             },
             "description": "Contains the daily online service hours, holiday online service hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `onlineServiceHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday online service hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day.\n\nFiltering Type: `hours`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * location\n   * restaurant\n```"
+          },
+          "operatingCountries": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "enum": [
+                "AD",
+                "AE",
+                "AF",
+                "AG",
+                "AI",
+                "AL",
+                "AM",
+                "AO",
+                "AR",
+                "AS",
+                "AT",
+                "AU",
+                "AW",
+                "AX",
+                "AZ",
+                "BA",
+                "BB",
+                "BD",
+                "BE",
+                "BF",
+                "BG",
+                "BH",
+                "BI",
+                "BJ",
+                "BL",
+                "BM",
+                "BN",
+                "BO",
+                "BQ",
+                "BR",
+                "BS",
+                "BT",
+                "BW",
+                "BY",
+                "BZ",
+                "CA",
+                "CD",
+                "CF",
+                "CG",
+                "CH",
+                "CI",
+                "CK",
+                "CL",
+                "CM",
+                "CN",
+                "CO",
+                "CR",
+                "CU",
+                "CV",
+                "CW",
+                "CY",
+                "CZ",
+                "DE",
+                "DJ",
+                "DK",
+                "DM",
+                "DO",
+                "DZ",
+                "EC",
+                "EE",
+                "EG",
+                "EH",
+                "ER",
+                "ES",
+                "ET",
+                "FI",
+                "FJ",
+                "FK",
+                "FM",
+                "FO",
+                "FR",
+                "GA",
+                "GB",
+                "GD",
+                "GE",
+                "GF",
+                "GG",
+                "GH",
+                "GI",
+                "GM",
+                "GN",
+                "GP",
+                "GQ",
+                "GR",
+                "GT",
+                "GU",
+                "GW",
+                "GY",
+                "HK",
+                "HN",
+                "HR",
+                "HT",
+                "HU",
+                "ID",
+                "IE",
+                "IL",
+                "IM",
+                "IN",
+                "IQ",
+                "IR",
+                "IS",
+                "IT",
+                "JE",
+                "JM",
+                "JO",
+                "JP",
+                "KE",
+                "KG",
+                "KH",
+                "KI",
+                "KM",
+                "KN",
+                "KR",
+                "KW",
+                "KY",
+                "KZ",
+                "LA",
+                "LB",
+                "LC",
+                "LI",
+                "LK",
+                "LR",
+                "LS",
+                "LT",
+                "LU",
+                "LV",
+                "LY",
+                "MA",
+                "MC",
+                "MD",
+                "ME",
+                "MF",
+                "MG",
+                "MH",
+                "MK",
+                "ML",
+                "MM",
+                "MN",
+                "MO",
+                "MP",
+                "MQ",
+                "MR",
+                "MS",
+                "MT",
+                "MU",
+                "MV",
+                "MW",
+                "MX",
+                "MY",
+                "MZ",
+                "NA",
+                "NC",
+                "NE",
+                "NG",
+                "NI",
+                "NL",
+                "NO",
+                "NP",
+                "NR",
+                "NZ",
+                "OM",
+                "PA",
+                "PE",
+                "PF",
+                "PG",
+                "PH",
+                "PK",
+                "PL",
+                "PM",
+                "PR",
+                "PS",
+                "PT",
+                "PW",
+                "PY",
+                "QA",
+                "RE",
+                "RO",
+                "RS",
+                "RU",
+                "RW",
+                "SA",
+                "SB",
+                "SC",
+                "SD",
+                "SE",
+                "SG",
+                "SH",
+                "SI",
+                "SJ",
+                "SK",
+                "SL",
+                "SM",
+                "SN",
+                "SO",
+                "SR",
+                "SS",
+                "ST",
+                "SV",
+                "SX",
+                "SY",
+                "SZ",
+                "TC",
+                "TD",
+                "TG",
+                "TH",
+                "TJ",
+                "TL",
+                "TM",
+                "TN",
+                "TO",
+                "TR",
+                "TT",
+                "TV",
+                "TW",
+                "TZ",
+                "UA",
+                "UG",
+                "US",
+                "UY",
+                "UZ",
+                "VA",
+                "VC",
+                "VE",
+                "VG",
+                "VI",
+                "VN",
+                "VU",
+                "WF",
+                "WS",
+                "XK",
+                "YE",
+                "YT",
+                "ZA",
+                "ZM",
+                "ZW"
+              ],
+              "type": "string",
+              "description": "Filtering Type: `option`"
+            },
+            "description": "The list of countries the business operates in\n\nFiltering Type: `list of option`\n\n```\nEligible For: \n   * organization\n```"
           },
           "orderUrl": {
             "additionalProperties": false,
@@ -4850,6 +5507,7 @@
             "type": "array",
             "items": {
               "enum": [
+                "AFTERPAY",
                 "ALIPAY",
                 "AMERICANEXPRESS",
                 "ANDROIDPAY",
@@ -4868,6 +5526,7 @@
                 "CCS",
                 "CHECK",
                 "CONB",
+                "CONTACTLESSPAYME",
                 "CVVV",
                 "DEBITNOTE",
                 "DINERSCLUB",
@@ -5059,6 +5718,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -5108,6 +5771,10 @@
                       "uniqueItems": false,
                       "type": "array",
                       "items": {
+                        "required": [
+                          "start",
+                          "end"
+                        ],
                         "additionalProperties": false,
                         "type": "object",
                         "properties": {
@@ -5142,6 +5809,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -5180,6 +5851,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -5213,6 +5888,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -5246,6 +5925,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -5279,6 +5962,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -5312,6 +5999,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -5338,8 +6029,9 @@
           },
           "pinterestUrl": {
             "minLength": 0,
+            "format": "uri",
             "type": "string",
-            "description": "URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername"
+            "description": "URL for your Pinterest account, format should be https://www.pinterest.com/yourUsername\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * contactCard\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```"
           },
           "priceRange": {
             "enum": [
@@ -5615,6 +6307,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -5664,6 +6360,10 @@
                       "uniqueItems": false,
                       "type": "array",
                       "items": {
+                        "required": [
+                          "start",
+                          "end"
+                        ],
                         "additionalProperties": false,
                         "type": "object",
                         "properties": {
@@ -5698,6 +6398,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -5736,6 +6440,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -5769,6 +6477,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -5802,6 +6514,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -5835,6 +6551,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -5868,6 +6588,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -5911,7 +6635,7 @@
             "description": "Information about the area that is served by this entity. It is specified as a list of cities and/or postal codes.\n\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
           },
           "serviceAreaPlaces": {
-            "description": "Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.\n **Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\n\nArray may have a maximum of 200 elements.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
+            "description": "Information about the area that is served by this entity. It is specified as a list of service area names, their associated types and google place ids.\n**Only for Google Business Profile and Bing:** Currently, **serviceArea** is only supported by Google Business Profile and Bing and will not affect your listings on other sites.\n\n\nArray may have a maximum of 200 elements.\n\n\nFiltering Type: `list of object`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
             "uniqueItems": true,
             "type": "array",
             "items": {
@@ -5921,6 +6645,11 @@
                 "name": {
                   "minLength": 0,
                   "maxLength": 100,
+                  "type": "string",
+                  "description": "Filtering Type: `text`"
+                },
+                "googlePlaceId": {
+                  "minLength": 0,
                   "type": "string",
                   "description": "Filtering Type: `text`"
                 },
@@ -5934,12 +6663,6 @@
                   ],
                   "type": "string",
                   "description": "Filtering Type: `option`"
-                },
-                "googlePlaceId": {
-                  "minLength": 0,
-                  "maxLength": 100,
-                  "type": "string",
-                  "description": "Filtering Type: `text`"
                 }
               },
               "description": "Filtering Type: `object`"
@@ -6028,6 +6751,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -6077,6 +6804,10 @@
                       "uniqueItems": false,
                       "type": "array",
                       "items": {
+                        "required": [
+                          "start",
+                          "end"
+                        ],
                         "additionalProperties": false,
                         "type": "object",
                         "properties": {
@@ -6111,6 +6842,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -6149,6 +6884,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -6182,6 +6921,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -6215,6 +6958,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -6248,6 +6995,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -6281,6 +7032,10 @@
                     "uniqueItems": false,
                     "type": "array",
                     "items": {
+                      "required": [
+                        "start",
+                        "end"
+                      ],
                       "additionalProperties": false,
                       "type": "object",
                       "properties": {
@@ -6366,6 +7121,12 @@
             "type": "string",
             "description": "URL to purchase tickets for the event (if ticketed)\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * event\n```"
           },
+          "tikTokUrl": {
+            "minLength": 0,
+            "format": "uri",
+            "type": "string",
+            "description": "URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * contactCard\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```"
+          },
           "time": {
             "additionalProperties": false,
             "type": "object",
@@ -6387,11 +7148,6 @@
             "minLength": 0,
             "type": "string",
             "description": "Represents the time zone offset of the entity from UTC, in `±hh:mm` format.\n\nFor example, if the entity is 4 hours ahead of UTC time, the offset will be `+04:00`.\n\nIf the entity is 15.5 hours behind UTC time, the offset will be `-15:30`.\n\nIf the entity is in UTC time, the offset will be `+00:00`.\n\n\n```\nEligible For: \n   * atm\n   * event\n   * faq\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * job\n   * location\n   * restaurant\n```"
-          },
-          "tikTokUrl": {
-            "minLength": 0,
-            "type": "string",
-            "description": "URL for your TikTok profile, format should be https://www.tiktok.com/yourUsername"
           },
           "timezone": {
             "minLength": 0,
@@ -6800,8 +7556,9 @@
           },
           "youTubeChannelUrl": {
             "minLength": 0,
+            "format": "uri",
             "type": "string",
-            "description": "URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername"
+            "description": "URL for your YouTube channel, format should be https://www.youtube.com/c/yourUsername\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * contactCard\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * organization\n   * restaurant\n```"
           }
         }
       },
