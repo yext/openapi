@@ -131,9 +131,9 @@ paths:
 
             ```
             {
-              "$not" {
-                "name":{
-                  "$eq":"John"
+              "$not": {
+                "name": {
+                  "$eq": "John"
                 }
               }
             }
@@ -22371,9 +22371,9 @@ paths:
 
             ```
             {
-              "$not" {
-                "name":{
-                  "$eq":"John"
+              "$not": {
+                "name": {
+                  "$eq": "John"
                 }
               }
             }
@@ -55372,9 +55372,9 @@ paths:
 
             ```
             {
-              "$not" {
-                "name":{
-                  "$eq":"John"
+              "$not": {
+                "name": {
+                  "$eq": "John"
                 }
               }
             }

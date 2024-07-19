@@ -390,9 +390,9 @@ components:
 
         ```
         {
-          "$not" {
-            "name":{
-              "$eq":"John"
+          "$not": {
+            "name": {
+              "$eq": "John"
             }
           }
         }
