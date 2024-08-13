@@ -130,6 +130,32 @@ paths:
           $ref: '#/components/responses/FilterSearchResponse'
         '400':
           $ref: '#/components/responses/ErrorResponse'
+  /accounts/{accountId}/search/generateAnswer:
+    get:
+      operationId: generateAnswer
+      summary: |
+        Answer: Generate
+      description: |
+        Leverages large language models (LLMs) to deliver generated summaries based on search results.
+
+        This endpoint works with the Universal/Vertical Search endpoint, which provides the search results for the LLM to analyze and generate direct answers.
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/v'
+        - $ref: '#/components/parameters/experienceKey'
+        - $ref: '#/components/parameters/queryLocale'
+      requestBody:
+        description: JSON object containing the search results and user query to generate an answer.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateAnswerRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenerateAnswerResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
 components:
   securitySchemes:
     api_key:
@@ -1030,6 +1056,31 @@ components:
                     $ref: '#/components/schemas/FailedVerticals'
                   queryId:
                     $ref: '#/components/schemas/queryId'
+    GenerateAnswerResponse:
+      description: Generate Answer Response
+      content:
+        application/json:
+          schema:
+            title: GenerateAnswerResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/ResponseMeta'
+              response:
+                type: object
+                properties:
+                  directAnswer:
+                    type: string
+                    description: The direct answer for the query.
+                  resultStatus:
+                    type: string
+                    description: The status of the result.
+                  citations:
+                    type: array
+                    description: The list of entity IDs that were used to generate the answer.
+                    items:
+                      type: string
+                      description: An ID of an entity that was used to generate the answer.
   schemas:
     ResponseMeta:
       type: object
@@ -1322,6 +1373,26 @@ components:
         Items in array each represent a particular intent expressed in the user's query. Example: `NEAR_ME`
       items:
         type: string
+    GenerateAnswerRequest:
+      type: object
+      required:
+        - searchId
+        - searchTerm
+        - results
+      properties:
+        searchId:
+          type: string
+          description: ID of the search associated to the results.
+        searchTerm:
+          type: string
+          description: The search term that was used to generate results.
+        results:
+          oneOf:
+            - $ref: '#/components/schemas/Module'
+            - type: object
+              properties:
+                verticals:
+                  $ref: '#/components/schemas/Modules'
 security:
   - api_key: []
   - api-key: []
