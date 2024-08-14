@@ -288,7 +288,7 @@
       }
     },
     "/accounts/{accountId}/search/generateAnswer": {
-      "get": {
+      "post": {
         "operationId": "generateAnswer",
         "summary": "Answer: Generate\n",
         "description": "Leverages large language models (LLMs) to deliver generated summaries based on search results.\n\nThis endpoint works with the Universal/Vertical Search endpoint, which provides the search results for the LLM to analyze and generate direct answers.\n",

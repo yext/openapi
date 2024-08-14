@@ -131,7 +131,7 @@ paths:
         '400':
           $ref: '#/components/responses/ErrorResponse'
   /accounts/{accountId}/search/generateAnswer:
-    get:
+    post:
       operationId: generateAnswer
       summary: |
         Answer: Generate
