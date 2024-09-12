@@ -6964,7 +6964,8 @@
                   }
                 }
               }
-            }
+            },
+            "headers": {}
           },
           "400": {
             "description": "Error Response",
@@ -7017,7 +7018,8 @@
                   "description": "Filtering Type: `object`"
                 }
               }
-            }
+            },
+            "headers": {}
           }
         }
       }
@@ -13883,7 +13885,8 @@
                   }
                 }
               }
-            }
+            },
+            "headers": {}
           },
           "400": {
             "description": "Error Response",
@@ -13936,7 +13939,8 @@
                   "description": "Filtering Type: `object`"
                 }
               }
-            }
+            },
+            "headers": {}
           }
         }
       }
@@ -21026,7 +21030,8 @@
                   "description": "Filtering Type: `object`\n\n```\nEligible For: \n   * card\n   * helpArticle\n```"
                 }
               }
-            }
+            },
+            "headers": {}
           },
           "400": {
             "description": "Error Response",
@@ -21079,7 +21084,8 @@
                   "description": "Filtering Type: `object`"
                 }
               }
-            }
+            },
+            "headers": {}
           }
         }
       }
@@ -27990,7 +27996,8 @@
                   }
                 }
               }
-            }
+            },
+            "headers": {}
           },
           "400": {
             "description": "Error Response",
@@ -28043,7 +28050,8 @@
                   "description": "Filtering Type: `object`"
                 }
               }
-            }
+            },
+            "headers": {}
           }
         }
       }
@@ -34939,7 +34947,8 @@
                   }
                 }
               }
-            }
+            },
+            "headers": {}
           },
           "400": {
             "description": "Error Response",
@@ -34992,7 +35001,8 @@
                   "description": "Filtering Type: `object`"
                 }
               }
-            }
+            },
+            "headers": {}
           }
         }
       }
@@ -41951,7 +41961,8 @@
                   }
                 }
               }
-            }
+            },
+            "headers": {}
           },
           "400": {
             "description": "Error Response",
@@ -42004,7 +42015,8 @@
                   "description": "Filtering Type: `object`"
                 }
               }
-            }
+            },
+            "headers": {}
           }
         }
       }

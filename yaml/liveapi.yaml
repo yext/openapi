@@ -11615,6 +11615,7 @@ paths:
                           Pass this value into the next request as the **`pageToken`** parameter to retrieve the next page of data.
 
                           If the response of a request contains the last page of data, a **`pageToken`** value will not be returned. A **`pageToken`** will never appear in the response if the request contains the **`sortOrder`**, **`randomization`**, or **`randomizationToken`** parameters.
+          headers: {}
         '400':
           description: Error Response
           content:
@@ -11654,6 +11655,7 @@ paths:
                         minLength: 0
                         type: string
                 description: 'Filtering Type: `object`'
+          headers: {}
   /accounts/{accountId}/entities/{entityId}:
     get:
       operationId: getEntity
@@ -22200,6 +22202,7 @@ paths:
                              * organization
                              * restaurant
                           ```
+          headers: {}
         '400':
           description: Error Response
           content:
@@ -22239,6 +22242,7 @@ paths:
                         minLength: 0
                         type: string
                 description: 'Filtering Type: `object`'
+          headers: {}
   /accounts/{accountId}/entities/geosearch:
     get:
       operationId: geoSearchEntities
@@ -33965,6 +33969,7 @@ paths:
                      * card
                      * helpArticle
                   ```
+          headers: {}
         '400':
           description: Error Response
           content:
@@ -34004,6 +34009,7 @@ paths:
                         minLength: 0
                         type: string
                 description: 'Filtering Type: `object`'
+          headers: {}
   /accounts/{accountId}/entityschema/{entityType}/{entityId}/{languageCode}:
     get:
       operationId: getEntitySchema
@@ -44579,6 +44585,7 @@ paths:
                              * organization
                              * restaurant
                           ```
+          headers: {}
         '400':
           description: Error Response
           content:
@@ -44618,6 +44625,7 @@ paths:
                         minLength: 0
                         type: string
                 description: 'Filtering Type: `object`'
+          headers: {}
   /accounts/{accountId}/entityprofiles/{entityId}:
     get:
       operationId: listLanguageProfiles
@@ -55207,6 +55215,7 @@ paths:
                                    * organization
                                    * restaurant
                                 ```
+          headers: {}
         '400':
           description: Error Response
           content:
@@ -55246,6 +55255,7 @@ paths:
                         minLength: 0
                         type: string
                 description: 'Filtering Type: `object`'
+          headers: {}
   /accounts/{accountId}/entityprofiles:
     get:
       operationId: listAllLanguageProfiles
@@ -66854,6 +66864,7 @@ paths:
                                          * organization
                                          * restaurant
                                       ```
+          headers: {}
         '400':
           description: Error Response
           content:
@@ -66893,6 +66904,7 @@ paths:
                         minLength: 0
                         type: string
                 description: 'Filtering Type: `object`'
+          headers: {}
   /accounts/{accountId}/menus/{listId}:
     get:
       operationId: getMenus
