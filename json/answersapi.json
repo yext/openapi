@@ -393,7 +393,7 @@
         "schema": {
           "type": "string"
         },
-        "description": "The label or version number of the experience configuration to use. If omitted the PRODUCTION label will be used."
+        "description": "The label or version number of the experience configuration to use. Label options are `STAGING` or `PRODUCTION`. `STAGING` uses the Latest version of the configuration. If omitted the `PRODUCTION` label will be used."
       },
       "queryLocale": {
         "name": "locale",
