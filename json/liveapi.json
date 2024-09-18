@@ -20959,11 +20959,6 @@
                                   "type": "string",
                                   "description": "Address line 2 field as returned by geocoder. If no value, returns \"\""
                                 },
-                                "line3": {
-                                  "minLength": 0,
-                                  "type": "string",
-                                  "description": "Filtering Type: `text`"
-                                },
                                 "postalCode": {
                                   "minLength": 0,
                                   "type": "string",
