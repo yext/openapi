@@ -68375,6 +68375,21 @@ components:
       description: List of up to 5 photos.
       items:
         $ref: '#/components/schemas/Photo'
+    Duration:
+      type: object
+      description: Product duration.
+      properties:
+        unit:
+          type: string
+          enum:
+            - MINUTES
+            - HOURS
+            - DAYS
+          description: Unit of time (i.e. minutes, hours, days).
+        value:
+          type: number
+          minimum: 1
+          description: Value of time.
     ProductItem:
       allOf:
         - $ref: '#/components/schemas/BaseEclItem'
@@ -68389,10 +68404,16 @@ components:
               description: Displayed item ID.
             url:
               type: string
-              description: Product home page
+              description: Product home page.
             video:
               type: string
               description: Youtube URL.
+            duration:
+              $ref: '#/components/schemas/Duration'
+            ranking:
+              type: number
+              minimum: 0
+              description: Product ranking.
     ProductEcl_Section:
       allOf:
         - $ref: '#/components/schemas/BaseEclSection'
