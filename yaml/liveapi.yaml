@@ -8431,9 +8431,11 @@ paths:
                                   - CASH
                                   - CCS
                                   - CHECK
+                                  - CHEQUESVACANCES
                                   - CONB
                                   - CONTACTLESSPAYME
                                   - CVVV
+                                  - DEBITCARD
                                   - DEBITNOTE
                                   - DINERSCLUB
                                   - DIRECTDEBIT
@@ -8443,6 +8445,7 @@ paths:
                                   - EKENA
                                   - EMV
                                   - FINANCING
+                                  - GIFTCARD
                                   - GOPAY
                                   - HAYAKAKEN
                                   - HEBAG
@@ -19025,9 +19028,11 @@ paths:
                             - CASH
                             - CCS
                             - CHECK
+                            - CHEQUESVACANCES
                             - CONB
                             - CONTACTLESSPAYME
                             - CVVV
+                            - DEBITCARD
                             - DEBITNOTE
                             - DINERSCLUB
                             - DIRECTDEBIT
@@ -19037,6 +19042,7 @@ paths:
                             - EKENA
                             - EMV
                             - FINANCING
+                            - GIFTCARD
                             - GOPAY
                             - HAYAKAKEN
                             - HEBAG
@@ -30703,9 +30709,11 @@ paths:
                                   - CASH
                                   - CCS
                                   - CHECK
+                                  - CHEQUESVACANCES
                                   - CONB
                                   - CONTACTLESSPAYME
                                   - CVVV
+                                  - DEBITCARD
                                   - DEBITNOTE
                                   - DINERSCLUB
                                   - DIRECTDEBIT
@@ -30715,6 +30723,7 @@ paths:
                                   - EKENA
                                   - EMV
                                   - FINANCING
+                                  - GIFTCARD
                                   - GOPAY
                                   - HAYAKAKEN
                                   - HEBAG
@@ -41404,9 +41413,11 @@ paths:
                             - CASH
                             - CCS
                             - CHECK
+                            - CHEQUESVACANCES
                             - CONB
                             - CONTACTLESSPAYME
                             - CVVV
+                            - DEBITCARD
                             - DEBITNOTE
                             - DINERSCLUB
                             - DIRECTDEBIT
@@ -41416,6 +41427,7 @@ paths:
                             - EKENA
                             - EMV
                             - FINANCING
+                            - GIFTCARD
                             - GOPAY
                             - HAYAKAKEN
                             - HEBAG
@@ -52034,9 +52046,11 @@ paths:
                                   - CASH
                                   - CCS
                                   - CHECK
+                                  - CHEQUESVACANCES
                                   - CONB
                                   - CONTACTLESSPAYME
                                   - CVVV
+                                  - DEBITCARD
                                   - DEBITNOTE
                                   - DINERSCLUB
                                   - DIRECTDEBIT
@@ -52046,6 +52060,7 @@ paths:
                                   - EKENA
                                   - EMV
                                   - FINANCING
+                                  - GIFTCARD
                                   - GOPAY
                                   - HAYAKAKEN
                                   - HEBAG
@@ -63683,9 +63698,11 @@ paths:
                                         - CASH
                                         - CCS
                                         - CHECK
+                                        - CHEQUESVACANCES
                                         - CONB
                                         - CONTACTLESSPAYME
                                         - CVVV
+                                        - DEBITCARD
                                         - DEBITNOTE
                                         - DINERSCLUB
                                         - DIRECTDEBIT
@@ -63695,6 +63712,7 @@ paths:
                                         - EKENA
                                         - EMV
                                         - FINANCING
+                                        - GIFTCARD
                                         - GOPAY
                                         - HAYAKAKEN
                                         - HEBAG

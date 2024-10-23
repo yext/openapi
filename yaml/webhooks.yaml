@@ -7805,9 +7805,11 @@ components:
               - CASH
               - CCS
               - CHECK
+              - CHEQUESVACANCES
               - CONB
               - CONTACTLESSPAYME
               - CVVV
+              - DEBITCARD
               - DEBITNOTE
               - DINERSCLUB
               - DIRECTDEBIT
@@ -7817,6 +7819,7 @@ components:
               - EKENA
               - EMV
               - FINANCING
+              - GIFTCARD
               - GOPAY
               - HAYAKAKEN
               - HEBAG
