@@ -12396,7 +12396,7 @@ components:
                 * Shrimp
                 * Crab
                 * Soba
-            featuredItem:
+            featured:
               type: boolean
               description: Indicates whether the item is a featured item on the menu.
             spiciness:

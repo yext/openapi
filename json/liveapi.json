@@ -43126,7 +43126,7 @@
                 },
                 "description": "A list of allergens associated with the menu item. Valid elements are:\n* Peanuts\n* Wheat\n* Sesame\n* Tree Nuts\n* Gluten\n* Soy\n* Dairy\n* Eggs\n* Fish\n* Shellfish\n* Shrimp\n* Crab\n* Soba\n"
               },
-              "featuredItem": {
+              "featured": {
                 "type": "boolean",
                 "description": "Indicates whether the item is a featured item on the menu."
               },
