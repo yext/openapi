@@ -67345,14 +67345,14 @@ paths:
 
         Content Endpoints support sorting by an indexed field. This can be enabled
         by adding the `$sortBy` query parameter with field name as the value.
-        Optionally, the modifiers `asc` and `desc` can be added to indicate
+        Optionally, the modifiers `asc` and `dsc` can be added to indicate
         sorting by ascending and descending orders respectively. If no modifier is
         specified, the results will be returned in descending order.
 
         Currently, sorting is only supported on a single field per request.
 
         *Example:*
-        Adding **`&$sortBy__desc=createdDate`** as a query parameter will return
+        Adding **`&$sortBy__dsc=createdDate`** as a query parameter will return
         records with the most recent `createdDate` first.
 
         ### Additional Notes on Supported Types
