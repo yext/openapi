@@ -664,7 +664,6 @@ components:
 
                 Cannot Include:
                 * a URL or domain name
-                * a digit
 
                 Filtering Type: `text`
             countryCode:
@@ -1450,6 +1449,7 @@ components:
 
             ```
             Eligible For: 
+               * brand
                * financialProfessional
                * hotel
                * location
@@ -1512,7 +1512,6 @@ components:
           items:
             required:
               - category
-              - appStoreUrl
               - quickLinkUrl
               - appName
             additionalProperties: false
@@ -1686,6 +1685,32 @@ components:
               format: uri
               type: string
               description: 'Filtering Type: `text`'
+        appleDisplayName:
+          minLength: 0
+          maxLength: 5000
+          type: string
+          description: |-
+            The name to be displayed on Apple for the entity.
+            NOTE: The names of Brands and their respective Locations within an Apple Business Connect Account must match identically.
+            Cannot Include:
+            HTML markup 
+
+
+            Cannot Include:
+            * HTML markup
+
+            Filtering Type: `text`
+
+            ```
+            Eligible For: 
+               * atm
+               * financialProfessional
+               * healthcareFacility
+               * healthcareProfessional
+               * hotel
+               * location
+               * restaurant
+            ```
         applicationUrl:
           minLength: 0
           format: uri
@@ -4772,6 +4797,47 @@ components:
               format: uri
               type: string
               description: 'Filtering Type: `text`'
+        googleMessaging:
+          additionalProperties: false
+          type: object
+          properties:
+            smsNumber:
+              minLength: 0
+              type: string
+              description: |-
+                The SMS phone number of the entity's point of contact for messaging/ chat functionality.
+                Must be a valid phone number.
+                If the phone number's calling code is for a country other than the one given in the entity's countryCode, the phone number provided must contain the calling code (e.g., +44 in +442038083831). Otherwise, the calling code is optional. 
+
+                Filtering Type: `text`
+            whatsappMessagingUrl:
+              minLength: 0
+              maxLength: 2000
+              format: uri
+              type: string
+              description: |-
+                A valid URL for this entity's WhatsApp account.
+                Must be a valid URL
+
+
+                Filtering Type: `text`
+          description: |-
+            Information about Google Messaging, WhatsApp and SMS, for the entity’s point of contact for messaging/chat functionality.
+
+            NOTE: Only one, either WhatsApp or SMS is displayed on the Google listing. If both SMS Number and WhatsApp URL are provided only SMS Number will be displayed on the listing.
+
+            Filtering Type: `object`
+
+            ```
+            Eligible For: 
+               * atm
+               * financialProfessional
+               * healthcareFacility
+               * healthcareProfessional
+               * hotel
+               * location
+               * restaurant
+            ```
         googleMyBusinessLabels:
           description: |-
             Google Business Profile Labels help users organize their locations into groups within GBP.
@@ -5857,6 +5923,7 @@ components:
 
             ```
             Eligible For: 
+               * brand
                * financialProfessional
                * hotel
                * location
@@ -7424,6 +7491,28 @@ components:
                * location
                * restaurant
             ```
+        openDate:
+          format: date
+          type: string
+          description: |-
+            The date that the entity is set to open for the first time.
+            Must be formatted in YYYY-MM-DD format.
+
+            Date must be on or after 1970-01-01 Date must be before or on 2038-01-01
+
+
+            Filtering Type: `date`
+
+            ```
+            Eligible For: 
+               * atm
+               * financialProfessional
+               * healthcareFacility
+               * healthcareProfessional
+               * hotel
+               * location
+               * restaurant
+            ```
         operatingCountries:
           uniqueItems: true
           type: array
@@ -7508,6 +7597,7 @@ components:
               - GG
               - GH
               - GI
+              - GL
               - GM
               - GN
               - GP

@@ -1266,7 +1266,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "type": "string",
-                    "description": "The city the entity (or the entity's location) is in\n\n\nCannot Include:\n* a URL or domain name\n* a digit"
+                    "description": "The city the entity (or the entity's location) is in\n\n\nCannot Include:\n* a URL or domain name"
                   },
                   "countryCode": {
                     "minLength": 0,
@@ -1662,7 +1662,6 @@
                 "items": {
                   "required": [
                     "category",
-                    "appStoreUrl",
                     "quickLinkUrl",
                     "appName"
                   ],
@@ -1778,6 +1777,12 @@
                     "type": "string"
                   }
                 }
+              },
+              "appleDisplayName": {
+                "minLength": 0,
+                "maxLength": 5000,
+                "type": "string",
+                "description": "The name to be displayed on Apple for the entity.\nNOTE: The names of Brands and their respective Locations within an Apple Business Connect Account must match identically.\nCannot Include:\nHTML markup \n\n\nCannot Include:\n* HTML markup"
               },
               "categories": {
                 "additionalProperties": false,
@@ -2360,6 +2365,25 @@
                   }
                 }
               },
+              "googleMessaging": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "smsNumber": {
+                    "minLength": 0,
+                    "type": "string",
+                    "description": "The SMS phone number of the entity's point of contact for messaging/ chat functionality.\nMust be a valid phone number.\nIf the phone number's calling code is for a country other than the one given in the entity's countryCode, the phone number provided must contain the calling code (e.g., +44 in +442038083831). Otherwise, the calling code is optional. "
+                  },
+                  "whatsappMessagingUrl": {
+                    "minLength": 0,
+                    "maxLength": 2000,
+                    "format": "uri",
+                    "type": "string",
+                    "description": "A valid URL for this entity's WhatsApp account.\nMust be a valid URL\n"
+                  }
+                },
+                "description": "Information about Google Messaging, WhatsApp and SMS, for the entity’s point of contact for messaging/chat functionality.\n\nNOTE: Only one, either WhatsApp or SMS is displayed on the Google listing. If both SMS Number and WhatsApp URL are provided only SMS Number will be displayed on the listing."
+              },
               "googleMyBusinessLabels": {
                 "description": "Google Business Profile Labels help users organize their locations into groups within GBP.\n\n\nArray must be ordered.\n\nArray may have a maximum of 10 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
@@ -2828,6 +2852,11 @@
                 "type": "boolean",
                 "description": "Indicates whether Knowledge Nudge is enabled for the Yext Knowledge Assistant for this entity"
               },
+              "openDate": {
+                "format": "date",
+                "type": "string",
+                "description": "The date that the entity is set to open for the first time.\nMust be formatted in YYYY-MM-DD format.\n\nDate must be on or after 1970-01-01 Date must be before or on 2038-01-01\n"
+              },
               "photoGallery": {
                 "description": "\n**NOTE:** The list of photos that you send us must be comprehensive. For example, if you send us a list of photos that does not include photos that you sent in your last update, Yext considers the missing photos to be deleted, and we remove them from your listings.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 500 elements.\n\nArray item description:\n\n>Supported Aspect Ratios:\n>* 1 x 1\n>* 4 x 3\n>* 3 x 2\n>* 5 x 3\n>* 16 x 9\n>* 3 x 1\n>* 2 x 3\n>* 5 x 7\n>* 4 x 5\n>* 4 x 1\n>\n>**NOTE**: Maximum image size is 5mb after normalization and padding (if applicable). As well, there is a 6 second download limit from the image host.\n>",
                 "uniqueItems": false,
@@ -3154,7 +3183,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "type": "string",
-                    "description": "The city the entity (or the entity's location) is in\n\n\nCannot Include:\n* a URL or domain name\n* a digit"
+                    "description": "The city the entity (or the entity's location) is in\n\n\nCannot Include:\n* a URL or domain name"
                   },
                   "countryCode": {
                     "minLength": 0,
@@ -3760,7 +3789,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "type": "string",
-                    "description": "The city the entity (or the entity's location) is in\n\n\nCannot Include:\n* a URL or domain name\n* a digit"
+                    "description": "The city the entity (or the entity's location) is in\n\n\nCannot Include:\n* a URL or domain name"
                   },
                   "countryCode": {
                     "minLength": 0,
@@ -3856,7 +3885,6 @@
                 "items": {
                   "required": [
                     "category",
-                    "appStoreUrl",
                     "quickLinkUrl",
                     "appName"
                   ],
@@ -3972,6 +4000,12 @@
                     "type": "string"
                   }
                 }
+              },
+              "appleDisplayName": {
+                "minLength": 0,
+                "maxLength": 5000,
+                "type": "string",
+                "description": "The name to be displayed on Apple for the entity.\nNOTE: The names of Brands and their respective Locations within an Apple Business Connect Account must match identically.\nCannot Include:\nHTML markup \n\n\nCannot Include:\n* HTML markup"
               },
               "associations": {
                 "description": "Association memberships relevant to the entity (e.g., `\"New York Doctors Association\"`)\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
@@ -4336,6 +4370,25 @@
                     "type": "string"
                   }
                 }
+              },
+              "googleMessaging": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "smsNumber": {
+                    "minLength": 0,
+                    "type": "string",
+                    "description": "The SMS phone number of the entity's point of contact for messaging/ chat functionality.\nMust be a valid phone number.\nIf the phone number's calling code is for a country other than the one given in the entity's countryCode, the phone number provided must contain the calling code (e.g., +44 in +442038083831). Otherwise, the calling code is optional. "
+                  },
+                  "whatsappMessagingUrl": {
+                    "minLength": 0,
+                    "maxLength": 2000,
+                    "format": "uri",
+                    "type": "string",
+                    "description": "A valid URL for this entity's WhatsApp account.\nMust be a valid URL\n"
+                  }
+                },
+                "description": "Information about Google Messaging, WhatsApp and SMS, for the entity’s point of contact for messaging/chat functionality.\n\nNOTE: Only one, either WhatsApp or SMS is displayed on the Google listing. If both SMS Number and WhatsApp URL are provided only SMS Number will be displayed on the listing."
               },
               "googleMyBusinessLabels": {
                 "description": "Google Business Profile Labels help users organize their locations into groups within GBP.\n\n\nArray must be ordered.\n\nArray may have a maximum of 10 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
@@ -5170,6 +5223,11 @@
                 },
                 "description": "Contains the daily online service hours, holiday online service hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `onlineServiceHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday online service hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day."
               },
+              "openDate": {
+                "format": "date",
+                "type": "string",
+                "description": "The date that the entity is set to open for the first time.\nMust be formatted in YYYY-MM-DD format.\n\nDate must be on or after 1970-01-01 Date must be before or on 2038-01-01\n"
+              },
               "orderUrl": {
                 "additionalProperties": false,
                 "type": "object",
@@ -5765,7 +5823,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "type": "string",
-                    "description": "The city the entity (or the entity's location) is in\n\n\nCannot Include:\n* a URL or domain name\n* a digit"
+                    "description": "The city the entity (or the entity's location) is in\n\n\nCannot Include:\n* a URL or domain name"
                   },
                   "countryCode": {
                     "minLength": 0,
@@ -6169,7 +6227,6 @@
                 "items": {
                   "required": [
                     "category",
-                    "appStoreUrl",
                     "quickLinkUrl",
                     "appName"
                   ],
@@ -6285,6 +6342,12 @@
                     "type": "string"
                   }
                 }
+              },
+              "appleDisplayName": {
+                "minLength": 0,
+                "maxLength": 5000,
+                "type": "string",
+                "description": "The name to be displayed on Apple for the entity.\nNOTE: The names of Brands and their respective Locations within an Apple Business Connect Account must match identically.\nCannot Include:\nHTML markup \n\n\nCannot Include:\n* HTML markup"
               },
               "associations": {
                 "description": "Association memberships relevant to the entity (e.g., `\"New York Doctors Association\"`)\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
@@ -6732,6 +6795,25 @@
                     "type": "string"
                   }
                 }
+              },
+              "googleMessaging": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "smsNumber": {
+                    "minLength": 0,
+                    "type": "string",
+                    "description": "The SMS phone number of the entity's point of contact for messaging/ chat functionality.\nMust be a valid phone number.\nIf the phone number's calling code is for a country other than the one given in the entity's countryCode, the phone number provided must contain the calling code (e.g., +44 in +442038083831). Otherwise, the calling code is optional. "
+                  },
+                  "whatsappMessagingUrl": {
+                    "minLength": 0,
+                    "maxLength": 2000,
+                    "format": "uri",
+                    "type": "string",
+                    "description": "A valid URL for this entity's WhatsApp account.\nMust be a valid URL\n"
+                  }
+                },
+                "description": "Information about Google Messaging, WhatsApp and SMS, for the entity’s point of contact for messaging/chat functionality.\n\nNOTE: Only one, either WhatsApp or SMS is displayed on the Google listing. If both SMS Number and WhatsApp URL are provided only SMS Number will be displayed on the listing."
               },
               "googleMyBusinessLabels": {
                 "description": "Google Business Profile Labels help users organize their locations into groups within GBP.\n\n\nArray must be ordered.\n\nArray may have a maximum of 10 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
@@ -7569,6 +7651,11 @@
                   }
                 },
                 "description": "Contains the daily online service hours, holiday online service hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `onlineServiceHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday online service hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day."
+              },
+              "openDate": {
+                "format": "date",
+                "type": "string",
+                "description": "The date that the entity is set to open for the first time.\nMust be formatted in YYYY-MM-DD format.\n\nDate must be on or after 1970-01-01 Date must be before or on 2038-01-01\n"
               },
               "orderUrl": {
                 "additionalProperties": false,
@@ -8541,7 +8628,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "type": "string",
-                    "description": "The city the entity (or the entity's location) is in\n\n\nCannot Include:\n* a URL or domain name\n* a digit"
+                    "description": "The city the entity (or the entity's location) is in\n\n\nCannot Include:\n* a URL or domain name"
                   },
                   "countryCode": {
                     "minLength": 0,
@@ -8647,7 +8734,6 @@
                 "items": {
                   "required": [
                     "category",
-                    "appStoreUrl",
                     "quickLinkUrl",
                     "appName"
                   ],
@@ -8763,6 +8849,12 @@
                     "type": "string"
                   }
                 }
+              },
+              "appleDisplayName": {
+                "minLength": 0,
+                "maxLength": 5000,
+                "type": "string",
+                "description": "The name to be displayed on Apple for the entity.\nNOTE: The names of Brands and their respective Locations within an Apple Business Connect Account must match identically.\nCannot Include:\nHTML markup \n\n\nCannot Include:\n* HTML markup"
               },
               "associations": {
                 "description": "Association memberships relevant to the entity (e.g., `\"New York Doctors Association\"`)\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
@@ -9235,6 +9327,25 @@
                     "type": "string"
                   }
                 }
+              },
+              "googleMessaging": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "smsNumber": {
+                    "minLength": 0,
+                    "type": "string",
+                    "description": "The SMS phone number of the entity's point of contact for messaging/ chat functionality.\nMust be a valid phone number.\nIf the phone number's calling code is for a country other than the one given in the entity's countryCode, the phone number provided must contain the calling code (e.g., +44 in +442038083831). Otherwise, the calling code is optional. "
+                  },
+                  "whatsappMessagingUrl": {
+                    "minLength": 0,
+                    "maxLength": 2000,
+                    "format": "uri",
+                    "type": "string",
+                    "description": "A valid URL for this entity's WhatsApp account.\nMust be a valid URL\n"
+                  }
+                },
+                "description": "Information about Google Messaging, WhatsApp and SMS, for the entity’s point of contact for messaging/chat functionality.\n\nNOTE: Only one, either WhatsApp or SMS is displayed on the Google listing. If both SMS Number and WhatsApp URL are provided only SMS Number will be displayed on the listing."
               },
               "googleMyBusinessLabels": {
                 "description": "Google Business Profile Labels help users organize their locations into groups within GBP.\n\n\nArray must be ordered.\n\nArray may have a maximum of 10 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
@@ -10113,6 +10224,11 @@
                 },
                 "description": "Contains the daily online service hours, holiday online service hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `onlineServiceHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday online service hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day."
               },
+              "openDate": {
+                "format": "date",
+                "type": "string",
+                "description": "The date that the entity is set to open for the first time.\nMust be formatted in YYYY-MM-DD format.\n\nDate must be on or after 1970-01-01 Date must be before or on 2038-01-01\n"
+              },
               "orderUrl": {
                 "additionalProperties": false,
                 "type": "object",
@@ -10834,7 +10950,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "type": "string",
-                    "description": "The city the entity (or the entity's location) is in\n\n\nCannot Include:\n* a URL or domain name\n* a digit"
+                    "description": "The city the entity (or the entity's location) is in\n\n\nCannot Include:\n* a URL or domain name"
                   },
                   "countryCode": {
                     "minLength": 0,
@@ -11275,7 +11391,6 @@
                 "items": {
                   "required": [
                     "category",
-                    "appStoreUrl",
                     "quickLinkUrl",
                     "appName"
                   ],
@@ -11391,6 +11506,12 @@
                     "type": "string"
                   }
                 }
+              },
+              "appleDisplayName": {
+                "minLength": 0,
+                "maxLength": 5000,
+                "type": "string",
+                "description": "The name to be displayed on Apple for the entity.\nNOTE: The names of Brands and their respective Locations within an Apple Business Connect Account must match identically.\nCannot Include:\nHTML markup \n\n\nCannot Include:\n* HTML markup"
               },
               "associations": {
                 "description": "Association memberships relevant to the entity (e.g., `\"New York Doctors Association\"`)\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
@@ -12312,6 +12433,25 @@
                     "type": "string"
                   }
                 }
+              },
+              "googleMessaging": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "smsNumber": {
+                    "minLength": 0,
+                    "type": "string",
+                    "description": "The SMS phone number of the entity's point of contact for messaging/ chat functionality.\nMust be a valid phone number.\nIf the phone number's calling code is for a country other than the one given in the entity's countryCode, the phone number provided must contain the calling code (e.g., +44 in +442038083831). Otherwise, the calling code is optional. "
+                  },
+                  "whatsappMessagingUrl": {
+                    "minLength": 0,
+                    "maxLength": 2000,
+                    "format": "uri",
+                    "type": "string",
+                    "description": "A valid URL for this entity's WhatsApp account.\nMust be a valid URL\n"
+                  }
+                },
+                "description": "Information about Google Messaging, WhatsApp and SMS, for the entity’s point of contact for messaging/chat functionality.\n\nNOTE: Only one, either WhatsApp or SMS is displayed on the Google listing. If both SMS Number and WhatsApp URL are provided only SMS Number will be displayed on the listing."
               },
               "googleMyBusinessLabels": {
                 "description": "Google Business Profile Labels help users organize their locations into groups within GBP.\n\n\nArray must be ordered.\n\nArray may have a maximum of 10 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
@@ -13611,6 +13751,11 @@
                 "type": "boolean",
                 "description": "Indicates whether Knowledge Nudge is enabled for the Yext Knowledge Assistant for this entity"
               },
+              "openDate": {
+                "format": "date",
+                "type": "string",
+                "description": "The date that the entity is set to open for the first time.\nMust be formatted in YYYY-MM-DD format.\n\nDate must be on or after 1970-01-01 Date must be before or on 2038-01-01\n"
+              },
               "orderUrl": {
                 "additionalProperties": false,
                 "type": "object",
@@ -14888,7 +15033,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "type": "string",
-                    "description": "The city the entity (or the entity's location) is in\n\n\nCannot Include:\n* a URL or domain name\n* a digit"
+                    "description": "The city the entity (or the entity's location) is in\n\n\nCannot Include:\n* a URL or domain name"
                   },
                   "countryCode": {
                     "minLength": 0,
@@ -15293,7 +15438,6 @@
                 "items": {
                   "required": [
                     "category",
-                    "appStoreUrl",
                     "quickLinkUrl",
                     "appName"
                   ],
@@ -15409,6 +15553,12 @@
                     "type": "string"
                   }
                 }
+              },
+              "appleDisplayName": {
+                "minLength": 0,
+                "maxLength": 5000,
+                "type": "string",
+                "description": "The name to be displayed on Apple for the entity.\nNOTE: The names of Brands and their respective Locations within an Apple Business Connect Account must match identically.\nCannot Include:\nHTML markup \n\n\nCannot Include:\n* HTML markup"
               },
               "associations": {
                 "description": "Association memberships relevant to the entity (e.g., `\"New York Doctors Association\"`)\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
@@ -16773,6 +16923,25 @@
                   }
                 }
               },
+              "googleMessaging": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "smsNumber": {
+                    "minLength": 0,
+                    "type": "string",
+                    "description": "The SMS phone number of the entity's point of contact for messaging/ chat functionality.\nMust be a valid phone number.\nIf the phone number's calling code is for a country other than the one given in the entity's countryCode, the phone number provided must contain the calling code (e.g., +44 in +442038083831). Otherwise, the calling code is optional. "
+                  },
+                  "whatsappMessagingUrl": {
+                    "minLength": 0,
+                    "maxLength": 2000,
+                    "format": "uri",
+                    "type": "string",
+                    "description": "A valid URL for this entity's WhatsApp account.\nMust be a valid URL\n"
+                  }
+                },
+                "description": "Information about Google Messaging, WhatsApp and SMS, for the entity’s point of contact for messaging/chat functionality.\n\nNOTE: Only one, either WhatsApp or SMS is displayed on the Google listing. If both SMS Number and WhatsApp URL are provided only SMS Number will be displayed on the listing."
+              },
               "googleMyBusinessLabels": {
                 "description": "Google Business Profile Labels help users organize their locations into groups within GBP.\n\n\nArray must be ordered.\n\nArray may have a maximum of 10 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
                 "uniqueItems": true,
@@ -18238,6 +18407,11 @@
                   }
                 },
                 "description": "Contains the daily online service hours, holiday online service hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `onlineServiceHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday online service hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day."
+              },
+              "openDate": {
+                "format": "date",
+                "type": "string",
+                "description": "The date that the entity is set to open for the first time.\nMust be formatted in YYYY-MM-DD format.\n\nDate must be on or after 1970-01-01 Date must be before or on 2038-01-01\n"
               },
               "orderUrl": {
                 "additionalProperties": false,
@@ -20038,6 +20212,7 @@
                     "GG",
                     "GH",
                     "GI",
+                    "GL",
                     "GM",
                     "GN",
                     "GP",
@@ -20619,7 +20794,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "type": "string",
-                    "description": "The city the entity (or the entity's location) is in\n\n\nCannot Include:\n* a URL or domain name\n* a digit"
+                    "description": "The city the entity (or the entity's location) is in\n\n\nCannot Include:\n* a URL or domain name"
                   },
                   "countryCode": {
                     "minLength": 0,
@@ -21028,7 +21203,6 @@
                 "items": {
                   "required": [
                     "category",
-                    "appStoreUrl",
                     "quickLinkUrl",
                     "appName"
                   ],
@@ -21144,6 +21318,12 @@
                     "type": "string"
                   }
                 }
+              },
+              "appleDisplayName": {
+                "minLength": 0,
+                "maxLength": 5000,
+                "type": "string",
+                "description": "The name to be displayed on Apple for the entity.\nNOTE: The names of Brands and their respective Locations within an Apple Business Connect Account must match identically.\nCannot Include:\nHTML markup \n\n\nCannot Include:\n* HTML markup"
               },
               "associations": {
                 "description": "Association memberships relevant to the entity (e.g., `\"New York Doctors Association\"`)\nAll strings must be non-empty when trimmed of whitespace.\n\n\n\nArray must be ordered.\n\nArray may have a maximum of 100 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
@@ -22438,6 +22618,25 @@
                     "type": "string"
                   }
                 }
+              },
+              "googleMessaging": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "smsNumber": {
+                    "minLength": 0,
+                    "type": "string",
+                    "description": "The SMS phone number of the entity's point of contact for messaging/ chat functionality.\nMust be a valid phone number.\nIf the phone number's calling code is for a country other than the one given in the entity's countryCode, the phone number provided must contain the calling code (e.g., +44 in +442038083831). Otherwise, the calling code is optional. "
+                  },
+                  "whatsappMessagingUrl": {
+                    "minLength": 0,
+                    "maxLength": 2000,
+                    "format": "uri",
+                    "type": "string",
+                    "description": "A valid URL for this entity's WhatsApp account.\nMust be a valid URL\n"
+                  }
+                },
+                "description": "Information about Google Messaging, WhatsApp and SMS, for the entity’s point of contact for messaging/chat functionality.\n\nNOTE: Only one, either WhatsApp or SMS is displayed on the Google listing. If both SMS Number and WhatsApp URL are provided only SMS Number will be displayed on the listing."
               },
               "googleMyBusinessLabels": {
                 "description": "Google Business Profile Labels help users organize their locations into groups within GBP.\n\n\nArray must be ordered.\n\nArray may have a maximum of 10 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup",
@@ -23920,6 +24119,11 @@
                   }
                 },
                 "description": "Contains the daily online service hours, holiday online service hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `onlineServiceHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday online service hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day."
+              },
+              "openDate": {
+                "format": "date",
+                "type": "string",
+                "description": "The date that the entity is set to open for the first time.\nMust be formatted in YYYY-MM-DD format.\n\nDate must be on or after 1970-01-01 Date must be before or on 2038-01-01\n"
               },
               "orderUrl": {
                 "additionalProperties": false,
@@ -26666,7 +26870,7 @@
                 "minLength": 0,
                 "maxLength": 255,
                 "type": "string",
-                "description": "The city the entity (or the entity's location) is in\n\n\nCannot Include:\n* a URL or domain name\n* a digit\n\nFiltering Type: `text`"
+                "description": "The city the entity (or the entity's location) is in\n\n\nCannot Include:\n* a URL or domain name\n\nFiltering Type: `text`"
               },
               "countryCode": {
                 "minLength": 0,
@@ -27160,7 +27364,7 @@
           "androidAppUrl": {
             "minLength": 0,
             "type": "string",
-            "description": "The URL where consumers can download the entity's Android app\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * financialProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+            "description": "The URL where consumers can download the entity's Android app\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * brand\n   * financialProfessional\n   * hotel\n   * location\n   * restaurant\n```"
           },
           "answer": {
             "description": "The answer to the frequently asked question represented by this entity\n\n\nCharacter limit: 0 .. 15000\n\nSupported formats include:\n* BOLD\n* ITALICS\n* UNDERLINE\n* BULLETED_LIST\n* NUMBERED_LIST\n* HYPERLINK\n* IMAGE\n* CODE_SPAN\n* HEADINGS\n\n```\nEligible For: \n   * faq\n```",
@@ -27174,7 +27378,6 @@
             "items": {
               "required": [
                 "category",
-                "appStoreUrl",
                 "quickLinkUrl",
                 "appName"
               ],
@@ -27297,6 +27500,12 @@
                 "description": "Filtering Type: `text`"
               }
             }
+          },
+          "appleDisplayName": {
+            "minLength": 0,
+            "maxLength": 5000,
+            "type": "string",
+            "description": "The name to be displayed on Apple for the entity.\nNOTE: The names of Brands and their respective Locations within an Apple Business Connect Account must match identically.\nCannot Include:\nHTML markup \n\n\nCannot Include:\n* HTML markup\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
           },
           "applicationUrl": {
             "minLength": 0,
@@ -29194,6 +29403,25 @@
               }
             }
           },
+          "googleMessaging": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "smsNumber": {
+                "minLength": 0,
+                "type": "string",
+                "description": "The SMS phone number of the entity's point of contact for messaging/ chat functionality.\nMust be a valid phone number.\nIf the phone number's calling code is for a country other than the one given in the entity's countryCode, the phone number provided must contain the calling code (e.g., +44 in +442038083831). Otherwise, the calling code is optional. \n\nFiltering Type: `text`"
+              },
+              "whatsappMessagingUrl": {
+                "minLength": 0,
+                "maxLength": 2000,
+                "format": "uri",
+                "type": "string",
+                "description": "A valid URL for this entity's WhatsApp account.\nMust be a valid URL\n\n\nFiltering Type: `text`"
+              }
+            },
+            "description": "Information about Google Messaging, WhatsApp and SMS, for the entity’s point of contact for messaging/chat functionality.\n\nNOTE: Only one, either WhatsApp or SMS is displayed on the Google listing. If both SMS Number and WhatsApp URL are provided only SMS Number will be displayed on the listing.\n\nFiltering Type: `object`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+          },
           "googleMyBusinessLabels": {
             "description": "Google Business Profile Labels help users organize their locations into groups within GBP.\n\n\nArray must be ordered.\n\nArray may have a maximum of 10 elements.\n\nArray item description:\n\n>Cannot Include:\n>* HTML markup\n\nFiltering Type: `list of text`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```",
             "uniqueItems": true,
@@ -29976,7 +30204,7 @@
           "iosAppUrl": {
             "minLength": 0,
             "type": "string",
-            "description": "The URL where consumers can download the entity's app to their iPhone or iPad\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * financialProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+            "description": "The URL where consumers can download the entity's app to their iPhone or iPad\n\nFiltering Type: `text`\n\n```\nEligible For: \n   * brand\n   * financialProfessional\n   * hotel\n   * location\n   * restaurant\n```"
           },
           "isClusterPrimary": {
             "type": "boolean",
@@ -30982,6 +31210,11 @@
             },
             "description": "Contains the daily online service hours, holiday online service hours, and reopen date for the Entity.\n\nEach day is represented by a sub-field of `onlineServiceHours`. (e.g. `monday`, `tuesday`, etc.) Open times can be specified per day through the `openIntervals` field and the `isClosed` flag.\nSimilarly, holiday online service hours are represented by the `holidayHours` sub-field.\nSetting the `reopenDate` sub-field indicates that the business is temporarily closed and will reopen on the specified date.\nSPECIAL CASES:\n* To indicate that an Entity is open 24 hours on a specific day, set start to 00:00 and end to 23:59 in `openIntervals` for that day.\n* To indicate that an Entity has split hours on a specific day (e.g., open from 9:00 AM to 12:00 PM and again from 1:00 PM to 5:00 PM), supply two or more `openIntervals` values with non-overlapping sets of hours.\n* If you are providing `openIntervals`, you may not set `isClosed` to true for that day.\n\nFiltering Type: `hours`\n\n```\nEligible For: \n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * location\n   * restaurant\n```"
           },
+          "openDate": {
+            "format": "date",
+            "type": "string",
+            "description": "The date that the entity is set to open for the first time.\nMust be formatted in YYYY-MM-DD format.\n\nDate must be on or after 1970-01-01 Date must be before or on 2038-01-01\n\n\nFiltering Type: `date`\n\n```\nEligible For: \n   * atm\n   * financialProfessional\n   * healthcareFacility\n   * healthcareProfessional\n   * hotel\n   * location\n   * restaurant\n```"
+          },
           "operatingCountries": {
             "uniqueItems": true,
             "type": "array",
@@ -31066,6 +31299,7 @@
                 "GG",
                 "GH",
                 "GI",
+                "GL",
                 "GM",
                 "GN",
                 "GP",
