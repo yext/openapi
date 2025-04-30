@@ -559,7 +559,6 @@ components:
               description: Specifies that no location information should be stored with the event.
         pageUrl:
           description: The URL of the page the event occurred on.
-          default: $auto
           oneOf:
             - type: string
               format: uri
@@ -567,28 +566,20 @@ components:
               description: 'Specifies the URL of the page the event occurred on. `format: uri`'
             - type: string
               title: $auto
-              enum:
-                - $auto
               description: Indicates to use the `Referer` header of the request.
             - type: 'null'
               title: 'null'
-              description: Specifies that no page URL should be stored with the event.
+              description: Specifies that no page URL should be stored with the event. Will fallback to `document.URL` if it exists.
         referrerUrl:
           description: The URL of the page which the visitor came from prior to the event.
-          default: $auto
           oneOf:
             - type: string
               format: uri
               title: URL
               description: 'Specifies the URL of the page which the visitor came from prior to the event. `format: uri`'
-            - type: string
-              title: $auto
-              enum:
-                - $auto
-              description: Indicates to use the `Referer` header of the request.
             - type: 'null'
               title: 'null'
-              description: Specifies that no referrer URL should be stored with the event.
+              description: Specifies that no referrer URL should be stored with the event. Will fallback to `document.referrer` if it exists.
         searchTerm:
           type: string
           description: The query entered by the user.
