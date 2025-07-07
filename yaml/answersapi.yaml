@@ -1092,6 +1092,8 @@ components:
     ResponseError:
       type: object
       properties:
+        name:
+          type: string
         code:
           type: integer
           description: |

@@ -1042,6 +1042,9 @@
       "ResponseError": {
         "type": "object",
         "properties": {
+          "name": {
+            "type": "string"
+          },
           "code": {
             "type": "integer",
             "description": "Code that uniquely identifies the error or warning.\n"
