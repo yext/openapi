@@ -774,6 +774,48 @@
           }
         }
       }
+    },
+    "socialPostWebhook": {
+      "post": {
+        "operationId": "socialPostWebhook",
+        "tags": [
+          "Social"
+        ],
+        "summary": "Social Post: Webhook",
+        "description": "Sends an updated Social Post object to your server. Only affected entity posts are included in the `EntityPost` object. Webhooks are not guaranteed to be sent in order; the `timestamp` field should be used to determine ordering. The webhook will always contain the latest `status` of the Post (i.e. if a Post was created and published quickly, the webhook may indicate that the status is `POST_SUCCEEDED` even for a `SOCIAL_POST_CREATED` event.",
+        "requestBody": {
+          "description": "The updated Social Post",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "meta": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/RequestMeta"
+                      }
+                    ],
+                    "properties": {
+                      "eventType": {
+                        "type": "string",
+                        "enum": [
+                          "SOCIAL_POST_CREATED",
+                          "SOCIAL_POST_UPDATED"
+                        ]
+                      }
+                    }
+                  },
+                  "post": {
+                    "$ref": "#/components/schemas/Post"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "tags": [
@@ -10147,6 +10189,325 @@
           },
           "approver": {
             "$ref": "#/components/schemas/Approver"
+          }
+        }
+      },
+      "Offer": {
+        "type": "object",
+        "description": "Additional data for offer posts. Only supported on Google posts.\n",
+        "properties": {
+          "couponCode": {
+            "type": "string",
+            "description": "Offer code that is usable in store or online. Limit 58 characters."
+          },
+          "redeemOnlineUrl": {
+            "type": "string",
+            "description": "Online link to redeem offer. Must be a valid URL."
+          },
+          "termsConditions": {
+            "type": "string",
+            "description": "Offer terms and conditions. Limit 5000 characters."
+          }
+        }
+      },
+      "EventInfo": {
+        "type": "object",
+        "required": [
+          "title",
+          "startTime",
+          "endTime"
+        ],
+        "description": "Event information. Required for topicType `EVENT` and `OFFER`. Only supported on Google posts.\n",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "The title of the event."
+          },
+          "startTime": {
+            "type": "string",
+            "description": "The start time of the event. Formatted as datetime in `YYYY-MM-DD HH:MM:SS`\nEx: 2021-04-06 08:45:00.\n"
+          },
+          "endTime": {
+            "type": "string",
+            "description": "The end time of the event. Formatted as datetime in `YYYY-MM-DD HH:MM:SS`.\nEx: 2021-04-06 08:45:00.\n"
+          }
+        }
+      },
+      "Entity-2": {
+        "type": "object",
+        "description": "The entity which the post is for.",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The ID of the entity which the post is for."
+          }
+        }
+      },
+      "EntityPostStatus": {
+        "type": "object",
+        "description": "The status of the post.",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "POST_SCHEDULED",
+              "POST_AWAITING_APPROVAL",
+              "POST_SUCCEEDED",
+              "POST_DELETED",
+              "POST_PROCESSING",
+              "DELETE_PROCESSING",
+              "POST_FAILED",
+              "DELETE_FAILED",
+              "REJECTED_BY_APPROVER"
+            ],
+            "description": "Status of the entity post"
+          },
+          "details": {
+            "type": "string",
+            "description": "Details about the status."
+          }
+        }
+      },
+      "Metrics": {
+        "type": "object",
+        "description": "The metrics for the entity post.",
+        "properties": {
+          "viewCount": {
+            "type": "number",
+            "description": "The number of times post was viewed.\n"
+          },
+          "uniqueViewCount": {
+            "type": "number",
+            "description": "The number of times the post was viewed by a unique user.\n"
+          },
+          "clickCount": {
+            "type": "number",
+            "description": "The number of times the post was clicked.\n"
+          },
+          "likeCount": {
+            "type": "number",
+            "description": "The number of times the post was liked.\n"
+          },
+          "loveCount": {
+            "type": "number",
+            "description": "Total \"love\" reactions of a post. Facebook only. Only present if the **`v`** parameter is on or after `20220728`."
+          },
+          "wowCount": {
+            "type": "number",
+            "description": "Total \"wow\" reactions of a post. Facebook only. Only present if the **`v`** parameter is on or after `20220728`."
+          },
+          "hahaCount": {
+            "type": "number",
+            "description": "Total \"haha\" reactions of a post. Facebook only. Only present if the **`v`** parameter is on or after `20220728`."
+          },
+          "sadCount": {
+            "type": "number",
+            "description": "Total \"sad\" reactions of a post. Facebook only. Only present if the **`v`** parameter is on or after `20220728`."
+          },
+          "angerCount": {
+            "type": "number",
+            "description": "Total \"anger\" reactions of a post. Facebook only. Only present if the **`v`** parameter is on or after `20220728`."
+          }
+        }
+      },
+      "Comment-2": {
+        "type": "object",
+        "properties": {
+          "commentId": {
+            "type": "string",
+            "description": "The ID of a specific comment."
+          },
+          "parentCommentId": {
+            "type": "string",
+            "description": "The ID of the parent comment if this comment was created as a reply to another comment.\n**Instagram and Facebook only**\n"
+          },
+          "authorName": {
+            "type": "string",
+            "description": "The author of the comment."
+          },
+          "text": {
+            "type": "string",
+            "description": "The text of the comment."
+          },
+          "hidden": {
+            "type": "boolean",
+            "description": "Indicates if the comment is hidden or not. **Instagram only**"
+          },
+          "likes": {
+            "type": "integer",
+            "description": "Number of likes on the comment. **Instagram only**"
+          },
+          "createdTimestamp": {
+            "type": "boolean",
+            "description": "The timestamp the comment was created."
+          }
+        }
+      },
+      "CommentWithReplies": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Comment-2"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "replies": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Comment-2"
+                },
+                "description": "Replies to the comment. Only one level of replies is supported."
+              }
+            }
+          }
+        ]
+      },
+      "EntityPost": {
+        "type": "object",
+        "properties": {
+          "entityPostId": {
+            "type": "string",
+            "description": "The ID of the individual post for a given entity on a given publisher."
+          },
+          "entity": {
+            "$ref": "#/components/schemas/Entity-2"
+          },
+          "publisher": {
+            "type": "string",
+            "enum": [
+              "INSTAGRAM",
+              "FACEBOOK",
+              "FIRSTPARTY",
+              "GOOGLEMYBUSINESS",
+              "LINKEDIN"
+            ],
+            "description": "The publisher which the post was sent to."
+          },
+          "status": {
+            "$ref": "#/components/schemas/EntityPostStatus"
+          },
+          "postUrl": {
+            "type": "string",
+            "description": "The URL where the post can be found"
+          },
+          "metrics": {
+            "$ref": "#/components/schemas/Metrics"
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CommentWithReplies"
+            },
+            "description": "Any comments on the post."
+          }
+        }
+      },
+      "Post": {
+        "type": "object",
+        "properties": {
+          "postId": {
+            "type": "string",
+            "description": "The ID of the post."
+          },
+          "entityId": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The ID(s) of the entities which were included in the post."
+          },
+          "publishers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The publisher(s) the post was made on."
+          },
+          "text": {
+            "type": "string",
+            "description": "The copy featured on the post."
+          },
+          "photoUrls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The list of URLs where the photos were retrieved from."
+          },
+          "videos": {
+            "type": "array",
+            "description": "Video to be posted to the publisher. Facebook and Instagram are supported and only one video can be uploaded per post.",
+            "items": {
+              "type": "object",
+              "required": [
+                "videoUrl",
+                "videoPostType"
+              ],
+              "properties": {
+                "videoUrl": {
+                  "type": "string",
+                  "description": "A URL of a video to be posted to the publisher. The video must first be uploaded to Yext's CDN via the Upload Video endpoint."
+                },
+                "videoPostType": {
+                  "type": "string",
+                  "description": "The type of video post to be uploaded. Instagram only supports the `REEL` video post type.",
+                  "enum": [
+                    "REEL",
+                    "VIDEO"
+                  ]
+                },
+                "coverImageUrl": {
+                  "type": "string",
+                  "description": "The cover image URL of the video. The first frame of the video will be used if a cover image is not provided."
+                },
+                "videoTitle": {
+                  "type": "string",
+                  "description": "The title of the video. Facebook only supports this for the `VIDEO` video post type."
+                }
+              }
+            }
+          },
+          "topicType": {
+            "type": "string",
+            "description": "The topicType of the post. Only supported on Google posts. Defaults to `STANDARD`."
+          },
+          "alertType": {
+            "type": "string",
+            "description": "The alertType of the post."
+          },
+          "offer": {
+            "$ref": "#/components/schemas/Offer"
+          },
+          "clickthroughUrl": {
+            "type": "string",
+            "description": "The clickthroughUrl of the post."
+          },
+          "callToActionType": {
+            "type": "string",
+            "description": "The callToActionType of the post.\n\nIf the v parameter is >= 20221215, callToActionType 'SHOP' will be shown as 'BUY'\n"
+          },
+          "eventInfo": {
+            "$ref": "#/components/schemas/EventInfo",
+            "description": "Event information for the post."
+          },
+          "createdDate": {
+            "type": "string",
+            "description": "The date the post was created."
+          },
+          "postDate": {
+            "type": "string",
+            "description": "The date posted or the scheduled date."
+          },
+          "postCreatedInYext": {
+            "type": "boolean",
+            "description": "True if the post was originally created in Yext, otherwise False.\n"
+          },
+          "entityPosts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EntityPost"
+            },
+            "description": "The individual posts created for a given entity."
           }
         }
       }
