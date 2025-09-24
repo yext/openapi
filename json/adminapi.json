@@ -25965,7 +25965,7 @@
           "zip": {
             "type": "string",
             "maxLength": 10,
-            "description": "The location's postal code. For US locations, this field contains the five- or nine-digit ZIP code (the hyphen is optional). Validations are only done on `zip` if `countryCode` is US."
+            "description": "The location's postal code. For US locations, this field contains the five- or nine-digit ZIP code (the hyphen is optional)."
           },
           "countryCode": {
             "type": "string",
