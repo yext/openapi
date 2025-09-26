@@ -2985,6 +2985,19 @@
                 "type": "string",
                 "description": "How often we send search queries to track your search performance"
               },
+              "rankTrackingKeywords": {
+                "description": "The keywords for which you would like to track your search performance\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "NAME",
+                    "PRIMARY_CATEGORY",
+                    "SECONDARY_CATEGORY"
+                  ],
+                  "type": "string"
+                }
+              },
               "rankTrackingQueryTemplates": {
                 "description": "The ways in which your keywords will be arranged in the search queries we use to track your performance\n\n\nArray must have a minimum of 2 elements.\n\nArray may have a maximum of 4 elements.\n",
                 "uniqueItems": true,
@@ -5518,6 +5531,19 @@
                 ],
                 "type": "string",
                 "description": "How often we send search queries to track your search performance"
+              },
+              "rankTrackingKeywords": {
+                "description": "The keywords for which you would like to track your search performance\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "NAME",
+                    "PRIMARY_CATEGORY",
+                    "SECONDARY_CATEGORY"
+                  ],
+                  "type": "string"
+                }
               },
               "rankTrackingQueryTemplates": {
                 "description": "The ways in which your keywords will be arranged in the search queries we use to track your performance\n\n\nArray must have a minimum of 2 elements.\n\nArray may have a maximum of 4 elements.\n",
@@ -8257,6 +8283,19 @@
                 "type": "string",
                 "description": "How often we send search queries to track your search performance"
               },
+              "rankTrackingKeywords": {
+                "description": "The keywords for which you would like to track your search performance\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "NAME",
+                    "PRIMARY_CATEGORY",
+                    "SECONDARY_CATEGORY"
+                  ],
+                  "type": "string"
+                }
+              },
               "rankTrackingQueryTemplates": {
                 "description": "The ways in which your keywords will be arranged in the search queries we use to track your performance\n\n\nArray must have a minimum of 2 elements.\n\nArray may have a maximum of 4 elements.\n",
                 "uniqueItems": true,
@@ -10519,6 +10558,19 @@
                 ],
                 "type": "string",
                 "description": "How often we send search queries to track your search performance"
+              },
+              "rankTrackingKeywords": {
+                "description": "The keywords for which you would like to track your search performance\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "NAME",
+                    "PRIMARY_CATEGORY",
+                    "SECONDARY_CATEGORY"
+                  ],
+                  "type": "string"
+                }
               },
               "rankTrackingQueryTemplates": {
                 "description": "The ways in which your keywords will be arranged in the search queries we use to track your performance\n\n\nArray must have a minimum of 2 elements.\n\nArray may have a maximum of 4 elements.\n",
@@ -14078,6 +14130,19 @@
                 ],
                 "type": "string",
                 "description": "How often we send search queries to track your search performance"
+              },
+              "rankTrackingKeywords": {
+                "description": "The keywords for which you would like to track your search performance\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "NAME",
+                    "PRIMARY_CATEGORY",
+                    "SECONDARY_CATEGORY"
+                  ],
+                  "type": "string"
+                }
               },
               "rankTrackingQueryTemplates": {
                 "description": "The ways in which your keywords will be arranged in the search queries we use to track your performance\n\n\nArray must have a minimum of 2 elements.\n\nArray may have a maximum of 4 elements.\n",
@@ -19024,6 +19089,19 @@
                 "type": "string",
                 "description": "How often we send search queries to track your search performance"
               },
+              "rankTrackingKeywords": {
+                "description": "The keywords for which you would like to track your search performance\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "NAME",
+                    "PRIMARY_CATEGORY",
+                    "SECONDARY_CATEGORY"
+                  ],
+                  "type": "string"
+                }
+              },
               "rankTrackingQueryTemplates": {
                 "description": "The ways in which your keywords will be arranged in the search queries we use to track your performance\n\n\nArray must have a minimum of 2 elements.\n\nArray may have a maximum of 4 elements.\n",
                 "uniqueItems": true,
@@ -20479,6 +20557,19 @@
                 ],
                 "type": "string",
                 "description": "How often we send search queries to track your search performance"
+              },
+              "rankTrackingKeywords": {
+                "description": "The keywords for which you would like to track your search performance\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "NAME",
+                    "PRIMARY_CATEGORY",
+                    "SECONDARY_CATEGORY"
+                  ],
+                  "type": "string"
+                }
               },
               "rankTrackingQueryTemplates": {
                 "description": "The ways in which your keywords will be arranged in the search queries we use to track your performance\n\n\nArray must have a minimum of 2 elements.\n\nArray may have a maximum of 4 elements.\n",
@@ -24724,6 +24815,19 @@
                 ],
                 "type": "string",
                 "description": "How often we send search queries to track your search performance"
+              },
+              "rankTrackingKeywords": {
+                "description": "The keywords for which you would like to track your search performance\n",
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "NAME",
+                    "PRIMARY_CATEGORY",
+                    "SECONDARY_CATEGORY"
+                  ],
+                  "type": "string"
+                }
               },
               "rankTrackingQueryTemplates": {
                 "description": "The ways in which your keywords will be arranged in the search queries we use to track your performance\n\n\nArray must have a minimum of 2 elements.\n\nArray may have a maximum of 4 elements.\n",

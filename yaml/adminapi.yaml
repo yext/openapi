@@ -2711,6 +2711,17 @@ components:
                 - QUARTERLY
               type: string
               description: How often we send search queries to track your search performance
+            rankTrackingKeywords:
+              description: |
+                The keywords for which you would like to track your search performance
+              uniqueItems: true
+              type: array
+              items:
+                enum:
+                  - NAME
+                  - PRIMARY_CATEGORY
+                  - SECONDARY_CATEGORY
+                type: string
             rankTrackingQueryTemplates:
               description: |
                 The ways in which your keywords will be arranged in the search queries we use to track your performance
@@ -5482,6 +5493,17 @@ components:
                 - QUARTERLY
               type: string
               description: How often we send search queries to track your search performance
+            rankTrackingKeywords:
+              description: |
+                The keywords for which you would like to track your search performance
+              uniqueItems: true
+              type: array
+              items:
+                enum:
+                  - NAME
+                  - PRIMARY_CATEGORY
+                  - SECONDARY_CATEGORY
+                type: string
             rankTrackingQueryTemplates:
               description: |
                 The ways in which your keywords will be arranged in the search queries we use to track your performance
@@ -8285,6 +8307,17 @@ components:
                 - QUARTERLY
               type: string
               description: How often we send search queries to track your search performance
+            rankTrackingKeywords:
+              description: |
+                The keywords for which you would like to track your search performance
+              uniqueItems: true
+              type: array
+              items:
+                enum:
+                  - NAME
+                  - PRIMARY_CATEGORY
+                  - SECONDARY_CATEGORY
+                type: string
             rankTrackingQueryTemplates:
               description: |
                 The ways in which your keywords will be arranged in the search queries we use to track your performance
@@ -10767,6 +10800,17 @@ components:
                 - QUARTERLY
               type: string
               description: How often we send search queries to track your search performance
+            rankTrackingKeywords:
+              description: |
+                The keywords for which you would like to track your search performance
+              uniqueItems: true
+              type: array
+              items:
+                enum:
+                  - NAME
+                  - PRIMARY_CATEGORY
+                  - SECONDARY_CATEGORY
+                type: string
             rankTrackingQueryTemplates:
               description: |
                 The ways in which your keywords will be arranged in the search queries we use to track your performance
@@ -14234,6 +14278,17 @@ components:
                 - QUARTERLY
               type: string
               description: How often we send search queries to track your search performance
+            rankTrackingKeywords:
+              description: |
+                The keywords for which you would like to track your search performance
+              uniqueItems: true
+              type: array
+              items:
+                enum:
+                  - NAME
+                  - PRIMARY_CATEGORY
+                  - SECONDARY_CATEGORY
+                type: string
             rankTrackingQueryTemplates:
               description: |
                 The ways in which your keywords will be arranged in the search queries we use to track your performance
@@ -18934,6 +18989,17 @@ components:
                 - QUARTERLY
               type: string
               description: How often we send search queries to track your search performance
+            rankTrackingKeywords:
+              description: |
+                The keywords for which you would like to track your search performance
+              uniqueItems: true
+              type: array
+              items:
+                enum:
+                  - NAME
+                  - PRIMARY_CATEGORY
+                  - SECONDARY_CATEGORY
+                type: string
             rankTrackingQueryTemplates:
               description: |
                 The ways in which your keywords will be arranged in the search queries we use to track your performance
@@ -20402,6 +20468,17 @@ components:
                 - QUARTERLY
               type: string
               description: How often we send search queries to track your search performance
+            rankTrackingKeywords:
+              description: |
+                The keywords for which you would like to track your search performance
+              uniqueItems: true
+              type: array
+              items:
+                enum:
+                  - NAME
+                  - PRIMARY_CATEGORY
+                  - SECONDARY_CATEGORY
+                type: string
             rankTrackingQueryTemplates:
               description: |
                 The ways in which your keywords will be arranged in the search queries we use to track your performance
@@ -24451,6 +24528,17 @@ components:
                 - QUARTERLY
               type: string
               description: How often we send search queries to track your search performance
+            rankTrackingKeywords:
+              description: |
+                The keywords for which you would like to track your search performance
+              uniqueItems: true
+              type: array
+              items:
+                enum:
+                  - NAME
+                  - PRIMARY_CATEGORY
+                  - SECONDARY_CATEGORY
+                type: string
             rankTrackingQueryTemplates:
               description: |
                 The ways in which your keywords will be arranged in the search queries we use to track your performance
