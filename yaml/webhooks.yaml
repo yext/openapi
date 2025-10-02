@@ -13687,6 +13687,7 @@ components:
             - POST_SUCCEEDED
             - POST_DELETED
             - POST_PROCESSING
+            - POST_SAVING
             - DELETE_PROCESSING
             - POST_FAILED
             - DELETE_FAILED
