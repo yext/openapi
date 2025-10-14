@@ -3710,15 +3710,22 @@ components:
       type: object
       description: Listing attribution to whomever the business bought Listings from (i.e., Yext or one of Yext's partners)
       properties:
-        attributionUrl:
-          type: string
-          description: URL where the image can be viewed
-        width:
-          type: integer
-          description: The width of the image, in pixels.
-        height:
-          type: integer
-          description: The height of the image, in pixels.
+        image:
+          type: object
+          description: Details for the attribution image.
+          properties:
+            url:
+              type: string
+              description: URL where the image can be viewed.
+            description:
+              type: string
+              description: A brief description of the attribution image.
+            width:
+              type: integer
+              description: The width of the image, in pixels.
+            height:
+              type: integer
+              description: The height of the image, in pixels.
     ECLID:
       type: object
       properties:
