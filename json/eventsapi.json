@@ -28,7 +28,7 @@
       "post": {
         "operationId": "sendEvents",
         "summary": "Analytics Events",
-        "description": "Send user events from your Yext digital experiences to Yext Analytics in near real-time.\n",
+        "description": "Send user events from your Yext digital experiences to Yext Analytics in near real-time.\n\nThis documentation is for version `1.0.0` of the Events API. If you are still using version\n`0.6`, refer to the documentation in the yext/analytics Github repository \n[here](https://github.com/yext/analytics/blob/release/v0.6.8/src/models/EventPayload.ts).\n",
         "requestBody": {
           "description": "JSON object containing the events to be sent to Yext Analytics",
           "required": true,
@@ -440,6 +440,17 @@
             ],
             "additionalProperties": false
           },
+          "clientSdk": {
+            "type": "object",
+            "title": "Client SDK",
+            "description": "For the Yext client SDKs involved in the event, this is an object mapping the names of those SDKs to the version labels of those SDKs.",
+            "maxProperties": 100,
+            "properties": {
+              "^[a-zA-Z][a-zA-Z0-9_]{0,31}$": {
+                "type": "string"
+              }
+            }
+          },
           "count": {
             "type": "integer",
             "minimum": 1,
@@ -582,14 +593,12 @@
             ]
           },
           "location": {
-            "default": "$auto",
-            "description": "The location information of the visitor for the event.",
+            "description": "The location information of the visitor for the event. Either a Coordinates object with both latitude and longitude or a string with the country of the visitor for the event, as a ISO 3166-1 alpha-2 country code.",
             "oneOf": [
               {
                 "type": "object",
-                "additionalProperties": false,
-                "title": "Location",
-                "description": "Specifies the location information of visitor for the event.",
+                "title": "Coordinates Object",
+                "description": "The geographic coordinates of the visitor for the event.",
                 "properties": {
                   "coordinates": {
                     "type": "object",
@@ -613,29 +622,47 @@
                       "longitude"
                     ],
                     "additionalProperties": false
-                  },
-                  "country": {
-                    "type": "string",
-                    "minLength": 2,
-                    "maxLength": 2,
-                    "description": "The country of the visitor for the event, as a ISO 3166-1 alpha-2 country code. `caseSensitive: false`"
                   }
-                }
+                },
+                "required": [
+                  "coordinates"
+                ],
+                "additionalProperties": false
               },
               {
                 "type": "string",
-                "title": "$auto",
-                "enum": [
-                  "$auto"
-                ],
-                "description": "Indicates to automatically determine all location information from the request's IP address, or the value of the `ip` property if specified."
-              },
-              {
-                "type": "null",
-                "title": "null",
-                "description": "Specifies that no location information should be stored with the event."
+                "title": "Country Code",
+                "minLength": 2,
+                "maxLength": 2,
+                "pattern": "^[A-Za-z]{2}$",
+                "description": "The country of the visitor for the event, as a ISO 3166-1 alpha-2 country code. `caseSensitive: false`"
               }
             ]
+          },
+          "pages": {
+            "type": "object",
+            "title": "Pages",
+            "description": "Fields specific to reporting Yext Pages Analytics Events",
+            "properties": {
+              "scope": {
+                "type": "string",
+                "description": "The scope of an action. Applies to Pages events."
+              },
+              "originalEventName": {
+                "type": "string",
+                "description": "The Event name as it was used in previous analytics implementations."
+              },
+              "siteUid": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "The UID of the site an event was tied to."
+              },
+              "template": {
+                "type": "string",
+                "description": "The ID of the template from which a site was generated."
+              }
+            },
+            "additionalProperties": false
           },
           "pageUrl": {
             "description": "The URL of the page the event occurred on.",
@@ -674,6 +701,53 @@
               }
             ]
           },
+          "search": {
+            "type": "object",
+            "title": "Search",
+            "description": "Fields specific to reporting Yext Search Analytics Events",
+            "properties": {
+              "searchId": {
+                "type": "string",
+                "description": "Unique identifier of the search"
+              },
+              "queryId": {
+                "type": "string",
+                "description": "Unique identifier for a single query across pagination"
+              },
+              "verticalKey": {
+                "type": "string",
+                "description": "The vertical key on which the event occurred, if any"
+              },
+              "isDirectAnswer": {
+                "type": "boolean",
+                "description": "Whether or not the event occurred on a direct answer card"
+              },
+              "versionLabel": {
+                "type": "string",
+                "enum": [
+                  "PRODUCTION",
+                  "STAGING"
+                ],
+                "description": "The label of the version number of the search config. Either \"PRODUCTION\" or \"STAGING\""
+              },
+              "versionNumber": {
+                "type": "number",
+                "description": "The version number of the search config"
+              },
+              "experienceKey": {
+                "type": "string",
+                "description": "The identifier of the search experience."
+              },
+              "isGenerativeDirectAnswer": {
+                "type": "boolean",
+                "description": "Whether or not the event occurred on a generative direct answer card"
+              }
+            },
+            "required": [
+              "experienceKey"
+            ],
+            "additionalProperties": false
+          },
           "searchTerm": {
             "type": "string",
             "description": "The query entered by the user.",
@@ -681,9 +755,19 @@
             "maxLength": 16777216
           },
           "sessionId": {
-            "type": "string",
-            "pattern": "^[\\x20-\\x7E]{1,36}$",
-            "description": "ID of the user session associated with event. `pattern: \"^[\\x20-\\x7E]{1,36}$\"`"
+            "description": "ID of the user session associated with event. `pattern: \"^[\\x20-\\x7E]{1,36}$\"`",
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[\\x20-\\x7E]{1,36}$",
+                "title": "Session ID"
+              },
+              {
+                "type": "null",
+                "title": "null",
+                "description": "Specifies that no session ID should be stored with the event."
+              }
+            ]
           },
           "timestamp": {
             "description": "The timestamp at which the event occurred.",
@@ -745,7 +829,7 @@
                 "pattern": "^[\\x20-\\x7E]{1,64}$"
               }
             },
-            "maxProperties": 1
+            "maxProperties": 100
           }
         }
       }
