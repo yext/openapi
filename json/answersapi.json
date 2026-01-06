@@ -30,6 +30,9 @@
             "$ref": "#/components/parameters/autocompleteInput"
           },
           {
+            "$ref": "#/components/parameters/autocompleteLimit"
+          },
+          {
             "$ref": "#/components/parameters/version"
           }
         ],
@@ -137,6 +140,9 @@
           },
           {
             "$ref": "#/components/parameters/autocompleteInput"
+          },
+          {
+            "$ref": "#/components/parameters/autocompleteLimit"
           },
           {
             "$ref": "#/components/parameters/version"
@@ -385,6 +391,18 @@
           "type": "string"
         },
         "description": "The partial search term from the user."
+      },
+      "autocompleteLimit": {
+        "name": "limit",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 10,
+          "maximum": 100,
+          "minimum": 1
+        },
+        "description": "Number of autocomplete results to return."
       },
       "version": {
         "name": "version",
