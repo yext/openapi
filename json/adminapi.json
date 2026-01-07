@@ -1145,20 +1145,24 @@
         ],
         "properties": {
           "newLocationId": {
+            "maxLength": 128,
             "type": "string",
             "description": "Your ID for the location to be added."
           },
           "newLocationAccountId": {
+            "maxLength": 50,
             "type": "string",
             "example": "CST-43843",
             "description": "*(Partner Portal mode)* Supply your ID for the account that the new location should be created in. If this account is your main account or an existing sub-account, the location will be placed there. Otherwise, a new account will be created.\n"
           },
           "newLocationAccountName": {
+            "maxLength": 256,
             "type": "string",
             "example": "Bill's Auto Shop",
             "description": "*(Partner Portal mode)* If a new account is created, this field's value will set the account's name. If a new account is created, and a value for this field is not provided, the new account's name will default to the location's name.\n"
           },
           "newAccountParentAccountId": {
+            "maxLength": 50,
             "type": "string",
             "example": "PAR-001",
             "description": "*(Partner Portal mode, advanced use only)* If you have a multi-layer account structure and want the new account created for this request to be under one of your sub-accounts, rather than directly under your main account, specify that sub-account's ID in this field.\n"
@@ -29928,11 +29932,13 @@
         ],
         "properties": {
           "existingLocationId": {
+            "maxLength": 128,
             "type": "string",
             "description": "ID of the location to add service for. It must already be in your account (or, if you use the Partner Portal, any of your sub-accounts).",
             "example": "A48934"
           },
           "existingLocationAccountId": {
+            "maxLength": 50,
             "type": "string",
             "description": "*(Partner Portal mode only)* If the *existingLocationId* you specified is not unique among your sub-accounts, use this to specify which account the existing location is in.\n",
             "example": "B098329"
@@ -29983,6 +29989,7 @@
         ],
         "properties": {
           "subAccountId": {
+            "maxLength": 50,
             "type": "string",
             "description": "The existing account ID to add service to.\n",
             "example": "B093879"
@@ -30291,11 +30298,13 @@
         ],
         "properties": {
           "newSubAccountId": {
+            "maxLength": 50,
             "type": "string",
             "description": "The external sub-account ID for the new sub-account.\n",
             "example": "B093879"
           },
           "newSubAccountName": {
+            "maxLength": 256,
             "type": "string",
             "description": "The name for the new sub-account.\n",
             "example": "Yext Sub-Account"
@@ -30463,10 +30472,12 @@
         "type": "object",
         "properties": {
           "accountId": {
+            "maxLength": 50,
             "type": "string",
             "description": "New ID of the account"
           },
           "accountName": {
+            "maxLength": 256,
             "type": "string",
             "description": "New name of the account"
           }
