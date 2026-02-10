@@ -746,6 +746,9 @@
                         "offset": 0,
                         "length": 3
                       }
+                    ],
+                    "verticalKeys": [
+                      "products"
                     ]
                   },
                   {
@@ -755,6 +758,9 @@
                         "offset": 0,
                         "length": 3
                       }
+                    ],
+                    "verticalKeys": [
+                      "products"
                     ]
                   }
                 ]

@@ -892,10 +892,14 @@ components:
                   matchedSubstrings:
                     - offset: 0
                       length: 3
+                  verticalKeys:
+                    - products
                 - value: Yext Search
                   matchedSubstrings:
                     - offset: 0
                       length: 3
+                  verticalKeys:
+                    - products
     ErrorResponse:
       description: Error Response
       content:
