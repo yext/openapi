@@ -12947,6 +12947,32 @@ components:
           type: string
           description: |
             The content suggested as a replacement of the `originalContent`
+    Attestation:
+      type: object
+      description: |
+        Attestation certifying SEC compliance requirements for review responses.
+        This is only relevant when the Compliant Review Response setting is enabled for the account.
+      required:
+        - reviewerWasPaid
+        - reviewerIsClient
+        - isConflictOfInterest
+      properties:
+        reviewerWasPaid:
+          type: boolean
+          description: |
+            Indicates whether the reviewer was paid or otherwise compensated for the review.
+        reviewerIsClient:
+          type: boolean
+          description: |
+            Indicates whether the reviewer is a client of the business.
+        isConflictOfInterest:
+          type: boolean
+          description: |
+            Indicates whether there is a conflict of interest between the reviewer and the business.
+        conflictOfInterestDetails:
+          type: string
+          description: |
+            Details about the conflict of interest. This field is required when `isConflictOfInterest` is `true`.
     ReviewComment:
       type: object
       properties:
@@ -13002,6 +13028,19 @@ components:
           type: boolean
           description: |
             Indicates whether or not the reviewer receives an email notification when a comment is posted. Defaults to `false`.
+        attestation:
+          $ref: '#/components/schemas/Attestation'
+          description: |
+            SEC compliance attestation for the review response. This field is only relevant when the **Compliant Review Response**
+            setting is enabled for the account.
+
+            When the Compliant Review Response setting is enabled:
+            * The `attestation` field is **required**
+            * The `Yext-User-Id` header is **required** (must be the user ID of the person submitting the attestation)
+            * The response code for successful requests is **202 Accepted**
+
+            When the Compliant Review Response setting is disabled:
+            * The `attestation` field is ignored
     ReviewLabel:
       type: object
       properties:

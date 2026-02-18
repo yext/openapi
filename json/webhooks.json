@@ -9439,6 +9439,33 @@
           }
         }
       },
+      "Attestation": {
+        "type": "object",
+        "description": "Attestation certifying SEC compliance requirements for review responses.\nThis is only relevant when the Compliant Review Response setting is enabled for the account.\n",
+        "required": [
+          "reviewerWasPaid",
+          "reviewerIsClient",
+          "isConflictOfInterest"
+        ],
+        "properties": {
+          "reviewerWasPaid": {
+            "type": "boolean",
+            "description": "Indicates whether the reviewer was paid or otherwise compensated for the review.\n"
+          },
+          "reviewerIsClient": {
+            "type": "boolean",
+            "description": "Indicates whether the reviewer is a client of the business.\n"
+          },
+          "isConflictOfInterest": {
+            "type": "boolean",
+            "description": "Indicates whether there is a conflict of interest between the reviewer and the business.\n"
+          },
+          "conflictOfInterestDetails": {
+            "type": "string",
+            "description": "Details about the conflict of interest. This field is required when `isConflictOfInterest` is `true`.\n"
+          }
+        }
+      },
       "ReviewComment": {
         "type": "object",
         "properties": {
@@ -9495,6 +9522,10 @@
           "suppressReviewerContact": {
             "type": "boolean",
             "description": "Indicates whether or not the reviewer receives an email notification when a comment is posted. Defaults to `false`.\n"
+          },
+          "attestation": {
+            "$ref": "#/components/schemas/Attestation",
+            "description": "SEC compliance attestation for the review response. This field is only relevant when the **Compliant Review Response**\nsetting is enabled for the account.\n\nWhen the Compliant Review Response setting is enabled:\n* The `attestation` field is **required**\n* The `Yext-User-Id` header is **required** (must be the user ID of the person submitting the attestation)\n* The response code for successful requests is **202 Accepted**\n\nWhen the Compliant Review Response setting is disabled:\n* The `attestation` field is ignored\n"
           }
         }
       },
