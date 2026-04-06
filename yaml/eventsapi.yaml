@@ -444,7 +444,6 @@ components:
           properties:
             ^[a-zA-Z][a-zA-Z0-9_]{0,31}$:
               type: string
-              maxLength: 64
         customValues:
           type: object
           description: 'Up to 10 pairs matching custom string keys to number values to associate with the event. Keys are case-insensitive. Property Name `pattern: "^[a-zA-Z][a-zA-Z0-9_]{0,31}$"`'

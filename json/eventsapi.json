@@ -464,8 +464,7 @@
             "maxProperties": 10,
             "properties": {
               "^[a-zA-Z][a-zA-Z0-9_]{0,31}$": {
-                "type": "string",
-                "maxLength": 64
+                "type": "string"
               }
             }
           },
