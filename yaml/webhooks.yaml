@@ -287,6 +287,35 @@ webhooks:
                         - PUBLISHER_SUGGESTION_UPDATED
                 publisherSuggestion:
                   $ref: '#/components/schemas/PublisherSuggestion'
+  publisherDisruptionsWebhook:
+    post:
+      operationId: publisherDisruptionsWebhook
+      tags:
+        - Publisher Disruptions
+      summary: 'Publisher Disruptions: Webhook'
+      description: |
+        Sends a Publisher Disruption and its latest status update to your server.
+      requestBody:
+        description: The Publisher Disruption status event.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                meta:
+                  allOf:
+                    - $ref: '#/components/schemas/RequestMeta'
+                  properties:
+                    eventType:
+                      type: string
+                      enum:
+                        - PUBLISHER_DISRUPTION_CREATED
+                        - PUBLISHER_DISRUPTION_UPDATED
+                disruption:
+                  $ref: '#/components/schemas/PublisherDisruption'
+                statusUpdate:
+                  $ref: '#/components/schemas/PublisherDisruptionStatusUpdate'
   reviewsWebhook:
     post:
       operationId: reviewsWebhook
@@ -12947,6 +12976,95 @@ components:
           type: string
           description: |
             The content suggested as a replacement of the `originalContent`
+    PublisherDisruption:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the disruption.
+        publisherSiteId:
+          type: string
+          description: Publisher site ID.
+        title:
+          type: string
+          description: Title of the disruption.
+        severity:
+          type: string
+          description: Severity of the disruption.
+          enum:
+            - SEVERITY_UNSPECIFIED
+            - CRITICAL
+            - HIGH
+            - MEDIUM
+            - MINOR
+        status:
+          type: string
+          description: Current status of the disruption.
+          enum:
+            - STATUS_UNSPECIFIED
+            - INVESTIGATING
+            - IDENTIFIED
+            - MONITORING
+            - ON_PUBLISHER
+            - RESOLVED
+        affectedProducts:
+          type: array
+          description: Products affected by the disruption.
+          items:
+            type: string
+            enum:
+              - AFFECTED_PRODUCT_UNSPECIFIED
+              - LISTINGS
+              - REVIEWS
+              - SOCIAL
+              - ANALYTICS
+        lastEventTimestamp:
+          type: integer
+          format: int64
+          description: Timestamp of the most recent event for the disruption, in milliseconds since epoch.
+    PublisherDisruptionStatusUpdate:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the status update.
+        status:
+          type: string
+          description: Status represented by the update.
+          enum:
+            - STATUS_UNSPECIFIED
+            - INVESTIGATING
+            - IDENTIFIED
+            - MONITORING
+            - ON_PUBLISHER
+            - RESOLVED
+        previousStatus:
+          type: string
+          description: Previous disruption status.
+          enum:
+            - STATUS_UNSPECIFIED
+            - INVESTIGATING
+            - IDENTIFIED
+            - MONITORING
+            - ON_PUBLISHER
+            - RESOLVED
+        currentStatus:
+          type: string
+          description: Current disruption status.
+          enum:
+            - STATUS_UNSPECIFIED
+            - INVESTIGATING
+            - IDENTIFIED
+            - MONITORING
+            - ON_PUBLISHER
+            - RESOLVED
+        messageHtml:
+          type: string
+          description: HTML message for the status update.
+        eventTimestamp:
+          type: integer
+          format: int64
+          description: Timestamp of the status update, in milliseconds since epoch.
     Attestation:
       type: object
       description: |
