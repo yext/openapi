@@ -3008,6 +3008,7 @@ components:
               - ARNP
               - AUD
               - BSW
+              - BPT
               - CCCA
               - CNM
               - CNP
@@ -3034,6 +3035,7 @@ components:
               - MD
               - MPAS
               - MPH
+              - MPT
               - MSW
               - ND
               - NNP
