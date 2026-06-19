@@ -13178,7 +13178,6 @@ components:
         id:
           type: integer
           description: ID of this review
-          readOnly: true
         entityId:
           type: string
           description: |
@@ -13193,7 +13192,6 @@ components:
           description: |
             For third-party reviews, the ID of publisher associated with this listing.
             For first-party reviews, this will be FIRSTPARTY.
-          readOnly: true
         rating:
           type: number
           format: double
@@ -13205,7 +13203,6 @@ components:
           description: |
             Title of the review.
             This value is omitted if reviews on the publisher's site do not have titles.
-          readOnly: true
         content:
           type: string
           description: |
@@ -13219,12 +13216,10 @@ components:
         url:
           type: string
           description: The URL of the review, or the URL of the listing where the review can be found if there is no specific URL for the review.
-          readOnly: true
         publisherDate:
           type: integer
           format: int64
           description: The timestamp of the review as reported by the publisher. If edits impact the review date on the publisher, then this date may change. This date always comes from the publisher and we respect whatever they have.
-          readOnly: true
         lastYextUpdateTime:
           type: integer
           format: int64
@@ -13232,7 +13227,6 @@ components:
             If the **`v`** parameter is before `20170512`: the timestamp of the review (including listing updates).
 
             If the **`v`** parameter is `20170512` or later: the timestamp of the review (excluding listing updates), or the timestamp of the latest comment on the review.
-          readOnly: true
         status:
           type: string
           enum:
@@ -13255,7 +13249,6 @@ components:
             An ordered array of Comments on the review.
 
             **NOTE:** The order is a flattened tree with depth ties broken by publisher date.
-          readOnly: true
           items:
             $ref: '#/components/schemas/ReviewComment'
         reviewLabels:
@@ -13264,7 +13257,6 @@ components:
             The names and IDs of the review labels added to the review.
 
             **NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API.
-          readOnly: true
           items:
             $ref: '#/components/schemas/ReviewLabel'
         reviewType:
@@ -13278,7 +13270,6 @@ components:
             If the **`v`** parameter is `20181002` or later: Indicates whether the review is a rating or a recommendation.
 
             **NOTE:** Only applicable to Facebook reviews.
-          readOnly: true
         recommendation:
           type: string
           enum:
@@ -13290,7 +13281,6 @@ components:
             If the **`v`** parameter is `20181002` or later: Indicates whether the consumer recommends the entity being reviewed.
 
             **NOTE:** Only applicable to Facebook reviews.
-          readOnly: true
         transactionId:
           type: string
           description: |

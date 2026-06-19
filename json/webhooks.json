@@ -9709,8 +9709,7 @@
         "properties": {
           "id": {
             "type": "integer",
-            "description": "ID of this review",
-            "readOnly": true
+            "description": "ID of this review"
           },
           "entityId": {
             "type": "string",
@@ -9722,8 +9721,7 @@
           },
           "publisherId": {
             "type": "string",
-            "description": "For third-party reviews, the ID of publisher associated with this listing.\nFor first-party reviews, this will be FIRSTPARTY.\n",
-            "readOnly": true
+            "description": "For third-party reviews, the ID of publisher associated with this listing.\nFor first-party reviews, this will be FIRSTPARTY.\n"
           },
           "rating": {
             "type": "number",
@@ -9732,8 +9730,7 @@
           },
           "title": {
             "type": "string",
-            "description": "Title of the review.\nThis value is omitted if reviews on the publisher's site do not have titles.\n",
-            "readOnly": true
+            "description": "Title of the review.\nThis value is omitted if reviews on the publisher's site do not have titles.\n"
           },
           "content": {
             "type": "string",
@@ -9749,20 +9746,17 @@
           },
           "url": {
             "type": "string",
-            "description": "The URL of the review, or the URL of the listing where the review can be found if there is no specific URL for the review.",
-            "readOnly": true
+            "description": "The URL of the review, or the URL of the listing where the review can be found if there is no specific URL for the review."
           },
           "publisherDate": {
             "type": "integer",
             "format": "int64",
-            "description": "The timestamp of the review as reported by the publisher. If edits impact the review date on the publisher, then this date may change. This date always comes from the publisher and we respect whatever they have.",
-            "readOnly": true
+            "description": "The timestamp of the review as reported by the publisher. If edits impact the review date on the publisher, then this date may change. This date always comes from the publisher and we respect whatever they have."
           },
           "lastYextUpdateTime": {
             "type": "integer",
             "format": "int64",
-            "description": "If the **`v`** parameter is before `20170512`: the timestamp of the review (including listing updates).\n\nIf the **`v`** parameter is `20170512` or later: the timestamp of the review (excluding listing updates), or the timestamp of the latest comment on the review.\n",
-            "readOnly": true
+            "description": "If the **`v`** parameter is before `20170512`: the timestamp of the review (including listing updates).\n\nIf the **`v`** parameter is `20170512` or later: the timestamp of the review (excluding listing updates), or the timestamp of the latest comment on the review.\n"
           },
           "status": {
             "type": "string",
@@ -9788,7 +9782,6 @@
           "comments": {
             "type": "array",
             "description": "An ordered array of Comments on the review.\n\n**NOTE:** The order is a flattened tree with depth ties broken by publisher date.\n",
-            "readOnly": true,
             "items": {
               "$ref": "#/components/schemas/ReviewComment"
             }
@@ -9796,7 +9789,6 @@
           "reviewLabels": {
             "type": "array",
             "description": "The names and IDs of the review labels added to the review.\n\n**NOTE:** You can only add labels that have already been created via our web interface. Currently, it is not possible to create new labels via the API.\n",
-            "readOnly": true,
             "items": {
               "$ref": "#/components/schemas/ReviewLabel"
             }
@@ -9807,8 +9799,7 @@
               "Rating",
               "Recommendation"
             ],
-            "description": "If the **`v`** parameter is before `20181002`: Not present.\n\nIf the **`v`** parameter is `20181002` or later: Indicates whether the review is a rating or a recommendation.\n\n**NOTE:** Only applicable to Facebook reviews.\n",
-            "readOnly": true
+            "description": "If the **`v`** parameter is before `20181002`: Not present.\n\nIf the **`v`** parameter is `20181002` or later: Indicates whether the review is a rating or a recommendation.\n\n**NOTE:** Only applicable to Facebook reviews.\n"
           },
           "recommendation": {
             "type": "string",
@@ -9816,8 +9807,7 @@
               "Recommended",
               "Not Recommended"
             ],
-            "description": "If the **`v`** parameter is before `20181002`: Not present.\n\nIf the **`v`** parameter is `20181002` or later: Indicates whether the consumer recommends the entity being reviewed.\n\n**NOTE:** Only applicable to Facebook reviews.\n",
-            "readOnly": true
+            "description": "If the **`v`** parameter is before `20181002`: Not present.\n\nIf the **`v`** parameter is `20181002` or later: Indicates whether the consumer recommends the entity being reviewed.\n\n**NOTE:** Only applicable to Facebook reviews.\n"
           },
           "transactionId": {
             "type": "string",
