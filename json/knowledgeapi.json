@@ -94300,7 +94300,7 @@
           "lastYextUpdateTime": {
             "type": "integer",
             "format": "int64",
-            "description": "If the **`v`** parameter is before `20170512`: the timestamp of the review (including listing updates).\n\nIf the **`v`** parameter is `20170512` or later: the timestamp of the review (excluding listing updates), or the timestamp of the latest comment on the review.\n",
+            "description": "If the **`v`** parameter is before `20170512`: the timestamp of the review (including listing updates).\n\nIf the **`v`** parameter is `20170512` or later and on or before `20260513`: the timestamp of the review (excluding listing updates), or the timestamp of the latest comment on the review.\n\nIf the **`v`** parameter is later than `20260513`: the timestamp of the review (excluding listing updates). The timestamp of the latest comment on the review is ignored.\n",
             "readOnly": true
           },
           "status": {
