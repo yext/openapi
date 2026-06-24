@@ -505,6 +505,47 @@
         }
       }
     },
+    "linkedAccountsMonitoringWebhook": {
+      "post": {
+        "operationId": "linkedAccountsMonitoringWebhook",
+        "tags": [
+          "Account Settings"
+        ],
+        "summary": "Linked Accounts Monitoring: Webhook",
+        "description": "Sends an invalid linked account issue to your server.",
+        "requestBody": {
+          "description": "The linked account issue event.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "meta": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/RequestMeta"
+                      }
+                    ],
+                    "properties": {
+                      "eventType": {
+                        "type": "string",
+                        "enum": [
+                          "LINKED_ACCOUNTS_ISSUES"
+                        ]
+                      }
+                    }
+                  },
+                  "linkedAccountIssue": {
+                    "$ref": "#/components/schemas/LinkedAccountIssue"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "reviewsWebhook": {
       "post": {
         "operationId": "reviewsWebhook",
@@ -9596,6 +9637,44 @@
             "type": "integer",
             "format": "int64",
             "description": "Timestamp of the status update, in milliseconds since epoch."
+          }
+        }
+      },
+      "LinkedAccountIssueAffectedEntity": {
+        "type": "object",
+        "properties": {
+          "businessId": {
+            "type": "string",
+            "description": "ID of the account containing the affected entity."
+          },
+          "entityId": {
+            "type": "string",
+            "description": "ID of the entity affected by the invalid linked account."
+          }
+        }
+      },
+      "LinkedAccountIssue": {
+        "type": "object",
+        "properties": {
+          "linkedAccountId": {
+            "type": "string",
+            "description": "ID of the invalid linked account."
+          },
+          "publisherSiteId": {
+            "type": "string",
+            "description": "Publisher site ID for the invalid linked account."
+          },
+          "affectedEntities": {
+            "type": "array",
+            "description": "Entities affected by the invalid linked account.",
+            "items": {
+              "$ref": "#/components/schemas/LinkedAccountIssueAffectedEntity"
+            }
+          },
+          "eventTimestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Time the linked account issue occurred."
           }
         }
       },
