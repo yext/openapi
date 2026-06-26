@@ -94930,7 +94930,9 @@
               7,
               30,
               60,
-              90
+              90,
+              180,
+              365
             ],
             "description": "Indicates the minimum number of days that must pass before a given contact can be sent another review invitation.\nThis setting will prevent you from contacting the same person repeatedly in a short time period.\n\nIf null, no maximum contact frequency will be enforced.\n"
           },
