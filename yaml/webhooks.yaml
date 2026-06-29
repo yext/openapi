@@ -13119,6 +13119,18 @@ components:
           type: string
           format: date-time
           description: Time the linked account issue occurred.
+    ReviewMediaItem:
+      type: object
+      properties:
+        thumbnailUrl:
+          type: string
+          description: The URL of the media thumbnail.
+        thumbnailLabel:
+          type: string
+          description: The publisher-provided label for the thumbnail, when available.
+        videoUrl:
+          type: string
+          description: The URL of the video media, when the media item is a video.
     Attestation:
       type: object
       description: |
@@ -13297,6 +13309,17 @@ components:
         reviewLanguage:
           type: string
           description: The language of the review, if identified.
+        mediaItems:
+          type: array
+          description: |
+            If the **`v`** parameter is before `20260805`: Not present.
+
+            If the **`v`** parameter is `20260805` or later: The media attached to the review, if the account has the `SHOW_GOOGLE_REVIEW_MEDIA_ITEMS` product feature enabled.
+
+            **NOTE:** This field may be included when a webhook is triggered for a supported review event. Media-only updates do not trigger review webhooks.
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/ReviewMediaItem'
         comments:
           type: array
           description: |

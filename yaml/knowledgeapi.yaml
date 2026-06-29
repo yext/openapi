@@ -122935,6 +122935,18 @@ components:
         pageToken:
           type: string
           description: 'Token for paginating queries which return more records than the pageSize specified e.g. `"pageToken": "BeYwVgOhe_fEz9VhfSES4GPDt6jElk7AHN6plsP_TLXk27rlG0YyYc78AOI_oyILcw"`.<br><br> This is optional and should only be used when your query returns more records than your pageSize (indicated by the nextPageToken being returned in your response body.)'
+    ReviewMediaItem:
+      type: object
+      properties:
+        thumbnailUrl:
+          type: string
+          description: The URL of the media thumbnail.
+        thumbnailLabel:
+          type: string
+          description: The publisher-provided label for the thumbnail, when available.
+        videoUrl:
+          type: string
+          description: The URL of the video media, when the media item is a video.
     Attestation:
       type: object
       description: |
@@ -123116,6 +123128,17 @@ components:
         reviewLanguage:
           type: string
           description: The language of the review, if identified.
+        mediaItems:
+          type: array
+          description: |
+            If the **`v`** parameter is before `20260805`: Not present.
+
+            If the **`v`** parameter is `20260805` or later: The media attached to the review, if the account has the `SHOW_GOOGLE_REVIEW_MEDIA_ITEMS` product feature enabled.
+
+            **NOTE:** This field is only populated for reviews with attached media. Items may represent images or videos.
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/ReviewMediaItem'
         comments:
           type: array
           description: |
