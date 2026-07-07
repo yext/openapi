@@ -94971,6 +94971,10 @@
             "type": "string",
             "description": "Review-collection pages contain a link to the Yext privacy policy by default.\nThis field lets you replace that link with a link to your own privacy policy.\n\nUpdate request must contain a URL or null. If null, the Yext privacy policy link will be used.\n\nIf the **`v`** parameter is before `20200910`, please refer to **`privacyPolicyOverride`** as\nthe parameter name instead of **`privacyPolicy`**.\n"
           },
+          "bccEmailAddress": {
+            "type": "string",
+            "description": "If the **`v`** parameter is before `20260805`: Not present.\n\nIf the **`v`** parameter is `20260805` or later: BCC email address(es) that will be copied on\nreview invitation emails sent for this business.\nAccepts a single email address or a comma-separated list of addresses.\n\nUpdate request must contain valid email address(es) or null. If null, no BCC recipient will\nbe added to review invitation emails.\n"
+          },
           "balancingOptimization": {
             "type": "string",
             "enum": [

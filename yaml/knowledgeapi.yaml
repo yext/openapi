@@ -123904,6 +123904,17 @@ components:
 
             If the **`v`** parameter is before `20200910`, please refer to **`privacyPolicyOverride`** as
             the parameter name instead of **`privacyPolicy`**.
+        bccEmailAddress:
+          type: string
+          description: |
+            If the **`v`** parameter is before `20260805`: Not present.
+
+            If the **`v`** parameter is `20260805` or later: BCC email address(es) that will be copied on
+            review invitation emails sent for this business.
+            Accepts a single email address or a comma-separated list of addresses.
+
+            Update request must contain valid email address(es) or null. If null, no BCC recipient will
+            be added to review invitation emails.
         balancingOptimization:
           type: string
           enum:
