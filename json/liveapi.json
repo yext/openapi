@@ -6733,6 +6733,25 @@
                                   "description": "Filtering Type: `object`"
                                 }
                               },
+                              "views": {
+                                "uniqueItems": true,
+                                "type": "array",
+                                "items": {
+                                  "enum": [
+                                    "BEACH",
+                                    "CITY",
+                                    "GARDEN",
+                                    "LAKE",
+                                    "LANDMARK",
+                                    "OCEAN",
+                                    "POOL",
+                                    "VALLEY"
+                                  ],
+                                  "type": "string",
+                                  "description": "Filtering Type: `option`"
+                                },
+                                "description": "A list of the available views for a hotel room type. Available Options: - Beach - City - Garden - Lake - Landmark - Ocean - Pool - Valley \n\nFiltering Type: `list of option`\n\n```\nEligible For: \n   * hotelRoomType\n```"
+                              },
                               "wadingPool": {
                                 "enum": [
                                   "YES",
@@ -13696,6 +13715,25 @@
                             },
                             "description": "Filtering Type: `object`"
                           }
+                        },
+                        "views": {
+                          "uniqueItems": true,
+                          "type": "array",
+                          "items": {
+                            "enum": [
+                              "BEACH",
+                              "CITY",
+                              "GARDEN",
+                              "LAKE",
+                              "LANDMARK",
+                              "OCEAN",
+                              "POOL",
+                              "VALLEY"
+                            ],
+                            "type": "string",
+                            "description": "Filtering Type: `option`"
+                          },
+                          "description": "A list of the available views for a hotel room type. Available Options: - Beach - City - Garden - Lake - Landmark - Ocean - Pool - Valley \n\nFiltering Type: `list of option`\n\n```\nEligible For: \n   * hotelRoomType\n```"
                         },
                         "wadingPool": {
                           "enum": [
@@ -20772,6 +20810,25 @@
                                   },
                                   "description": "Filtering Type: `object`"
                                 }
+                              },
+                              "views": {
+                                "uniqueItems": true,
+                                "type": "array",
+                                "items": {
+                                  "enum": [
+                                    "BEACH",
+                                    "CITY",
+                                    "GARDEN",
+                                    "LAKE",
+                                    "LANDMARK",
+                                    "OCEAN",
+                                    "POOL",
+                                    "VALLEY"
+                                  ],
+                                  "type": "string",
+                                  "description": "Filtering Type: `option`"
+                                },
+                                "description": "A list of the available views for a hotel room type. Available Options: - Beach - City - Garden - Lake - Landmark - Ocean - Pool - Valley \n\nFiltering Type: `list of option`\n\n```\nEligible For: \n   * hotelRoomType\n```"
                               },
                               "wadingPool": {
                                 "enum": [
@@ -27873,6 +27930,25 @@
                             "description": "Filtering Type: `object`"
                           }
                         },
+                        "views": {
+                          "uniqueItems": true,
+                          "type": "array",
+                          "items": {
+                            "enum": [
+                              "BEACH",
+                              "CITY",
+                              "GARDEN",
+                              "LAKE",
+                              "LANDMARK",
+                              "OCEAN",
+                              "POOL",
+                              "VALLEY"
+                            ],
+                            "type": "string",
+                            "description": "Filtering Type: `option`"
+                          },
+                          "description": "A list of the available views for a hotel room type. Available Options: - Beach - City - Garden - Lake - Landmark - Ocean - Pool - Valley \n\nFiltering Type: `list of option`\n\n```\nEligible For: \n   * hotelRoomType\n```"
+                        },
                         "wadingPool": {
                           "enum": [
                             "YES",
@@ -34855,6 +34931,25 @@
                                   },
                                   "description": "Filtering Type: `object`"
                                 }
+                              },
+                              "views": {
+                                "uniqueItems": true,
+                                "type": "array",
+                                "items": {
+                                  "enum": [
+                                    "BEACH",
+                                    "CITY",
+                                    "GARDEN",
+                                    "LAKE",
+                                    "LANDMARK",
+                                    "OCEAN",
+                                    "POOL",
+                                    "VALLEY"
+                                  ],
+                                  "type": "string",
+                                  "description": "Filtering Type: `option`"
+                                },
+                                "description": "A list of the available views for a hotel room type. Available Options: - Beach - City - Garden - Lake - Landmark - Ocean - Pool - Valley \n\nFiltering Type: `list of option`\n\n```\nEligible For: \n   * hotelRoomType\n```"
                               },
                               "wadingPool": {
                                 "enum": [
@@ -41901,6 +41996,25 @@
                                         },
                                         "description": "Filtering Type: `object`"
                                       }
+                                    },
+                                    "views": {
+                                      "uniqueItems": true,
+                                      "type": "array",
+                                      "items": {
+                                        "enum": [
+                                          "BEACH",
+                                          "CITY",
+                                          "GARDEN",
+                                          "LAKE",
+                                          "LANDMARK",
+                                          "OCEAN",
+                                          "POOL",
+                                          "VALLEY"
+                                        ],
+                                        "type": "string",
+                                        "description": "Filtering Type: `option`"
+                                      },
+                                      "description": "A list of the available views for a hotel room type. Available Options: - Beach - City - Garden - Lake - Landmark - Ocean - Pool - Valley \n\nFiltering Type: `list of option`\n\n```\nEligible For: \n   * hotelRoomType\n```"
                                     },
                                     "wadingPool": {
                                       "enum": [

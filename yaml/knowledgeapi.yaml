@@ -21978,6 +21978,30 @@ paths:
                                   description: 'Filtering Type: `text`'
                               description: 'Filtering Type: `object`'
                           description: 'Filtering Type: `object`'
+                      views:
+                        uniqueItems: true
+                        type: array
+                        items:
+                          enum:
+                            - BEACH
+                            - CITY
+                            - GARDEN
+                            - LAKE
+                            - LANDMARK
+                            - OCEAN
+                            - POOL
+                            - VALLEY
+                          type: string
+                          description: 'Filtering Type: `option`'
+                        description: |-
+                          A list of the available views for a hotel room type. Available Options: - City - Garden - Lake - Landmark - Ocean - Pool - Valley 
+
+                          Filtering Type: `list of option`
+
+                          ```
+                          Eligible For: 
+                             * hotelRoomType
+                          ```
                       wadingPool:
                         enum:
                           - 'YES'
@@ -32677,6 +32701,30 @@ paths:
                                   description: 'Filtering Type: `text`'
                               description: 'Filtering Type: `object`'
                           description: 'Filtering Type: `object`'
+                      views:
+                        uniqueItems: true
+                        type: array
+                        items:
+                          enum:
+                            - BEACH
+                            - CITY
+                            - GARDEN
+                            - LAKE
+                            - LANDMARK
+                            - OCEAN
+                            - POOL
+                            - VALLEY
+                          type: string
+                          description: 'Filtering Type: `option`'
+                        description: |-
+                          A list of the available views for a hotel room type. Available Options: - City - Garden - Lake - Landmark - Ocean - Pool - Valley 
+
+                          Filtering Type: `list of option`
+
+                          ```
+                          Eligible For: 
+                             * hotelRoomType
+                          ```
                       wadingPool:
                         enum:
                           - 'YES'
@@ -43372,6 +43420,30 @@ paths:
                                   description: 'Filtering Type: `text`'
                               description: 'Filtering Type: `object`'
                           description: 'Filtering Type: `object`'
+                      views:
+                        uniqueItems: true
+                        type: array
+                        items:
+                          enum:
+                            - BEACH
+                            - CITY
+                            - GARDEN
+                            - LAKE
+                            - LANDMARK
+                            - OCEAN
+                            - POOL
+                            - VALLEY
+                          type: string
+                          description: 'Filtering Type: `option`'
+                        description: |-
+                          A list of the available views for a hotel room type. Available Options: - Beach - City - Garden - Lake - Landmark - Ocean - Pool - Valley 
+
+                          Filtering Type: `list of option`
+
+                          ```
+                          Eligible For: 
+                             * hotelRoomType
+                          ```
                       wadingPool:
                         enum:
                           - 'YES'
@@ -54212,6 +54284,30 @@ paths:
                                         description: 'Filtering Type: `text`'
                                     description: 'Filtering Type: `object`'
                                 description: 'Filtering Type: `object`'
+                            views:
+                              uniqueItems: true
+                              type: array
+                              items:
+                                enum:
+                                  - BEACH
+                                  - CITY
+                                  - GARDEN
+                                  - LAKE
+                                  - LANDMARK
+                                  - OCEAN
+                                  - POOL
+                                  - VALLEY
+                                type: string
+                                description: 'Filtering Type: `option`'
+                              description: |-
+                                A list of the available views for a hotel room type. Available Options: - City - Garden - Lake - Landmark - Ocean - Pool - Valley 
+
+                                Filtering Type: `list of option`
+
+                                ```
+                                Eligible For: 
+                                   * hotelRoomType
+                                ```
                             wadingPool:
                               enum:
                                 - 'YES'
@@ -65966,6 +66062,30 @@ paths:
                                               description: 'Filtering Type: `text`'
                                           description: 'Filtering Type: `object`'
                                       description: 'Filtering Type: `object`'
+                                  views:
+                                    uniqueItems: true
+                                    type: array
+                                    items:
+                                      enum:
+                                        - BEACH
+                                        - CITY
+                                        - GARDEN
+                                        - LAKE
+                                        - LANDMARK
+                                        - OCEAN
+                                        - POOL
+                                        - VALLEY
+                                      type: string
+                                      description: 'Filtering Type: `option`'
+                                    description: |-
+                                      A list of the available views for a hotel room type. Available Options: - Beach - City - Garden - Lake - Landmark - Ocean - Pool - Valley 
+
+                                      Filtering Type: `list of option`
+
+                                      ```
+                                      Eligible For: 
+                                         * hotelRoomType
+                                      ```
                                   wadingPool:
                                     enum:
                                       - 'YES'
@@ -76668,6 +76788,30 @@ paths:
                                   description: 'Filtering Type: `text`'
                               description: 'Filtering Type: `object`'
                           description: 'Filtering Type: `object`'
+                      views:
+                        uniqueItems: true
+                        type: array
+                        items:
+                          enum:
+                            - BEACH
+                            - CITY
+                            - GARDEN
+                            - LAKE
+                            - LANDMARK
+                            - OCEAN
+                            - POOL
+                            - VALLEY
+                          type: string
+                          description: 'Filtering Type: `option`'
+                        description: |-
+                          A list of the available views for a hotel room type. Available Options: - Beach - City - Garden - Lake - Landmark - Ocean - Pool - Valley 
+
+                          Filtering Type: `list of option`
+
+                          ```
+                          Eligible For: 
+                             * hotelRoomType
+                          ```
                       wadingPool:
                         enum:
                           - 'YES'
@@ -87332,6 +87476,30 @@ paths:
                                   description: 'Filtering Type: `text`'
                               description: 'Filtering Type: `object`'
                           description: 'Filtering Type: `object`'
+                      views:
+                        uniqueItems: true
+                        type: array
+                        items:
+                          enum:
+                            - BEACH
+                            - CITY
+                            - GARDEN
+                            - LAKE
+                            - LANDMARK
+                            - OCEAN
+                            - POOL
+                            - VALLEY
+                          type: string
+                          description: 'Filtering Type: `option`'
+                        description: |-
+                          A list of the available views for a hotel room type. Available Options: - City - Garden - Lake - Landmark - Ocean - Pool - Valley 
+
+                          Filtering Type: `list of option`
+
+                          ```
+                          Eligible For: 
+                             * hotelRoomType
+                          ```
                       wadingPool:
                         enum:
                           - 'YES'
@@ -109003,6 +109171,21 @@ components:
                         minLength: 0
                         format: uri
                         type: string
+            views:
+              uniqueItems: true
+              type: array
+              items:
+                enum:
+                  - BEACH
+                  - CITY
+                  - GARDEN
+                  - LAKE
+                  - LANDMARK
+                  - OCEAN
+                  - POOL
+                  - VALLEY
+                type: string
+              description: 'A list of the available views for a hotel room type. Available Options: - Beach - City - Garden - Lake - Landmark - Ocean - Pool - Valley '
     JobWrite:
       allOf:
         - $ref: '#/components/schemas/EntityWrite'
@@ -135711,6 +135894,30 @@ components:
                     description: 'Filtering Type: `text`'
                 description: 'Filtering Type: `object`'
             description: 'Filtering Type: `object`'
+        views:
+          uniqueItems: true
+          type: array
+          items:
+            enum:
+              - BEACH
+              - CITY
+              - GARDEN
+              - LAKE
+              - LANDMARK
+              - OCEAN
+              - POOL
+              - VALLEY
+            type: string
+            description: 'Filtering Type: `option`'
+          description: |-
+            A list of the available views for a hotel room type. Available Options: - Beach - City - Garden - Lake - Landmark - Ocean - Pool - Valley 
+
+            Filtering Type: `list of option`
+
+            ```
+            Eligible For: 
+               * hotelRoomType
+            ```
         wadingPool:
           enum:
             - 'YES'
