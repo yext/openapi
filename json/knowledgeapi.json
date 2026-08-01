@@ -105209,7 +105209,7 @@
             "type": "string"
           }
         },
-        "description": "List of publisher IDs. If no IDs are specified, defaults to all publishers subscribed by the account.\n\n**Example:** FACEBOOKEVENTS,EVENTBRITE\n",
+        "description": "List of publisher IDs. If no IDs are specified, defaults to all publishers subscribed by the account.\n\n**Example:** EVENTBRITE\n",
         "style": "simple"
       },
       "QuestionAnswerFilter": {
