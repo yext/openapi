@@ -5,7 +5,7 @@
     "version": "v1"
   },
   "paths": {
-    "/v1/accounts/{account}/prospectScans": {
+    "/v1/accounts/{account}/scout/prospectScans": {
       "post": {
         "summary": "Creates a prospect scan for a known Google Business Profile.",
         "description": "The service assigns the scan's resource name and begins processing. A\nsuccessful response normally has PENDING or RUNNING state; it does not\nimply that results are available.\n\nFor a Google Business Profile target, the caller supplies only the CID. The\nserver resolves the profile, including the business identity and location,\nand derives the search keyword from the profile's primary category.\n\nOnly one prospect scan may be created for the same Google Business Profile\nCID in an account within a 60-minute period. Additional create requests\nduring that period return ALREADY_EXISTS. The status includes a\ngoogle.rpc.ResourceInfo detail with resource_type\n\"api.yextapis.com/ProspectScan\" and resource_name set to the existing\nscan's full resource name.\n\nPossible errors include:\n\n* INVALID_ARGUMENT when the CID is malformed.\n* ALREADY_EXISTS when a scan was created for the same CID in the account\n  within the previous 60 minutes.\n* NOT_FOUND when the CID does not resolve to an accessible profile.\n* FAILED_PRECONDITION when the resolved profile lacks information required\n  to run the scan, such as a usable primary category or location.\n* RESOURCE_EXHAUSTED when an account or service quota is exceeded.",
@@ -55,7 +55,7 @@
         }
       }
     },
-    "/v1/accounts/{account}/prospectScans/{prospectScan}": {
+    "/v1/accounts/{account}/scout/prospectScans/{prospectScan}": {
       "get": {
         "summary": "Gets the current state and metadata of a prospect scan.",
         "description": "Returns NOT_FOUND when the scan does not exist or is not accessible.",
@@ -102,7 +102,7 @@
         ]
       }
     },
-    "/v1/accounts/{account}/prospectScans/{prospectScan}:fetchDiscoveredProspects": {
+    "/v1/accounts/{account}/scout/prospectScans/{prospectScan}/fetchDiscoveredProspects": {
       "get": {
         "summary": "Fetches competitors discovered in local search results for a completed scan.",
         "description": "Use this method to build a business-centric list of the competitors found\nby the scan. Each discovered prospect includes its observed search rank,\navailable business profile details, and calculated metrics. The scan target\nis not included. To inspect the search results and other source material\nused to produce this result set, use FetchProspectScanEvidence.\n\nReturns FAILED_PRECONDITION while the scan is not in SUCCEEDED state.\nReturns NOT_FOUND when the scan does not exist or is not accessible.",
@@ -149,7 +149,7 @@
         ]
       }
     },
-    "/v1/accounts/{account}/prospectScans/{prospectScan}:fetchEvidence": {
+    "/v1/accounts/{account}/scout/prospectScans/{prospectScan}/fetchEvidence": {
       "get": {
         "summary": "Fetches supporting evidence collected for a completed prospect scan.",
         "description": "Use this method to inspect the source material used to produce the scan's\nsummarized results and discovered prospects. Evidence is source-centric and\nincludes search results, AI answers and citations, and publisher listing\nchecks. To retrieve a business-centric list of competitors, use\nFetchDiscoveredProspects.\n\nReturns FAILED_PRECONDITION while the scan is not in SUCCEEDED state.\nReturns NOT_FOUND when the scan does not exist or is not accessible.",
@@ -196,7 +196,7 @@
         ]
       }
     },
-    "/v1/accounts/{account}/prospectScans/{prospectScan}:fetchResults": {
+    "/v1/accounts/{account}/scout/prospectScans/{prospectScan}/fetchResults": {
       "get": {
         "summary": "Fetches the summarized results of a completed prospect scan.",
         "description": "Returns FAILED_PRECONDITION while the scan is not in SUCCEEDED state.\nReturns NOT_FOUND when the scan does not exist or is not accessible.",
@@ -761,7 +761,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "The resource name of the prospect scan.\n\nFormat: accounts/{account}/prospectScans/{prospect_scan}",
+            "description": "The resource name of the prospect scan.\n\nFormat: accounts/{account}/scout/prospectScans/{prospect_scan}",
             "readOnly": true
           },
           "target": {

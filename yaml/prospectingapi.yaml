@@ -3,7 +3,7 @@ info:
   title: Prospect Scan API
   version: v1
 paths:
-  /v1/accounts/{account}/prospectScans:
+  /v1/accounts/{account}/scout/prospectScans:
     post:
       summary: Creates a prospect scan for a known Google Business Profile.
       description: |-
@@ -62,7 +62,7 @@ paths:
           Set target to identify the business to scan. The remaining fields are
           assigned by the service.
         required: true
-  /v1/accounts/{account}/prospectScans/{prospectScan}:
+  /v1/accounts/{account}/scout/prospectScans/{prospectScan}:
     get:
       summary: Gets the current state and metadata of a prospect scan.
       description: Returns NOT_FOUND when the scan does not exist or is not accessible.
@@ -91,7 +91,7 @@ paths:
           required: true
           schema:
             type: string
-  /v1/accounts/{account}/prospectScans/{prospectScan}:fetchDiscoveredProspects:
+  /v1/accounts/{account}/scout/prospectScans/{prospectScan}/fetchDiscoveredProspects:
     get:
       summary: Fetches competitors discovered in local search results for a completed scan.
       description: |-
@@ -128,7 +128,7 @@ paths:
           required: true
           schema:
             type: string
-  /v1/accounts/{account}/prospectScans/{prospectScan}:fetchEvidence:
+  /v1/accounts/{account}/scout/prospectScans/{prospectScan}/fetchEvidence:
     get:
       summary: Fetches supporting evidence collected for a completed prospect scan.
       description: |-
@@ -165,7 +165,7 @@ paths:
           required: true
           schema:
             type: string
-  /v1/accounts/{account}/prospectScans/{prospectScan}:fetchResults:
+  /v1/accounts/{account}/scout/prospectScans/{prospectScan}/fetchResults:
     get:
       summary: Fetches the summarized results of a completed prospect scan.
       description: |-
@@ -608,7 +608,7 @@ components:
           description: |-
             The resource name of the prospect scan.
 
-            Format: accounts/{account}/prospectScans/{prospect_scan}
+            Format: accounts/{account}/scout/prospectScans/{prospect_scan}
           readOnly: true
         target:
           $ref: '#/components/schemas/v1ProspectScanTarget'
