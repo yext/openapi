@@ -1,0 +1,953 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Prospect Scan API",
+    "version": "v1"
+  },
+  "paths": {
+    "/v1/accounts/{account}/prospectScans": {
+      "post": {
+        "summary": "Creates a prospect scan for a known Google Business Profile.",
+        "description": "The service assigns the scan's resource name and begins processing. A\nsuccessful response normally has PENDING or RUNNING state; it does not\nimply that results are available.\n\nFor a Google Business Profile target, the caller supplies only the CID. The\nserver resolves the profile, including the business identity and location,\nand derives the search keyword from the profile's primary category.\n\nOnly one prospect scan may be created for the same Google Business Profile\nCID in an account within a 60-minute period. Additional create requests\nduring that period return ALREADY_EXISTS. The status includes a\ngoogle.rpc.ResourceInfo detail with resource_type\n\"api.yextapis.com/ProspectScan\" and resource_name set to the existing\nscan's full resource name.\n\nPossible errors include:\n\n* INVALID_ARGUMENT when the CID is malformed.\n* ALREADY_EXISTS when a scan was created for the same CID in the account\n  within the previous 60 minutes.\n* NOT_FOUND when the CID does not resolve to an accessible profile.\n* FAILED_PRECONDITION when the resolved profile lacks information required\n  to run the scan, such as a usable primary category or location.\n* RESOURCE_EXHAUSTED when an account or service quota is exceeded.",
+        "operationId": "ProspectScanService_CreateProspectScan",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ProspectScan"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/rpcStatus"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ProspectScan"
+              }
+            }
+          },
+          "description": "The prospect scan to create.\n\nSet target to identify the business to scan. The remaining fields are\nassigned by the service.",
+          "required": true
+        }
+      }
+    },
+    "/v1/accounts/{account}/prospectScans/{prospectScan}": {
+      "get": {
+        "summary": "Gets the current state and metadata of a prospect scan.",
+        "description": "Returns NOT_FOUND when the scan does not exist or is not accessible.",
+        "operationId": "ProspectScanService_GetProspectScan",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ProspectScan"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/rpcStatus"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "prospectScan",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/accounts/{account}/prospectScans/{prospectScan}:fetchDiscoveredProspects": {
+      "get": {
+        "summary": "Fetches competitors discovered in local search results for a completed scan.",
+        "description": "Use this method to build a business-centric list of the competitors found\nby the scan. Each discovered prospect includes its observed search rank,\navailable business profile details, and calculated metrics. The scan target\nis not included. To inspect the search results and other source material\nused to produce this result set, use FetchProspectScanEvidence.\n\nReturns FAILED_PRECONDITION while the scan is not in SUCCEEDED state.\nReturns NOT_FOUND when the scan does not exist or is not accessible.",
+        "operationId": "ProspectScanService_FetchDiscoveredProspects",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1FetchDiscoveredProspectsResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/rpcStatus"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "prospectScan",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/accounts/{account}/prospectScans/{prospectScan}:fetchEvidence": {
+      "get": {
+        "summary": "Fetches supporting evidence collected for a completed prospect scan.",
+        "description": "Use this method to inspect the source material used to produce the scan's\nsummarized results and discovered prospects. Evidence is source-centric and\nincludes search results, AI answers and citations, and publisher listing\nchecks. To retrieve a business-centric list of competitors, use\nFetchDiscoveredProspects.\n\nReturns FAILED_PRECONDITION while the scan is not in SUCCEEDED state.\nReturns NOT_FOUND when the scan does not exist or is not accessible.",
+        "operationId": "ProspectScanService_FetchProspectScanEvidence",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1FetchProspectScanEvidenceResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/rpcStatus"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "prospectScan",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/accounts/{account}/prospectScans/{prospectScan}:fetchResults": {
+      "get": {
+        "summary": "Fetches the summarized results of a completed prospect scan.",
+        "description": "Returns FAILED_PRECONDITION while the scan is not in SUCCEEDED state.\nReturns NOT_FOUND when the scan does not exist or is not accessible.",
+        "operationId": "ProspectScanService_FetchProspectScanResults",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1FetchProspectScanResultsResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/rpcStatus"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "prospectScan",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "security": [
+    {
+      "api_key": []
+    },
+    {
+      "api-key": []
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://api.yextapis.com"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "api-key": {
+        "type": "apiKey",
+        "name": "api-key",
+        "in": "header"
+      },
+      "api_key": {
+        "type": "apiKey",
+        "name": "api_key",
+        "in": "query"
+      }
+    },
+    "schemas": {
+      "protobufAny": {
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": {}
+      },
+      "rpcStatus": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/protobufAny"
+            }
+          }
+        }
+      },
+      "v1AiCompetitorRanking": {
+        "type": "object",
+        "properties": {
+          "experience": {
+            "$ref": "#/components/schemas/v1AiExperience"
+          },
+          "prospectRank": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The prospect's one-based rank, or absent when it was not ranked.",
+            "readOnly": true
+          },
+          "competitors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v1RankedBusiness"
+            },
+            "description": "Ranked competitors, ordered by rank ascending.",
+            "readOnly": true
+          }
+        },
+        "description": "Prospect and competitor rankings in an AI experience."
+      },
+      "v1AiEvidence": {
+        "type": "object",
+        "properties": {
+          "experience": {
+            "$ref": "#/components/schemas/v1AiExperience"
+          },
+          "prompt": {
+            "type": "string",
+            "description": "The prompt used to evaluate the prospect and its market.",
+            "readOnly": true
+          },
+          "answer": {
+            "type": "string",
+            "description": "The answer returned by the AI experience.",
+            "readOnly": true
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v1ProspectMention"
+            },
+            "description": "Businesses mentioned in the answer, in observed order.",
+            "readOnly": true
+          },
+          "citations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v1Citation"
+            },
+            "description": "Sources cited by the answer.",
+            "readOnly": true
+          }
+        },
+        "description": "Evidence collected from an AI-generated answer."
+      },
+      "v1AiExperience": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "A stable identifier for the experience. Treat this value as opaque.",
+            "readOnly": true
+          },
+          "displayName": {
+            "type": "string",
+            "description": "The current public display name of the experience.",
+            "readOnly": true
+          },
+          "modelVersion": {
+            "type": "string",
+            "description": "The underlying model version, when the provider exposes it.",
+            "readOnly": true
+          }
+        },
+        "description": "An AI product or answer experience included in the scan."
+      },
+      "v1AiExperiencePerformance": {
+        "type": "object",
+        "properties": {
+          "experience": {
+            "$ref": "#/components/schemas/v1AiExperience"
+          },
+          "rank": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The one-based rank, or absent when the prospect was not ranked.",
+            "readOnly": true
+          },
+          "visibilityPercent": {
+            "type": "number",
+            "format": "double",
+            "description": "The percentage of relevant answers in which the prospect was mentioned.",
+            "readOnly": true
+          },
+          "sentiment": {
+            "$ref": "#/components/schemas/v1SentimentBreakdown"
+          }
+        },
+        "description": "The prospect's performance in an AI experience."
+      },
+      "v1BenchmarkComparison": {
+        "type": "object",
+        "properties": {
+          "metric": {
+            "$ref": "#/components/schemas/v1Metric"
+          },
+          "prospectValue": {
+            "type": "number",
+            "format": "double",
+            "description": "The value calculated for the prospect, when available.",
+            "readOnly": true
+          },
+          "benchmarkValue": {
+            "type": "number",
+            "format": "double",
+            "description": "The benchmark value for comparable businesses, when available.",
+            "readOnly": true
+          }
+        },
+        "description": "Compares one metric between the prospect and a benchmark."
+      },
+      "v1Citation": {
+        "type": "object",
+        "properties": {
+          "uri": {
+            "type": "string",
+            "description": "The cited source URI.",
+            "readOnly": true
+          },
+          "title": {
+            "type": "string",
+            "description": "The source title, when supplied by the AI experience.",
+            "readOnly": true
+          }
+        },
+        "description": "A source cited by an AI-generated answer."
+      },
+      "v1DiscoveredProspect": {
+        "type": "object",
+        "properties": {
+          "prospect": {
+            "$ref": "#/components/schemas/v1Prospect"
+          },
+          "searchRank": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The business's one-based rank in the local search results.",
+            "readOnly": true
+          },
+          "metrics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v1MetricValue"
+            },
+            "description": "Metric values calculated for the discovered business.",
+            "readOnly": true
+          }
+        },
+        "description": "A business discovered in the local search results for a prospect scan."
+      },
+      "v1FetchDiscoveredProspectsResponse": {
+        "type": "object",
+        "properties": {
+          "discoveredProspects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v1DiscoveredProspect"
+            },
+            "description": "Prospects ordered by search rank ascending."
+          }
+        },
+        "description": "Response message for FetchDiscoveredProspects."
+      },
+      "v1FetchProspectScanEvidenceResponse": {
+        "type": "object",
+        "properties": {
+          "evidence": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v1ProspectScanEvidence"
+            },
+            "description": "Evidence ordered by observed_time ascending."
+          }
+        },
+        "description": "Response message for FetchProspectScanEvidence."
+      },
+      "v1FetchProspectScanResultsResponse": {
+        "type": "object",
+        "properties": {
+          "prospect": {
+            "$ref": "#/components/schemas/v1Prospect"
+          },
+          "performance": {
+            "$ref": "#/components/schemas/v1ProspectPerformance"
+          },
+          "comparisons": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v1BenchmarkComparison"
+            },
+            "description": "Comparisons between the prospect and relevant benchmarks.",
+            "readOnly": true
+          },
+          "aiRankings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v1AiCompetitorRanking"
+            },
+            "description": "Rankings and mentions observed in supported AI experiences.",
+            "readOnly": true
+          },
+          "generatedTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The time at which these results were finalized.",
+            "readOnly": true
+          }
+        },
+        "description": "Response message for FetchProspectScanResults."
+      },
+      "v1GeoPoint": {
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "type": "number",
+            "format": "double",
+            "description": "Latitude in degrees, in the inclusive range [-90, 90].",
+            "readOnly": true
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double",
+            "description": "Longitude in degrees, in the inclusive range [-180, 180].",
+            "readOnly": true
+          }
+        },
+        "description": "A geographic point in WGS84 coordinates."
+      },
+      "v1ListingResult": {
+        "type": "object",
+        "properties": {
+          "publisher": {
+            "type": "string",
+            "description": "The public display name of the publisher.",
+            "readOnly": true
+          },
+          "listingUri": {
+            "type": "string",
+            "description": "The URI of the matched listing, when available.",
+            "readOnly": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/v1ListingStatus"
+          },
+          "publisherId": {
+            "type": "string",
+            "description": "The public API identifier for the publisher, when available.",
+            "readOnly": true
+          }
+        },
+        "description": "A listing observed on one publisher."
+      },
+      "v1ListingStatus": {
+        "type": "string",
+        "enum": [
+          "LISTING_STATUS_MATCHED",
+          "LISTING_STATUS_MISMATCHED",
+          "LISTING_STATUS_NOT_FOUND"
+        ],
+        "description": "The outcome of matching a business to a publisher listing.\n\n - LISTING_STATUS_MATCHED: A listing was found and its material business facts matched.\n - LISTING_STATUS_MISMATCHED: A listing was found but one or more material business facts differed.\n - LISTING_STATUS_NOT_FOUND: No listing was found."
+      },
+      "v1ListingsEvidence": {
+        "type": "object",
+        "properties": {
+          "prospect": {
+            "$ref": "#/components/schemas/v1Prospect"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v1ListingResult"
+            },
+            "description": "Publisher-specific listing observations.",
+            "readOnly": true
+          }
+        },
+        "description": "Evidence collected from listings publishers."
+      },
+      "v1Metric": {
+        "type": "string",
+        "enum": [
+          "METRIC_SEARCH_RANK",
+          "METRIC_REVIEW_RATING",
+          "METRIC_REVIEW_COUNT",
+          "METRIC_REVIEW_TOPIC_COUNT",
+          "METRIC_LAST_REVIEW_AGE_DAYS",
+          "METRIC_OWNER_REVIEW_RESPONSES_PAST_YEAR",
+          "METRIC_REVIEWS_WITH_TEXT_PAST_YEAR",
+          "METRIC_AVERAGE_REVIEW_RESPONSE_TIME_DAYS",
+          "METRIC_PHOTO_COUNT",
+          "METRIC_PROFILE_COMPLETION",
+          "METRIC_TOTAL_ATTRIBUTES",
+          "METRIC_LISTINGS_ACCURACY_PERCENT",
+          "METRIC_LISTINGS_VISIBILITY_PERCENT"
+        ],
+        "description": "Metric types returned by prospect scans.\n\n - METRIC_SEARCH_RANK: One-based rank in local search results. Lower values are better.\n - METRIC_REVIEW_RATING: Average Google review rating.\n - METRIC_REVIEW_COUNT: Number of Google reviews.\n - METRIC_REVIEW_TOPIC_COUNT: Number of distinct topics found in Google reviews.\n - METRIC_LAST_REVIEW_AGE_DAYS: Days since the most recent Google review. Lower values are better.\n - METRIC_OWNER_REVIEW_RESPONSES_PAST_YEAR: Number of owner responses to Google reviews during the previous year.\n - METRIC_REVIEWS_WITH_TEXT_PAST_YEAR: Number of Google reviews with text during the previous year.\n - METRIC_AVERAGE_REVIEW_RESPONSE_TIME_DAYS: Average owner response time in days during the previous year.\n - METRIC_PHOTO_COUNT: Number of photos on the Google Business Profile.\n - METRIC_PROFILE_COMPLETION: Google Business Profile completion as a value from 0 to 1.\n - METRIC_TOTAL_ATTRIBUTES: Number of attributes on the Google Business Profile.\n - METRIC_LISTINGS_ACCURACY_PERCENT: Percentage of checked listings with matching material business facts.\n - METRIC_LISTINGS_VISIBILITY_PERCENT: Percentage of checked publishers on which a listing was found."
+      },
+      "v1MetricValue": {
+        "type": "object",
+        "properties": {
+          "metric": {
+            "$ref": "#/components/schemas/v1Metric"
+          },
+          "value": {
+            "type": "number",
+            "format": "double",
+            "description": "The metric value. Interpretation and scale are defined by metric.",
+            "readOnly": true
+          }
+        },
+        "description": "A metric value produced by a prospect scan."
+      },
+      "v1PostalAddress": {
+        "type": "object",
+        "properties": {
+          "countryCode": {
+            "type": "string",
+            "description": "The two-letter ISO 3166-1 country code.",
+            "readOnly": true
+          },
+          "postalCode": {
+            "type": "string",
+            "description": "The postal code, when available.",
+            "readOnly": true
+          },
+          "administrativeArea": {
+            "type": "string",
+            "description": "The top-level administrative area, such as a state or province.",
+            "readOnly": true
+          },
+          "locality": {
+            "type": "string",
+            "description": "The city, town, or other locality.",
+            "readOnly": true
+          },
+          "dependentLocality": {
+            "type": "string",
+            "description": "The dependent locality, such as a neighborhood, when available.",
+            "readOnly": true
+          },
+          "addressLines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Unstructured street-address lines in display order.",
+            "readOnly": true
+          }
+        },
+        "description": "A postal address for a prospect."
+      },
+      "v1Prospect": {
+        "type": "object",
+        "properties": {
+          "googleBusinessProfileCid": {
+            "type": "string",
+            "description": "The Google Business Profile CID, when the prospect was matched to a profile.",
+            "readOnly": true
+          },
+          "businessName": {
+            "type": "string",
+            "description": "The public-facing business name.",
+            "readOnly": true
+          },
+          "address": {
+            "$ref": "#/components/schemas/v1PostalAddress"
+          },
+          "location": {
+            "$ref": "#/components/schemas/v1GeoPoint"
+          },
+          "websiteUri": {
+            "type": "string",
+            "description": "The canonical public website URI, when known.",
+            "readOnly": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "description": "The public phone number reported by the business profile, when available.",
+            "readOnly": true
+          },
+          "primaryCategory": {
+            "type": "string",
+            "description": "The profile's primary category in display form.",
+            "readOnly": true
+          },
+          "secondaryCategories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Additional profile categories in display form.",
+            "readOnly": true
+          }
+        },
+        "description": "Public business profile information for a prospect."
+      },
+      "v1ProspectMention": {
+        "type": "object",
+        "properties": {
+          "businessName": {
+            "type": "string",
+            "description": "The business name extracted from the answer.",
+            "readOnly": true
+          },
+          "rank": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The one-based rank when the answer explicitly ordered businesses.",
+            "readOnly": true
+          }
+        },
+        "description": "A business mention extracted from an AI-generated answer."
+      },
+      "v1ProspectPerformance": {
+        "type": "object",
+        "properties": {
+          "googleRank": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The prospect's one-based local Google rank for the derived keyword, when\nthe prospect appeared in the collected result set.",
+            "readOnly": true
+          },
+          "aiPerformance": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v1AiExperiencePerformance"
+            },
+            "description": "The prospect's performance in each supported AI experience.",
+            "readOnly": true
+          },
+          "listingsAccuracyPercent": {
+            "type": "number",
+            "format": "double",
+            "description": "The percentage of checked publisher listings whose material business facts\nmatched the prospect.",
+            "readOnly": true
+          },
+          "listingsVisibilityPercent": {
+            "type": "number",
+            "format": "double",
+            "description": "The percentage of checked publishers on which a listing was found.",
+            "readOnly": true
+          }
+        },
+        "description": "Summary performance values for a prospect."
+      },
+      "v1ProspectScan": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The resource name of the prospect scan.\n\nFormat: accounts/{account}/prospectScans/{prospect_scan}",
+            "readOnly": true
+          },
+          "target": {
+            "$ref": "#/components/schemas/v1ProspectScanTarget"
+          },
+          "prospect": {
+            "$ref": "#/components/schemas/v1Prospect"
+          },
+          "searchKeyword": {
+            "type": "string",
+            "description": "The search keyword derived from the profile's primary category.",
+            "readOnly": true
+          },
+          "state": {
+            "$ref": "#/components/schemas/v1ProspectScanState"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The time at which the scan was created.",
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The time at which the scan last changed state or metadata.",
+            "readOnly": true
+          }
+        },
+        "description": "A fast assessment of a prospective customer based on a known business profile.",
+        "required": [
+          "target"
+        ]
+      },
+      "v1ProspectScanEvidence": {
+        "type": "object",
+        "properties": {
+          "observedTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The time represented by this observation.",
+            "readOnly": true
+          },
+          "search": {
+            "$ref": "#/components/schemas/v1SearchEvidence"
+          },
+          "ai": {
+            "$ref": "#/components/schemas/v1AiEvidence"
+          },
+          "listings": {
+            "$ref": "#/components/schemas/v1ListingsEvidence"
+          }
+        },
+        "description": "A source observation collected while producing prospect scan results.\n\nEach item describes one source-specific observation rather than another copy\nof the summarized results. For example, search evidence contains the query\nand its ordered result rows, while AI evidence contains an answer and its\ncitations."
+      },
+      "v1ProspectScanState": {
+        "type": "string",
+        "enum": [
+          "PROSPECT_SCAN_STATE_PENDING",
+          "PROSPECT_SCAN_STATE_RUNNING",
+          "PROSPECT_SCAN_STATE_SUCCEEDED",
+          "PROSPECT_SCAN_STATE_FAILED"
+        ],
+        "description": "The lifecycle state of a prospect scan.\n\n - PROSPECT_SCAN_STATE_PENDING: The request has been accepted and is waiting to run.\n - PROSPECT_SCAN_STATE_RUNNING: Collection or analysis is in progress.\n - PROSPECT_SCAN_STATE_SUCCEEDED: Results and evidence are available.\n - PROSPECT_SCAN_STATE_FAILED: The scan failed."
+      },
+      "v1ProspectScanTarget": {
+        "type": "object",
+        "properties": {
+          "googleBusinessProfileCid": {
+            "type": "string",
+            "description": "The decimal customer ID (CID) of a known Google Business Profile.\n\nSupply digits only, without a URL, prefix, or surrounding whitespace. No\nbusiness name, address, coordinates, category, or keyword is required;\nthe service resolves those values from the profile."
+          },
+          "countryCode": {
+            "type": "string",
+            "description": "The two-letter ISO 3166-1 country code used for the scan. If omitted, the\nservice uses `US`."
+          },
+          "languageCode": {
+            "type": "string",
+            "description": "The two-letter ISO 639-1 language code used for profile and search results.\nIf omitted, the service uses `en`."
+          }
+        },
+        "description": "Selects the business that a prospect scan assesses.\n\nThe initial API accepts a Google Business Profile. Additional target types may\nbe supported in the future, so clients should tolerate variants they do not\nrecognize. Exactly one target must be set.",
+        "required": [
+          "googleBusinessProfileCid"
+        ]
+      },
+      "v1RankedBusiness": {
+        "type": "object",
+        "properties": {
+          "rank": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The one-based rank.",
+            "readOnly": true
+          },
+          "businessName": {
+            "type": "string",
+            "description": "The business name observed at this rank.",
+            "readOnly": true
+          }
+        },
+        "description": "A business name observed at a particular rank."
+      },
+      "v1SearchEngine": {
+        "type": "string",
+        "enum": [
+          "SEARCH_ENGINE_GOOGLE"
+        ],
+        "description": "Search surfaces supported by prospect scans.\n\n - SEARCH_ENGINE_GOOGLE: Google Search local or map results."
+      },
+      "v1SearchEvidence": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "description": "The keyword used for the search.",
+            "readOnly": true
+          },
+          "searchEngine": {
+            "$ref": "#/components/schemas/v1SearchEngine"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v1SearchResult"
+            },
+            "description": "Search results ordered by rank ascending.",
+            "readOnly": true
+          }
+        },
+        "description": "Evidence collected from a search result page."
+      },
+      "v1SearchResult": {
+        "type": "object",
+        "properties": {
+          "rank": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The one-based result rank.",
+            "readOnly": true
+          },
+          "title": {
+            "type": "string",
+            "description": "The title displayed for the result.",
+            "readOnly": true
+          },
+          "uri": {
+            "type": "string",
+            "description": "The destination URI, when available.",
+            "readOnly": true
+          },
+          "matchedProspect": {
+            "$ref": "#/components/schemas/v1Prospect"
+          },
+          "displayAddress": {
+            "type": "string",
+            "description": "A short address or location label displayed with the result.",
+            "readOnly": true
+          }
+        },
+        "description": "A single observed search result."
+      },
+      "v1SentimentBreakdown": {
+        "type": "object",
+        "properties": {
+          "positivePercent": {
+            "type": "number",
+            "format": "double",
+            "description": "The percentage classified as positive.",
+            "readOnly": true
+          },
+          "negativePercent": {
+            "type": "number",
+            "format": "double",
+            "description": "The percentage classified as negative.",
+            "readOnly": true
+          },
+          "neutralPercent": {
+            "type": "number",
+            "format": "double",
+            "description": "The percentage classified as neutral.",
+            "readOnly": true
+          }
+        },
+        "description": "Percentages of evaluated answers by sentiment."
+      }
+    }
+  }
+}
