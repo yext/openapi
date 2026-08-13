@@ -5,8 +5,10 @@ info:
 paths:
   /v1/accounts/{account}/scout/prospectScans:
     post:
-      summary: Creates a prospect scan for a known Google Business Profile.
+      summary: 'Prospecting: Create Prospect Scan'
       description: |-
+        Creates a prospect scan for a known Google Business Profile.
+
         The service assigns the scan's resource name and begins processing. A
         successful response normally has PENDING or RUNNING state; it does not
         imply that results are available.
@@ -64,8 +66,11 @@ paths:
         required: true
   /v1/accounts/{account}/scout/prospectScans/{prospectScan}:
     get:
-      summary: Gets the current state and metadata of a prospect scan.
-      description: Returns NOT_FOUND when the scan does not exist or is not accessible.
+      summary: 'Prospecting: Get Prospect Scan'
+      description: |-
+        Gets the current state and metadata of a prospect scan.
+
+        Returns NOT_FOUND when the scan does not exist or is not accessible.
       operationId: ProspectScanService_GetProspectScan
       responses:
         '200':
@@ -93,8 +98,10 @@ paths:
             type: string
   /v1/accounts/{account}/scout/prospectScans/{prospectScan}/fetchDiscoveredProspects:
     get:
-      summary: Fetches competitors discovered in local search results for a completed scan.
+      summary: 'Prospecting: Fetch Discovered Prospects'
       description: |-
+        Fetches competitors discovered in local search results for a completed scan.
+
         Use this method to build a business-centric list of the competitors found
         by the scan. Each discovered prospect includes its observed search rank,
         available business profile details, and calculated metrics. The scan target
@@ -130,8 +137,10 @@ paths:
             type: string
   /v1/accounts/{account}/scout/prospectScans/{prospectScan}/fetchEvidence:
     get:
-      summary: Fetches supporting evidence collected for a completed prospect scan.
+      summary: 'Prospecting: Fetch Prospect Scan Evidence'
       description: |-
+        Fetches supporting evidence collected for a completed prospect scan.
+
         Use this method to inspect the source material used to produce the scan's
         summarized results and discovered prospects. Evidence is source-centric and
         includes search results, AI answers and citations, and publisher listing
@@ -167,8 +176,10 @@ paths:
             type: string
   /v1/accounts/{account}/scout/prospectScans/{prospectScan}/fetchResults:
     get:
-      summary: Fetches the summarized results of a completed prospect scan.
+      summary: 'Prospecting: Fetch Prospect Scan Results'
       description: |-
+        Fetches the summarized results of a completed prospect scan.
+
         Returns FAILED_PRECONDITION while the scan is not in SUCCEEDED state.
         Returns NOT_FOUND when the scan does not exist or is not accessible.
       operationId: ProspectScanService_FetchProspectScanResults
