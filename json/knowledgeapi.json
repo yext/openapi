@@ -60126,6 +60126,18 @@
               }
             },
             "description": "Only include posts which match one of the specified statuses:\n  * `POST_SCHEDULED`\n  * `POST_AWAITING_APPROVAL`\n  * `POST_SUCCEEDED`\n  * `POST_PROCESSING`\n  * `DELETE_PROCESSING`\n  * `POST_FAILED`\n  * `DELETE_FAILED`\n  * `REJECTED_BY_APPROVER`\n"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "createdDate"
+              ]
+            },
+            "description": "Sort posts by using one of the following parameters:\n  * `sortBy`: Descending\n  * `sortBy__desc`: Descending\n  * `sortBy__asc`: Ascending\n\n**Important rules:**\n  * Pick only one option per request.\n  * Requires version `20260812` or later.\n  * If omitted, the default order stays the same.\n  * When paginating, use the same option and value with each `pageToken`.\n\n**What it means:**\n  * Descending: Shows newest items first.\n  * Ascending: Shows oldest items first.\n"
           }
         ],
         "responses": {

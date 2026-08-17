@@ -90711,6 +90711,28 @@ paths:
               * `POST_FAILED`
               * `DELETE_FAILED`
               * `REJECTED_BY_APPROVER`
+        - name: sortBy
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - createdDate
+          description: |
+            Sort posts by using one of the following parameters:
+              * `sortBy`: Descending
+              * `sortBy__desc`: Descending
+              * `sortBy__asc`: Ascending
+
+            **Important rules:**
+              * Pick only one option per request.
+              * Requires version `20260812` or later.
+              * If omitted, the default order stays the same.
+              * When paginating, use the same option and value with each `pageToken`.
+
+            **What it means:**
+              * Descending: Shows newest items first.
+              * Ascending: Shows oldest items first.
       responses:
         '200':
           $ref: '#/components/responses/PostsResponse'
