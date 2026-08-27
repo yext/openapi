@@ -59351,6 +59351,46 @@
         }
       }
     },
+    "/accounts/{accountId}/reviews/{reviewId}/syndicate": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/accountId"
+        },
+        {
+          "$ref": "#/components/parameters/reviewId"
+        }
+      ],
+      "post": {
+        "operationId": "syndicateReview",
+        "summary": "Review: Syndicate",
+        "tags": [
+          "Reviews"
+        ],
+        "description": "Syndicates the specified First-Party Review to a supported publisher.\n",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/syndicateReviewRequest"
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/accountId"
+          },
+          {
+            "$ref": "#/components/parameters/v"
+          },
+          {
+            "$ref": "#/components/parameters/reviewId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SyndicateReviewResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        }
+      }
+    },
     "/accounts/{accountId}/reviews/{reviewId}/comments": {
       "parameters": [
         {
@@ -94661,6 +94701,15 @@
           }
         }
       },
+      "SyndicateReview": {
+        "type": "object",
+        "properties": {
+          "publisherId": {
+            "type": "integer",
+            "description": "The ID of the publisher to syndicate the review to. Defaults to Healthgrades, currently the only supported publisher."
+          }
+        }
+      },
       "ReviewCommentUpdate": {
         "type": "object",
         "properties": {
@@ -107029,6 +107078,43 @@
           }
         }
       },
+      "SyndicateReviewResponse": {
+        "description": "Review Syndicate Response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "title": "SyndicateReviewResponse",
+              "type": "object",
+              "properties": {
+                "meta": {
+                  "$ref": "#/components/schemas/ResponseMeta"
+                },
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "ID of this Review."
+                    },
+                    "outcome": {
+                      "type": "string",
+                      "enum": [
+                        "SUCCESS",
+                        "SKIPPED_ALREADY_SYNDICATED"
+                      ],
+                      "description": "The syndication outcome. SKIPPED_ALREADY_SYNDICATED is returned when a syndication attempt for the review is already pending."
+                    },
+                    "externalReviewId": {
+                      "type": "string",
+                      "description": "The review's ID on the publisher, when available."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "CreateReviewCommentResponse": {
         "description": "Create Review Comment Response",
         "content": {
@@ -108430,6 +108516,15 @@
           "application/kjson": {
             "schema": {
               "$ref": "#/components/schemas/Event"
+            }
+          }
+        }
+      },
+      "syndicateReviewRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/SyndicateReview"
             }
           }
         }
