@@ -13792,12 +13792,12 @@ components:
         startTime:
           type: string
           description: |
-            The start time of the event. Formatted as datetime in `YYYY-MM-DD HH:MM:SS`
+            The start time of the event in UTC. Formatted as datetime in `YYYY-MM-DD HH:MM:SS`
             Ex: 2021-04-06 08:45:00.
         endTime:
           type: string
           description: |
-            The end time of the event. Formatted as datetime in `YYYY-MM-DD HH:MM:SS`.
+            The end time of the event in UTC. Formatted as datetime in `YYYY-MM-DD HH:MM:SS`.
             Ex: 2021-04-06 08:45:00.
     Entity-2:
       type: object

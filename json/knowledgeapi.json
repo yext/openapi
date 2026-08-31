@@ -95390,11 +95390,11 @@
           },
           "startTime": {
             "type": "string",
-            "description": "The start time of the event. Formatted as datetime in `YYYY-MM-DD HH:MM:SS`\nEx: 2021-04-06 08:45:00.\n"
+            "description": "The start time of the event in UTC. Formatted as datetime in `YYYY-MM-DD HH:MM:SS`\nEx: 2021-04-06 08:45:00.\n"
           },
           "endTime": {
             "type": "string",
-            "description": "The end time of the event. Formatted as datetime in `YYYY-MM-DD HH:MM:SS`.\nEx: 2021-04-06 08:45:00.\n"
+            "description": "The end time of the event in UTC. Formatted as datetime in `YYYY-MM-DD HH:MM:SS`.\nEx: 2021-04-06 08:45:00.\n"
           }
         }
       },
