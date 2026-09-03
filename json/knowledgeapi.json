@@ -93872,7 +93872,7 @@
           },
           "customerActionType": {
             "type": "array",
-            "description": "Specifies the type of customer actions to be included in the report. Can only be used with the `GOOGLE_CUSTOMER_ACTIONS` and `YELP_CUSTOMER_ACTIONS` metrics.\n",
+            "description": "Specifies the type of customer actions to be included in the report. Can only be used with the `YELP_CUSTOMER_ACTIONS` metric.\n",
             "items": {
               "type": "string",
               "enum": [
@@ -94050,21 +94050,9 @@
               "UNIDENTIFIED"
             ]
           },
-          "googleActionType": {
-            "type": "array",
-            "description": "Specifies the type of customer actions to be included in the report. Can only be used with the `GOOGLE_CUSTOMER_ACTIONS` metric.\n",
-            "items": {
-              "type": "string",
-              "enum": [
-                "ACTION_DRIVING_DIRECTIONS",
-                "ACTION_PHONE",
-                "ACTION_WEBSITE"
-              ]
-            }
-          },
           "googleQueryType": {
             "type": "array",
-            "description": "Specifies the type of queries to be included in the report. Can only be used with the `GOOGLE_SEARCH_QUERIES` metric.",
+            "description": "Specifies the type of queries to be included in the report for legacy Google search query metrics.",
             "items": {
               "type": "string",
               "enum": [
@@ -94076,7 +94064,7 @@
           },
           "hours": {
             "type": "array",
-            "description": "Specifies the hour(s) of day that should be included in the report. Can only, and must be used with the `GOOGLE_PHONE_CALLS` metric.",
+            "description": "Legacy filter retained for backwards compatibility with deprecated Google phone call metrics.",
             "items": {
               "type": "number",
               "format": "integer",
