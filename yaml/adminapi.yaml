@@ -621,6 +621,13 @@ paths:
           schema:
             type: string
           description: Returns only accounts whose name contains the provided string
+        - name: accountUid
+          in: query
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+          description: Returns only the account with this Yext-assigned numeric account ID
         - name: limit
           in: query
           schema:
@@ -33472,9 +33479,15 @@ components:
     Account:
       type: object
       properties:
+        accountUid:
+          type: integer
+          format: int64
+          readOnly: true
+          description: The Yext-assigned numeric ID of the account.
         accountId:
           type: string
           example: CUST-439843
+          description: The partner-provided customer ID of the account.
         locationCount:
           type: integer
           readOnly: true
