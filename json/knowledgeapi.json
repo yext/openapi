@@ -94658,9 +94658,9 @@
             "type": "string",
             "description": "The External ID of the review, typically assigned by the Publisher. Created External IDs\nmust be unique per entity and publisher pair.\n"
           },
-          "invitationUid": {
+          "invitationId": {
             "type": "string",
-            "description": "The ID of the invitation which should be associated with this review.\n"
+            "description": "The ID of the invitation which should be associated with this review. This is returned\nas `invitationUid` by the Review Invitations API.\n"
           }
         }
       },

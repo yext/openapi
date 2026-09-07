@@ -123494,10 +123494,11 @@ components:
           description: |
             The External ID of the review, typically assigned by the Publisher. Created External IDs
             must be unique per entity and publisher pair.
-        invitationUid:
+        invitationId:
           type: string
           description: |
-            The ID of the invitation which should be associated with this review.
+            The ID of the invitation which should be associated with this review. This is returned
+            as `invitationUid` by the Review Invitations API.
     UpdateReview:
       type: object
       properties:
