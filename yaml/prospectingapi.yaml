@@ -427,15 +427,90 @@ components:
           type: string
           description: The public display name of the publisher.
           readOnly: true
-        listingUri:
-          type: string
-          description: The URI of the matched listing, when available.
-          readOnly: true
         status:
           $ref: '#/components/schemas/v1ListingStatus'
         publisherId:
           type: string
           description: The public API identifier for the publisher, when available.
+          readOnly: true
+        businessNameMatch:
+          type: boolean
+          description: Whether the observed business name matched the expected name.
+          readOnly: true
+        addressMatch:
+          type: boolean
+          description: Whether the observed address matched the expected address.
+          readOnly: true
+        phoneMatch:
+          type: boolean
+          description: Whether the observed phone matched the expected phone number.
+          readOnly: true
+        businessName:
+          type: string
+          description: The business name observed on the listing, when available.
+          readOnly: true
+        address:
+          type: string
+          description: The address observed on the listing, when available.
+          readOnly: true
+        phone:
+          type: string
+          description: The phone number observed on the listing, when available.
+          readOnly: true
+        requestTimestamp:
+          type: string
+          format: date-time
+          description: The timestamp of the listing observation.
+          readOnly: true
+        primaryCategory:
+          type: string
+          description: The primary category observed on the listing, when available.
+          readOnly: true
+        sublocality:
+          type: string
+          description: The sublocality observed on the listing, when available.
+          readOnly: true
+        city:
+          type: string
+          description: The city observed on the listing, when available.
+          readOnly: true
+        state:
+          type: string
+          description: The state or region observed on the listing, when available.
+          readOnly: true
+        postalCode:
+          type: string
+          description: The postal code observed on the listing, when available.
+          readOnly: true
+        countryCode:
+          type: string
+          description: The country code observed on the listing, when available.
+          readOnly: true
+        reviewCount:
+          type: string
+          format: int64
+          description: The review count observed on the listing, when available.
+          readOnly: true
+        reviewRating:
+          type: number
+          format: double
+          description: The review rating observed on the listing, when available.
+          readOnly: true
+        businessWebsite:
+          type: string
+          description: The business website observed on the listing, when available.
+          readOnly: true
+        hasHours:
+          type: boolean
+          description: Whether business hours were observed on the listing.
+          readOnly: true
+        listingFound:
+          type: boolean
+          description: Whether a listing was found by the scan.
+          readOnly: true
+        googleBusinessProfileCid:
+          type: string
+          description: The Google Business Profile CID associated with the observation.
           readOnly: true
       description: A listing observed on one publisher.
     v1ListingStatus:
