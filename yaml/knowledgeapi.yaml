@@ -3630,6 +3630,7 @@ paths:
                                   - GNP
                                   - LAC
                                   - LCSW
+                                  - LMHC
                                   - LPN
                                   - MBA
                                   - MBBS
@@ -3637,6 +3638,7 @@ paths:
                                   - MPAS
                                   - MPH
                                   - MPT
+                                  - MS
                                   - MSW
                                   - ND
                                   - NNP
@@ -14345,6 +14347,7 @@ paths:
                             - GNP
                             - LAC
                             - LCSW
+                            - LMHC
                             - LPN
                             - MBA
                             - MBBS
@@ -14352,6 +14355,7 @@ paths:
                             - MPAS
                             - MPH
                             - MPT
+                            - MS
                             - MSW
                             - ND
                             - NNP
@@ -25068,6 +25072,7 @@ paths:
                             - GNP
                             - LAC
                             - LCSW
+                            - LMHC
                             - LPN
                             - MBA
                             - MBBS
@@ -25075,6 +25080,7 @@ paths:
                             - MPAS
                             - MPH
                             - MPT
+                            - MS
                             - MSW
                             - ND
                             - NNP
@@ -35788,12 +35794,14 @@ paths:
                             - GNP
                             - LAC
                             - LCSW
+                            - LMHC
                             - LPN
                             - MBA
                             - MBBS
                             - MD
                             - MPAS
                             - MPH
+                            - MS
                             - MSW
                             - ND
                             - NNP
@@ -46651,6 +46659,7 @@ paths:
                                   - GNP
                                   - LAC
                                   - LCSW
+                                  - LMHC
                                   - LPN
                                   - MBA
                                   - MBBS
@@ -46658,6 +46667,7 @@ paths:
                                   - MPAS
                                   - MPH
                                   - MPT
+                                  - MS
                                   - MSW
                                   - ND
                                   - NNP
@@ -58429,6 +58439,7 @@ paths:
                                         - GNP
                                         - LAC
                                         - LCSW
+                                        - LMHC
                                         - LPN
                                         - MBA
                                         - MBBS
@@ -58436,6 +58447,7 @@ paths:
                                         - MPAS
                                         - MPH
                                         - MPT
+                                        - MS
                                         - MSW
                                         - ND
                                         - NNP
@@ -69155,6 +69167,7 @@ paths:
                             - GNP
                             - LAC
                             - LCSW
+                            - LMHC
                             - LPN
                             - MBA
                             - MBBS
@@ -69162,6 +69175,7 @@ paths:
                             - MPAS
                             - MPH
                             - MPT
+                            - MS
                             - MSW
                             - ND
                             - NNP
@@ -79843,6 +79857,7 @@ paths:
                             - GNP
                             - LAC
                             - LCSW
+                            - LMHC
                             - LPN
                             - MBA
                             - MBBS
@@ -79850,6 +79865,7 @@ paths:
                             - MPAS
                             - MPH
                             - MPT
+                            - MS
                             - MSW
                             - ND
                             - NNP
@@ -103454,6 +103470,7 @@ components:
                   - GNP
                   - LAC
                   - LCSW
+                  - LMHC
                   - LPN
                   - MBA
                   - MBBS
@@ -103461,6 +103478,7 @@ components:
                   - MPAS
                   - MPH
                   - MPT
+                  - MS
                   - MSW
                   - ND
                   - NNP
@@ -128315,6 +128333,7 @@ components:
               - GNP
               - LAC
               - LCSW
+              - LMHC
               - LPN
               - MBA
               - MBBS
@@ -128322,6 +128341,7 @@ components:
               - MPAS
               - MPH
               - MPT
+              - MS
               - MSW
               - ND
               - NNP

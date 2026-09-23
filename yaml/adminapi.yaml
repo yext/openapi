@@ -6251,6 +6251,7 @@ components:
                   - GNP
                   - LAC
                   - LCSW
+                  - LMHC
                   - LPN
                   - MBA
                   - MBBS
@@ -6258,6 +6259,7 @@ components:
                   - MPAS
                   - MPH
                   - MPT
+                  - MS
                   - MSW
                   - ND
                   - NNP
@@ -24886,6 +24888,7 @@ components:
               - GNP
               - LAC
               - LCSW
+              - LMHC
               - LPN
               - MBA
               - MBBS
@@ -24893,6 +24896,7 @@ components:
               - MPAS
               - MPH
               - MPT
+              - MS
               - MSW
               - ND
               - NNP
