@@ -10566,6 +10566,14 @@
             },
             "description": "The publisher(s) the post was made on."
           },
+          "postFormat": {
+            "type": "string",
+            "enum": [
+              "FEED",
+              "STORY"
+            ],
+            "description": "The surface the post was published to. `STORY` for a 24-hour Facebook or Instagram story,\n`FEED` for everything else, including every post created before story publishing existed.\n"
+          },
           "postTitle": {
             "type": "string",
             "description": "The title of the post. This does not get sent out to the publisher network and is for internal use only. The title cannot exceed 250 characters. If a title is not provided, we will use the first 40 characters of the post text or if no text is provided then the title will be \"Media Only Post\"."

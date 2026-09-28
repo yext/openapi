@@ -95605,6 +95605,14 @@
             },
             "description": "The publisher(s) the post was made on."
           },
+          "postFormat": {
+            "type": "string",
+            "enum": [
+              "FEED",
+              "STORY"
+            ],
+            "description": "The surface the post was published to. `STORY` for a 24-hour Facebook or Instagram story,\n`FEED` for everything else, including every post created before story publishing existed.\n"
+          },
           "postTitle": {
             "type": "string",
             "description": "The title of the post. This does not get sent out to the publisher network and is for internal use only. The title cannot exceed 250 characters. If a title is not provided, we will use the first 40 characters of the post text or if no text is provided then the title will be \"Media Only Post\"."
@@ -95699,6 +95707,64 @@
       },
       "CreatePost": {
         "type": "object",
+        "oneOf": [
+          {
+            "title": "feedPost",
+            "properties": {
+              "postFormat": {
+                "enum": [
+                  "FEED"
+                ]
+              },
+              "videos": {
+                "items": {
+                  "required": [
+                    "videoPostType"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "title": "storyPost",
+            "required": [
+              "postFormat"
+            ],
+            "properties": {
+              "postFormat": {
+                "enum": [
+                  "STORY"
+                ]
+              },
+              "videos": {
+                "items": {
+                  "not": {
+                    "required": [
+                      "videoPostType"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "title": "defaultFeedPost",
+            "not": {
+              "required": [
+                "postFormat"
+              ]
+            },
+            "properties": {
+              "videos": {
+                "items": {
+                  "required": [
+                    "videoPostType"
+                  ]
+                }
+              }
+            }
+          }
+        ],
         "required": [
           "entityIds",
           "publisher"
@@ -95722,6 +95788,14 @@
               "TIKTOK"
             ],
             "description": "The publisher the post should be sent to.\n"
+          },
+          "postFormat": {
+            "type": "string",
+            "enum": [
+              "FEED",
+              "STORY"
+            ],
+            "description": "The surface the post is published to. Defaults to `FEED` when omitted.\n\n`STORY` publishes a 24-hour story rather than a feed post, and is subject to these rules:\n* Supported only when `publisher` is `FACEBOOK` or `INSTAGRAM`.\n* Requires the Instagram & Facebook Story Publishing feature on the account.\n* The post must carry exactly one media item: either a single entry in `photoUrls` or a\n  single entry in `videos`.\n* The following fields are not supported by the Facebook and Instagram story APIs and are\n  rejected rather than dropped: `text`, `postTitle`, `clickthroughUrl`, `callToActionType`,\n  `eventInfo`, `offer`, `topicType`, `alertType`, `tikTokPostFields`, `videos[].videoTitle`, `videos[].coverImageUrl` and\n  `videos[].videoPostType`. `postFormat` replaces the video type choice; a story video is\n  validated against the story media rules instead.\n* `postDate` works as it does for a feed post: the story is published at that time and\n  expires 24 hours later.\n"
           },
           "postTitle": {
             "type": "string",
@@ -95748,8 +95822,7 @@
             "items": {
               "type": "object",
               "required": [
-                "videoUrl",
-                "videoPostType"
+                "videoUrl"
               ],
               "properties": {
                 "videoUrl": {
@@ -95758,7 +95831,7 @@
                 },
                 "videoPostType": {
                   "type": "string",
-                  "description": "The type of video post to be uploaded. Instagram only supports the `REEL` video post type. TikTok only supports the `VIDEO` video post type.",
+                  "description": "The type of video post to be uploaded. Instagram only supports the `REEL` video post\ntype. TikTok only supports the `VIDEO` video post type.\n\nRequired unless `postFormat` is `STORY`, which has no video type; supplying both is\nrejected.\n",
                   "enum": [
                     "REEL",
                     "VIDEO"
@@ -95866,6 +95939,7 @@
       },
       "UpdatePost": {
         "type": "object",
+        "description": "`postFormat` cannot be changed after a post has been created and is rejected if supplied.\n\nA post with `postFormat` `STORY` supports only `photoUrls`, which must contain exactly one entry.\nEvery other field below (`text`, `alertType`, `clickthroughUrl`, `callToActionType`, `eventInfo`\nand `offer`) is rejected with an error naming the field rather than silently dropped. A story\nthat has already been sent for publishing cannot be edited at all.\n",
         "properties": {
           "text": {
             "type": "string",
@@ -96033,10 +96107,53 @@
       },
       "UploadVideo": {
         "type": "object",
+        "oneOf": [
+          {
+            "title": "feedVideo",
+            "required": [
+              "videoPostType"
+            ],
+            "properties": {
+              "postFormat": {
+                "enum": [
+                  "FEED"
+                ]
+              }
+            }
+          },
+          {
+            "title": "storyVideo",
+            "required": [
+              "postFormat"
+            ],
+            "properties": {
+              "postFormat": {
+                "enum": [
+                  "STORY"
+                ]
+              }
+            },
+            "not": {
+              "required": [
+                "videoPostType"
+              ]
+            }
+          },
+          {
+            "title": "defaultFeedVideo",
+            "required": [
+              "videoPostType"
+            ],
+            "not": {
+              "required": [
+                "postFormat"
+              ]
+            }
+          }
+        ],
         "required": [
           "publisher",
           "videoUrl",
-          "videoPostType",
           "uploadType"
         ],
         "properties": {
@@ -96054,11 +96171,19 @@
           },
           "videoPostType": {
             "type": "string",
-            "description": "The type of video post to be uploaded. Instagram only supports the `REEL` video post type.",
+            "description": "The type of video post to be uploaded. Instagram only supports the `REEL` video post type.\n\nRequired unless `postFormat` is `STORY`, which has no video type; supplying both is rejected.\n",
             "enum": [
               "REEL",
               "VIDEO"
             ]
+          },
+          "postFormat": {
+            "type": "string",
+            "enum": [
+              "FEED",
+              "STORY"
+            ],
+            "description": "The surface the video will be published to. Defaults to `FEED` when omitted.\n\n`STORY` validates the video against the Facebook and Instagram story rules (vertical aspect\nratio, at most 60 seconds) rather than the feed rules, and is supported only when `publisher`\nis `FACEBOOK` or `INSTAGRAM`. A story upload must not supply `videoPostType`: the format\nreplaces that choice. Use the returned `videoUrl` in a Create Post request that also sets\n`postFormat` to `STORY`.\n"
           },
           "uploadType": {
             "type": "string",
