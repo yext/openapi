@@ -125709,6 +125709,12 @@ components:
         owner:
           type: string
           description: ID of the user who owns the asset.
+        state:
+          type: string
+          enum:
+            - UPDATING
+          readOnly: true
+          description: The asset's current update state. Omitted when the asset is not updating.
     ComplexImageValue:
       type: object
       description: The content of the asset.
