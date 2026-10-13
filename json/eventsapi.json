@@ -3,7 +3,7 @@
   "info": {
     "title": "Analytics Events API",
     "version": "1.0",
-    "description": "# Overview - Policies and Conventions\n## Overview\nThe Events API is used for sending user events from your Yext digital experiences to Yext Analytics in near real-time.\n\nSpecifically, you can track standard actions such as:\n\n* CTA Clicks\n* Page Views\n* Chat Impressions\n* Thumbs Up\n\nThe full list of the standard actions supported by the Events API can be found [here](https://github.com/yext/analytics/blob/main/src/models/chat/Action.ts).\n\nYou can also track _custom actions_ by appending a `'C_'` to the beginning of the action name.\n\nFor more information on how to configure analytics events in the @yext/analytics SDK, including defining standard and custom actions, custom tags and properties, and more, view our SDK documentation [here](https://github.com/yext/analytics).\n\n## Rate Limits / SLOs\n### Rate Limits\n\nApps may be rate-limited if they are sending too many events in a short period of time. If you are currently over your limit, our API will return a 429 error, and the response object returned by our API will be empty.\n\n### SLOs\n\n<table>\n  <tr>\n   <td><strong>Objective</strong>\n   </td>\n   <td><strong>Metric</strong>\n   </td>\n  </tr>\n  <tr>\n   <td>Availability\n   </td>\n   <td>99.5%\n   </td>\n  </tr>\n</table>\n\n## Serialization\n\nThe Events API only accepts data in JSON format.\n\n# Events API Reference\n## Domains\nThe Events API can be accessed at the following domains:\n\n### Production\n\n#### US Partition\n\n`POST: aws.us.yextevents.com/*`\n\n`POST: us.yextevents.com/*`(No cloud provider specified)\n\n#### EU Partition\n\n`POST: gcp.eu.yextevents.com/*`\n\n`POST: eu.yextevents.com/*`(No cloud provider specified)\n\n## Authentication\n\nAll requests to the Events API must be authenticated via an API key. This can be stored in the Authorization request header, like `KEY {{api_key}}`, or in the request body via the `authorization` parameter, like `\"authorization\": \"KEY {{api_key}}\"`.\n\nThe app associated with the request must have **read/write** permissions to the **Events API** endpoint of the Events API.\n\nFor Yext Chat, the API key generated when you create your chatbot _automatically_ has access to the Events API endpoint with read / write permissions.\n\n<table>\n  <tr>\n   <td><strong><code>api_key</code></strong>\n   </td>\n   <td>required\n   </td>\n   <td><code>string</code>\n   </td>\n   <td>The API key for authentication purposes. The app associated with the API key must have Events API write permissions.\n<p>\nTo find your app’s API key or to create a new app, visit the Developer Console.\n   </td>\n  </tr>\n</table>\n\n## Domain properties\n\n<table>\n  <tr>\n   <td><strong><code>partition</code></strong>\n   </td>\n   <td>required\n   </td>\n   <td><code>string</code>\n   </td>\n   <td>The regional partition to send the event to (e.g. <strong><code>US</code></strong> or <strong><code>EU</code></strong>).\n   </td>\n  </tr>\n  <tr>\n   <td><strong><code>cloudProvider</code></strong>\n   </td>\n   <td>optional\n   </td>\n   <td><code>string</code>\n   </td>\n   <td>The cloud provider, either AWS or Google Cloud. Customers in the US partition should use ‘aws’. Customers in the EU should use ‘gcp’.\n   </td>\n  </tr>\n</table>\n"
+    "description": "# Overview - Policies and Conventions\n## Overview\nThe Events API is used for sending user events from your Yext digital experiences to Yext Analytics in near real-time.\n\nSpecifically, you can track standard actions such as:\n\n* CTA Clicks\n* Page Views\n* Chat Impressions\n* Thumbs Up\n\nThe full list of the standard actions supported by the Events API can be found [here](https://github.com/yext/analytics/blob/main/src/models/chat/Action.ts).\n\nYou can also track _custom actions_ by appending a `'C_'` to the beginning of the action name.\n\nFor more information on how to configure analytics events in the @yext/analytics SDK, including defining standard and custom actions, custom tags and properties, and more, view our SDK documentation [here](https://github.com/yext/analytics).\n\n## Rate Limits / SLOs\n### Rate Limits\n\nApps may be rate-limited if they are sending too many events in a short period of time. If you are currently over your limit, our API will return a 429 error, and the response object returned by our API will be empty.\n\nRequests authenticated with the same API key share one rate limit across `/accounts/me/events`\nand all `/accounts/{businessExternalId}/events` paths. Sending events to different subaccounts\ndoes not provide additional rate-limit capacity.\n\n### SLOs\n\n<table>\n  <tr>\n   <td><strong>Objective</strong>\n   </td>\n   <td><strong>Metric</strong>\n   </td>\n  </tr>\n  <tr>\n   <td>Availability\n   </td>\n   <td>99.5%\n   </td>\n  </tr>\n</table>\n\n## Serialization\n\nThe Events API only accepts data in JSON format.\n\n# Events API Reference\n## Domains\nThe Events API can be accessed at the following domains:\n\n### Production\n\n#### US Partition\n\n`POST: aws.us.yextevents.com/*`\n\n`POST: us.yextevents.com/*`(No cloud provider specified)\n\n#### EU Partition\n\n`POST: gcp.eu.yextevents.com/*`\n\n`POST: eu.yextevents.com/*`(No cloud provider specified)\n\n## Authentication\n\nAll requests to the Events API must be authenticated via an API key. This can be stored in the Authorization request header, like `KEY {{api_key}}`, or in the request body via the `authorization` parameter, like `\"authorization\": \"KEY {{api_key}}\"`.\n\nThe app associated with the request must have **read/write** permissions to the **Events API** endpoint of the Events API.\n\nFor Yext Chat, the API key generated when you create your chatbot _automatically_ has access to the Events API endpoint with read / write permissions.\n\n<table>\n  <tr>\n   <td><strong><code>api_key</code></strong>\n   </td>\n   <td>required\n   </td>\n   <td><code>string</code>\n   </td>\n   <td>The API key for authentication purposes. The app associated with the API key must have Events API write permissions.\n<p>\nTo find your app’s API key or to create a new app, visit the Developer Console.\n   </td>\n  </tr>\n</table>\n\n## Account attribution\n\nSend events to `/accounts/me/events` to attribute them to the account associated with your app.\nTo send events for a subaccount, use `/accounts/{businessExternalId}/events` with the parent\naccount's API key. The app must have Events API write permission, and the external ID must\nresolve to a subaccount under the authenticating account. Events are attributed to that\nsubaccount while retaining the authenticated app identity.\n\n`businessExternalId` is the subaccount's external ID, not its internal numeric business ID.\nNumeric external IDs are accepted as external IDs. `me` is reserved for the authenticating\naccount. An external ID that is missing or belongs outside that account's hierarchy returns\nHTTP 404 with `Account not found`. A failed account lookup returns HTTP 503.\n\n## Domain properties\n\n<table>\n  <tr>\n   <td><strong><code>partition</code></strong>\n   </td>\n   <td>required\n   </td>\n   <td><code>string</code>\n   </td>\n   <td>The regional partition to send the event to (e.g. <strong><code>US</code></strong> or <strong><code>EU</code></strong>).\n   </td>\n  </tr>\n  <tr>\n   <td><strong><code>cloudProvider</code></strong>\n   </td>\n   <td>optional\n   </td>\n   <td><code>string</code>\n   </td>\n   <td>The cloud provider, either AWS or Google Cloud. Customers in the US partition should use ‘aws’. Customers in the EU should use ‘gcp’.\n   </td>\n  </tr>\n</table>\n"
   },
   "servers": [
     {
@@ -24,11 +24,23 @@
     }
   ],
   "paths": {
-    "/accounts/me/events": {
+    "/accounts/{businessExternalId}/events": {
+      "parameters": [
+        {
+          "name": "businessExternalId",
+          "in": "path",
+          "required": true,
+          "description": "Use `me` to attribute events to the account associated with the authenticating app.\nOtherwise, supply the external ID of a subaccount under that account. This is an\nexternal ID, not an internal numeric business ID, even when its value is numeric.\n",
+          "schema": {
+            "type": "string"
+          },
+          "example": "me"
+        }
+      ],
       "post": {
         "operationId": "sendEvents",
         "summary": "Analytics Events",
-        "description": "Send user events from your Yext digital experiences to Yext Analytics in near real-time.\n\nThis documentation is for version `1.0.0` of the Events API. If you are still using version\n`0.6`, refer to the documentation in the yext/analytics Github repository \n[here](https://github.com/yext/analytics/blob/release/v0.6.8/src/models/EventPayload.ts).\n",
+        "description": "Send user events from your Yext digital experiences to Yext Analytics in near real-time.\n\nAuthenticate with the parent account's API key and Events API write permission.\nFor a subaccount external ID, the event is attributed to the resolved subaccount;\n`me` retains attribution to the authenticating app's account. An external ID that\ndoes not resolve under that account returns HTTP 404.\n\nRequests to `me` and all subaccount external IDs share the same per-key rate limit.\n\nThis documentation is for version `1.0.0` of the Events API. If you are still using version\n`0.6`, refer to the documentation in the yext/analytics Github repository \n[here](https://github.com/yext/analytics/blob/release/v0.6.8/src/models/EventPayload.ts).\n",
         "requestBody": {
           "description": "JSON object containing the events to be sent to Yext Analytics",
           "required": true,
@@ -58,8 +70,50 @@
               }
             }
           },
+          "404": {
+            "description": "The external ID does not identify a subaccount under the authenticating account",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "SendEventsResponse",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "The ID of the event."
+                    },
+                    "errors": {
+                      "type": "array",
+                      "description": "Array of error messages that occurred during the request."
+                    }
+                  }
+                }
+              }
+            }
+          },
           "429": {
             "description": "Exceeded the limit of requests in the last minute",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "SendEventsResponse",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "The ID of the event."
+                    },
+                    "errors": {
+                      "type": "array",
+                      "description": "Array of error messages that occurred during the request."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The target account lookup is temporarily unavailable",
             "content": {
               "application/json": {
                 "schema": {

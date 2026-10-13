@@ -25,6 +25,10 @@ info:
 
     Apps may be rate-limited if they are sending too many events in a short period of time. If you are currently over your limit, our API will return a 429 error, and the response object returned by our API will be empty.
 
+    Requests authenticated with the same API key share one rate limit across `/accounts/me/events`
+    and all `/accounts/{businessExternalId}/events` paths. Sending events to different subaccounts
+    does not provide additional rate-limit capacity.
+
     ### SLOs
 
     <table>
@@ -87,6 +91,19 @@ info:
       </tr>
     </table>
 
+    ## Account attribution
+
+    Send events to `/accounts/me/events` to attribute them to the account associated with your app.
+    To send events for a subaccount, use `/accounts/{businessExternalId}/events` with the parent
+    account's API key. The app must have Events API write permission, and the external ID must
+    resolve to a subaccount under the authenticating account. Events are attributed to that
+    subaccount while retaining the authenticated app identity.
+
+    `businessExternalId` is the subaccount's external ID, not its internal numeric business ID.
+    Numeric external IDs are accepted as external IDs. `me` is reserved for the authenticating
+    account. An external ID that is missing or belongs outside that account's hierarchy returns
+    HTTP 404 with `Account not found`. A failed account lookup returns HTTP 503.
+
     ## Domain properties
 
     <table>
@@ -121,12 +138,30 @@ servers:
   - url: https://gcp.eu.yextevents.com
     description: Server for EU production environment with GCP as cloud provider
 paths:
-  /accounts/me/events:
+  /accounts/{businessExternalId}/events:
+    parameters:
+      - name: businessExternalId
+        in: path
+        required: true
+        description: |
+          Use `me` to attribute events to the account associated with the authenticating app.
+          Otherwise, supply the external ID of a subaccount under that account. This is an
+          external ID, not an internal numeric business ID, even when its value is numeric.
+        schema:
+          type: string
+        example: me
     post:
       operationId: sendEvents
       summary: Analytics Events
       description: |
         Send user events from your Yext digital experiences to Yext Analytics in near real-time.
+
+        Authenticate with the parent account's API key and Events API write permission.
+        For a subaccount external ID, the event is attributed to the resolved subaccount;
+        `me` retains attribution to the authenticating app's account. An external ID that
+        does not resolve under that account returns HTTP 404.
+
+        Requests to `me` and all subaccount external IDs share the same per-key rate limit.
 
         This documentation is for version `1.0.0` of the Events API. If you are still using version
         `0.6`, refer to the documentation in the yext/analytics Github repository 
@@ -150,8 +185,36 @@ paths:
                   id:
                     type: string
                     description: The ID of the event.
+        '404':
+          description: The external ID does not identify a subaccount under the authenticating account
+          content:
+            application/json:
+              schema:
+                title: SendEventsResponse
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The ID of the event.
+                  errors:
+                    type: array
+                    description: Array of error messages that occurred during the request.
         '429':
           description: Exceeded the limit of requests in the last minute
+          content:
+            application/json:
+              schema:
+                title: SendEventsResponse
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The ID of the event.
+                  errors:
+                    type: array
+                    description: Array of error messages that occurred during the request.
+        '503':
+          description: The target account lookup is temporarily unavailable
           content:
             application/json:
               schema:
