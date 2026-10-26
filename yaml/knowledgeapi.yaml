@@ -1059,6 +1059,16 @@ paths:
           in: query
           required: false
         - schema:
+            type: boolean
+            default: 'false'
+          description: |
+            Optional parameter to include linked asset usages in the response.
+              - `false`: The response does not include `linkedAssetUsages`.
+              - `true`: When returned fields are directly linked to assets, the response includes a `linkedAssetUsages` property that indicates how these assets are used on the field.
+          name: includeLinkedAssetUsages
+          in: query
+          required: false
+        - schema:
             minLength: 0
             type: string
           description: |
@@ -22557,6 +22567,16 @@ paths:
               * `html`
               * `none`
           name: format
+          in: query
+          required: false
+        - schema:
+            type: boolean
+            default: 'false'
+          description: |
+            Optional parameter to include linked asset usages in the response.
+              - `false`: The response does not include `linkedAssetUsages`.
+              - `true`: When returned fields are directly linked to assets, the response includes a `linkedAssetUsages` property that indicates how these assets are used on the field.
+          name: includeLinkedAssetUsages
           in: query
           required: false
         - schema:
@@ -44133,6 +44153,16 @@ paths:
           in: query
           required: false
         - schema:
+            type: boolean
+            default: 'false'
+          description: |
+            Optional parameter to include linked asset usages in the response.
+              - `false`: The response does not include `linkedAssetUsages`.
+              - `true`: When returned fields are directly linked to assets, the response includes a `linkedAssetUsages` property that indicates how these assets are used on the field.
+          name: includeLinkedAssetUsages
+          in: query
+          required: false
+        - schema:
             minLength: 0
             type: string
           description: The comma-separated language codes corresponding to the languages of the profile that the user wishes to retrieve
@@ -55855,6 +55885,16 @@ paths:
           in: query
           required: false
         - schema:
+            type: boolean
+            default: 'false'
+          description: |
+            Optional parameter to include linked asset usages in the response.
+              - `false`: The response does not include `linkedAssetUsages`.
+              - `true`: When returned fields are directly linked to assets, the response includes a `linkedAssetUsages` property that indicates how these assets are used on the field.
+          name: includeLinkedAssetUsages
+          in: query
+          required: false
+        - schema:
             minLength: 0
             type: string
           description: The comma-separated language codes corresponding to the languages of the profile that the user wishes to retrieve
@@ -66651,6 +66691,16 @@ paths:
               * `html`
               * `none`
           name: format
+          in: query
+          required: false
+        - schema:
+            type: boolean
+            default: 'false'
+          description: |
+            Optional parameter to include linked asset usages in the response.
+              - `false`: The response does not include `linkedAssetUsages`.
+              - `true`: When returned fields are directly linked to assets, the response includes a `linkedAssetUsages` property that indicates how these assets are used on the field.
+          name: includeLinkedAssetUsages
           in: query
           required: false
         - schema:

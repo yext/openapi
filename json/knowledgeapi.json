@@ -96,6 +96,16 @@
           },
           {
             "schema": {
+              "type": "boolean",
+              "default": "false"
+            },
+            "description": "Optional parameter to include linked asset usages in the response.\n  - `false`: The response does not include `linkedAssetUsages`.\n  - `true`: When returned fields are directly linked to assets, the response includes a `linkedAssetUsages` property that indicates how these assets are used on the field.\n",
+            "name": "includeLinkedAssetUsages",
+            "in": "query",
+            "required": false
+          },
+          {
+            "schema": {
               "minLength": 0,
               "type": "string"
             },
@@ -14135,6 +14145,16 @@
             },
             "description": "Present if and only if at least one field is of type \"**Legacy Rich Text**.\"\n\nValid values:\n  * `markdown`\n  * `html`\n  * `none`\n",
             "name": "format",
+            "in": "query",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            },
+            "description": "Optional parameter to include linked asset usages in the response.\n  - `false`: The response does not include `linkedAssetUsages`.\n  - `true`: When returned fields are directly linked to assets, the response includes a `linkedAssetUsages` property that indicates how these assets are used on the field.\n",
+            "name": "includeLinkedAssetUsages",
             "in": "query",
             "required": false
           },
@@ -28281,6 +28301,16 @@
           },
           {
             "schema": {
+              "type": "boolean",
+              "default": "false"
+            },
+            "description": "Optional parameter to include linked asset usages in the response.\n  - `false`: The response does not include `linkedAssetUsages`.\n  - `true`: When returned fields are directly linked to assets, the response includes a `linkedAssetUsages` property that indicates how these assets are used on the field.\n",
+            "name": "includeLinkedAssetUsages",
+            "in": "query",
+            "required": false
+          },
+          {
+            "schema": {
               "minLength": 0,
               "type": "string"
             },
@@ -35294,6 +35324,16 @@
             },
             "description": "Present if and only if at least one field is of type \"**Legacy Rich Text**.\"\n\nValid values:\n  * `markdown`\n  * `html`\n  * `none`\n",
             "name": "format",
+            "in": "query",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            },
+            "description": "Optional parameter to include linked asset usages in the response.\n  - `false`: The response does not include `linkedAssetUsages`.\n  - `true`: When returned fields are directly linked to assets, the response includes a `linkedAssetUsages` property that indicates how these assets are used on the field.\n",
+            "name": "includeLinkedAssetUsages",
             "in": "query",
             "required": false
           },
@@ -42375,6 +42415,16 @@
             },
             "description": "Present if and only if at least one field is of type \"**Legacy Rich Text**.\"\n\nValid values:\n  * `markdown`\n  * `html`\n  * `none`\n",
             "name": "format",
+            "in": "query",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            },
+            "description": "Optional parameter to include linked asset usages in the response.\n  - `false`: The response does not include `linkedAssetUsages`.\n  - `true`: When returned fields are directly linked to assets, the response includes a `linkedAssetUsages` property that indicates how these assets are used on the field.\n",
+            "name": "includeLinkedAssetUsages",
             "in": "query",
             "required": false
           },
