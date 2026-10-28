@@ -91361,6 +91361,180 @@ paths:
                         $ref: '#/components/schemas/Message'
         default:
           $ref: '#/components/responses/ErrorResponse'
+  /accounts/{accountId}/social/library:
+    parameters:
+      - $ref: '#/components/parameters/accountId'
+    get:
+      operationId: listContentLibraryItems
+      summary: 'Content Library: List'
+      tags:
+        - Social
+      description: Retrieve Content Library items for an account with Content Library enabled. API keys and OAuth access tokens act as the API app and must not specify userId. User principal tokens require Content Library view permission; results are limited to the user's permitted entity, folder, and label scopes. User principal tokens also require view permission for Content Library and the Post Calendar.
+      parameters:
+        - $ref: '#/components/parameters/v'
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: searchIn
+          in: query
+          schema:
+            type: string
+          description: Comma-separated fields to search. Supported values are title, caption, and tags; text is an alias for caption. Values are case-insensitive. Unknown fields are ignored. If no recognized fields remain, all three fields are searched.
+        - name: page
+          in: query
+          description: The page number as a signed 32-bit integer. Values below 1 are treated as 1.
+          schema:
+            type: integer
+            format: int32
+            minimum: -2147483648
+            maximum: 2147483647
+            default: 1
+        - name: pageSize
+          in: query
+          description: The number of items per page as a signed 32-bit integer. Values above 100 use 100; values below 1 use 20.
+          schema:
+            type: integer
+            format: int32
+            minimum: -2147483648
+            maximum: 2147483647
+            default: 20
+        - name: includeExpired
+          in: query
+          description: Whether to include expired items as well as live items.
+          schema:
+            type: boolean
+            default: false
+        - name: sortBy
+          in: query
+          description: The sort field. Recognized values are createdAt, updatedAt, and title. Values are case-sensitive. Other values use createdAt.
+          schema:
+            type: string
+            default: createdAt
+        - name: sortDirection
+          in: query
+          description: The sort direction. The value asc is case-insensitive and selects ascending order. All other values use descending order.
+          schema:
+            type: string
+            default: desc
+      responses:
+        '200':
+          $ref: '#/components/responses/ContentLibraryListResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    post:
+      operationId: createContentLibraryItem
+      summary: 'Content Library: Create'
+      tags:
+        - Social
+      description: Create a Content Library item in an account with Content Library enabled. The authenticated caller is recorded as the actor. API keys and OAuth access tokens act as the API app and must not specify userId. User principal tokens require Content Library manage permission for all selected entity, folder, and label scopes, including includeAllEntities. Publisher content is validated before the item is saved. User principal tokens also require view permission for Content Library and the Post Calendar.
+      parameters:
+        - $ref: '#/components/parameters/v'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContentLibraryInput'
+      responses:
+        '200':
+          $ref: '#/components/responses/ContentLibraryItemResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /accounts/{accountId}/social/library/tags:
+    parameters:
+      - $ref: '#/components/parameters/accountId'
+    get:
+      operationId: listContentLibraryTags
+      summary: 'Content Library Tags: List'
+      tags:
+        - Social
+      description: Retrieve distinct tags used by live Content Library items in an account with Content Library enabled. API keys and OAuth access tokens act as the API app and must not specify userId. User principal tokens require Content Library view permission; tags are limited to items in the user's permitted entity, folder, and label scopes. User principal tokens also require view permission for Content Library and the Post Calendar.
+      parameters:
+        - $ref: '#/components/parameters/v'
+      responses:
+        '200':
+          $ref: '#/components/responses/ContentLibraryTagsResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /accounts/{accountId}/social/library/{id}:
+    parameters:
+      - $ref: '#/components/parameters/accountId'
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/0'
+        description: The ID of the Content Library item as a signed 64-bit decimal string.
+    get:
+      operationId: getContentLibraryItem
+      summary: 'Content Library: Get'
+      tags:
+        - Social
+      description: Retrieve a live or expired Content Library item from an account with Content Library enabled. API keys and OAuth access tokens act as the API app and must not specify userId. User principal tokens require Content Library view permission for the item. User principal tokens also require view permission for Content Library and the Post Calendar.
+      parameters:
+        - $ref: '#/components/parameters/v'
+      responses:
+        '200':
+          $ref: '#/components/responses/ContentLibraryItemResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    put:
+      operationId: updateContentLibraryItem
+      summary: 'Content Library: Update'
+      tags:
+        - Social
+      description: Replace the content of a Content Library item in an account with Content Library enabled. Supply all required input fields and the updatedAt value from the most recent item response. A stale updatedAt value causes the update to fail; retrieve the item again before retrying. Omitted caption and tags are cleared; an omitted expiration removes the expiration. API keys and OAuth access tokens act as the API app and must not specify userId. User principal tokens require manage permission for both the existing item and all selected entity, folder, and label scopes. Publisher content is validated before the item is saved. User principal tokens also require view permission for Content Library and the Post Calendar.
+      parameters:
+        - $ref: '#/components/parameters/v'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/ContentLibraryInput'
+                - type: object
+                  required:
+                    - updatedAt
+                  properties:
+                    updatedAt:
+                      type: string
+                      format: date-time
+                      description: The updatedAt value from the most recent item response.
+      responses:
+        '200':
+          $ref: '#/components/responses/ContentLibraryItemResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    delete:
+      operationId: expireContentLibraryItem
+      summary: 'Content Library: Expire'
+      tags:
+        - Social
+      description: Expire a Content Library item without deleting it permanently. The account must have Content Library enabled. API keys and OAuth access tokens act as the API app and must not specify userId. User principal tokens require Content Library expire permission for the item. With no expiration in the body, the item expires immediately. A supplied expiration must not be in the future. User principal tokens also require view permission for Content Library and the Post Calendar.
+      parameters:
+        - $ref: '#/components/parameters/v'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                expiredAt:
+                  allOf:
+                    - $ref: '#/components/schemas/ContentLibraryExpiration'
+                  description: The expiration time, at or before the current time. Omitted or null values use expiresAt when supplied. If both fields are omitted or null, or the selected value is blank, the item expires immediately. A non-null expiredAt takes precedence over expiresAt, even if it is blank.
+                expiresAt:
+                  allOf:
+                    - $ref: '#/components/schemas/ContentLibraryExpiration'
+                  description: An alias for expiredAt. Used only when expiredAt is omitted or null.
+      responses:
+        '200':
+          $ref: '#/components/responses/ContentLibraryItemResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
   /accounts/{accountId}/roles:
     parameters:
       - $ref: '#/components/parameters/accountId'
@@ -95191,6 +95365,9 @@ components:
       name: api-key
       in: header
   schemas:
+    '0':
+      type: string
+      pattern: ^(?:-?0*(?:[0-9]{1,18}|[0-8][0-9]{18}|9[0-1][0-9]{17}|92[0-1][0-9]{16}|922[0-2][0-9]{15}|9223[0-2][0-9]{14}|92233[0-6][0-9]{13}|922337[0-1][0-9]{12}|92233720[0-2][0-9]{10}|922337203[0-5][0-9]{9}|9223372036[0-7][0-9]{8}|92233720368[0-4][0-9]{7}|922337203685[0-3][0-9]{6}|9223372036854[0-6][0-9]{5}|92233720368547[0-6][0-9]{4}|922337203685477[0-4][0-9]{3}|9223372036854775[0-7][0-9]{2}|922337203685477580[0-6]|9223372036854775807)|-0*9223372036854775808)(?![\s\S])
     EntityWrite:
       type: object
       discriminator:
@@ -125274,6 +125451,614 @@ components:
           format: date
           description: |
             The latest time to which you can send a message to the user. Formatted as datetime in YYYY-MM-DD HH:MM:SS. Ex: 2021-04-06 08:45:00. The timezone for the provided datetime will be UTC.
+    ContentLibraryActor:
+      type: object
+      required:
+        - type
+        - id
+      properties:
+        type:
+          type: string
+          enum:
+            - USER
+            - API_APP
+          description: The type of principal that created or last updated the item.
+        id:
+          type: string
+          description: The ID of the user or API app.
+    ContentLibraryItem:
+      type: object
+      required:
+        - id
+        - title
+        - caption
+        - tags
+        - entityIds
+        - publisherIds
+        - draftPostRequestJson
+        - live
+      properties:
+        id:
+          type: string
+          description: The ID of the Content Library item.
+        title:
+          type: string
+        caption:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        entityIds:
+          type: array
+          items:
+            type: string
+          description: The entity IDs stored on the item, returned as decimal strings.
+        publisherIds:
+          type: array
+          items:
+            type: string
+          description: The publisher IDs stored on the item, returned as decimal strings.
+        draftPostRequestJson:
+          type: string
+          description: The serialized draft post request. Responses do not include draftPostRequest.
+        createdBy:
+          allOf:
+            - $ref: '#/components/schemas/ContentLibraryActor'
+          description: The creating actor. Omitted if no actor is recorded for a legacy item.
+        updatedBy:
+          allOf:
+            - $ref: '#/components/schemas/ContentLibraryActor'
+          description: The last updating actor. Omitted if no actor is recorded for a legacy item.
+        createdByUserId:
+          type: string
+          deprecated: true
+          description: The creating user ID. Omitted when an API app created the item or no user is recorded.
+        updatedByUserId:
+          type: string
+          deprecated: true
+          description: The last updating user ID. Omitted when an API app last updated the item or no user is recorded.
+        live:
+          type: boolean
+          description: Whether the item has not expired.
+        expiredAt:
+          type: string
+          format: date-time
+          description: The expiration time. Omitted when the item has no expiration.
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+          description: Supply this value as updatedAt when you update the item.
+    ContentLibraryIdInput:
+      anyOf:
+        - type: string
+          pattern: ^(?:-?0*(?:[0-9]{1,18}|[0-8][0-9]{18}|9[0-1][0-9]{17}|92[0-1][0-9]{16}|922[0-2][0-9]{15}|9223[0-2][0-9]{14}|92233[0-6][0-9]{13}|922337[0-1][0-9]{12}|92233720[0-2][0-9]{10}|922337203[0-5][0-9]{9}|9223372036[0-7][0-9]{8}|92233720368[0-4][0-9]{7}|922337203685[0-3][0-9]{6}|9223372036854[0-6][0-9]{5}|92233720368547[0-6][0-9]{4}|922337203685477[0-4][0-9]{3}|9223372036854775[0-7][0-9]{2}|922337203685477580[0-6]|9223372036854775807)|-0*9223372036854775808)(?![\s\S])
+        - type: integer
+          format: int64
+          minimum: -9223372036854776000
+          maximum: 9223372036854776000
+    ContentLibraryDraftGoogleDateTime:
+      type: object
+      nullable: true
+      required:
+        - year
+        - month
+        - day
+        - hours
+        - minutes
+        - seconds
+        - nanos
+      properties:
+        year:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 9999
+        month:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 12
+        day:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 31
+        hours:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 23
+        minutes:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 59
+        seconds:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 59
+        nanos:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 999999999
+      description: Structured Google event date and time. All seven integer fields are required when this object is supplied. Supply a valid calendar date and time; event completeness and publisher rules are also checked by the service.
+    ContentLibraryDraftAppleDateTime:
+      type: object
+      required:
+        - year
+        - month
+        - date
+        - hour
+        - minute
+        - timezoneId
+      properties:
+        year:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 9999
+        month:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 12
+        date:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 31
+        hour:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 23
+        minute:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 59
+        timezoneId:
+          type: string
+          description: A valid time zone ID, such as America/New_York, UTC, or +01:00.
+          minLength: 1
+          pattern: '[^\u0009-\u000D\u001C-\u0020\u1680\u2000-\u2006\u2008-\u200A\u2028\u2029\u205F\u3000]'
+      description: Apple showcase local date/time. Uses date, hour, and minute, rather than the Google day, hours, and minutes field names. The date must be valid for the selected month and year. The service validates the time zone and resulting timestamp.
+    ContentLibraryDraftPost:
+      type: object
+      additionalProperties: true
+      required:
+        - publisherIds
+      description: A stored draft post variant. The documented fields are converted to the posting request and checked with the selected publishers. Additional protobuf posting fields are accepted. A variant must have valid content for each selected publisher; an empty object or publisher-only content is not sufficient to publish.
+      properties:
+        publisherIds:
+          type: array
+          minItems: 1
+          uniqueItems: true
+          items:
+            type: integer
+            format: int32
+            minimum: 1
+            maximum: 2147483647
+          description: Numeric publisher IDs. Across all draft variants, each selected publisher must occur exactly once and the IDs must match the library input publisherIds.
+        postText:
+          type: string
+          nullable: true
+          description: The publisher post text. Content and length limits depend on the publisher. Story-only content must have blank postText.
+        media:
+          type: array
+          nullable: true
+          items:
+            type: object
+            required:
+              - url
+              - type
+            properties:
+              url:
+                type: string
+                minLength: 1
+                pattern: '[^\u0009-\u000D\u001C-\u0020\u1680\u2000-\u2006\u2008-\u200A\u2028\u2029\u205F\u3000]'
+                description: A nonblank media URL. Publisher-specific media validation also applies.
+              type:
+                anyOf:
+                  - type: string
+                    enum:
+                      - PHOTO
+                      - VIDEO
+                  - type: integer
+                    enum:
+                      - 1
+                      - 2
+                description: PHOTO (1) or VIDEO (2).
+              thumbnailUrl:
+                type: string
+                nullable: true
+                description: A video cover image URL. Not supported for Story media.
+              title:
+                type: string
+                nullable: true
+                description: The media title. Not supported for Story media.
+              assetId:
+                type: integer
+                format: int64
+                minimum: 0
+                maximum: 4294967295
+          description: The reusable photo or video content. Publisher-specific media count, size, and content rules apply.
+        photoUrl:
+          type: string
+          nullable: true
+          description: Alias for primaryPhotoUrl. Selects the primary/cover image and takes precedence when non-null.
+        primaryPhotoUrl:
+          type: string
+          nullable: true
+          description: The primary/cover image URL.
+        postTitle:
+          type: string
+          nullable: true
+          description: Alias for postGroupTitle. A non-null value takes precedence.
+        postGroupTitle:
+          type: string
+          nullable: true
+          description: The internal post title.
+        linkUrl:
+          type: string
+          nullable: true
+        linkTitle:
+          type: string
+          nullable: true
+        linkSummary:
+          type: string
+          nullable: true
+        eventTitle:
+          type: string
+          nullable: true
+        eventStartTime:
+          type: string
+          nullable: true
+          description: Legacy event start time in yyyy-MM-dd hh:mm a format.
+        eventEndTime:
+          type: string
+          nullable: true
+          description: Legacy event end time in yyyy-MM-dd hh:mm a format.
+        timezoneId:
+          type: string
+          nullable: true
+        callToActionTypeId:
+          anyOf:
+            - type: integer
+              format: int32
+              minimum: -2147483648
+              maximum: 2147483647
+              nullable: true
+            - type: string
+              pattern: ^-?[0-9]+$
+        callToActionCustomFieldId:
+          anyOf:
+            - $ref: '#/components/schemas/ContentLibraryIdInput'
+            - type: string
+              nullable: true
+              enum:
+                - ''
+                - null
+          description: A custom field ID. An empty string removes this value before conversion.
+        callToActionCustomUrl:
+          type: string
+          nullable: true
+        postFormatByPublisher:
+          type: array
+          nullable: true
+          items:
+            type: object
+            required:
+              - publisherId
+              - postFormat
+            properties:
+              publisherId:
+                type: integer
+                format: int32
+                minimum: 1
+                maximum: 2147483647
+              postFormat:
+                type: string
+                enum:
+                  - FEED
+                  - STORY
+                  - POST_FORMAT_UNKNOWN
+                  - POST_FORMAT_FEED
+                  - POST_FORMAT_STORY
+          description: Per-publisher surfaces. Publisher IDs must be selected by this variant. FEED and STORY are aliases for POST_FORMAT_FEED and POST_FORMAT_STORY. Missing entries default to feed.
+        videoPostTypeByPublisher:
+          type: array
+          nullable: true
+          items:
+            type: object
+            required:
+              - publisherId
+            properties:
+              publisherId:
+                anyOf:
+                  - type: string
+                    pattern: ^0*(?:[1-9][0-9]{0,8}|1[0-9]{9}|20[0-9]{8}|21[0-3][0-9]{7}|214[0-6][0-9]{6}|2147[0-3][0-9]{5}|21474[0-7][0-9]{4}|214748[0-2][0-9]{3}|2147483[0-5][0-9]{2}|21474836[0-3][0-9]|214748364[0-7])(?![\s\S])
+                  - type: integer
+                    format: int32
+                    minimum: 1
+                    maximum: 2147483647
+              videoPostType:
+                anyOf:
+                  - type: string
+                    enum:
+                      - UNKNOWN
+                      - VIDEO
+                      - REEL
+                  - type: integer
+                    enum:
+                      - 0
+                      - 1
+                      - 2
+          description: Per-publisher video types. Each publisher ID must occur at most once and must be selected by this variant. VIDEO (1) and REEL (2) are the supported video types; the omitted/UNKNOWN (0) value does not select a video type. Story posts use postFormatByPublisher instead.
+        socialPostType:
+          anyOf:
+            - type: string
+            - type: integer
+            - type: object
+              nullable: true
+              enum:
+                - null
+          description: Alias for the posting-request postType enum. A non-null value takes precedence. Uses the PostType protobuf names or numeric values.
+        postType:
+          anyOf:
+            - type: string
+            - type: integer
+            - type: object
+              nullable: true
+              enum:
+                - null
+          description: The posting-request PostType protobuf enum value.
+        isGoogleOfferPost:
+          type: boolean
+          nullable: true
+          description: Alias for isOfferPost. A non-null value takes precedence.
+        isOfferPost:
+          type: boolean
+          nullable: true
+        googleRequestFields:
+          type: object
+          nullable: true
+          properties:
+            couponCode:
+              type: string
+              nullable: true
+            redeemOnlineUrl:
+              type: string
+              nullable: true
+            redeemOnlineUrlCustomFieldId:
+              anyOf:
+                - $ref: '#/components/schemas/ContentLibraryIdInput'
+                - type: object
+                  nullable: true
+                  enum:
+                    - null
+              description: A custom field ID for the offer redemption URL. Takes precedence over redeemOnlineUrl when supplied.
+            termsAndConditions:
+              type: string
+              nullable: true
+            eventTitle:
+              type: string
+              nullable: true
+            eventStartTime:
+              $ref: '#/components/schemas/ContentLibraryDraftGoogleDateTime'
+            eventEndTime:
+              $ref: '#/components/schemas/ContentLibraryDraftGoogleDateTime'
+          description: Google offer and event fields. Event/offer completeness and publisher content rules are checked by the service.
+        appleRequestFields:
+          type: object
+          nullable: true
+          required:
+            - callToActionTypeId
+            - showcaseStartTime
+            - showcaseEndTime
+          properties:
+            headline:
+              type: string
+              nullable: true
+            callToActionTypeId:
+              anyOf:
+                - type: integer
+                  format: int32
+                  minimum: -2147483648
+                  maximum: 2147483647
+                - type: string
+                  pattern: ^-?[0-9]+$
+            appId:
+              type: string
+              nullable: true
+            showcaseStartTime:
+              $ref: '#/components/schemas/ContentLibraryDraftAppleDateTime'
+            showcaseEndTime:
+              $ref: '#/components/schemas/ContentLibraryDraftAppleDateTime'
+          description: Apple showcase fields. The call-to-action type and both structured showcase times are required when this object is supplied. Apple content rules also apply.
+        tiktokRequestFields:
+          type: object
+          nullable: true
+          required:
+            - privacySetting
+          properties:
+            privacySetting:
+              anyOf:
+                - type: integer
+                  format: int32
+                  minimum: -2147483648
+                  maximum: 2147483647
+                - type: string
+                  pattern: ^-?[0-9]+$
+              description: 'Privacy selection: 1 is public, 2 is mutual-follow friends, and 3 is self-only. Other values become unspecified and do not select a valid TikTok privacy level.'
+            interactionAbilitySettings:
+              type: array
+              items:
+                type: integer
+                format: int32
+                minimum: -2147483648
+                maximum: 2147483647
+              description: 'Recognized values: 1 enables comments, 2 enables duet, and 3 enables stitch. Omitted values disable those interactions. Duplicate values are ignored.'
+            contentDisclosureSettings:
+              type: array
+              items:
+                type: integer
+                format: int32
+                minimum: -2147483648
+                maximum: 2147483647
+              description: 'Recognized values: 1 enables the organic brand toggle and 2 enables branded content. Duplicate values are ignored.'
+            complianceSetting:
+              type: boolean
+              nullable: true
+              description: TikTok publishing requires this acknowledgment to be true. Omitted or null values are false.
+            photoPostTitle:
+              type: string
+              nullable: true
+              description: The TikTok multi-photo title. The postText field supplies the description; photoUrl selects the cover image, with the first image as fallback.
+          description: Stored TikTok settings. A single VIDEO media item produces a video post; otherwise the media URLs are used for a multi-photo post. TikTok privacy, interaction, and disclosure rules are validated by the service.
+    ContentLibraryDraft:
+      type: object
+      additionalProperties: true
+      description: Reusable draft content. Supply one post variant directly, or a nonempty createPostRequests array of publisher variants. When createPostRequests is present, its entries are used instead of the root post fields. Each selected publisher must occur in exactly one variant. Cross-variant publisher matching, Story rules, and publisher content validation are enforced by the service.
+      properties:
+        entityIds:
+          type: array
+          maxItems: 500
+          items:
+            $ref: '#/components/schemas/ContentLibraryIdInput'
+          description: Stored entity targeting metadata. The library input entityIds field is used for entity-scope authorization.
+        folderIds:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/ContentLibraryIdInput'
+        labelIds:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/ContentLibraryIdInput'
+        includeAllEntities:
+          type: boolean
+          description: Selects all entities. Restricted user roles must have permission for the selected scope.
+        modificationProhibited:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            enum:
+              - MEDIA
+              - CONTENT
+          description: Which parts of the reusable content cannot be changed.
+      oneOf:
+        - allOf:
+            - $ref: '#/components/schemas/ContentLibraryDraftPost'
+            - not:
+                required:
+                  - createPostRequests
+        - required:
+            - createPostRequests
+          properties:
+            createPostRequests:
+              type: array
+              minItems: 1
+              items:
+                $ref: '#/components/schemas/ContentLibraryDraftPost'
+      example:
+        createPostRequests:
+          - publisherIds:
+              - 559
+            postText: A reusable post
+          - publisherIds:
+              - 953
+            media:
+              - url: https://example.com/photo.jpg
+                type: PHOTO
+    ContentLibraryExpiration:
+      anyOf:
+        - type: string
+          format: date-time
+          nullable: true
+        - type: string
+          pattern: ^[\u0009-\u000D\u001C-\u0020\u1680\u2000-\u2006\u2008-\u200A\u2028\u2029\u205F\u3000]*(?![\s\S])
+    ContentLibraryInput:
+      type: object
+      required:
+        - title
+        - entityIds
+        - publisherIds
+      properties:
+        title:
+          type: string
+          minLength: 1
+          pattern: '[^\u0009-\u000D\u001C-\u0020\u1680\u2000-\u2006\u2008-\u200A\u2028\u2029\u205F\u3000]'
+          description: A nonblank title used to identify the library item.
+        caption:
+          type: string
+          nullable: true
+          description: The social post copy stored in the library item. Omitted or null values use an empty string. For a draft that contains only Story posts, omit this field or leave it blank. Story variants must also have blank postText.
+        tags:
+          type: array
+          nullable: true
+          items:
+            type: string
+            pattern: ^[\u0000-\u0020]*[A-Za-z0-9_-]{1,20}[\u0000-\u0020]*(?![\s\S])
+          description: Tags used to organize the library item. Each tag is trimmed and must contain 1 to 20 ASCII letters, numbers, underscores, or hyphens. Duplicate tags are removed. At most 15 distinct tags are allowed. Omitted or null values use no tags.
+        entityIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentLibraryIdInput'
+          maxItems: 500
+          description: The entities associated with the library item. An empty array is allowed. IDs can be supplied as signed 64-bit integer values or decimal strings.
+        publisherIds:
+          type: array
+          items:
+            anyOf:
+              - type: string
+                pattern: ^0*(?:[1-9][0-9]{0,8}|1[0-9]{9}|20[0-9]{8}|21[0-3][0-9]{7}|214[0-6][0-9]{6}|2147[0-3][0-9]{5}|21474[0-7][0-9]{4}|214748[0-2][0-9]{3}|2147483[0-5][0-9]{2}|21474836[0-3][0-9]|214748364[0-7])(?![\s\S])
+              - type: integer
+                format: int32
+                minimum: 1
+                maximum: 2147483647
+          minItems: 1
+          uniqueItems: true
+          description: Unique publisher IDs from 1 to 2147483647, supplied as integer values or decimal strings. IDs must be unique after conversion to integers. These IDs must match the numeric publisherIds in the draft. Each publisher must occur in exactly one draft variant.
+        draftPostRequest:
+          anyOf:
+            - $ref: '#/components/schemas/ContentLibraryDraft'
+            - type: object
+              nullable: true
+              enum:
+                - null
+          description: The structured draft post request. Supply this or draftPostRequestJson. A non-null value takes precedence if both are supplied. A null value uses draftPostRequestJson instead. Supply one post request object, or an object with a nonempty createPostRequests array of post request objects. Each request must contain a nonempty numeric publisherIds array and valid content for its publishers. Draft entityIds arrays have a limit of 500 entries. Optional modificationProhibited is an array of unique values from MEDIA and CONTENT. Targeting can use entityIds, folderIds, labelIds, and includeAllEntities, subject to the caller's permissions.
+        draftPostRequestJson:
+          type: string
+          nullable: true
+          description: A JSON string that encodes the ContentLibraryDraft object accepted by draftPostRequest, including its post variants and publisher-specific fields. Supply this or a non-null draftPostRequest. A null value is allowed only when draftPostRequest supplies the object.
+        expiredAt:
+          allOf:
+            - $ref: '#/components/schemas/ContentLibraryExpiration'
+          description: The time at which the library item expires. A nonblank timestamp must be in the future for create and update requests. Omitted or null values use expiresAt when supplied. If both fields are omitted or null, or the selected value is blank, the item has no expiration. A non-null expiredAt takes precedence over expiresAt, even if it is blank.
+        expiresAt:
+          allOf:
+            - $ref: '#/components/schemas/ContentLibraryExpiration'
+          description: An alias for expiredAt. Used only when expiredAt is omitted or null.
+      anyOf:
+        - required:
+            - draftPostRequest
+          properties:
+            draftPostRequest:
+              type: object
+        - required:
+            - draftPostRequestJson
+          properties:
+            draftPostRequestJson:
+              type: string
     Role:
       type: object
       properties:
@@ -139929,6 +140714,63 @@ components:
                               message:
                                 type: string
                                 description: A message indicating why the entityId is `INELIGIBLE` for a publisher
+    ContentLibraryListResponse:
+      description: Content Library List Response
+      content:
+        application/json:
+          schema:
+            title: ContentLibraryListResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/ResponseMeta'
+              response:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ContentLibraryItem'
+                  meta:
+                    type: object
+                    properties:
+                      page:
+                        type: integer
+                      all_items:
+                        type: integer
+                        format: int64
+    ContentLibraryItemResponse:
+      description: Content Library Item Response
+      content:
+        application/json:
+          schema:
+            title: ContentLibraryItemResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/ResponseMeta'
+              response:
+                type: object
+                properties:
+                  item:
+                    $ref: '#/components/schemas/ContentLibraryItem'
+    ContentLibraryTagsResponse:
+      description: Content Library Tags Response
+      content:
+        application/json:
+          schema:
+            title: ContentLibraryTagsResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/ResponseMeta'
+              response:
+                type: object
+                properties:
+                  tags:
+                    type: array
+                    items:
+                      type: string
     RolesResponse:
       description: Roles Response
       content:
