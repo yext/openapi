@@ -68988,6 +68988,8 @@ components:
                 * Organic
                 * Vegan
                 * Vegetarian
+                * Gluten Free
+                * Dairy Free
             preparationMethods:
               type: array
               items:

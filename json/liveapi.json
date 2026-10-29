@@ -43460,7 +43460,7 @@
                 "items": {
                   "type": "string"
                 },
-                "description": "Dietary information of a food item. Valid elements are:\n* Halal\n* Kosher\n* Organic\n* Vegan\n* Vegetarian\n"
+                "description": "Dietary information of a food item. Valid elements are:\n* Halal\n* Kosher\n* Organic\n* Vegan\n* Vegetarian\n* Gluten Free\n* Dairy Free\n"
               },
               "preparationMethods": {
                 "type": "array",
