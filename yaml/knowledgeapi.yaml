@@ -91604,6 +91604,14 @@ paths:
       description: |
         Retrieves details of a specific User.
 
+        With user principal authentication, use `users/me` to retrieve the current user's
+        details without an external user ID. Reading another user's external ID requires
+        `VIEW_USERS` or `VIEW_AND_MANAGE_USERS` on the account, with the target user's
+        accessible accounts contained within the caller's. Scoped managers with
+        `MANAGE_USERS_WITHIN_SCOPE` can read users permitted by the existing scoped
+        user-management rules. API app authentication retains its existing authorization
+        and explicit external user ID behavior.
+
         **NOTE**:
 
         If the **`v`** parameter is before `20211115`: **`acl`** and **`externalIdentities`** will not be included in the response.

@@ -61433,7 +61433,7 @@
           "Account Settings"
         ],
         "summary": "Users: Get",
-        "description": "Retrieves details of a specific User.\n\n**NOTE**:\n\nIf the **`v`** parameter is before `20211115`: **`acl`** and **`externalIdentities`** will not be included in the response.\n",
+        "description": "Retrieves details of a specific User.\n\nWith user principal authentication, use `users/me` to retrieve the current user's\ndetails without an external user ID. Reading another user's external ID requires\n`VIEW_USERS` or `VIEW_AND_MANAGE_USERS` on the account, with the target user's\naccessible accounts contained within the caller's. Scoped managers with\n`MANAGE_USERS_WITHIN_SCOPE` can read users permitted by the existing scoped\nuser-management rules. API app authentication retains its existing authorization\nand explicit external user ID behavior.\n\n**NOTE**:\n\nIf the **`v`** parameter is before `20211115`: **`acl`** and **`externalIdentities`** will not be included in the response.\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/UserResponse"
