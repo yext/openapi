@@ -33318,6 +33318,24 @@ paths:
       description: |
         Update the Entity with the given ID
 
+        **Linked assets**
+
+        To link a field to an asset, use `{"$asset": "ASSET_ID"}` in place of its value. The reference must contain only `$asset`, whose value is a non-empty asset ID from the same account. Linked fields receive the asset's content and remain linked to future asset updates.
+
+        References can appear at the top level, in list items, or in struct properties. Supply nested objects and arrays for nested values, rather than dotted field names. For example:
+
+        ```json
+        {
+          "description": {"$asset": "description-asset"},
+          "featuredMessage": {
+            "description": {"$asset": "message-asset"}
+          },
+          "emails": ["literal@example.com", {"$asset": "email-asset"}]
+        }
+        ```
+
+        Eligibility is checked against the entity's language, folder, and labels, including changes in the same request. Sending the same literal value without `$asset` preserves an existing link. Sending a different literal value removes the existing link.
+
         **NOTE**
 
         * If the **`v`** parameter is `20240221` or later: returned Entity replaces the **`categoryIds`** field with the **`categories`** field.
@@ -77409,6 +77427,24 @@ paths:
       summary: 'Entity Language Profiles: Upsert'
       description: |
         Add a language profile
+
+        **Linked assets**
+
+        To link a field to an asset, use `{"$asset": "ASSET_ID"}` in place of its value. The reference must contain only `$asset`, whose value is a non-empty asset ID from the same account. Linked fields receive the asset's content and remain linked to future asset updates.
+
+        References can appear at the top level, in list items, or in struct properties. Supply nested objects and arrays for nested values, rather than dotted field names. For example:
+
+        ```json
+        {
+          "description": {"$asset": "description-asset"},
+          "featuredMessage": {
+            "description": {"$asset": "message-asset"}
+          },
+          "emails": ["literal@example.com", {"$asset": "email-asset"}]
+        }
+        ```
+
+        Asset links are supported when creating or updating a language profile for an existing entity. Eligibility is checked against the destination language and the entity's existing folder and labels. Sending the same literal value without `$asset` preserves an existing link. Sending a different literal value removes the existing link.
 
         **NOTE**
 

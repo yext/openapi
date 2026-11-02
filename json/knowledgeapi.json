@@ -21168,7 +21168,7 @@
           "Knowledge Manager"
         ],
         "summary": "Entities: Update",
-        "description": "Update the Entity with the given ID\n\n**NOTE**\n\n* If the **`v`** parameter is `20240221` or later: returned Entity replaces the **`categoryIds`** field with the **`categories`** field.\n",
+        "description": "Update the Entity with the given ID\n\n**Linked assets**\n\nTo link a field to an asset, use `{\"$asset\": \"ASSET_ID\"}` in place of its value. The reference must contain only `$asset`, whose value is a non-empty asset ID from the same account. Linked fields receive the asset's content and remain linked to future asset updates.\n\nReferences can appear at the top level, in list items, or in struct properties. Supply nested objects and arrays for nested values, rather than dotted field names. For example:\n\n```json\n{\n  \"description\": {\"$asset\": \"description-asset\"},\n  \"featuredMessage\": {\n    \"description\": {\"$asset\": \"message-asset\"}\n  },\n  \"emails\": [\"literal@example.com\", {\"$asset\": \"email-asset\"}]\n}\n```\n\nEligibility is checked against the entity's language, folder, and labels, including changes in the same request. Sending the same literal value without `$asset` preserves an existing link. Sending a different literal value removes the existing link.\n\n**NOTE**\n\n* If the **`v`** parameter is `20240221` or later: returned Entity replaces the **`categoryIds`** field with the **`categories`** field.\n",
         "responses": {
           "200": {
             "description": "Success Response",
@@ -49408,7 +49408,7 @@
           "Knowledge Manager"
         ],
         "summary": "Entity Language Profiles: Upsert",
-        "description": "Add a language profile\n\n**NOTE**\n\n* If the **`v`** parameter is `20240221` or later: returned Language Profile replaces the **`categoryIds`** field with the **`categories`** field.\n",
+        "description": "Add a language profile\n\n**Linked assets**\n\nTo link a field to an asset, use `{\"$asset\": \"ASSET_ID\"}` in place of its value. The reference must contain only `$asset`, whose value is a non-empty asset ID from the same account. Linked fields receive the asset's content and remain linked to future asset updates.\n\nReferences can appear at the top level, in list items, or in struct properties. Supply nested objects and arrays for nested values, rather than dotted field names. For example:\n\n```json\n{\n  \"description\": {\"$asset\": \"description-asset\"},\n  \"featuredMessage\": {\n    \"description\": {\"$asset\": \"message-asset\"}\n  },\n  \"emails\": [\"literal@example.com\", {\"$asset\": \"email-asset\"}]\n}\n```\n\nAsset links are supported when creating or updating a language profile for an existing entity. Eligibility is checked against the destination language and the entity's existing folder and labels. Sending the same literal value without `$asset` preserves an existing link. Sending a different literal value removes the existing link.\n\n**NOTE**\n\n* If the **`v`** parameter is `20240221` or later: returned Language Profile replaces the **`categoryIds`** field with the **`categories`** field.\n",
         "responses": {
           "200": {
             "description": "Success Response",
