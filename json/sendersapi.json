@@ -1,0 +1,405 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Senders API",
+    "version": "v1",
+    "description": "Use the Senders API to create the sender identities used by Yext Email. A sender defines the address recipients see and, optionally, the address they use to reply. You can associate a sender with a Knowledge Graph Entity or create an account-level sender.\n\n## Before You Begin\n\nConfigure your sending domain before creating a sender. If the response has a `verificationStatus` of `SENDER_IDENTITY_STATUS_PENDING`, complete the verification email flow before sending. Sender verification and domain verification are separate requirements; both must satisfy your account's sending policy.\n\n## Authentication and Versioning\n\nSend requests to `https://api.yextapis.com` with your app's API key in the `api-key` header or `api_key` query parameter. Include one fixed `v` date, such as `20240401`, and set `Content-Type: application/json`. Use your account ID or `me` in the URL.\n\n## Entity and Account Senders\n\nSet `email.entityId` to the exact Entity ID from Knowledge Graph to create an Entity sender. Omit it for an account-level sender. Sending an empty string is invalid.\n\n## Response Format\n\nSuccessful responses contain `meta` and `response`. The sender's `name` contains its Yext-assigned UUID. Check `response.verificationStatus` to determine whether verification is still required. Timestamps use RFC 3339 strings. Omit optional request fields you are not setting rather than sending `null`.\n\nSee [Policies and Conventions](https://docs.yext.com/docs/managementapis/introduction/overview-policies-and-conventions/) and [Errors](https://docs.yext.com/docs/managementapis/introduction/errors/) for shared Management API guidance."
+  },
+  "tags": [
+    {
+      "name": "Senders",
+      "description": "Create Yext Email sender identities."
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://api.yextapis.com"
+    }
+  ],
+  "paths": {
+    "/v2/accounts/{account}/mail/senders": {
+      "post": {
+        "summary": "Senders: Create",
+        "description": "Creates an email sender for an Entity or the account.\n\nProvide `email.emailAddress`. To associate the sender with a Knowledge Graph Entity, set `email.entityId` to its exact Entity ID. Omit that field for an account-level sender. You can also provide a reply-to address and display name.\n\nThe default `verificationMode` is `SENDER_VERIFICATION_MODE_REQUIRED`. Complete the verification email flow when the response status is pending. `SENDER_VERIFICATION_MODE_SKIP` requires an active, provider-verified domain and is unavailable for sandbox accounts. Both modes validate the sender's ownership and uniqueness.\n\nA verified sender must still meet domain and sending requirements when used by a campaign. This method creates a sender; it does not update an existing sender or provide a request ID for duplicate detection.",
+        "operationId": "YextEmail_CreateSender",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "YextEmail_CreateSenderResponse",
+                  "type": "object",
+                  "required": [
+                    "meta",
+                    "response"
+                  ],
+                  "properties": {
+                    "meta": {
+                      "$ref": "#/components/schemas/ApiMeta"
+                    },
+                    "response": {
+                      "$ref": "#/components/schemas/mailPublicSender"
+                    }
+                  }
+                },
+                "examples": {
+                  "response": {
+                    "value": {
+                      "meta": {
+                        "uuid": "7b4b7f0f-17cf-4bec-81b0-97a729f25e54",
+                        "errors": []
+                      },
+                      "response": {
+                        "name": "accounts/514581/senders/019a1234-5678-7000-8000-000000000003",
+                        "channel": "SENDER_CHANNEL_EMAIL",
+                        "email": {
+                          "emailAddress": "advisor@mail.example.com",
+                          "entityId": "branch-nyc-001",
+                          "replyTo": {
+                            "emailAddress": "service@example.com",
+                            "displayName": "New York Service Desk"
+                          }
+                        },
+                        "verificationStatus": "SENDER_IDENTITY_STATUS_PENDING",
+                        "verifiedAt": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An error occurred. See `meta.errors` for the error code and message.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublicErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "v",
+            "in": "query",
+            "required": true,
+            "description": "API version date in YYYYMMDD format. Use one fixed date for your integration; supply this parameter once per request.",
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9]{8}$",
+              "default": "20240401"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/YextEmailPublicCreateSenderBody"
+                  }
+                ],
+                "example": {
+                  "email": {
+                    "emailAddress": "advisor@mail.example.com",
+                    "entityId": "branch-nyc-001",
+                    "replyTo": {
+                      "emailAddress": "service@example.com",
+                      "displayName": "New York Service Desk"
+                    }
+                  },
+                  "verificationMode": "SENDER_VERIFICATION_MODE_REQUIRED"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "tags": [
+          "Senders"
+        ],
+        "security": [
+          {
+            "api-key": []
+          },
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "account",
+          "in": "path",
+          "required": true,
+          "description": "External account ID, or `me` for the credential's own account.",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "api-key": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "api-key"
+      },
+      "api_key": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "api_key"
+      }
+    },
+    "schemas": {
+      "mailReplyTo": {
+        "type": "object",
+        "properties": {
+          "emailAddress": {
+            "type": "string",
+            "description": "Valid email address used for replies. Header control characters are not allowed."
+          },
+          "displayName": {
+            "type": "string",
+            "description": "Display name shown with the reply-to address. Maximum 40 Unicode characters. Header control characters are not allowed."
+          }
+        },
+        "title": "mailReplyTo"
+      },
+      "mailPublicEmailSender": {
+        "type": "object",
+        "properties": {
+          "emailAddress": {
+            "type": "string",
+            "description": "Sender email address shown to recipients. Normalized and validated before creation. The domain must meet your account's sending requirements."
+          },
+          "entityId": {
+            "type": "string",
+            "description": "Entity ID from Knowledge Graph. Omit for an account-level sender; an empty string is invalid. Each Entity can have one sender identity. Different Entities can use the same email address.",
+            "nullable": true
+          },
+          "replyTo": {
+            "description": "Address and display name used for replies. Does not change the sender address or its Entity association.",
+            "anyOf": [
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/mailReplyTo"
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "nullable": true,
+                "enum": [
+                  null
+                ]
+              }
+            ]
+          }
+        },
+        "description": "Public sender contracts use Knowledge Graph external entity IDs. The existing Sender contracts retain numeric IDs for generated internal clients.",
+        "title": "mailPublicEmailSender"
+      },
+      "mailSenderVerificationMode": {
+        "type": "string",
+        "enum": [
+          "SENDER_VERIFICATION_MODE_REQUIRED",
+          "SENDER_VERIFICATION_MODE_SKIP"
+        ],
+        "title": "mailSenderVerificationMode"
+      },
+      "YextEmailPublicCreateSenderBody": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "anyOf": [
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/mailPublicEmailSender"
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "nullable": true,
+                "enum": [
+                  null
+                ]
+              }
+            ]
+          },
+          "verificationMode": {
+            "anyOf": [
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/mailSenderVerificationMode"
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "nullable": true,
+                "enum": [
+                  null
+                ]
+              }
+            ]
+          }
+        },
+        "title": "YextEmailPublicCreateSenderBody"
+      },
+      "ApiError": {
+        "title": "ApiError",
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Public API error code."
+          },
+          "type": {
+            "type": "string",
+            "description": "Error severity."
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable error description."
+          },
+          "name": {
+            "type": "string",
+            "description": "Error name, when provided."
+          }
+        }
+      },
+      "ApiMeta": {
+        "title": "ApiMeta",
+        "type": "object",
+        "properties": {
+          "uuid": {
+            "type": "string",
+            "description": "HTTP request correlation ID."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApiError"
+            }
+          }
+        }
+      },
+      "PublicErrorResponse": {
+        "title": "PublicErrorResponse",
+        "type": "object",
+        "required": [
+          "meta",
+          "response"
+        ],
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/ApiMeta"
+          },
+          "response": {
+            "type": "object"
+          }
+        }
+      },
+      "mailSenderChannel": {
+        "type": "string",
+        "enum": [
+          "SENDER_CHANNEL_EMAIL"
+        ],
+        "title": "mailSenderChannel"
+      },
+      "mailSenderIdentityStatus": {
+        "type": "string",
+        "enum": [
+          "SENDER_IDENTITY_STATUS_PENDING",
+          "SENDER_IDENTITY_STATUS_VERIFIED"
+        ],
+        "title": "mailSenderIdentityStatus"
+      },
+      "mailPublicSender": {
+        "type": "object",
+        "properties": {
+          "channel": {
+            "description": "Email is the supported channel: SENDER_CHANNEL_EMAIL.",
+            "anyOf": [
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/mailSenderChannel"
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "nullable": true,
+                "enum": [
+                  null
+                ]
+              }
+            ]
+          },
+          "email": {
+            "description": "Email address, optional Entity association, and reply-to settings.",
+            "anyOf": [
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/mailPublicEmailSender"
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "nullable": true,
+                "enum": [
+                  null
+                ]
+              }
+            ]
+          },
+          "verificationStatus": {
+            "description": "PENDING means the sender must complete the verification email flow. VERIFIED means sender identity verification is complete. Domain and sending requirements still apply.",
+            "anyOf": [
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/mailSenderIdentityStatus"
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "nullable": true,
+                "enum": [
+                  null
+                ]
+              }
+            ]
+          },
+          "verifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Time sender verification completed, as an RFC 3339 timestamp. Absent or null when the sender is not verified.",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Complete resource name: accounts/{account}/senders/{sender}. Both the account segment and sender UUID are assigned by Yext.",
+            "readOnly": true
+          }
+        },
+        "title": "mailPublicSender"
+      }
+    }
+  }
+}

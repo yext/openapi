@@ -1,0 +1,356 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Campaigns API",
+    "version": "v1",
+    "description": "Use the Campaigns API to enroll a recipient in an automated campaign when an event occurs in your application. For example, you can trigger a campaign after a customer submits a form or completes a purchase.\n\n## Before You Begin\n\nThe campaign must be published, active, and configured with an API entry that leads to Email content. Obtain its UUID, Entity ID, API entry ID, and any required input definitions from the person who configured the campaign.\n\n## Authentication and Versioning\n\nSend requests to `https://api.yextapis.com` with your app's API key in the `api-key` header or `api_key` query parameter. Include one fixed `v` date, such as `20240401`, and set `Content-Type: application/json`. Use your account ID or `me` in the URL and the exact Entity ID from Knowledge Graph in `entityId`.\n\n## Choosing a Recipient\n\nProvide either a saved contact's complete `name` or inline recipient `details`. Inline recipients require an email address. Set `createContact` to `true` only when you also want to save the recipient as a contact; this requires Contacts write permission. A saved contact must belong to the specified account and Entity.\n\n## Retrying Requests\n\nGenerate one lowercase UUID `requestId` for each enrollment. If a request times out or fails temporarily, retry with the same ID and unchanged body, increasing the delay between attempts. Repeating an accepted request returns the original invocation. Use a new ID to enroll the recipient again.\n\n## Response Format\n\nHTTP `200` confirms that the enrollment was accepted and queued. It does not confirm email delivery. The response contains `meta` and an invocation in `response`. Keep `requestId` and `meta.uuid` for troubleshooting. Invocation and run resource names are references; this API does not provide endpoints to poll them.\n\nSee [Policies and Conventions](https://docs.yext.com/docs/managementapis/introduction/overview-policies-and-conventions/) and [Errors](https://docs.yext.com/docs/managementapis/introduction/errors/) for shared Management API guidance. Field descriptions specify this API's timestamp and identifier formats."
+  },
+  "tags": [
+    {
+      "name": "Campaign Triggers",
+      "description": "Enroll a recipient into an API-triggered automated campaign."
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://api.yextapis.com"
+    }
+  ],
+  "paths": {
+    "/v2/accounts/{account}/campaigns/{campaign}:trigger": {
+      "post": {
+        "summary": "Campaigns: Trigger",
+        "description": "Enrolls one recipient in a published, active automated campaign.\n\nThe campaign must have an API entry that leads to Email content. Provide the campaign UUID in the URL and the exact Knowledge Graph Entity ID in `entityId`.\n\nSet either `recipient.details` with an email address or `recipient.contact` with a saved contact's complete name. The saved contact must belong to the same account and Entity. Use `createContact` only with inline details and Contacts write permission.\n\nA successful response means the enrollment was accepted and queued; it does not confirm delivery. Retry temporary failures with the same `requestId` and unchanged body, increasing the delay between attempts. An accepted identical request returns the original invocation. This API has no invocation or run polling endpoints.\n\nObtain API entry IDs and input definitions from the person who configured the campaign. Set `entryNodeId` when there are multiple API entries. Inputs must match that entry's definitions. Unknown request fields and multiple recipient modes are invalid.\n\nPossible errors include:\n\n* INVALID_ARGUMENT for invalid recipient, Entity, entry, or input values.\n* FAILED_PRECONDITION for an inactive campaign or a required contact that cannot be used.\n* ALREADY_EXISTS when an accepted request ID is reused with a different body.\n* ABORTED when the campaign changes while the request is being accepted. Retry the unchanged request.\n* UNAVAILABLE while campaign activation is pending or a required service is unavailable.",
+        "operationId": "Campaigns_PublicTriggerCampaign",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Campaigns_PublicTriggerCampaignResponse",
+                  "type": "object",
+                  "required": [
+                    "meta",
+                    "response"
+                  ],
+                  "properties": {
+                    "meta": {
+                      "$ref": "#/components/schemas/ApiMeta"
+                    },
+                    "response": {
+                      "$ref": "#/components/schemas/v1CampaignInvocation"
+                    }
+                  }
+                },
+                "examples": {
+                  "response": {
+                    "value": {
+                      "meta": {
+                        "uuid": "7b4b7f0f-17cf-4bec-81b0-97a729f25e54",
+                        "errors": []
+                      },
+                      "response": {
+                        "name": "accounts/514581/campaigns/019a1234-5678-7000-8000-000000000004/invocations/019a1234-5678-7000-8000-000000000009",
+                        "requestId": "9d4ea8f0-a932-4c44-a27c-6cae4ecf1793",
+                        "campaignRevision": "accounts/514581/campaigns/019a1234-5678-7000-8000-000000000004/revisions/019a1234-5678-7000-8000-000000000010",
+                        "entryNodeId": "api_entry",
+                        "campaignRun": "accounts/514581/campaigns/019a1234-5678-7000-8000-000000000004/runs/019a1234-5678-7000-8000-000000000011",
+                        "participant": "accounts/514581/campaigns/019a1234-5678-7000-8000-000000000004/runs/019a1234-5678-7000-8000-000000000011/participants/019a1234-5678-7000-8000-000000000012",
+                        "createTime": "2026-10-26T15:30:00Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An error occurred. See `meta.errors` for the error code and message.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublicErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "v",
+            "in": "query",
+            "required": true,
+            "description": "API version date in YYYYMMDD format. Use one fixed date for your integration; supply this parameter once per request.",
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9]{8}$",
+              "default": "20240401"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CampaignsPublicTriggerCampaignBody"
+                  }
+                ],
+                "example": {
+                  "requestId": "9d4ea8f0-a932-4c44-a27c-6cae4ecf1793",
+                  "entityId": "branch-nyc-001",
+                  "recipient": {
+                    "details": {
+                      "emailAddress": "alex.rivera@example.com",
+                      "firstName": "Alex",
+                      "lastName": "Rivera"
+                    }
+                  },
+                  "createContact": false,
+                  "inputs": {}
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "tags": [
+          "Campaign Triggers"
+        ],
+        "security": [
+          {
+            "api-key": []
+          },
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "account",
+          "in": "path",
+          "required": true,
+          "description": "External account ID, or `me` for the credential's own account.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "campaign",
+          "in": "path",
+          "required": true,
+          "description": "Yext-assigned resource UUID.",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "api-key": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "api-key"
+      },
+      "api_key": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "api_key"
+      }
+    },
+    "schemas": {
+      "v1ApiRecipientDetails": {
+        "type": "object",
+        "properties": {
+          "emailAddress": {
+            "type": "string",
+            "description": "Recipient email address without a display name. Required for inline recipients. Trimmed and converted to lowercase; at most 254 bytes."
+          },
+          "phoneNumber": {
+            "type": "string",
+            "description": "Phone number in international E.164 format. API-triggered campaigns currently require email; a phone number alone is insufficient for enrollment."
+          },
+          "firstName": {
+            "type": "string",
+            "description": "Recipient name, trimmed and limited to 255 UTF-8 bytes. Saved with the invocation. Email Contact variables use a saved contact's profile."
+          },
+          "middleName": {
+            "type": "string",
+            "description": "Recipient name, trimmed and limited to 255 UTF-8 bytes. Saved with the invocation. Email Contact variables use a saved contact's profile."
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Recipient name, trimmed and limited to 255 UTF-8 bytes. Saved with the invocation. Email Contact variables use a saved contact's profile."
+          }
+        },
+        "title": "v1ApiRecipientDetails"
+      },
+      "v1ApiRecipient": {
+        "type": "object",
+        "properties": {
+          "contact": {
+            "type": "string",
+            "description": "Format: accounts/{account}/contacts/{contact}. Complete name returned by the Contacts API. The contact must belong to the same account and the Entity specified by entityId. Copy its name exactly, including the Yext-assigned account segment."
+          },
+          "details": {
+            "description": "Recipient details provided directly in this request. An email address is required. Set either details or contact, not both.",
+            "anyOf": [
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/v1ApiRecipientDetails"
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "nullable": true,
+                "enum": [
+                  null
+                ]
+              }
+            ]
+          }
+        },
+        "title": "v1ApiRecipient"
+      },
+      "CampaignsPublicTriggerCampaignBody": {
+        "type": "object",
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "description": "Lowercase UUID identifying this enrollment within the account and campaign. Reuse the ID and unchanged request body when retrying. Use a new ID to enroll the recipient again."
+          },
+          "recipient": {
+            "$ref": "#/components/schemas/v1ApiRecipient"
+          },
+          "createContact": {
+            "type": "boolean",
+            "description": "Save an inline recipient as a contact. Requires Contacts write permission. Creates a contact or reuses an active contact with the same Entity and email. Existing profile values and preferences are retained. Archived matches are rejected. Supported only with recipient.details; defaults to false."
+          },
+          "entryNodeId": {
+            "type": "string",
+            "description": "API entry ID provided by the person who configured the campaign. Required when the published campaign has multiple API entries. Otherwise optional."
+          },
+          "inputs": {
+            "type": "object"
+          },
+          "entityId": {
+            "type": "string",
+            "description": "Exact Entity ID from Knowledge Graph, sent as a string. Do not substitute a Yext-assigned numeric ID or a complete Entity resource name."
+          }
+        },
+        "description": "Public trigger requests use the Entity's external ID. Field numbers match the earlier shared request so accepted retries keep the same payload hash.",
+        "required": [
+          "requestId",
+          "recipient",
+          "entityId"
+        ],
+        "title": "CampaignsPublicTriggerCampaignBody"
+      },
+      "ApiError": {
+        "title": "ApiError",
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Public API error code."
+          },
+          "type": {
+            "type": "string",
+            "description": "Error severity."
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable error description."
+          },
+          "name": {
+            "type": "string",
+            "description": "Error name, when provided."
+          }
+        }
+      },
+      "ApiMeta": {
+        "title": "ApiMeta",
+        "type": "object",
+        "properties": {
+          "uuid": {
+            "type": "string",
+            "description": "HTTP request correlation ID."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApiError"
+            }
+          }
+        }
+      },
+      "PublicErrorResponse": {
+        "title": "PublicErrorResponse",
+        "type": "object",
+        "required": [
+          "meta",
+          "response"
+        ],
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/ApiMeta"
+          },
+          "response": {
+            "type": "object"
+          }
+        }
+      },
+      "v1CampaignInvocation": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Complete name identifying this accepted enrollment. Retain it for troubleshooting. This API has no endpoint to retrieve an invocation.",
+            "readOnly": true
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Accepted retry UUID, echoed in the response.",
+            "readOnly": true
+          },
+          "campaignRevision": {
+            "type": "string",
+            "description": "Published campaign revision used for this enrollment.",
+            "readOnly": true
+          },
+          "entryNodeId": {
+            "type": "string",
+            "description": "Selected API entry node.",
+            "readOnly": true
+          },
+          "campaignRun": {
+            "type": "string",
+            "description": "Campaign run associated with this enrollment. A reference, not a URL supported by this API.",
+            "readOnly": true
+          },
+          "participant": {
+            "type": "string",
+            "description": "Participant associated with this enrollment. A reference, not a URL supported by this API.",
+            "readOnly": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Time the enrollment was accepted. Relative campaign delays begin at this time. Returned as an RFC 3339 timestamp.",
+            "readOnly": true,
+            "nullable": true
+          }
+        },
+        "description": "Acceptance records durable queued work, not successful delivery. Execution outcomes are available internally through run/participant reporting only.",
+        "title": "v1CampaignInvocation"
+      }
+    }
+  }
+}

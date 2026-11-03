@@ -1,0 +1,1781 @@
+openapi: 3.0.0
+info:
+  title: Contacts API
+  version: v1
+  description: |-
+    Use the Contacts API to manage the people who receive your Yext Email campaigns. You can create and update contact profiles, organize contacts into static lists, and define rule-based Smart Lists.
+
+    ## Authentication and Versioning
+
+    Send requests to `https://api.yextapis.com` with your app's API key in the `api-key` header or `api_key` query parameter. Include one `v` query parameter in `YYYYMMDD` format, such as `20240401`, and keep that date fixed for your integration. For requests with a body, use `Content-Type: application/json`.
+
+    ## Account and Entity IDs
+
+    Use your account ID or `me` in the URL. The `me` value selects the account associated with your API key. Use the Entity ID from Knowledge Graph for `entityId`, including when that ID contains only digits. Your API key must have access to the Entity and permission to manage its contacts.
+
+    Contacts and lists have Yext-assigned UUIDs. Use `uid` in the corresponding URL. The `name` field contains the complete resource name and a Yext-assigned account ID, which may differ from the account ID in your request.
+
+    ## Lists and Pagination
+
+    Static lists contain contacts you add explicitly. Smart Lists use a saved rule to select matching contacts. Create any custom-field definitions referenced by a profile or rule before using them.
+
+    List responses include `nextPageToken`. Pass it as `pageToken` with the same filters to retrieve the next page. An empty token marks the end of the results. Search and Smart List results may take time to reflect changes; use Contacts: Get to check a contact immediately after a write.
+
+    ## Updating Contacts
+
+    Contact updates replace ordinary profile values. Include every name, phone number, title, and company value you want to keep; omitted values are cleared. `emailAddress` and `entityId` are required. Omit `customFields` to retain its current values. See Contacts: Update for details.
+
+    ## Response Format
+
+    Successful responses contain `meta` and `response`. Use `meta.uuid` to identify a request and inspect `meta.errors` when an error occurs. Timestamps are RFC 3339 strings, such as `2026-10-26T15:30:00Z`. Omit optional request fields you are not setting rather than sending `null`.
+
+    See [Policies and Conventions](https://docs.yext.com/docs/managementapis/introduction/overview-policies-and-conventions/) and [Errors](https://docs.yext.com/docs/managementapis/introduction/errors/) for shared Management API guidance. Field descriptions in this reference specify the formats used by the Contacts API.
+tags:
+  - name: Contacts
+    description: Create, synchronize, read, and maintain contact profiles.
+  - name: Contact Lists
+    description: Create and maintain static lists and rule-based Smart Lists.
+  - name: Contact List Memberships
+    description: Assign contacts to static lists and remove assignments.
+servers:
+  - url: https://api.yextapis.com
+paths:
+  /v2/accounts/{account}/contactLists:
+    post:
+      summary: 'Contact Lists: Create'
+      description: |-
+        Creates a static list or a rule-based Smart List for a Knowledge Graph Entity.
+
+        Send the list fields directly, without a `contactList` wrapper. The default `kind` is `CONTACT_LIST_KIND_STATIC`. Add contacts to a static list using Contact List Memberships: Create.
+
+        For a Smart List, set `kind` to `CONTACT_LIST_KIND_DYNAMIC` and provide `dynamicRule`. Any custom fields referenced by the rule must already be defined. Save the returned `ruleRevision` and condition IDs for future rule updates.
+
+        Static lists can include an `externalIdentity` to synchronize with another system. Reusing the same source identity updates the matching list and can restore a deleted match. Smart Lists do not accept an external identity.
+      operationId: Contacts_PublicCreateContactList
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                title: Contacts_PublicCreateContactListResponse
+                type: object
+                required:
+                  - meta
+                  - response
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/ApiMeta'
+                  response:
+                    $ref: '#/components/schemas/contactsPublicContactList'
+              examples:
+                response:
+                  value:
+                    meta:
+                      uuid: 7b4b7f0f-17cf-4bec-81b0-97a729f25e54
+                      errors: []
+                    response:
+                      displayName: New York newsletter subscribers
+                      description: CRM-managed static audience for the New York branch.
+                      entityId: branch-nyc-001
+                      kind: CONTACT_LIST_KIND_STATIC
+                      externalIdentity:
+                        source: salesforce
+                        externalId: campaign-newsletter-nyc
+                      name: accounts/514581/contactLists/019a1234-5678-7000-8000-000000000002
+                      uid: 019a1234-5678-7000-8000-000000000002
+                      businessId: '514581'
+                      entityLabel: New York Main Branch
+                      ruleRevision: '0'
+                      createdAt: '2026-10-26T15:30:00Z'
+                      updatedAt: '2026-10-26T15:30:00Z'
+                      deletedAt: null
+                      dynamicRule: null
+        default:
+          description: An error occurred. See `meta.errors` for the error code and message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+      parameters:
+        - name: v
+          in: query
+          required: true
+          description: API version date in YYYYMMDD format. Use one fixed date for your integration; supply this parameter once per request.
+          schema:
+            type: string
+            pattern: ^[0-9]{8}$
+            default: '20240401'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/contactsPublicContactList'
+              example:
+                displayName: New York newsletter subscribers
+                description: CRM-managed static audience for the New York branch.
+                entityId: branch-nyc-001
+                kind: CONTACT_LIST_KIND_STATIC
+                externalIdentity:
+                  source: salesforce
+                  externalId: campaign-newsletter-nyc
+        required: true
+      tags:
+        - Contact Lists
+      security:
+        - api-key: []
+        - api_key: []
+    get:
+      summary: 'Contact Lists: List'
+      description: |-
+        Returns static lists and Smart Lists you have permission to access.
+
+        Use `query` to search by list name and Entity filters to narrow the results. The response contains list details rather than the contacts in each list.
+
+        Pass the returned `nextPageToken` as `pageToken` with the same filters to continue.
+      operationId: Contacts_PublicListContactLists
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                title: Contacts_PublicListContactListsResponse
+                type: object
+                required:
+                  - meta
+                  - response
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/ApiMeta'
+                  response:
+                    $ref: '#/components/schemas/contactsPublicListContactListsResponse'
+              examples:
+                response:
+                  value:
+                    meta:
+                      uuid: 7b4b7f0f-17cf-4bec-81b0-97a729f25e54
+                      errors: []
+                    response:
+                      contactLists:
+                        - displayName: New York newsletter subscribers
+                          description: CRM-managed static audience for the New York branch.
+                          entityId: branch-nyc-001
+                          kind: CONTACT_LIST_KIND_STATIC
+                          externalIdentity:
+                            source: salesforce
+                            externalId: campaign-newsletter-nyc
+                          name: accounts/514581/contactLists/019a1234-5678-7000-8000-000000000002
+                          uid: 019a1234-5678-7000-8000-000000000002
+                          businessId: '514581'
+                          entityLabel: New York Main Branch
+                          ruleRevision: '0'
+                          createdAt: '2026-10-26T15:30:00Z'
+                          updatedAt: '2026-10-26T15:30:00Z'
+                          deletedAt: null
+                          dynamicRule: null
+                        - displayName: Gold customers
+                          description: Customers whose tier is gold.
+                          entityId: branch-nyc-001
+                          kind: CONTACT_LIST_KIND_DYNAMIC
+                          dynamicRule:
+                            version: 1
+                            matchMode: CONTACT_LIST_RULE_MATCH_MODE_ALL
+                            conditions:
+                              - customFieldKey: customer_tier
+                                operator: CONTACT_LIST_RULE_OPERATOR_EQUALS
+                                value:
+                                  stringValue: gold
+                                id: 019a1234-5678-7000-8000-000000000006
+                          name: accounts/514581/contactLists/019a1234-5678-7000-8000-000000000002
+                          uid: 019a1234-5678-7000-8000-000000000002
+                          businessId: '514581'
+                          entityLabel: New York Main Branch
+                          ruleRevision: '1'
+                          createdAt: '2026-10-26T15:30:00Z'
+                          updatedAt: '2026-10-26T15:30:00Z'
+                          deletedAt: null
+                          externalIdentity: null
+                      nextPageToken: ''
+        default:
+          description: An error occurred. See `meta.errors` for the error code and message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+      parameters:
+        - name: query
+          description: Search text used to narrow the results. Recent changes may take time to appear in search results.
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: pageSize
+          description: Requested page size. Nonpositive values use 50; above 1000 is capped.
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: pageToken
+          description: Token returned in nextPageToken by the previous response. Keep the other search parameters unchanged. Omit for the first page.
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: entityId
+          description: Exact external Entity ID string; takes precedence over a broader selected entity scope.
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: selectedEntityScope.entityIds
+          description: Knowledge Graph external entity IDs for this account.
+          in: query
+          required: false
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+        - name: selectedEntityScope.folderIds
+          in: query
+          required: false
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+              format: int64
+        - name: selectedEntityScope.labelIds
+          in: query
+          required: false
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+              format: int64
+        - name: ids
+          description: Restrict results to these Yext-assigned UUIDs. Repeat ids once per UUID.
+          in: query
+          required: false
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+        - name: v
+          in: query
+          required: true
+          description: API version date in YYYYMMDD format. Use one fixed date for your integration; supply this parameter once per request.
+          schema:
+            type: string
+            pattern: ^[0-9]{8}$
+            default: '20240401'
+      tags:
+        - Contact Lists
+      security:
+        - api-key: []
+        - api_key: []
+    parameters:
+      - name: account
+        in: path
+        required: true
+        description: External account ID, or `me` for the credential's own account.
+        schema:
+          type: string
+  /v2/accounts/{account}/contactLists/{contactList}:
+    patch:
+      summary: 'Contact Lists: Update'
+      description: |-
+        Updates a list's name, description, or Smart List rule within its existing Entity.
+
+        Provide `entityId` and the complete `displayName` and `description` you want to keep. The list's kind and external identity cannot be changed. Omit `kind` or send its existing value.
+
+        Omit `dynamicRule` to keep the current rule. To replace a Smart List rule, first retrieve the list, preserve the IDs of existing conditions, and set the `expectedRuleRevision` query parameter to the returned `ruleRevision`. This revision belongs in the query, not the request body.
+
+        A missing revision is invalid when replacing a rule. A stale revision returns a conflict. Static lists cannot be converted to Smart Lists.
+      operationId: Contacts_PublicUpdateContactList
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                title: Contacts_PublicUpdateContactListResponse
+                type: object
+                required:
+                  - meta
+                  - response
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/ApiMeta'
+                  response:
+                    $ref: '#/components/schemas/contactsPublicContactList'
+              examples:
+                response:
+                  value:
+                    meta:
+                      uuid: 7b4b7f0f-17cf-4bec-81b0-97a729f25e54
+                      errors: []
+                    response:
+                      displayName: New York newsletter subscribers
+                      description: Updated newsletter audience description.
+                      entityId: branch-nyc-001
+                      kind: CONTACT_LIST_KIND_STATIC
+                      externalIdentity:
+                        source: salesforce
+                        externalId: campaign-newsletter-nyc
+                      name: accounts/514581/contactLists/019a1234-5678-7000-8000-000000000002
+                      uid: 019a1234-5678-7000-8000-000000000002
+                      businessId: '514581'
+                      entityLabel: New York Main Branch
+                      ruleRevision: '0'
+                      createdAt: '2026-10-26T15:30:00Z'
+                      updatedAt: '2026-10-26T15:30:00Z'
+                      deletedAt: null
+                      dynamicRule: null
+        default:
+          description: An error occurred. See `meta.errors` for the error code and message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+      parameters:
+        - name: expectedRuleRevision
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uint64
+        - name: v
+          in: query
+          required: true
+          description: API version date in YYYYMMDD format. Use one fixed date for your integration; supply this parameter once per request.
+          schema:
+            type: string
+            pattern: ^[0-9]{8}$
+            default: '20240401'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - type: object
+                  properties:
+                    uid:
+                      type: string
+                      description: System-generated list UUID.
+                      readOnly: true
+                    businessId:
+                      type: string
+                      format: int64
+                      description: Yext-assigned account ID, returned as a string.
+                      readOnly: true
+                    displayName:
+                      type: string
+                      description: List display name; send the intended full name on metadata updates.
+                    description:
+                      type: string
+                      description: Optional list description; blank or omitted on update clears it.
+                    createdAt:
+                      type: string
+                      format: date-time
+                      description: Creation time.
+                      readOnly: true
+                      nullable: true
+                    updatedAt:
+                      type: string
+                      format: date-time
+                      description: Last modification time.
+                      readOnly: true
+                      nullable: true
+                    entityId:
+                      type: string
+                      description: Required external Entity ID string on create/update. The list belongs to that entity.
+                    entityLabel:
+                      type: string
+                      description: Resolved label for the owning Entity.
+                      readOnly: true
+                    kind:
+                      description: CONTACT_LIST_KIND_STATIC contains explicitly added contacts; CONTACT_LIST_KIND_DYNAMIC selects contacts using a Smart List rule. Defaults to STATIC on create. Cannot be changed after creation.
+                      anyOf:
+                        - allOf:
+                            - $ref: '#/components/schemas/contactsContactListKind'
+                        - type: object
+                          nullable: true
+                          enum:
+                            - null
+                    dynamicRule:
+                      description: Rule used to select Smart List contacts. Required when creating a Smart List. Omit to keep the current rule during an update. Replacing the rule requires expectedRuleRevision in the query.
+                      anyOf:
+                        - allOf:
+                            - $ref: '#/components/schemas/contactsContactListRule'
+                        - type: object
+                          nullable: true
+                          enum:
+                            - null
+                    ruleRevision:
+                      type: string
+                      format: uint64
+                      description: Current Smart List rule revision, returned as a decimal string. Send this value in expectedRuleRevision when updating the rule.
+                      readOnly: true
+                    deletedAt:
+                      type: string
+                      format: date-time
+                      description: Time the list was archived, when applicable.
+                      readOnly: true
+                      nullable: true
+                    externalIdentity:
+                      description: List identity in another system. Supported only when creating or synchronizing static lists. Cannot be changed through an update.
+                      anyOf:
+                        - allOf:
+                            - $ref: '#/components/schemas/contactsExternalIdentity'
+                        - type: object
+                          nullable: true
+                          enum:
+                            - null
+              example:
+                displayName: New York newsletter subscribers
+                description: Updated newsletter audience description.
+                entityId: branch-nyc-001
+                kind: CONTACT_LIST_KIND_STATIC
+        required: true
+      tags:
+        - Contact Lists
+      security:
+        - api-key: []
+        - api_key: []
+    get:
+      summary: 'Contact Lists: Get'
+      description: |-
+        Returns a contact list's details, including its Entity ID and external identity when present.
+
+        For a Smart List, the response includes its rule, condition IDs, and current `ruleRevision`. Retrieve these values before updating the rule. The response does not include the contacts in the list.
+      operationId: Contacts_PublicGetContactList
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                title: Contacts_PublicGetContactListResponse
+                type: object
+                required:
+                  - meta
+                  - response
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/ApiMeta'
+                  response:
+                    $ref: '#/components/schemas/contactsPublicContactList'
+              examples:
+                response:
+                  value:
+                    meta:
+                      uuid: 7b4b7f0f-17cf-4bec-81b0-97a729f25e54
+                      errors: []
+                    response:
+                      displayName: New York newsletter subscribers
+                      description: CRM-managed static audience for the New York branch.
+                      entityId: branch-nyc-001
+                      kind: CONTACT_LIST_KIND_STATIC
+                      externalIdentity:
+                        source: salesforce
+                        externalId: campaign-newsletter-nyc
+                      name: accounts/514581/contactLists/019a1234-5678-7000-8000-000000000002
+                      uid: 019a1234-5678-7000-8000-000000000002
+                      businessId: '514581'
+                      entityLabel: New York Main Branch
+                      ruleRevision: '0'
+                      createdAt: '2026-10-26T15:30:00Z'
+                      updatedAt: '2026-10-26T15:30:00Z'
+                      deletedAt: null
+                      dynamicRule: null
+        default:
+          description: An error occurred. See `meta.errors` for the error code and message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+      parameters:
+        - name: v
+          in: query
+          required: true
+          description: API version date in YYYYMMDD format. Use one fixed date for your integration; supply this parameter once per request.
+          schema:
+            type: string
+            pattern: ^[0-9]{8}$
+            default: '20240401'
+      tags:
+        - Contact Lists
+      security:
+        - api-key: []
+        - api_key: []
+    delete:
+      summary: 'Contact Lists: Delete'
+      description: |-
+        Archives a contact list without deleting its contacts.
+
+        You must have permission to manage the list for its account and Entity. A successful response contains an empty `response` object. There is no restore endpoint in this public API.
+      operationId: Contacts_DeleteContactList
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                title: Contacts_DeleteContactListResponse
+                type: object
+                required:
+                  - meta
+                  - response
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/ApiMeta'
+                  response:
+                    type: object
+                    properties: {}
+              examples:
+                response:
+                  value:
+                    meta:
+                      uuid: 7b4b7f0f-17cf-4bec-81b0-97a729f25e54
+                      errors: []
+                    response: {}
+        default:
+          description: An error occurred. See `meta.errors` for the error code and message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+      parameters:
+        - name: v
+          in: query
+          required: true
+          description: API version date in YYYYMMDD format. Use one fixed date for your integration; supply this parameter once per request.
+          schema:
+            type: string
+            pattern: ^[0-9]{8}$
+            default: '20240401'
+      tags:
+        - Contact Lists
+      security:
+        - api-key: []
+        - api_key: []
+    parameters:
+      - name: account
+        in: path
+        required: true
+        description: External account ID, or `me` for the credential's own account.
+        schema:
+          type: string
+      - name: contactList
+        in: path
+        required: true
+        description: Yext-assigned resource UUID.
+        schema:
+          type: string
+  /v2/accounts/{account}/contactLists/{contactList}/members:
+    post:
+      summary: 'Contact List Memberships: Create'
+      description: |-
+        Adds a contact to a static list. If the membership already exists, returns it without adding a duplicate.
+
+        Use the list UUID in the URL and the contact UUID in `contactId`. To use IDs from another system, supply those IDs and set `externalIdentitySource` to their source. UUIDs and external IDs can be combined; the source is required for each external ID. Values formatted as UUIDs are always interpreted as Yext-assigned IDs.
+
+        The contact and list must be active and belong to compatible Entity scopes you can manage. Smart List membership is determined by its rule and cannot be assigned manually.
+
+        To remove the membership later, use its returned `name`. The final segment is the contact ID, which differs from the membership's own `uid`.
+      operationId: Contacts_CreateContactListMember
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                title: Contacts_CreateContactListMemberResponse
+                type: object
+                required:
+                  - meta
+                  - response
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/ApiMeta'
+                  response:
+                    $ref: '#/components/schemas/contactsContactListMember'
+              examples:
+                response:
+                  value:
+                    meta:
+                      uuid: 7b4b7f0f-17cf-4bec-81b0-97a729f25e54
+                      errors: []
+                    response:
+                      name: accounts/514581/contactLists/019a1234-5678-7000-8000-000000000002/members/019a1234-5678-7000-8000-000000000001
+                      uid: 019a1234-5678-7000-8000-000000000005
+                      businessId: '514581'
+                      contactId: 019a1234-5678-7000-8000-000000000001
+                      listId: 019a1234-5678-7000-8000-000000000002
+                      createdAt: '2026-10-26T15:30:00Z'
+                      updatedAt: '2026-10-26T15:30:00Z'
+        default:
+          description: An error occurred. See `meta.errors` for the error code and message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+      parameters:
+        - name: v
+          in: query
+          required: true
+          description: API version date in YYYYMMDD format. Use one fixed date for your integration; supply this parameter once per request.
+          schema:
+            type: string
+            pattern: ^[0-9]{8}$
+            default: '20240401'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/contactsContactListMember'
+              example:
+                contactId: 019a1234-5678-7000-8000-000000000001
+        required: true
+      tags:
+        - Contact List Memberships
+      security:
+        - api-key: []
+        - api_key: []
+    parameters:
+      - name: account
+        in: path
+        required: true
+        description: External account ID, or `me` for the credential's own account.
+        schema:
+          type: string
+      - name: contactList
+        in: path
+        required: true
+        description: List UUID, or source-system list ID with `externalIdentitySource`.
+        schema:
+          type: string
+  /v2/accounts/{account}/contactLists/{contactList}/members/{member}:
+    delete:
+      summary: 'Contact List Memberships: Delete'
+      description: |-
+        Removes a contact from a static list without deleting the contact.
+
+        Use the list UUID and contact UUID from the membership's returned `name`. The last URL segment is `contactId`, not the membership's own `uid`. Do not send a request body or `externalIdentitySource`.
+
+        A missing membership may return a not-found error. Smart List membership cannot be removed manually.
+      operationId: Contacts_DeleteContactListMember
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                title: Contacts_DeleteContactListMemberResponse
+                type: object
+                required:
+                  - meta
+                  - response
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/ApiMeta'
+                  response:
+                    type: object
+                    properties: {}
+              examples:
+                response:
+                  value:
+                    meta:
+                      uuid: 7b4b7f0f-17cf-4bec-81b0-97a729f25e54
+                      errors: []
+                    response: {}
+        default:
+          description: An error occurred. See `meta.errors` for the error code and message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+      parameters:
+        - name: v
+          in: query
+          required: true
+          description: API version date in YYYYMMDD format. Use one fixed date for your integration; supply this parameter once per request.
+          schema:
+            type: string
+            pattern: ^[0-9]{8}$
+            default: '20240401'
+      tags:
+        - Contact List Memberships
+      security:
+        - api-key: []
+        - api_key: []
+    parameters:
+      - name: account
+        in: path
+        required: true
+        description: External account ID, or `me` for the credential's own account.
+        schema:
+          type: string
+      - name: contactList
+        in: path
+        required: true
+        description: Yext-assigned resource UUID.
+        schema:
+          type: string
+      - name: member
+        in: path
+        required: true
+        description: Contact UUID, not the separate membership UID.
+        schema:
+          type: string
+  /v2/accounts/{account}/contacts:
+    post:
+      summary: 'Contacts: Create'
+      description: |-
+        Creates a contact associated with a Knowledge Graph Entity.
+
+        Provide `emailAddress` and `entityId` in the request body. Send the contact fields directly, without a `contact` wrapper. Any custom-field definitions must already exist.
+
+        To synchronize contacts from another system, include `externalIdentity`. Reusing the same source and record ID updates the matching contact and can restore a deleted match. Without an external identity, this method creates a new contact.
+
+        If an error occurs after saving the contact, the write may still have succeeded. Check the contact before retrying.
+      operationId: Contacts_PublicCreateContact
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                title: Contacts_PublicCreateContactResponse
+                type: object
+                required:
+                  - meta
+                  - response
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/ApiMeta'
+                  response:
+                    $ref: '#/components/schemas/contactsPublicContact'
+              examples:
+                response:
+                  value:
+                    meta:
+                      uuid: 7b4b7f0f-17cf-4bec-81b0-97a729f25e54
+                      errors: []
+                    response:
+                      firstName: Alex
+                      middleName: Morgan
+                      lastName: Rivera
+                      emailAddress: alex.rivera@example.com
+                      phoneNumber: '+12125550123'
+                      title: Branch Manager
+                      company: Example Financial
+                      entityId: branch-nyc-001
+                      name: accounts/514581/contacts/019a1234-5678-7000-8000-000000000001
+                      uid: 019a1234-5678-7000-8000-000000000001
+                      businessId: '514581'
+                      entityLabel: New York Main Branch
+                      lists: []
+                      createdAt: '2026-10-26T15:30:00Z'
+                      updatedAt: '2026-10-26T15:30:00Z'
+                      deletedAt: null
+        default:
+          description: An error occurred. See `meta.errors` for the error code and message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+      parameters:
+        - name: v
+          in: query
+          required: true
+          description: API version date in YYYYMMDD format. Use one fixed date for your integration; supply this parameter once per request.
+          schema:
+            type: string
+            pattern: ^[0-9]{8}$
+            default: '20240401'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/contactsPublicContact'
+              example:
+                firstName: Alex
+                middleName: Morgan
+                lastName: Rivera
+                emailAddress: alex.rivera@example.com
+                phoneNumber: '+12125550123'
+                phoneRegion: US
+                title: Branch Manager
+                company: Example Financial
+                entityId: branch-nyc-001
+        required: true
+      tags:
+        - Contacts
+      security:
+        - api-key: []
+        - api_key: []
+    get:
+      summary: 'Contacts: List'
+      description: |-
+        Returns contacts you have permission to access, with optional search, Entity, and list filters.
+
+        Use `entityId` for one Knowledge Graph Entity or `selectedEntityScope` for a broader selection. Entity IDs are the IDs from Knowledge Graph; folder and label IDs are numeric strings. Additional filters narrow this selection.
+
+        Use `listId` or `listIds` to include contacts from any of the selected lists. Repeat array query parameters once per value. Set `deletedOnly=true` to return archived contacts instead of active contacts.
+
+        Pass the returned `nextPageToken` as `pageToken` with the same filters to continue. Search and Smart List results may take time to reflect recent changes. The response does not include an exact total.
+      operationId: Contacts_PublicListContacts
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                title: Contacts_PublicListContactsResponse
+                type: object
+                required:
+                  - meta
+                  - response
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/ApiMeta'
+                  response:
+                    $ref: '#/components/schemas/contactsPublicListContactsResponse'
+              examples:
+                response:
+                  value:
+                    meta:
+                      uuid: 7b4b7f0f-17cf-4bec-81b0-97a729f25e54
+                      errors: []
+                    response:
+                      contacts:
+                        - firstName: Alex
+                          middleName: Morgan
+                          lastName: Rivera
+                          emailAddress: alex.rivera@example.com
+                          phoneNumber: '+12125550123'
+                          title: Branch Manager
+                          company: Example Financial
+                          entityId: branch-nyc-001
+                          externalIdentity:
+                            source: salesforce
+                            externalId: 003-example-0001
+                          customFields:
+                            values:
+                              customer_tier:
+                                stringValue: gold
+                              marketing_opt_in:
+                                booleanValue: true
+                              annual_spend:
+                                numberValue: 1250.5
+                              renewal_date:
+                                stringValue: '2027-04-15'
+                          name: accounts/514581/contacts/019a1234-5678-7000-8000-000000000001
+                          uid: 019a1234-5678-7000-8000-000000000001
+                          businessId: '514581'
+                          entityLabel: New York Main Branch
+                          lists: []
+                          createdAt: '2026-10-26T15:30:00Z'
+                          updatedAt: '2026-10-26T15:30:00Z'
+                          deletedAt: null
+                      nextPageToken: ''
+        default:
+          description: An error occurred. See `meta.errors` for the error code and message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+      parameters:
+        - name: query
+          description: Search text used to narrow the results. Recent changes may take time to appear in search results.
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: pageSize
+          description: Requested page size. Nonpositive values use 50; above 1000 is capped.
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: pageToken
+          description: Token returned in nextPageToken by the previous response. Keep the other search parameters unchanged. Omit for the first page.
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: listId
+          description: Optional singular list UUID.
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: deletedOnly
+          description: Archived contacts only when true; active contacts by default.
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: entityId
+          description: Exact external Entity ID string; takes precedence over a broader selected entity scope.
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: selectedEntityScope.entityIds
+          description: Knowledge Graph external entity IDs for this account.
+          in: query
+          required: false
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+        - name: selectedEntityScope.folderIds
+          in: query
+          required: false
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+              format: int64
+        - name: selectedEntityScope.labelIds
+          in: query
+          required: false
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+              format: int64
+        - name: ids
+          description: Restrict results to these Yext-assigned UUIDs. Repeat ids once per UUID.
+          in: query
+          required: false
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+        - name: listIds
+          description: Additional list UUIDs. Matches contacts in any of the selected lists.
+          in: query
+          required: false
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+        - name: v
+          in: query
+          required: true
+          description: API version date in YYYYMMDD format. Use one fixed date for your integration; supply this parameter once per request.
+          schema:
+            type: string
+            pattern: ^[0-9]{8}$
+            default: '20240401'
+      tags:
+        - Contacts
+      security:
+        - api-key: []
+        - api_key: []
+    parameters:
+      - name: account
+        in: path
+        required: true
+        description: External account ID, or `me` for the credential's own account.
+        schema:
+          type: string
+  /v2/accounts/{account}/contacts/{contact}:
+    patch:
+      summary: 'Contacts: Update'
+      description: |-
+        Updates a contact identified by its Yext-assigned UUID.
+
+        Provide the existing `entityId` and an `emailAddress`. The contact must be active and belong to that Entity. Send the profile fields directly; omit `name` from the body.
+
+        **Important:** This operation replaces ordinary profile values. Include all name, phone number, title, and company fields you want to keep. Omitted values are cleared. Read the contact first if you need to preserve its current profile.
+
+        Omit `customFields` to keep its values. If provided, its writable values replace the current set. The contact's `externalIdentity` cannot be changed.
+      operationId: Contacts_PublicUpdateContact
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                title: Contacts_PublicUpdateContactResponse
+                type: object
+                required:
+                  - meta
+                  - response
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/ApiMeta'
+                  response:
+                    $ref: '#/components/schemas/contactsPublicContact'
+              examples:
+                response:
+                  value:
+                    meta:
+                      uuid: 7b4b7f0f-17cf-4bec-81b0-97a729f25e54
+                      errors: []
+                    response:
+                      firstName: Alex
+                      middleName: Morgan
+                      lastName: Rivera
+                      emailAddress: alex.rivera@example.com
+                      phoneNumber: '+12125550123'
+                      title: Senior Branch Manager
+                      company: Example Financial Services
+                      entityId: branch-nyc-001
+                      externalIdentity:
+                        source: salesforce
+                        externalId: 003-example-0001
+                      customFields:
+                        values:
+                          customer_tier:
+                            stringValue: gold
+                          marketing_opt_in:
+                            booleanValue: true
+                          annual_spend:
+                            numberValue: 1250.5
+                          renewal_date:
+                            stringValue: '2027-04-15'
+                      name: accounts/514581/contacts/019a1234-5678-7000-8000-000000000001
+                      uid: 019a1234-5678-7000-8000-000000000001
+                      businessId: '514581'
+                      entityLabel: New York Main Branch
+                      lists: []
+                      createdAt: '2026-10-26T15:30:00Z'
+                      updatedAt: '2026-10-26T15:30:00Z'
+                      deletedAt: null
+        default:
+          description: An error occurred. See `meta.errors` for the error code and message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+      parameters:
+        - name: v
+          in: query
+          required: true
+          description: API version date in YYYYMMDD format. Use one fixed date for your integration; supply this parameter once per request.
+          schema:
+            type: string
+            pattern: ^[0-9]{8}$
+            default: '20240401'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - type: object
+                  properties:
+                    uid:
+                      type: string
+                      description: System-generated contact UUID.
+                      readOnly: true
+                    businessId:
+                      type: string
+                      format: int64
+                      description: Yext-assigned account ID, returned as a string. May differ from the account ID used in your request URL.
+                      readOnly: true
+                    firstName:
+                      type: string
+                      description: Optional first name. A blank/omitted name on PATCH clears that profile field.
+                    lastName:
+                      type: string
+                      description: Optional last name.
+                    emailAddress:
+                      type: string
+                      description: Email address. Required when creating or updating a contact. Addresses are normalized and validated before saving.
+                    title:
+                      type: string
+                      description: Optional professional title. Omitted/blank on PATCH clears it.
+                    company:
+                      type: string
+                      description: Optional company. Omitted/blank on PATCH clears it.
+                    createdAt:
+                      type: string
+                      format: date-time
+                      description: Creation time.
+                      readOnly: true
+                      nullable: true
+                    updatedAt:
+                      type: string
+                      format: date-time
+                      description: Last update time.
+                      readOnly: true
+                      nullable: true
+                    deletedAt:
+                      type: string
+                      format: date-time
+                      description: Time the contact was archived. Archiving does not permanently erase it.
+                      readOnly: true
+                      nullable: true
+                    lists:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/contactsPublicContactList'
+                      description: Lists associated with this contact. To change static list membership, use the Contact List Memberships endpoints.
+                      readOnly: true
+                    entityId:
+                      type: string
+                      description: Entity ID from Knowledge Graph. Required on create and update. Send the exact ID as a string, including when it contains only digits.
+                    entityLabel:
+                      type: string
+                      description: Resolved label for the owning Entity, when available.
+                      readOnly: true
+                    customFields:
+                      description: Values for your account's defined contact custom fields. Omit on update to keep current values. An empty values object clears writable values, subject to restrictions on archived field definitions.
+                      anyOf:
+                        - allOf:
+                            - $ref: '#/components/schemas/contactsContactCustomFields'
+                        - type: object
+                          nullable: true
+                          enum:
+                            - null
+                    externalIdentity:
+                      description: Contact identity in another system. Include on create to synchronize records with that system. Cannot be changed after creation.
+                      anyOf:
+                        - allOf:
+                            - $ref: '#/components/schemas/contactsExternalIdentity'
+                        - type: object
+                          nullable: true
+                          enum:
+                            - null
+                    middleName:
+                      type: string
+                      description: Optional middle name. Profile writes trim surrounding whitespace.
+                    phoneNumber:
+                      type: string
+                      description: Optional phone number. Prefer E.164. National numbers require suitable phoneRegion context.
+                    phoneRegion:
+                      type: string
+                      description: Input-only phone parsing region, for example US. Not returned in responses.
+                  description: Public contact contracts use Knowledge Graph external entity IDs. Internal Contacts RPCs and persisted records continue to use numeric entity IDs.
+                  required:
+                    - emailAddress
+              example:
+                firstName: Alex
+                middleName: Morgan
+                lastName: Rivera
+                emailAddress: alex.rivera@example.com
+                phoneNumber: '+12125550123'
+                phoneRegion: US
+                title: Senior Branch Manager
+                company: Example Financial Services
+                entityId: branch-nyc-001
+        required: true
+      tags:
+        - Contacts
+      security:
+        - api-key: []
+        - api_key: []
+    get:
+      summary: 'Contacts: Get'
+      description: |-
+        Returns a contact's profile, Entity ID, and related contact lists.
+
+        Use the contact's Yext-assigned UUID in the URL. Your API key must have access to its account and Entity. Use this method to check a contact immediately after creating or updating it, before the change appears in search results.
+
+        To find archived contacts, use Contacts: List with `deletedOnly=true`.
+      operationId: Contacts_PublicGetContact
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                title: Contacts_PublicGetContactResponse
+                type: object
+                required:
+                  - meta
+                  - response
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/ApiMeta'
+                  response:
+                    $ref: '#/components/schemas/contactsPublicContact'
+              examples:
+                response:
+                  value:
+                    meta:
+                      uuid: 7b4b7f0f-17cf-4bec-81b0-97a729f25e54
+                      errors: []
+                    response:
+                      firstName: Alex
+                      middleName: Morgan
+                      lastName: Rivera
+                      emailAddress: alex.rivera@example.com
+                      phoneNumber: '+12125550123'
+                      title: Branch Manager
+                      company: Example Financial
+                      entityId: branch-nyc-001
+                      externalIdentity:
+                        source: salesforce
+                        externalId: 003-example-0001
+                      customFields:
+                        values:
+                          customer_tier:
+                            stringValue: gold
+                          marketing_opt_in:
+                            booleanValue: true
+                          annual_spend:
+                            numberValue: 1250.5
+                          renewal_date:
+                            stringValue: '2027-04-15'
+                      name: accounts/514581/contacts/019a1234-5678-7000-8000-000000000001
+                      uid: 019a1234-5678-7000-8000-000000000001
+                      businessId: '514581'
+                      entityLabel: New York Main Branch
+                      lists: []
+                      createdAt: '2026-10-26T15:30:00Z'
+                      updatedAt: '2026-10-26T15:30:00Z'
+                      deletedAt: null
+        default:
+          description: An error occurred. See `meta.errors` for the error code and message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+      parameters:
+        - name: v
+          in: query
+          required: true
+          description: API version date in YYYYMMDD format. Use one fixed date for your integration; supply this parameter once per request.
+          schema:
+            type: string
+            pattern: ^[0-9]{8}$
+            default: '20240401'
+      tags:
+        - Contacts
+      security:
+        - api-key: []
+        - api_key: []
+    delete:
+      summary: 'Contacts: Delete'
+      description: |-
+        Archives a contact identified by its Yext-assigned UUID.
+
+        You must have permission to manage contacts for its Entity. This operation does not permanently erase the contact. A successful response contains an empty `response` object.
+
+        Deleting an already archived or missing contact may return a not-found error. There is no restore endpoint in this public API.
+      operationId: Contacts_DeleteContact
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                title: Contacts_DeleteContactResponse
+                type: object
+                required:
+                  - meta
+                  - response
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/ApiMeta'
+                  response:
+                    type: object
+                    properties: {}
+              examples:
+                response:
+                  value:
+                    meta:
+                      uuid: 7b4b7f0f-17cf-4bec-81b0-97a729f25e54
+                      errors: []
+                    response: {}
+        default:
+          description: An error occurred. See `meta.errors` for the error code and message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+      parameters:
+        - name: v
+          in: query
+          required: true
+          description: API version date in YYYYMMDD format. Use one fixed date for your integration; supply this parameter once per request.
+          schema:
+            type: string
+            pattern: ^[0-9]{8}$
+            default: '20240401'
+      tags:
+        - Contacts
+      security:
+        - api-key: []
+        - api_key: []
+    parameters:
+      - name: account
+        in: path
+        required: true
+        description: External account ID, or `me` for the credential's own account.
+        schema:
+          type: string
+      - name: contact
+        in: path
+        required: true
+        description: Yext-assigned resource UUID.
+        schema:
+          type: string
+components:
+  securitySchemes:
+    api-key:
+      type: apiKey
+      in: header
+      name: api-key
+    api_key:
+      type: apiKey
+      in: query
+      name: api_key
+  schemas:
+    ApiError:
+      title: ApiError
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Public API error code.
+        type:
+          type: string
+          description: Error severity.
+        message:
+          type: string
+          description: Human-readable error description.
+        name:
+          type: string
+          description: Error name, when provided.
+    ApiMeta:
+      title: ApiMeta
+      type: object
+      properties:
+        uuid:
+          type: string
+          description: HTTP request correlation ID.
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiError'
+    PublicErrorResponse:
+      title: PublicErrorResponse
+      type: object
+      required:
+        - meta
+        - response
+      properties:
+        meta:
+          $ref: '#/components/schemas/ApiMeta'
+        response:
+          type: object
+    contactsContactListKind:
+      type: string
+      enum:
+        - CONTACT_LIST_KIND_STATIC
+        - CONTACT_LIST_KIND_DYNAMIC
+      title: contactsContactListKind
+    contactsContactListRuleMatchMode:
+      type: string
+      enum:
+        - CONTACT_LIST_RULE_MATCH_MODE_ALL
+        - CONTACT_LIST_RULE_MATCH_MODE_ANY
+      title: contactsContactListRuleMatchMode
+    contactsContactListRuleBuiltInField:
+      type: string
+      enum:
+        - CONTACT_LIST_RULE_BUILT_IN_FIELD_FIRST_NAME
+        - CONTACT_LIST_RULE_BUILT_IN_FIELD_LAST_NAME
+        - CONTACT_LIST_RULE_BUILT_IN_FIELD_EMAIL_ADDRESS
+        - CONTACT_LIST_RULE_BUILT_IN_FIELD_TITLE
+        - CONTACT_LIST_RULE_BUILT_IN_FIELD_COMPANY
+        - CONTACT_LIST_RULE_BUILT_IN_FIELD_CREATED_AT
+        - CONTACT_LIST_RULE_BUILT_IN_FIELD_UPDATED_AT
+        - CONTACT_LIST_RULE_BUILT_IN_FIELD_MIDDLE_NAME
+        - CONTACT_LIST_RULE_BUILT_IN_FIELD_PHONE_NUMBER
+      title: contactsContactListRuleBuiltInField
+    contactsContactListRuleOperator:
+      type: string
+      enum:
+        - CONTACT_LIST_RULE_OPERATOR_EQUALS
+        - CONTACT_LIST_RULE_OPERATOR_NOT_EQUALS
+        - CONTACT_LIST_RULE_OPERATOR_CONTAINS
+        - CONTACT_LIST_RULE_OPERATOR_STARTS_WITH
+        - CONTACT_LIST_RULE_OPERATOR_ENDS_WITH
+        - CONTACT_LIST_RULE_OPERATOR_GREATER_THAN
+        - CONTACT_LIST_RULE_OPERATOR_GREATER_THAN_OR_EQUAL
+        - CONTACT_LIST_RULE_OPERATOR_LESS_THAN
+        - CONTACT_LIST_RULE_OPERATOR_LESS_THAN_OR_EQUAL
+        - CONTACT_LIST_RULE_OPERATOR_IS_EMPTY
+        - CONTACT_LIST_RULE_OPERATOR_IS_NOT_EMPTY
+      title: contactsContactListRuleOperator
+    contactsContactListRuleDateUnit:
+      type: string
+      enum:
+        - CONTACT_LIST_RULE_DATE_UNIT_DAY
+        - CONTACT_LIST_RULE_DATE_UNIT_MONTH
+        - CONTACT_LIST_RULE_DATE_UNIT_YEAR
+      title: contactsContactListRuleDateUnit
+    contactsContactListRuleRelativeDate:
+      type: object
+      properties:
+        offset:
+          type: integer
+          format: int32
+          description: Signed offset from today. Limits depend on unit.
+        unit:
+          $ref: '#/components/schemas/contactsContactListRuleDateUnit'
+      description: A calendar date relative to today in the evaluation timezone.
+      required:
+        - unit
+      title: contactsContactListRuleRelativeDate
+    contactsContactListRuleValue:
+      type: object
+      properties:
+        stringValue:
+          type: string
+        booleanValue:
+          type: boolean
+        numberValue:
+          type: number
+          format: double
+        dateValue:
+          type: string
+          description: Calendar date in YYYY-MM-DD format, without a time or timezone.
+        relativeDateValue:
+          description: Calendar offset from today in the evaluation timezone. DAY ±366000, MONTH ±12000, YEAR ±1000; zero offset normalizes to DAY.
+          anyOf:
+            - allOf:
+                - $ref: '#/components/schemas/contactsContactListRuleRelativeDate'
+            - type: object
+              nullable: true
+              enum:
+                - null
+      title: contactsContactListRuleValue
+    contactsContactListRuleCondition:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Stable condition UUID. Omit on new conditions and retain the returned ID for existing conditions.
+        builtInField:
+          description: Select one supported built-in contact field. CREATED_AT and UPDATED_AT use date comparisons in the entity timezone.
+          anyOf:
+            - allOf:
+                - $ref: '#/components/schemas/contactsContactListRuleBuiltInField'
+            - type: object
+              nullable: true
+              enum:
+                - null
+        customFieldKey:
+          type: string
+          description: Existing account custom-field definition key. Its type determines accepted operators and value encoding.
+        operator:
+          $ref: '#/components/schemas/contactsContactListRuleOperator'
+        value:
+          anyOf:
+            - allOf:
+                - $ref: '#/components/schemas/contactsContactListRuleValue'
+            - type: object
+              nullable: true
+              enum:
+                - null
+      required:
+        - operator
+      title: contactsContactListRuleCondition
+    contactsContactListRule:
+      type: object
+      properties:
+        version:
+          type: integer
+          format: int64
+          description: Only version 1 is supported.
+        matchMode:
+          $ref: '#/components/schemas/contactsContactListRuleMatchMode'
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/contactsContactListRuleCondition'
+          description: One to twenty conditions. Server assigns IDs on create; retain returned IDs when updating existing conditions.
+      required:
+        - version
+        - matchMode
+        - conditions
+      title: contactsContactListRule
+    contactsExternalIdentity:
+      type: object
+      properties:
+        source:
+          type: string
+          description: Stable nonempty source namespace, for example salesforce. Keep it consistent across related contact and list records.
+        externalId:
+          type: string
+          description: Stable nonempty record ID in that source, for example 003-example-0001. This identifies a contact/list, not a Knowledge Graph entity.
+      title: contactsExternalIdentity
+    contactsPublicContactList:
+      type: object
+      properties:
+        name:
+          type: string
+          description: 'Complete resource name: accounts/{account}/contactLists/{contactList}. The account segment is Yext-assigned.'
+          readOnly: true
+        uid:
+          type: string
+          description: System-generated list UUID.
+          readOnly: true
+        businessId:
+          type: string
+          format: int64
+          description: Yext-assigned account ID, returned as a string.
+          readOnly: true
+        displayName:
+          type: string
+          description: List display name; send the intended full name on metadata updates.
+        description:
+          type: string
+          description: Optional list description; blank or omitted on update clears it.
+        createdAt:
+          type: string
+          format: date-time
+          description: Creation time.
+          readOnly: true
+          nullable: true
+        updatedAt:
+          type: string
+          format: date-time
+          description: Last modification time.
+          readOnly: true
+          nullable: true
+        entityId:
+          type: string
+          description: Required external Entity ID string on create/update. The list belongs to that entity.
+        entityLabel:
+          type: string
+          description: Resolved label for the owning Entity.
+          readOnly: true
+        kind:
+          description: CONTACT_LIST_KIND_STATIC contains explicitly added contacts; CONTACT_LIST_KIND_DYNAMIC selects contacts using a Smart List rule. Defaults to STATIC on create. Cannot be changed after creation.
+          anyOf:
+            - allOf:
+                - $ref: '#/components/schemas/contactsContactListKind'
+            - type: object
+              nullable: true
+              enum:
+                - null
+        dynamicRule:
+          description: Rule used to select Smart List contacts. Required when creating a Smart List. Omit to keep the current rule during an update. Replacing the rule requires expectedRuleRevision in the query.
+          anyOf:
+            - allOf:
+                - $ref: '#/components/schemas/contactsContactListRule'
+            - type: object
+              nullable: true
+              enum:
+                - null
+        ruleRevision:
+          type: string
+          format: uint64
+          description: Current Smart List rule revision, returned as a decimal string. Send this value in expectedRuleRevision when updating the rule.
+          readOnly: true
+        deletedAt:
+          type: string
+          format: date-time
+          description: Time the list was archived, when applicable.
+          readOnly: true
+          nullable: true
+        externalIdentity:
+          description: List identity in another system. Supported only when creating or synchronizing static lists. Cannot be changed through an update.
+          anyOf:
+            - allOf:
+                - $ref: '#/components/schemas/contactsExternalIdentity'
+            - type: object
+              nullable: true
+              enum:
+                - null
+      title: contactsPublicContactList
+    contactsPublicListContactListsResponse:
+      type: object
+      properties:
+        contactLists:
+          type: array
+          items:
+            $ref: '#/components/schemas/contactsPublicContactList'
+        nextPageToken:
+          type: string
+      title: contactsPublicListContactListsResponse
+    contactsContactListMember:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Canonical membership name accounts/{account}/contactLists/{list}/members/{contactUUID}. Use name for deletion; its final segment is contactId, not the separate uid.
+          readOnly: true
+        uid:
+          type: string
+          description: Membership UUID, distinct from contactId and listId.
+          readOnly: true
+        businessId:
+          type: string
+          format: int64
+          description: Internal account ID as a decimal string.
+          readOnly: true
+        contactId:
+          type: string
+          description: Resolved internal contact UUID.
+        listId:
+          type: string
+          description: Resolved internal list UUID.
+          readOnly: true
+        createdAt:
+          type: string
+          format: date-time
+          description: Membership creation timestamp.
+          readOnly: true
+          nullable: true
+        updatedAt:
+          type: string
+          format: date-time
+          description: Membership update timestamp.
+          readOnly: true
+          nullable: true
+        externalIdentitySource:
+          type: string
+          description: Input-only namespace for external identifier resolution; not returned.
+      required:
+        - contactId
+      title: contactsContactListMember
+    contactsContactCustomFieldValue:
+      type: object
+      properties:
+        stringValue:
+          type: string
+          description: String value; at most 1024 Unicode characters. DATE definitions also use stringValue with a YYYY-MM-DD date.
+        booleanValue:
+          type: boolean
+          description: Boolean value; false is an actual value, not an absent field.
+        numberValue:
+          type: number
+          format: double
+          description: Finite numeric value; NaN and infinity are invalid.
+      title: contactsContactCustomFieldValue
+    contactsContactCustomFields:
+      type: object
+      properties:
+        values:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/contactsContactCustomFieldValue'
+      title: contactsContactCustomFields
+    contactsPublicContact:
+      type: object
+      properties:
+        name:
+          type: string
+          description: 'Complete resource name: accounts/{account}/contacts/{contact}. The account segment is Yext-assigned. Use uid in contact request URLs.'
+          readOnly: true
+        uid:
+          type: string
+          description: System-generated contact UUID.
+          readOnly: true
+        businessId:
+          type: string
+          format: int64
+          description: Yext-assigned account ID, returned as a string. May differ from the account ID used in your request URL.
+          readOnly: true
+        firstName:
+          type: string
+          description: Optional first name. A blank/omitted name on PATCH clears that profile field.
+        lastName:
+          type: string
+          description: Optional last name.
+        emailAddress:
+          type: string
+          description: Email address. Required when creating or updating a contact. Addresses are normalized and validated before saving.
+        title:
+          type: string
+          description: Optional professional title. Omitted/blank on PATCH clears it.
+        company:
+          type: string
+          description: Optional company. Omitted/blank on PATCH clears it.
+        createdAt:
+          type: string
+          format: date-time
+          description: Creation time.
+          readOnly: true
+          nullable: true
+        updatedAt:
+          type: string
+          format: date-time
+          description: Last update time.
+          readOnly: true
+          nullable: true
+        deletedAt:
+          type: string
+          format: date-time
+          description: Time the contact was archived. Archiving does not permanently erase it.
+          readOnly: true
+          nullable: true
+        lists:
+          type: array
+          items:
+            $ref: '#/components/schemas/contactsPublicContactList'
+          description: Lists associated with this contact. To change static list membership, use the Contact List Memberships endpoints.
+          readOnly: true
+        entityId:
+          type: string
+          description: Entity ID from Knowledge Graph. Required on create and update. Send the exact ID as a string, including when it contains only digits.
+        entityLabel:
+          type: string
+          description: Resolved label for the owning Entity, when available.
+          readOnly: true
+        customFields:
+          description: Values for your account's defined contact custom fields. Omit on update to keep current values. An empty values object clears writable values, subject to restrictions on archived field definitions.
+          anyOf:
+            - allOf:
+                - $ref: '#/components/schemas/contactsContactCustomFields'
+            - type: object
+              nullable: true
+              enum:
+                - null
+        externalIdentity:
+          description: Contact identity in another system. Include on create to synchronize records with that system. Cannot be changed after creation.
+          anyOf:
+            - allOf:
+                - $ref: '#/components/schemas/contactsExternalIdentity'
+            - type: object
+              nullable: true
+              enum:
+                - null
+        middleName:
+          type: string
+          description: Optional middle name. Profile writes trim surrounding whitespace.
+        phoneNumber:
+          type: string
+          description: Optional phone number. Prefer E.164. National numbers require suitable phoneRegion context.
+        phoneRegion:
+          type: string
+          description: Input-only phone parsing region, for example US. Not returned in responses.
+      description: Public contact contracts use Knowledge Graph external entity IDs. Internal Contacts RPCs and persisted records continue to use numeric entity IDs.
+      required:
+        - emailAddress
+      title: contactsPublicContact
+    contactsPublicListContactsResponse:
+      type: object
+      properties:
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/contactsPublicContact'
+        nextPageToken:
+          type: string
+      title: contactsPublicListContactsResponse
