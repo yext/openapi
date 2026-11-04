@@ -3,7 +3,7 @@ info:
   title: Senders API
   version: v1
   description: |-
-    Use the Senders API to create the sender identities used by Yext Email. A sender defines the address recipients see and, optionally, the address they use to reply. You can associate a sender with a Knowledge Graph Entity or create an account-level sender.
+    Use the Senders API to create the sender identities used by Yext Email. A sender defines the address recipients see and, optionally, the address they use to reply. Each sender must be associated with a Knowledge Graph Entity.
 
     ## Before You Begin
 
@@ -13,9 +13,9 @@ info:
 
     Send requests to `https://api.yextapis.com` with your app's API key in the `api-key` header or `api_key` query parameter. Include one fixed `v` date, such as `20240401`, and set `Content-Type: application/json`. Use your account ID or `me` in the URL.
 
-    ## Entity and Account Senders
+    ## Entity Senders
 
-    Set `email.entityId` to the exact Entity ID from Knowledge Graph to create an Entity sender. Omit it for an account-level sender. Sending an empty string is invalid.
+    Set the required `email.entityId` to the exact Entity ID from Knowledge Graph. Omitting it or sending an empty string is invalid. Account-level sender creation is not supported through this API.
 
     ## Response Format
 
@@ -32,9 +32,9 @@ paths:
     post:
       summary: 'Senders: Create'
       description: |-
-        Creates an email sender for an Entity or the account.
+        Creates an email sender for a Knowledge Graph Entity.
 
-        Provide `email.emailAddress`. To associate the sender with a Knowledge Graph Entity, set `email.entityId` to its exact Entity ID. Omit that field for an account-level sender. You can also provide a reply-to address and display name.
+        Provide `email.emailAddress` and set `email.entityId` to the exact Entity ID from Knowledge Graph. Account-level sender creation is not supported through this API. You can also provide a reply-to address and display name.
 
         The default `verificationMode` is `SENDER_VERIFICATION_MODE_REQUIRED`. Complete the verification email flow when the response status is pending. `SENDER_VERIFICATION_MODE_SKIP` requires an active, provider-verified domain and is unavailable for sandbox accounts. Both modes validate the sender's ownership and uniqueness.
 
@@ -144,8 +144,7 @@ components:
           description: Sender email address shown to recipients. Normalized and validated before creation. The domain must meet your account's sending requirements.
         entityId:
           type: string
-          description: Entity ID from Knowledge Graph. Omit for an account-level sender; an empty string is invalid. Each Entity can have one sender identity. Different Entities can use the same email address.
-          nullable: true
+          description: Required when creating a sender. Exact Entity ID from Knowledge Graph; an empty string is invalid. Each Entity can have one sender identity. Different Entities can use the same email address.
         replyTo:
           description: Address and display name used for replies. Does not change the sender address or its Entity association.
           anyOf:
@@ -156,6 +155,8 @@ components:
               enum:
                 - null
       description: Public sender contracts use Knowledge Graph external entity IDs. The existing Sender contracts retain numeric IDs for generated internal clients.
+      required:
+        - entityId
       title: mailPublicEmailSender
     mailSenderVerificationMode:
       type: string
