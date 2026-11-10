@@ -3,7 +3,7 @@ info:
   title: Prospect Scan API
   version: v1
 paths:
-  /v1/accounts/{account}/scout/prospectScans:
+  /v2/accounts/{account}/scout/prospectScans:
     post:
       summary: 'Prospecting: Create Prospect Scan'
       description: |-
@@ -64,7 +64,7 @@ paths:
           Set target to identify the business to scan. The remaining fields are
           assigned by the service.
         required: true
-  /v1/accounts/{account}/scout/prospectScans/{prospectScan}:
+  /v2/accounts/{account}/scout/prospectScans/{prospectScan}:
     get:
       summary: 'Prospecting: Get Prospect Scan'
       description: |-
@@ -96,7 +96,7 @@ paths:
           required: true
           schema:
             type: string
-  /v1/accounts/{account}/scout/prospectScans/{prospectScan}/fetchDiscoveredProspects:
+  /v2/accounts/{account}/scout/prospectScans/{prospectScan}/fetchDiscoveredProspects:
     get:
       summary: 'Prospecting: Fetch Discovered Prospects'
       description: |-
@@ -135,7 +135,7 @@ paths:
           required: true
           schema:
             type: string
-  /v1/accounts/{account}/scout/prospectScans/{prospectScan}/fetchEvidence:
+  /v2/accounts/{account}/scout/prospectScans/{prospectScan}/fetchEvidence:
     get:
       summary: 'Prospecting: Fetch Prospect Scan Evidence'
       description: |-
@@ -174,7 +174,7 @@ paths:
           required: true
           schema:
             type: string
-  /v1/accounts/{account}/scout/prospectScans/{prospectScan}/fetchResults:
+  /v2/accounts/{account}/scout/prospectScans/{prospectScan}/fetchResults:
     get:
       summary: 'Prospecting: Fetch Prospect Scan Results'
       description: |-
