@@ -9898,7 +9898,7 @@
           },
           "mediaItems": {
             "type": "array",
-            "description": "If the **`v`** parameter is before `20260805`: Not present.\n\nIf the **`v`** parameter is `20260805` or later: The media attached to the review, if the account has the `SHOW_GOOGLE_REVIEW_MEDIA_ITEMS` product feature enabled.\n\n**NOTE:** This field may be included when a webhook is triggered for a supported review event. Media-only updates do not trigger review webhooks.\n",
+            "description": "If the **`v`** parameter is before `20260805`: Not present.\n\nIf the **`v`** parameter is `20260805` or later: The media attached to the review.\n\n**NOTE:** This field may be included when a webhook is triggered for a supported review event. Media-only updates do not trigger review webhooks.\n",
             "readOnly": true,
             "items": {
               "$ref": "#/components/schemas/ReviewMediaItem"

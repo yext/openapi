@@ -123648,7 +123648,7 @@ components:
           description: |
             If the **`v`** parameter is before `20260805`: Not present.
 
-            If the **`v`** parameter is `20260805` or later: The media attached to the review, if the account has the `SHOW_GOOGLE_REVIEW_MEDIA_ITEMS` product feature enabled.
+            If the **`v`** parameter is `20260805` or later: The media attached to the review.
 
             **NOTE:** This field is only populated for reviews with attached media. Items may represent images or videos.
           readOnly: true

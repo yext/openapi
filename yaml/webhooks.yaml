@@ -13342,7 +13342,7 @@ components:
           description: |
             If the **`v`** parameter is before `20260805`: Not present.
 
-            If the **`v`** parameter is `20260805` or later: The media attached to the review, if the account has the `SHOW_GOOGLE_REVIEW_MEDIA_ITEMS` product feature enabled.
+            If the **`v`** parameter is `20260805` or later: The media attached to the review.
 
             **NOTE:** This field may be included when a webhook is triggered for a supported review event. Media-only updates do not trigger review webhooks.
           readOnly: true
